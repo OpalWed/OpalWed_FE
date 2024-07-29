@@ -1,0 +1,181 @@
+*,
+*::before,
+::after {
+  word-wrap: break-word;
+}
+
+.slick-slider .slick-next:before,
+.slick-slider .slick-prev:before {
+  font-size: 40px;
+}
+
+.chakra-ui-light .slick-slider .slick-next:before,
+.chakra-ui-light .slick-slider .slick-prev:before {
+  color: black;
+}
+
+.slick-slider .slick-next,
+.slick-slider .slick-prev {
+  width: 40px;
+  height: 40px;
+}
+
+.slick-slider .slick-list {
+  margin: 10px;
+}
+
+.chakra-ui-dark .slick-slider .slick-dots li.slick-active button:before {
+  color: white;
+  opacity: 1;
+  border-color: rgba(220, 220, 220, 0.5);
+}
+
+.slick-slider .slick-dots li button:before {
+  font-size: 12px;
+}
+
+.chakra-ui-dark .slick-slider .slick-dots li button:before {
+  color: white;
+  border-color: rgba(220, 220, 220, 0.5);
+}
+
+.chakra-ui-dark .ant-upload {
+  color: white;
+  border-color: rgba(220, 220, 220, 0.5);
+}
+
+.chakra-ui-dark .ant-select,
+.chakra-ui-dark .ant-select .ant-select-selector {
+  background: none;
+  border-color: rgba(220, 220, 220, 0.5);
+}
+
+.chakra-ui-dark .ant-select-selection-placeholder,
+.chakra-ui-dark .ant-select-arrow,
+.chakra-ui-dark .ant-select-selection-search-input,
+.chakra-ui-dark .ant-select-item,
+.chakra-ui-dark .ant-select-selection-item-content,
+.chakra-ui-dark .ant-select-selection-item-remove,
+.chakra-ui-dark .ant-select-selector .ant-select-selection-search,
+.chakra-ui-dark .ant-select-selection-item {
+  color: white;
+  border-color: rgba(220, 220, 220, 0.5);
+}
+
+.chakra-ui-dark .ant-select-disabled .ant-select-selection-placeholder,
+.chakra-ui-dark .ant-select-disabled .ant-select-arrow {
+  color: rgb(126, 126, 126);
+  border-color: rgba(220, 220, 220, 0.5);
+}
+
+.chakra-ui-dark .ant-select-dropdown {
+  background: #2D3748;
+  padding: 10px 5px;
+  border-color: rgba(220, 220, 220, 0.5);
+}
+
+.ant-menu-inline {
+  width: 270px;
+}
+
+.ant-menu-inline::-webkit-scrollbar,
+.chakra-stack::-webkit-scrollbar {
+  width: 5px;
+}
+
+.ant-menu-inline::-webkit-scrollbar-track,
+.chakra-stack::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+.ant-menu-inline::-webkit-scrollbar-thumb,
+.chakra-stack::-webkit-scrollbar-thumb {
+  background-color: #d0d0d0;
+  border-radius: 4px;
+}
+
+.ant-menu-inline::-webkit-scrollbar-thumb:hover,
+.chakra-stack::-webkit-scrollbar-thumb:hover {
+  background-color: #d9d8d8;
+}
+
+p {
+  font-size: 18px;
+}
+
+.ant-float-btn-group {
+  inset-inline-end: 20px;
+  inset-block-end: 30px;
+}
+
+.ant-float-btn-body {
+  background: url('image0.svg') center;
+  background-size: cover;
+}
+
+.css-1keet2t {
+  background-color: #ebd651 !important;
+}
+
+.css-161pkch option:first-child {
+  display: none !important;
+}
+
+.css-178jmfv option:first-child {
+  display: none !important;
+}
+
+.css-1e3qdf3 option:first-child {
+  display: none !important;
+}
+
+.slick-slider .slick-list {
+  margin: 0;
+}
+
+.content-input {
+  height: 1000px;
+}
+
+.ql-size-8px {
+  font-size: 8px;
+}
+
+.ql-size-10px {
+  font-size: 10px;
+}
+
+.ql-size-12px {
+  font-size: 12px;
+}
+
+.ql-size-14px {
+  font-size: 14px;
+}
+
+.ql-size-16px {
+  font-size: 16px;
+}
+
+.ql-size-18px {
+  font-size: 18px;
+}
+
+.ql-size-24px {
+  font-size: 24px;
+}
+
+.ql-size-36px {
+  font-size: 36px;
+}
+
+.ql-size-48px {
+  font-size: 48px;
+}
+
+.ql-snow .ql-picker.ql-size .ql-picker-label::before,
+.ql-snow .ql-picker.ql-size .ql-picker-item::before {
+  content: attr(data-value) !important;
+  font-size: 14px;
+  color: black;
+}
