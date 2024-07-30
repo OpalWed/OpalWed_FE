@@ -1,4 +1,4 @@
-import { Box, Heading, HStack, Image, Stack, Text } from "@chakra-ui/react"
+import { Box, Card, CardBody, CardFooter, CardHeader, Heading, HStack, Image, SimpleGrid, Stack, Text } from "@chakra-ui/react"
 import CarouselSlider from "../../components/slider"
 import { Shadow } from "../../styles/styles"
 import { useEffect } from "react"
@@ -8,6 +8,39 @@ const AboutPage = () => {
     const imageList: string[] = [
 
     ]
+
+    const teamMembers = [
+        {
+            name: 'CEO Nguyen Bao Long',
+            position: 'Operational Strategy General Management',
+            imageSrc: 'image 18.png',
+        },
+        {
+            name: 'CMO Bui Lam Phuong Nhi',
+            position: 'Project Manager Marketing',
+            imageSrc: 'image 18.png',
+        },
+        {
+            name: 'CFO Le Ngoc Tam Nhu',
+            position: 'Operational Strategy General Management',
+            imageSrc: 'image 18.png',
+        },
+        {
+            name: 'CTO Nguyen Cao Minh',
+            position: 'Online Platform Management',
+            imageSrc: 'image 18.png',
+        },
+        {
+            name: 'CIO Nguyen Hoang Phuc',
+            position: 'Online Platform Development',
+            imageSrc: 'image 18.png',
+        },
+        {
+            name: 'CDO Nguyen Le Ngoc Cuong',
+            position: 'Digital Transformation Management',
+            imageSrc: 'image 18.png',
+        },
+    ];
 
     useEffect(() => {
         changeTabTitle('About Us');
@@ -156,6 +189,52 @@ const AboutPage = () => {
                     />
                 </HStack>
             </Stack>
+            <Card textAlign="center" w={'7xl'} mx={'auto'} pos={'relative'} mt={20} mb={'55rem'} bg={'#F8F6F3'}>
+                <CardHeader fontSize={36} fontWeight={600}>
+                    MEET THE TEAM
+                </CardHeader>
+                <CardBody>
+                    <Image src="image 18.png" alt="Team Group" mb={8} h={550} w={'full'} />
+                    <SimpleGrid
+                        columns={3}
+                        spacingX={24}
+                        pos={'absolute'}
+                        w={'6xl'}
+                        px={6}
+                        left="50%"
+                        transform="translate(-50%)"
+                    >
+                        {teamMembers.map((member, index) => (
+                            <Box key={index} pos={'relative'} mb={24}>
+                                <Image
+                                    src={member.imageSrc}
+                                    alt={member.name}
+                                    borderRadius="md"
+                                    mb={4}
+                                    h={350}
+                                    w={310}
+                                    shadow={'lg'}
+                                />
+                                <Stack
+                                    w={64}
+                                    h={129}
+                                    bg={'#F8F6F3'}
+                                    p={5}
+                                    pos={'absolute'}
+                                    bottom={-16}
+                                    left={'50%'}
+                                    transform="translate(-50%)"
+                                    justify={'center'}
+                                >
+                                    <Text fontWeight="bold" color={'#0C2948'}>{member.name}</Text>
+                                    <Text>{member.position}</Text>
+                                </Stack>
+                            </Box>
+                        ))}
+                    </SimpleGrid>
+                </CardBody>
+                <CardFooter></CardFooter>
+            </Card>
         </>
     )
 }

@@ -55,7 +55,7 @@ const OurPartnersPage = () => {
                     pb={16}
                     pt={8}
                     left="50%"
-                    transform="translate(-50%, 0)"
+                    transform="translate(-50%)"
                     bottom={-48}
                     bg={'#E0EFF4'}
                     borderRadius={5}
