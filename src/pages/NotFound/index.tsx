@@ -1,5 +1,4 @@
 import { Card, CardBody, Heading, Text, Stack, Button } from "@chakra-ui/react";
-import { Color } from "../../styles/styles";
 import { Link } from "react-router-dom";
 import { changeTabTitle } from "../../utils/changeTabTitle";
 import { useEffect, useState } from "react";
@@ -22,7 +21,7 @@ const NotFoundPage = () => {
     }, [role]);
 
     return (
-        <Stack align={'center'} justify={'center'} h={'100vh'} bg={Color.blue_100}>
+        <Stack align={'center'} justify={'center'} h={'100vh'} bg={'blue.100'}>
             <Card borderRadius={20}>
                 <CardBody p={10} px={36}>
                     <Stack align={'center'} gap={6}>

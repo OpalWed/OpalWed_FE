@@ -1,25 +1,27 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 import NotFoundPage from "../pages/NotFound";
-import Layout from "../components/layout";
+import Layout from "../components/layout/customer";
 import HomePage from "../pages/Home";
 import AboutPage from "../pages/About";
 import OurServicesPage from "../pages/Our_Services";
 import OurPartnersPage from "../pages/Our_Partners";
 import ContactPage from "../pages/Contact";
+import LoginPage from "../pages/Login";
+import AdminLayout from "../components/layout/admin";
+import ApprovePartnerPage from "../pages/ApprovePartner";
+import ServicePage from "../pages/Services";
+import PartnerPage from "../pages/Partners";
+import CustomerContactsPage from "../pages/CustomerContacts";
 
 const routes = [
     {
         path: '*',
         element: <NotFoundPage />,
     },
-    // {
-    //     path: "/login",
-    //     element: <LoginPage />,
-    // },
-    // {
-    //     path: "/signup",
-    //     element: <SignUpPage />,
-    // },
+    {
+        path: "/login",
+        element: <LoginPage />,
+    },
     // {
     //     path: "/forgot-password",
     //     element: <ForgotPasswordPage />,
@@ -34,7 +36,20 @@ const routes = [
             { path: "our-partners", element: <OurPartnersPage /> },
             { path: "contact", element: <ContactPage /> },
         ],
-    }
+    },
+    {
+        path: "/administrator",
+        element: <AdminLayout />,
+        children: [
+            { index: true, element: <Navigate to={'dashboard'} /> },
+            { path: "dashboard", element: <HomePage /> },
+            { path: "services", element: <ServicePage /> },
+            { path: "partners", element: <PartnerPage /> },
+            { path: "approve-partner", element: <ApprovePartnerPage /> },
+            { path: "customer-contact", element: <CustomerContactsPage /> },
+            { path: "schedule", element: <HomePage /> },
+        ],
+    },
 ];
 
 const router = createBrowserRouter(routes);

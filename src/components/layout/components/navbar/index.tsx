@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Logo from "../../../logo";
 import { Box } from "@mui/material";
 import { HStack, Text } from "@chakra-ui/react";
+import { Color } from "../../../../styles/styles";
 
 const Navbar = () => {
 
@@ -11,7 +12,7 @@ const Navbar = () => {
             position={'fixed'}
             top={0}
             zIndex={10}
-            sx={{ background: '#0C2948' }}
+            sx={{ background: Color.darkBlue }}
         >
             <HStack
                 p={2}

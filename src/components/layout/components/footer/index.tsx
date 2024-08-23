@@ -3,33 +3,45 @@ import Logo from "../../../logo";
 import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
 import { Email, Instagram, Phone, Place } from "@mui/icons-material";
 import { FaTiktok } from "react-icons/fa6";
+import { Color } from "../../../../styles/styles";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
 
     return (
         <Stack
-            // bgImg='https://preview.colorlib.com/theme/foodblog/img/footer-bg.jpg.webp'
-            // bgRepeat='no-repeat'
-            // bgPos='center'
             pt={2}
             borderTop='1px solid gainsboro'
             color='white'
             maxW='full'
-            bg={'#0C2948'}
+            bg={Color.darkBlue}
         >
             <HStack py="10px" justify="space-evenly" maxW={'full'} mb={1}>
                 <Stack justify={'flex-start'} fontSize='20px' fontWeight='300'>
                     <Logo width="150px" height="150px" />
                     <Text>Slogan</Text>
                 </Stack>
-                <Stack justify={'flex-start'} fontSize='20px' fontWeight='300'>
-                    <Text>Our Services</Text>
-                    <Text>Slogan</Text>
+                <Stack justify={'flex-start'} fontSize='20px' fontWeight='300' align={'center'} gap={4}>
+                    <Text fontWeight={400}>Our Services</Text>
+                    <Stack align={'center'}>
+                        <Text fontSize={17}>Wedding Planning</Text>
+                        <Text fontSize={17}>Compare & Choose Vendors</Text>
+                        <Text fontSize={17}>Wedding Consultancy</Text>
+                    </Stack>
                 </Stack>
                 <Stack justify={'flex-start'} fontSize='20px' fontWeight='300'>
-                    <Text>Our Services</Text>
-                    <Text>Our Services</Text>
-                    <Text>Our Services</Text>
+                    <Link to={'/login'}>
+                        <Text fontWeight={400}>Sign In</Text>
+                    </Link>
+                    <Link to={'/our-services'}>
+                        <Text fontWeight={400}>Our Services</Text>
+                    </Link>
+                    <Link to={'/our-partners'}>
+                        <Text fontWeight={400}>Our Partners</Text>
+                    </Link>
+                    <Link to={'/contact'}>
+                        <Text fontWeight={400}>Contact</Text>
+                    </Link>
                 </Stack>
                 <Stack justify={'flex-start'} fontSize='20px' fontWeight='300' gap={4}>
                     <HStack>

@@ -1,6 +1,6 @@
 import { Box, Button, FormControl, FormLabel, Heading, HStack, Input, InputGroup, InputRightAddon, Select, Stack, Text, Textarea } from "@chakra-ui/react"
 import CarouselSlider from "../../components/slider"
-import { Shadow } from "../../styles/styles"
+import { Color, Shadow } from "../../styles/styles"
 import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
 import { Email, Instagram, Phone, Place } from "@mui/icons-material"
 import { useEffect } from "react"
@@ -30,7 +30,7 @@ const ContactPage = () => {
                     left="50%"
                     transform="translate(-50%, 0)"
                     bottom={-36}
-                    bg={'#E0EFF4'}
+                    bg={Color.lightBlue}
                     borderRadius={5}
                     shadow={Shadow.cardShadow}
                     gap={6}
@@ -41,7 +41,7 @@ const ContactPage = () => {
                     </Heading>
                 </Stack>
             </Box>
-            <Box bg={'#F8F6F3'} py={16} my={10}>
+            <Box bg={Color.lightYellow} py={16} my={10}>
                 <HStack w={'5xl'} m={'auto'} gap={28}>
                     <Stack flex={1} gap={8}>
                         <Heading>Get in touch</Heading>
@@ -147,12 +147,12 @@ const ContactPage = () => {
                             </FormControl>
                         </Stack>
                         <Button
-                            bg="#0C2948"
+                            bg={Color.darkBlue}
                             color={'white'}
                             fontWeight={400}
                             w={52}
                             m={'auto'}
-                            _hover={{ bg: '#0F3258' }}
+                            _hover={{ bg: Color.darkBlueHover }}
                         >
                             Send Request
                         </Button>
@@ -160,7 +160,7 @@ const ContactPage = () => {
                 </HStack>
             </Box>
             <Heading textAlign={'center'} mt={20}>__FOR PARTNER__</Heading>
-            <Box bg={'#F8F6F3'} py={16} my={10}>
+            <Box bg={Color.lightYellow} py={16} my={10}>
                 <HStack w={'5xl'} m={'auto'} gap={28}>
                     <Stack flex={1} gap={8}>
                         <Heading>Become our partner</Heading>
@@ -247,12 +247,12 @@ const ContactPage = () => {
                             </FormControl>
                         </Stack>
                         <Button
-                            bg="#0C2948"
+                            bg={Color.darkBlue}
                             color={'white'}
                             fontWeight={400}
                             w={52}
                             m={'auto'}
-                            _hover={{ bg: '#0F3258' }}
+                            _hover={{ bg: Color.darkBlueHover }}
                         >
                             Send Request
                         </Button>

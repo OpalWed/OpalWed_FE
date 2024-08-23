@@ -1,6 +1,6 @@
 import { Box, Heading, Image, SimpleGrid, Stack, Text } from "@chakra-ui/react"
 import CarouselSlider from "../../components/slider"
-import { Shadow } from "../../styles/styles"
+import { Color, Shadow } from "../../styles/styles"
 import { useEffect } from "react"
 import { changeTabTitle } from "../../utils/changeTabTitle"
 
@@ -57,7 +57,7 @@ const OurPartnersPage = () => {
                     left="50%"
                     transform="translate(-50%)"
                     bottom={-48}
-                    bg={'#E0EFF4'}
+                    bg={Color.lightBlue}
                     borderRadius={5}
                     shadow={Shadow.cardShadow}
                     gap={6}

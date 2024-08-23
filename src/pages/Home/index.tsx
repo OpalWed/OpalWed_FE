@@ -1,6 +1,6 @@
 import { Box, Button, Divider, Heading, HStack, Image, Stack, Text } from "@chakra-ui/react"
 import CarouselSlider from "../../components/slider"
-import { Shadow } from "../../styles/styles"
+import { Color, Shadow } from "../../styles/styles"
 import { ArrowForward, SentimentSatisfiedAlt } from "@mui/icons-material"
 import PartnersSlider from "./components/slider"
 import { useEffect } from "react"
@@ -31,7 +31,7 @@ const HomePage = () => {
                     left="50%"
                     transform="translate(-50%)"
                     bottom={-48}
-                    bg={'#F8F6F3'}
+                    bg={Color.lightYellow}
                     borderRadius={5}
                     shadow={Shadow.cardShadow}
                     gap={6}
@@ -92,7 +92,7 @@ const HomePage = () => {
                                 h="650px"
                             />
                             <Box
-                                bg="#E0EFF4"
+                                bg={Color.lightBlue}
                                 py={10}
                                 px={12}
                                 maxW="2xl"
@@ -128,7 +128,7 @@ const HomePage = () => {
                                 h="650px"
                             />
                             <Box
-                                bg="#F8F6F3"
+                                bg={Color.lightYellow}
                                 py={10}
                                 px={12}
                                 maxW="2xl"
@@ -204,7 +204,7 @@ const HomePage = () => {
                     left="50%"
                     bottom={-28}
                     transform="translate(-50%)"
-                    bg="#F8F6F3"
+                    bg={Color.lightYellow}
                     px={7}
                     py={12}
                     borderRadius={18}

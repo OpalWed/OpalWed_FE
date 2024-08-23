@@ -1,12 +1,11 @@
 // import ReactQuill from "react-quill";
 
 export const Color = {
-    headingGradientLg: 'linear-gradient(to left, #ffffff 0%, #1fa4ab 50%, #ffffff 100%)',
-    headingGradientMd: 'linear-gradient(to right, #1fa4ab, #ffffff)',
-    blue_100: '#f1f7ff',
-    greenBlue: '#1fa4ab',
     hoverBlue: '#144a91',
-    hoverGreenBlue: '#1fa4abc7',
+    darkBlue: '#0C2948',
+    darkBlueHover: '#143252',
+    lightYellow: '#F8F6F3',
+    lightBlue: '#E0EFF4',
 };
 
 export const Border = {

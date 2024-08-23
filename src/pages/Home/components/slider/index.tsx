@@ -1,5 +1,6 @@
 import { Image } from "@chakra-ui/react";
 import Slider from "react-slick";
+import { Color } from "../../../../styles/styles";
 
 const PartnersSlider = () => {
     const imageList: string[] = [
@@ -36,7 +37,7 @@ const PartnersSlider = () => {
                     borderRadius={5}
                     px={10}
                     src={image}
-                    bg={'#E0EFF4'}
+                    bg={Color.lightBlue}
                 />
             ))}
         </Slider>

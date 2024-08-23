@@ -1,6 +1,6 @@
 import { Box, Card, CardBody, CardFooter, CardHeader, Heading, HStack, Image, SimpleGrid, Stack, Text } from "@chakra-ui/react"
 import CarouselSlider from "../../components/slider"
-import { Shadow } from "../../styles/styles"
+import { Color, Shadow } from "../../styles/styles"
 import { useEffect } from "react"
 import { changeTabTitle } from "../../utils/changeTabTitle"
 
@@ -59,7 +59,7 @@ const AboutPage = () => {
                     left="50%"
                     transform="translate(-50%)"
                     bottom={'-25rem'}
-                    bg={'#F8F6F3'}
+                    bg={Color.lightYellow}
                     borderRadius={5}
                     shadow={Shadow.cardShadow}
                     gap={36}
@@ -94,7 +94,7 @@ const AboutPage = () => {
                     w={'full'}
                     px={28}
                     py={12}
-                    bg={'#E0EFF4'}
+                    bg={Color.lightBlue}
                     borderRadius={5}
                     shadow={Shadow.cardShadow}
                     gap={36}
@@ -127,7 +127,7 @@ const AboutPage = () => {
                     w={'full'}
                     px={28}
                     py={12}
-                    bg={'#F8F6F3'}
+                    bg={Color.lightYellow}
                     borderRadius={5}
                     shadow={Shadow.cardShadow}
                     gap={36}
@@ -160,7 +160,7 @@ const AboutPage = () => {
                     w={'full'}
                     px={28}
                     py={12}
-                    bg={'#E0EFF4'}
+                    bg={Color.lightBlue}
                     borderRadius={5}
                     shadow={Shadow.cardShadow}
                     gap={36}
@@ -189,7 +189,7 @@ const AboutPage = () => {
                     />
                 </HStack>
             </Stack>
-            <Card textAlign="center" w={'7xl'} mx={'auto'} pos={'relative'} mt={20} mb={'55rem'} bg={'#F8F6F3'}>
+            <Card textAlign="center" w={'7xl'} mx={'auto'} pos={'relative'} mt={20} mb={'55rem'} bg={Color.lightYellow}>
                 <CardHeader fontSize={36} fontWeight={600}>
                     MEET THE TEAM
                 </CardHeader>
@@ -218,7 +218,7 @@ const AboutPage = () => {
                                 <Stack
                                     w={64}
                                     h={129}
-                                    bg={'#F8F6F3'}
+                                    bg={Color.lightYellow}
                                     p={5}
                                     pos={'absolute'}
                                     bottom={-16}
