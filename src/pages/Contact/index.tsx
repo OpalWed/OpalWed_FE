@@ -1,11 +1,10 @@
-import { Box, Button, FormControl, FormLabel, Heading, HStack, Input, InputGroup, InputRightAddon, Select, Stack, Text, Textarea } from "@chakra-ui/react"
+import { Box, Button, FormControl, FormLabel, Heading, HStack, Input, InputGroup, InputRightAddon, Link, Select, Stack, Text, Textarea } from "@chakra-ui/react"
 import CarouselSlider from "../../components/slider"
 import { Color, Shadow } from "../../styles/styles"
 import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
-import { Email, Instagram, Phone, Place } from "@mui/icons-material"
+import { Email, Phone, Place } from "@mui/icons-material"
 import { useEffect } from "react"
 import { changeTabTitle } from "../../utils/changeTabTitle"
-import { FaTiktok } from "react-icons/fa6"
 
 const ContactPage = () => {
     const imageList: string[] = [
@@ -13,7 +12,7 @@ const ContactPage = () => {
     ]
 
     useEffect(() => {
-        changeTabTitle('Contact');
+        changeTabTitle('Liên hệ');
     }, []);
 
     return (
@@ -35,7 +34,7 @@ const ContactPage = () => {
                     shadow={Shadow.cardShadow}
                     gap={6}
                 >
-                    <Text fontSize={20}>Contact</Text>
+                    <Text fontSize={20}>Liên hệ</Text>
                     <Heading textAlign={'center'}>
                         "Crafting Cherish Celebration"
                     </Heading>
@@ -44,19 +43,19 @@ const ContactPage = () => {
             <Box bg={Color.lightYellow} py={16} my={10}>
                 <HStack w={'5xl'} m={'auto'} gap={28}>
                     <Stack flex={1} gap={8}>
-                        <Heading>Get in touch</Heading>
+                        <Heading>Kết nối</Heading>
                         <Text>
-                            Looking for a professional team to help you make your dream wedding come true?
-
-                            Reach out to us. Our team of experienced planners will give you advice and walk you through the process.
-                            Have some questions for us? Check out our F.A.Q
+                            Bạn đang tìm kiếm một đội ngũ chuyên nghiệp để giúp bạn biến đám cưới trong mơ của mình thành hiện thực?
+                            Hãy liên hệ với chúng tôi. Đội ngũ lập kế hoạch giàu kinh nghiệm của chúng tôi sẽ tư vấn và hướng dẫn bạn trong suốt quá trình.
+                            Bạn có thắc mắc gì không?
                         </Text>
-                        <Stack justify={'HStack-start'} fontSize='20px' fontWeight='300' gap={4}>
-                            <HStack>
-                                <FacebookRoundedIcon />
-                                <Instagram />
-                                <FaTiktok />
-                            </HStack>
+                        <Stack justify={'flex-start'} fontSize='20px' fontWeight='300' gap={2}>
+                            <Link href="https://www.facebook.com/profile.php?id=61565969699038&mibextid=LQQJ4d" isExternal>
+                                <HStack>
+                                    <FacebookRoundedIcon />
+                                    <Text>OpalWed</Text>
+                                </HStack>
+                            </Link>
                             <Stack>
                                 <HStack gap={2} align={'center'}>
                                     <Phone />
@@ -64,7 +63,7 @@ const ContactPage = () => {
                                 </HStack>
                                 <HStack gap={2} align={'center'}>
                                     <Email />
-                                    <Text>0912345678</Text>
+                                    <Text>opalwed16@gmail.com</Text>
                                 </HStack>
                                 <HStack gap={2} align={'center'}>
                                     <Place />
@@ -75,25 +74,25 @@ const ContactPage = () => {
                     </Stack>
                     <Stack gap={6} flex={1.5}>
                         <Heading as="h1" size="lg">
-                            Contact Info
+                            Thông tin liên lạc
                         </Heading>
                         <Stack gap={3}>
                             <FormControl id="name">
-                                <FormLabel>Name</FormLabel>
-                                <Input type="text" placeholder="Type your full name here" bg={'white'} />
+                                <FormLabel>Họ và tên</FormLabel>
+                                <Input type="text" placeholder="Họ và tên" bg={'white'} />
                             </FormControl>
                             <FormControl id="email">
                                 <FormLabel>Email</FormLabel>
-                                <Input type="email" placeholder="Type your email here" bg={'white'} />
+                                <Input type="email" placeholder="Email" bg={'white'} />
                             </FormControl>
                             <HStack>
                                 <FormControl id="phone" mr={4}>
-                                    <FormLabel>Phone/Mobile</FormLabel>
+                                    <FormLabel>Số điện thoại</FormLabel>
                                     <Input type="text" placeholder="+84" bg={'white'} />
                                 </FormControl>
                                 <FormControl id="location">
-                                    <FormLabel>Your Current Location</FormLabel>
-                                    <Select placeholder="Choose your location" bg={'white'}>
+                                    <FormLabel>Nơi ở hiện tại</FormLabel>
+                                    <Select placeholder="Chọn nơi ở hiện tại" bg={'white'}>
                                         <option value="location1">Location 1</option>
                                         <option value="location2">Location 2</option>
                                     </Select>
@@ -101,23 +100,23 @@ const ContactPage = () => {
                             </HStack>
                         </Stack>
                         <Heading as="h1" size="lg">
-                            Event Details
+                            Chi tiết sự kiện
                         </Heading>
                         <Stack gap={3}>
                             <HStack>
                                 <FormControl id="guests" mr={4}>
-                                    <FormLabel>Number of Guests</FormLabel>
+                                    <FormLabel>Số lượng khách</FormLabel>
                                     <InputGroup>
-                                        <Input type="number" placeholder="Eg. 500" bg={'white'} />
+                                        <Input type="number" placeholder="Vd. 500" bg={'white'} />
                                         <InputRightAddon>
-                                            Guests
+                                            Khách
                                         </InputRightAddon>
                                     </InputGroup>
                                 </FormControl>
                                 <FormControl id="budget">
-                                    <FormLabel>Budget</FormLabel>
+                                    <FormLabel>Ngân sách</FormLabel>
                                     <InputGroup>
-                                        <Input type="number" placeholder="Eg. 500.000.000" bg={'white'} />
+                                        <Input type="number" placeholder="Vd. 500.000.000" bg={'white'} />
                                         <InputRightAddon>
                                             VND
                                         </InputRightAddon>
@@ -126,21 +125,21 @@ const ContactPage = () => {
                             </HStack>
                             <HStack>
                                 <FormControl id="event-location" mr={4}>
-                                    <FormLabel>Event Location</FormLabel>
-                                    <Select placeholder="Choose event location" bg={'white'}>
+                                    <FormLabel>Địa điểm tổ chức</FormLabel>
+                                    <Select placeholder="Chọn địa điểm tổ chức" bg={'white'}>
                                         <option value="location1">Location 1</option>
                                         <option value="location2">Location 2</option>
                                     </Select>
                                 </FormControl>
                                 <FormControl id="event-date">
-                                    <FormLabel>Event Date</FormLabel>
+                                    <FormLabel>Ngày tổ chức</FormLabel>
                                     <Input type="date" bg={'white'} />
                                 </FormControl>
                             </HStack>
                             <FormControl id="requirements">
-                                <FormLabel>Question or Requirement for Us?</FormLabel>
+                                <FormLabel>Câu hỏi hoặc yêu cầu cho chúng tôi?</FormLabel>
                                 <Textarea
-                                    placeholder="Let us know your requirement in more detail"
+                                    placeholder="Hãy cho chúng tôi biết yêu cầu của bạn chi tiết hơn"
                                     bg={'white'}
                                     minH={28}
                                 />
@@ -154,12 +153,12 @@ const ContactPage = () => {
                             m={'auto'}
                             _hover={{ bg: Color.darkBlueHover }}
                         >
-                            Send Request
+                            Gửi yêu cầu
                         </Button>
                     </Stack>
                 </HStack>
             </Box>
-            <Heading textAlign={'center'} mt={20}>__FOR PARTNER__</Heading>
+            {/* <Heading textAlign={'center'} mt={20}>__FOR PARTNER__</Heading>
             <Box bg={Color.lightYellow} py={16} my={10}>
                 <HStack w={'5xl'} m={'auto'} gap={28}>
                     <Stack flex={1} gap={8}>
@@ -256,9 +255,9 @@ const ContactPage = () => {
                         >
                             Send Request
                         </Button>
-                    </Stack>
+                    </Stack> 
                 </HStack>
-            </Box>
+            </Box>*/}
         </>
     )
 }

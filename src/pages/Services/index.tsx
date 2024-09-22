@@ -1,5 +1,5 @@
 import { Button, Card, CardHeader, Divider, Heading, HStack, Input, InputGroup, InputLeftElement, Stack, Table, TableContainer, Tag, TagLabel, Tbody, Td, Th, Thead, Tooltip, Tr, useDisclosure, useToast } from "@chakra-ui/react";
-import { FaArrowRightArrowLeft, FaCheck, FaEye, FaX } from "react-icons/fa6";
+import { FaArrowRightArrowLeft, FaCheck, FaEye, FaPlus, FaX } from "react-icons/fa6";
 import { useEffect, useRef, useState } from "react";
 import { BsSearch } from "react-icons/bs";
 
@@ -131,7 +131,7 @@ const ServicePage = () => {
                 <Card shadow={Shadow.cardShadow}>
                     <CardHeader py={3}>
                         <HStack w={'full'} justify={'flex-end'} gap={5}>
-                            {/* <Button leftIcon={<FaSliders />} colorScheme="blue">Filter</Button> */}
+                            <Button leftIcon={<FaPlus />} colorScheme="blue">Create</Button>
                         </HStack>
                     </CardHeader>
                     <Divider borderColor={'gainsboro'} />

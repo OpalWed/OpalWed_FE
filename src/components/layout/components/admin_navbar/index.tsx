@@ -38,12 +38,14 @@ const AdminNavbar = ({ type }: Prop) => {
                             <FaChevronLeft />
                         </Button>
                     )}
-                    <Link to={(role === 'Admin' || role === 'Owner') ? '/administrator' : '/'}>
-                        <Logo height="60px" width="60px" />
-                    </Link>
+                    <Box ml={5}>
+                        <Link to={(role === 'Admin' || role === 'Owner') ? '/administrator' : '/'}>
+                            <Logo height="60px" width="60px" />
+                        </Link>
+                    </Box>
                 </HStack>
                 {type === 'admin' && (
-                    <HStack mr={20}>
+                    <HStack mr={10}>
                         <PersonalMenu />
                     </HStack>
                 )}

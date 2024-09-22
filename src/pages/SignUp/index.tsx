@@ -6,27 +6,28 @@ import { FormEvent, useEffect, useRef, useState } from "react";
 import Logo from "../../components/logo";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
-import { useGoogleLogin } from "@react-oauth/google";
 import { AxiosError } from "axios";
 import ApiClient from "../../services/apiClient";
-import { useAuth } from "../../hooks/useAuth";
+import { jwtDecode } from "jwt-decode";
+import { useGoogleLogin } from "@react-oauth/google";
 
-const LoginPage = () => {
+const SignUpPage = () => {
     const [username, setUsername] = useState<string>("");
     const [password, setPassword] = useState<string>("");
+    const [confirmPassword, setConfirmPassword] = useState<string>("");
     const [showPass, setShowPass] = useState<boolean>(false);
+    const [showConfirmPass, setShowConfirmPass] = useState<boolean>(false);
     const usernameRef = useRef<HTMLInputElement>(null);
     const toast = useToast();
     const navigate = useNavigate();
-    const { setIsAuthenticated, setRole } = useAuth();
-    const googleLogin = useGoogleLogin({
+    const googleSignup = useGoogleLogin({
         onSuccess: (token) => {
             handleGoogleLogin(token.access_token);
         },
         onError: () => {
             toast({
                 title: "Sign In Error",
-                description: "Sign in by Google failed. Try again!!!",
+                description: "Sign up by Google failed. Try again!!!",
                 status: "error",
                 duration: 2500,
                 position: 'top',
@@ -82,18 +83,29 @@ const LoginPage = () => {
         }
     };
 
-    const handleLogin = async (e: FormEvent) => {
+    const handleSignUp = async (e: FormEvent) => {
         e.preventDefault();
-        const api = new ApiClient<any>('/auth/login');
+        const api = new ApiClient<any>("/auth/register");
         const data = {
             email: username,
             password,
-        };
+            // fullName,
+            // phone,
+            // address
+        }
 
         try {
             const response = await api.postUnauthen(data);
-
-            if (response.data.success === false) {
+            if (response.data.success) {
+                toast({
+                    title: "Success",
+                    description: response.message,
+                    status: "success",
+                    duration: 2500,
+                    position: 'top',
+                    isClosable: true,
+                });
+            } else {
                 toast({
                     title: "Error",
                     description: response.message,
@@ -102,19 +114,9 @@ const LoginPage = () => {
                     position: 'top',
                     isClosable: true,
                 });
-            } else {
-                localStorage.setItem('access_token', response.data.token);
-                const role = response.data.userInfo.accountRole;
-                setIsAuthenticated(true);
-                setRole(role);
-                if (role === 'CUSTOMER') {
-                    navigate('/');
-                } else if (role === 'ADMIN') {
-                    navigate('/administrator');
-                }
             }
         } catch (error) {
-            if (error instanceof AxiosError) {
+            if (error instanceof AxiosError)
                 toast({
                     title: "Error",
                     description: error.response?.data?.message || "An error occurred",
@@ -123,12 +125,12 @@ const LoginPage = () => {
                     position: 'top',
                     isClosable: true,
                 });
-            }
         }
-    };
+        navigate('/login');
+    }
 
     useEffect(() => {
-        changeTabTitle('Đăng nhập');
+        changeTabTitle('Sign Up');
     }, []);
 
     return (
@@ -143,12 +145,12 @@ const LoginPage = () => {
         >
             <Box pos={'absolute'} top={0} bottom={0} right={0} left={0} bg={'white'} opacity={0.4} />
             <Card borderRadius={20} shadow={'xl'}>
-                <CardBody py={10} px={20}>
-                    <Stack gap={8}>
+                <CardBody py={8} px={20}>
+                    <Stack gap={6}>
                         <Box bg={'#0C2948'} px={4} mx={'auto'} onClick={() => navigate('/')} cursor={'pointer'}>
                             <Logo width="6rem" height="6rem" />
                         </Box>
-                        <Stack w={'md'} gap={5} m={'auto'}>
+                        <Stack w={'md'} gap={4} m={'auto'}>
                             <FormControl id="email">
                                 <FormLabel pl={1}>Email</FormLabel>
                                 <Input
@@ -159,41 +161,42 @@ const LoginPage = () => {
                                     placeholder="Email"
                                 />
                             </FormControl>
-                            <Stack gap={1}>
-                                <FormControl id="password">
-                                    <FormLabel pl={1}>Mật khẩu</FormLabel>
-                                    <InputGroup>
-                                        <Input
-                                            type={showPass ? 'text' : 'password'}
-                                            value={password}
-                                            onChange={(e) => setPassword(e.target.value)}
-                                            placeholder="Mật khẩu"
-                                        />
-                                        <InputRightElement width='3.5rem' cursor='pointer' onClick={() => setShowPass(!showPass)}>
-                                            {!showPass ? <FaEye /> : <FaEyeSlash />}
-                                        </InputRightElement>
-                                    </InputGroup>
-                                </FormControl>
-                                <Text
-                                    ml={2}
-                                    fontSize={12}
-                                    cursor={'pointer'}
-                                    onClick={() => navigate('/forgot-password')}
-                                    maxW={28}
-                                    color={'gray'}
-                                    _hover={{ color: Color.hoverBlue }}
-                                >
-                                    Quên mật khẩu?
-                                </Text>
-                            </Stack>
+                            <FormControl id="password">
+                                <FormLabel pl={1}>Mật khẩu</FormLabel>
+                                <InputGroup>
+                                    <Input
+                                        type={showPass ? 'text' : 'password'}
+                                        value={password}
+                                        onChange={(e) => setPassword(e.target.value)}
+                                        placeholder="Mật khẩu"
+                                    />
+                                    <InputRightElement width='3.5rem' cursor='pointer' onClick={() => setShowPass(!showPass)}>
+                                        {!showPass ? <FaEye /> : <FaEyeSlash />}
+                                    </InputRightElement>
+                                </InputGroup>
+                            </FormControl>
+                            <FormControl id="password">
+                                <FormLabel pl={1}>Xác nhận mật khẩu</FormLabel>
+                                <InputGroup>
+                                    <Input
+                                        type={showPass ? 'text' : 'password'}
+                                        value={confirmPassword}
+                                        onChange={(e) => setConfirmPassword(e.target.value)}
+                                        placeholder="Xác nhận mật khẩu"
+                                    />
+                                    <InputRightElement width='3.5rem' cursor='pointer' onClick={() => setShowConfirmPass(!showConfirmPass)}>
+                                        {!showPass ? <FaEye /> : <FaEyeSlash />}
+                                    </InputRightElement>
+                                </InputGroup>
+                            </FormControl>
                             <Button
                                 bg={'#0C2948'}
                                 _hover={{ bg: '#143252' }}
                                 color={'white'}
                                 fontWeight={'400'}
-                                onClick={handleLogin}
+                                onClick={handleSignUp}
                             >
-                                Đăng nhập
+                                Đăng kí
                             </Button>
                         </Stack>
                         <Box position='relative'>
@@ -208,18 +211,18 @@ const LoginPage = () => {
                                 bg={'white'}
                                 border={Border.tableBorder}
                                 size="lg"
-                                onClick={() => googleLogin()}
+                                onClick={() => googleSignup()}
                             >
                                 Tiếp tục với Google
                             </Button>
                         </HStack>
                         <HStack gap={2} justify={'center'}>
                             <Text align={"center"}>
-                                Không có tài khoản?
+                                Đã có tài khoản?
                             </Text>
                             <Text style={{ color: "#00d4d8" }}>
-                                <Link to={'/sign-up'}>
-                                    Đăng ký
+                                <Link to={'/login'}>
+                                    Đăng nhập
                                 </Link>
                             </Text>
                         </HStack>
@@ -230,4 +233,4 @@ const LoginPage = () => {
     );
 };
 
-export default LoginPage;
+export default SignUpPage;
