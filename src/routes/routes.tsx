@@ -12,6 +12,9 @@ import ApprovePartnerPage from "../pages/ApprovePartner";
 import ServicePage from "../pages/Services";
 import PartnerPage from "../pages/Partners";
 import CustomerContactsPage from "../pages/CustomerContacts";
+import { Schedule } from "@mui/icons-material";
+import SchedulePage from "../pages/Schedule";
+import SignUpPage from "../pages/SignUp";
 
 const routes = [
     {
@@ -21,6 +24,10 @@ const routes = [
     {
         path: "/login",
         element: <LoginPage />,
+    },
+    {
+        path: "/sign-up",
+        element: <SignUpPage />,
     },
     // {
     //     path: "/forgot-password",
@@ -47,7 +54,7 @@ const routes = [
             { path: "partners", element: <PartnerPage /> },
             { path: "approve-partner", element: <ApprovePartnerPage /> },
             { path: "customer-contact", element: <CustomerContactsPage /> },
-            { path: "schedule", element: <HomePage /> },
+            { path: "schedule", element: <SchedulePage /> },
         ],
     },
 ];

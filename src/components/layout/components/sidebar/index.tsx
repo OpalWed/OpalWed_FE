@@ -46,11 +46,11 @@ const menuItems: MenuItem[] = [
         , '3'
         , <StorefrontOutlinedIcon fontSize='large' />
     ),
-    getItem(
-        <Link to={'approve-partner'} style={{ fontSize: '14px' }}>Approve Partner</Link>
-        , '4'
-        , <FaRegCheckCircle />,
-    ),
+    // getItem(
+    //     <Link to={'approve-partner'} style={{ fontSize: '14px' }}>Approve Partner</Link>
+    //     , '4'
+    //     , <FaRegCheckCircle />,
+    // ),
     getItem(
         <Link to={'customer-contact'} style={{ fontSize: '14px' }}>Customer Contacts</Link>
         , '5'
@@ -67,7 +67,7 @@ const menuItems: MenuItem[] = [
         , <SettingsOutlinedIcon />,
     ),
     getItem(
-        <Link to={'reports'} style={{ fontSize: '14px' }}>Logout</Link>
+        <Link to={'/login'} style={{ fontSize: '14px' }}>Logout</Link>
         , '8'
         , <FiLogOut />,
     ),

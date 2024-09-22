@@ -1,4 +1,4 @@
-import { Divider, HStack, Stack, Text } from "@chakra-ui/react";
+import { Divider, HStack, Stack, Text, Link as ChaLink } from "@chakra-ui/react";
 import Logo from "../../../logo";
 import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
 import { Email, Instagram, Phone, Place } from "@mui/icons-material";
@@ -43,12 +43,13 @@ const Footer = () => {
                         <Text fontWeight={400}>Contact</Text>
                     </Link>
                 </Stack>
-                <Stack justify={'flex-start'} fontSize='20px' fontWeight='300' gap={4}>
-                    <HStack>
-                        <FacebookRoundedIcon />
-                        <Instagram />
-                        <FaTiktok />
-                    </HStack>
+                <Stack justify={'flex-start'} fontSize='20px' fontWeight='300' gap={2}>
+                    <ChaLink href="https://www.facebook.com/profile.php?id=61565969699038&mibextid=LQQJ4d" isExternal>
+                        <HStack>
+                            <FacebookRoundedIcon />
+                            <Text>OpalWed</Text>
+                        </HStack>
+                    </ChaLink>
                     <Stack>
                         <HStack gap={2} align={'center'}>
                             <Phone />
@@ -56,7 +57,7 @@ const Footer = () => {
                         </HStack>
                         <HStack gap={2} align={'center'}>
                             <Email />
-                            <Text>0912345678</Text>
+                            <Text>opalwed16@gmail.com</Text>
                         </HStack>
                         <HStack gap={2} align={'center'}>
                             <Place />

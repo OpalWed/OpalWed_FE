@@ -36,7 +36,7 @@ const HomePage = () => {
                     shadow={Shadow.cardShadow}
                     gap={6}
                 >
-                    <Heading fontSize={55}>Introduction</Heading>
+                    <Heading fontSize={55}>Giới thiệu</Heading>
                     <Text textAlign={'center'}>
                         We are OpalWed, a newly established startup, pioneer the untapped market,
                         providing customer representation and assistance in finding and selecting
@@ -48,17 +48,17 @@ const HomePage = () => {
             </Box>
             <Stack w={'5xl'} mx={'auto'} my={16}>
                 <Stack gap={10}>
-                    <Heading textAlign={'center'} fontSize={24}>| OUR SERVICE |</Heading>
+                    <Heading textAlign={'center'} fontSize={24}>| DỊCH VỤ CỦA CHÚNG TÔI |</Heading>
                     <Text textAlign={'center'}>
-                        As one of the first premium and professional wedding planners based in Vietnam,
-                        OpalWed specializes in full wedding consultancy, design, planning and execution.
+                        Là một trong những đơn vị tổ chức tiệc cưới chuyên nghiệp và cao cấp đầu tiên tại Việt Nam,
+                        OpalWed chuyên tư vấn, thiết kế, lập kế hoạch và thực hiện trọn gói tiệc cưới.
                     </Text>
                     <HStack justify={'space-between'} gap={4}>
-                        <Heading textAlign={'center'}>WEDDING PLANNING</Heading>
+                        <Heading textAlign={'center'}>TỔ CHỨC TIỆC CƯỚI</Heading>
                         <SentimentSatisfiedAlt />
-                        <Heading textAlign={'center'}>COMPARE & CHOOSE VENDORS</Heading>
+                        <Heading textAlign={'center'}>SO SÁNH & CHỌN NHÀ CUNG CẤP</Heading>
                         <SentimentSatisfiedAlt />
-                        <Heading textAlign={'center'}>WEDDING CONSULTANCY</Heading>
+                        <Heading textAlign={'center'}>TƯ VẤN TIỆC CƯỚI</Heading>
                     </HStack>
                 </Stack>
                 <Divider w={'3xl'} mx={'auto'} my={12} borderColor={'black'} />
@@ -71,7 +71,7 @@ const HomePage = () => {
                                 lineHeight="shorter"
                                 mb={4}
                             >
-                                Our
+                                Tầm
                             </Heading>
                             <Heading
                                 fontSize={60}
@@ -79,7 +79,7 @@ const HomePage = () => {
                                 lineHeight="shorter"
                                 ml={20}
                             >
-                                Vision
+                                Nhìn
                             </Heading>
                         </Box>
                         <HStack justify={'flex-end'} flex="3" pos={'relative'}>
@@ -158,7 +158,7 @@ const HomePage = () => {
                                 lineHeight="shorter"
                                 mb={4}
                             >
-                                Our
+                                Bản
                             </Heading>
                             <Heading
                                 fontSize={60}
@@ -166,7 +166,7 @@ const HomePage = () => {
                                 lineHeight="shorter"
                                 ml={20}
                             >
-                                Special
+                                Sắc
                             </Heading>
                         </Box>
                     </HStack>
@@ -214,7 +214,7 @@ const HomePage = () => {
                 >
                     <Stack gap={8}>
                         <Text fontSize={16}>
-                            Contact us now for a free consultation and plan the perfect wedding day!
+                            Hãy liên hệ với chúng tôi ngay để được tư vấn miễn phí và lên kế hoạch cho ngày cưới hoàn hảo!
                         </Text>
                         <Button
                             colorScheme="yellow"
@@ -224,7 +224,7 @@ const HomePage = () => {
                             m={'auto'}
                             onClick={() => navigate('/contact')}
                         >
-                            Contact Us Now
+                            Liên hệ chúng tôi
                         </Button>
                     </Stack>
                 </Box>
