@@ -1,10 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Logo from "../../../logo";
 import { Box } from "@mui/material";
 import { Button, HStack, Text } from "@chakra-ui/react";
 import { Border, Color } from "../../../../styles/styles";
+import { useAuth } from "../../../../hooks/useAuth";
+import PersonalMenu from "../personal_menu";
 
 const Navbar = () => {
+    const navigate = useNavigate();
+    const { isAuthenticated } = useAuth();
 
     return (
         <Box
@@ -14,22 +18,35 @@ const Navbar = () => {
             zIndex={10}
             sx={{ background: Color.darkBlue }}
         >
-            <HStack
-                py={2}
-                px={10}
-                gap={5}
-                borderBottom={Border.tableBorder}
-                justify={'flex-end'}
-            >
-                <Button py={6} px={5}>
-                    Sign Up
-                </Button>
-                <Link to={'/about-us'}>
-                    <Text color={'white'}>
-                        Sign In
-                    </Text>
-                </Link>
-            </HStack>
+            {isAuthenticated ? (
+                <HStack
+                    py={2}
+                    px={10}
+                    gap={5}
+                    borderBottom={Border.tableBorder}
+                    justify={'flex-end'}
+                >
+                    <PersonalMenu />
+                </HStack>
+            ) : (
+                <HStack
+                    py={2}
+                    px={10}
+                    gap={5}
+                    borderBottom={Border.tableBorder}
+                    justify={'flex-end'}
+                >
+                    <Button py={6} px={5} onClick={() => navigate('/sign-up')}>
+                        Sign Up
+                    </Button>
+                    <Link to={'/login'}>
+                        <Text color={'white'}>
+                            Sign In
+                        </Text>
+                    </Link>
+                </HStack>
+            )}
+
             <HStack
                 p={2}
                 justify='space-between'

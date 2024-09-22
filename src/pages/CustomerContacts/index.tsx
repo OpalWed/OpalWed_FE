@@ -1,12 +1,10 @@
 import { Button, Card, CardHeader, Divider, Heading, HStack, Input, InputGroup, InputLeftElement, Stack, Table, TableContainer, Tag, TagLabel, Tbody, Td, Th, Thead, Tooltip, Tr, useDisclosure, useToast } from "@chakra-ui/react";
-import { FaArrowRightArrowLeft, FaCheck, FaEye, FaRightLeft, FaX } from "react-icons/fa6";
+import { FaEye, FaX } from "react-icons/fa6";
 import { useEffect, useRef, useState } from "react";
 import { BsSearch } from "react-icons/bs";
 import { useNavigate } from "react-router";
 import { changeTabTitle } from "../../utils/changeTabTitle";
-import { Color, Shadow } from "../../styles/styles";
-import ApproveModal from "../../components/modal/approve";
-import Loading from "../../components/loading";
+import { Shadow } from "../../styles/styles";
 import PartnerDetailModal from "../../components/modal/partner_detail";
 import ChangeStatusModal from "../../components/modal/change_status";
 
@@ -99,7 +97,7 @@ const CustomerContactsPage = () => {
     }
 
     useEffect(() => {
-        changeTabTitle('Partners');
+        changeTabTitle('Liên hệ khách hàng');
     }, []);
 
     // useEffect(() => {

@@ -1,12 +1,10 @@
 import { Button, Card, CardHeader, Divider, Heading, HStack, Input, InputGroup, InputLeftElement, Stack, Table, TableContainer, Tag, TagLabel, Tbody, Td, Th, Thead, Tooltip, Tr, useDisclosure, useToast } from "@chakra-ui/react";
-import { FaArrowRightArrowLeft, FaCheck, FaEye, FaPlus, FaRightLeft, FaX } from "react-icons/fa6";
+import { FaArrowRightArrowLeft, FaEye, FaPlus } from "react-icons/fa6";
 import { useEffect, useRef, useState } from "react";
 import { BsSearch } from "react-icons/bs";
 import { useNavigate } from "react-router";
 import { changeTabTitle } from "../../utils/changeTabTitle";
-import { Color, Shadow } from "../../styles/styles";
-import ApproveModal from "../../components/modal/approve";
-import Loading from "../../components/loading";
+import { Shadow } from "../../styles/styles";
 import PartnerDetailModal from "../../components/modal/partner_detail";
 import ChangeStatusModal from "../../components/modal/change_status";
 
@@ -99,7 +97,7 @@ const PartnerPage = () => {
     }
 
     useEffect(() => {
-        changeTabTitle('Partners');
+        changeTabTitle('Quản lý thành viên');
     }, []);
 
     // useEffect(() => {
@@ -125,11 +123,11 @@ const PartnerPage = () => {
                 />
             </InputGroup>
             <Stack w={'full'} gap={10}>
-                <Heading fontSize={30}>Partners</Heading>
+                <Heading fontSize={30}>Thành viên hợp tác</Heading>
                 <Card shadow={Shadow.cardShadow}>
                     <CardHeader py={3}>
                         <HStack w={'full'} justify={'flex-end'} gap={5}>
-                            <Button leftIcon={<FaPlus />} colorScheme="blue">Create</Button>
+                            <Button leftIcon={<FaPlus />} colorScheme="blue">Tạo</Button>
                         </HStack>
                     </CardHeader>
                     <Divider borderColor={'gainsboro'} />
@@ -138,12 +136,12 @@ const PartnerPage = () => {
                             <Thead>
                                 <Tr>
                                     <Th textAlign='center' borderColor={'gainsboro'}>ID</Th>
-                                    <Th textAlign='center' borderColor={'gainsboro'}>Partner Name</Th>
-                                    <Th textAlign='center' borderColor={'gainsboro'}>Representative Name</Th>
-                                    <Th textAlign='center' borderColor={'gainsboro'}>Phone/Mobile</Th>
-                                    <Th textAlign='center' borderColor={'gainsboro'}>Location</Th>
-                                    <Th textAlign='center' borderColor={'gainsboro'}>Status</Th>
-                                    <Th textAlign='center' borderColor={'gainsboro'}>Action</Th>
+                                    <Th textAlign='center' borderColor={'gainsboro'}>Tên thành viên</Th>
+                                    <Th textAlign='center' borderColor={'gainsboro'}>Tên người đại diện</Th>
+                                    <Th textAlign='center' borderColor={'gainsboro'}>Số điện thoại</Th>
+                                    <Th textAlign='center' borderColor={'gainsboro'}>Địa điểm</Th>
+                                    <Th textAlign='center' borderColor={'gainsboro'}>Trạng thái</Th>
+                                    <Th textAlign='center' borderColor={'gainsboro'}>Hành động</Th>
                                 </Tr>
                             </Thead>
                             <Tbody>
@@ -207,7 +205,7 @@ const PartnerPage = () => {
                                 ) : (
                                     <Tr>
                                         <Td colSpan={8} textAlign="center">
-                                            No pending partner
+                                            Không có thành viên
                                         </Td>
                                     </Tr>
                                 )}

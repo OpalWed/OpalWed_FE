@@ -1,5 +1,5 @@
-import { Card, CardBody, Text, Stack, Button, Box, FormControl, FormLabel, Input, useToast, InputGroup, InputRightElement, Divider, AbsoluteCenter, HStack, Icon } from "@chakra-ui/react";
-import { Border, Color } from "../../styles/styles";
+import { Card, CardBody, Text, Stack, Button, Box, FormControl, FormLabel, Input, useToast, InputGroup, InputRightElement, Divider, AbsoluteCenter, HStack, Icon, Heading } from "@chakra-ui/react";
+import { Border } from "../../styles/styles";
 import { Link, useNavigate } from "react-router-dom";
 import { changeTabTitle } from "../../utils/changeTabTitle";
 import { FormEvent, useEffect, useRef, useState } from "react";
@@ -8,16 +8,18 @@ import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
 import { AxiosError } from "axios";
 import ApiClient from "../../services/apiClient";
-import { jwtDecode } from "jwt-decode";
 import { useGoogleLogin } from "@react-oauth/google";
 
 const SignUpPage = () => {
-    const [username, setUsername] = useState<string>("");
+    const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [confirmPassword, setConfirmPassword] = useState<string>("");
     const [showPass, setShowPass] = useState<boolean>(false);
     const [showConfirmPass, setShowConfirmPass] = useState<boolean>(false);
-    const usernameRef = useRef<HTMLInputElement>(null);
+    const [fullName, setFullName] = useState<string>("");
+    const [phone, setPhone] = useState<string>("");
+    const [address, setAddress] = useState<string>("");
+    const emailRef = useRef<HTMLInputElement>(null);
     const toast = useToast();
     const navigate = useNavigate();
     const googleSignup = useGoogleLogin({
@@ -85,18 +87,29 @@ const SignUpPage = () => {
 
     const handleSignUp = async (e: FormEvent) => {
         e.preventDefault();
+        if (password !== confirmPassword) {
+            toast({
+                title: "Error",
+                description: "Xác nhận mật khẩu phải đúng với mật khẩu",
+                status: "error",
+                duration: 2500,
+                position: 'top',
+                isClosable: true,
+            });
+            return;
+        }
         const api = new ApiClient<any>("/auth/register");
         const data = {
-            email: username,
+            email,
             password,
-            // fullName,
-            // phone,
-            // address
+            fullName,
+            phone,
+            address
         }
 
         try {
             const response = await api.postUnauthen(data);
-            if (response.data.success) {
+            if (response.isSuccess) {
                 toast({
                     title: "Success",
                     description: response.message,
@@ -105,6 +118,7 @@ const SignUpPage = () => {
                     position: 'top',
                     isClosable: true,
                 });
+                navigate('/login');
             } else {
                 toast({
                     title: "Error",
@@ -126,11 +140,21 @@ const SignUpPage = () => {
                     isClosable: true,
                 });
         }
-        navigate('/login');
     }
 
+    const areAllFieldsFilled = () => {
+        return (
+            email !== '' &&
+            password !== '' &&
+            fullName.trim() !== '' &&
+            phone.trim() !== '' &&
+            address.trim() !== ''
+        );
+    };
+
     useEffect(() => {
-        changeTabTitle('Sign Up');
+        changeTabTitle('Đăng ký');
+        emailRef.current?.focus();
     }, []);
 
     return (
@@ -145,60 +169,101 @@ const SignUpPage = () => {
         >
             <Box pos={'absolute'} top={0} bottom={0} right={0} left={0} bg={'white'} opacity={0.4} />
             <Card borderRadius={20} shadow={'xl'}>
-                <CardBody py={8} px={20}>
+                <CardBody py={8} px={16}>
                     <Stack gap={6}>
                         <Box bg={'#0C2948'} px={4} mx={'auto'} onClick={() => navigate('/')} cursor={'pointer'}>
                             <Logo width="6rem" height="6rem" />
                         </Box>
-                        <Stack w={'md'} gap={4} m={'auto'}>
-                            <FormControl id="email">
-                                <FormLabel pl={1}>Email</FormLabel>
-                                <Input
-                                    type="text"
-                                    value={username}
-                                    onChange={(e) => setUsername(e.target.value)}
-                                    ref={usernameRef}
-                                    placeholder="Email"
-                                />
-                            </FormControl>
-                            <FormControl id="password">
-                                <FormLabel pl={1}>Mật khẩu</FormLabel>
-                                <InputGroup>
+                        <HStack m={'auto'} w={'3xl'} gap={10}>
+                            <Stack flex={1} gap={3}>
+                                <Heading fontSize={18} fontWeight={600}>Thông tin tài khoản</Heading>
+                                <FormControl id="email" isRequired>
+                                    <FormLabel pl={1}>Email</FormLabel>
                                     <Input
-                                        type={showPass ? 'text' : 'password'}
-                                        value={password}
-                                        onChange={(e) => setPassword(e.target.value)}
-                                        placeholder="Mật khẩu"
+                                        type="text"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        ref={emailRef}
+                                        placeholder="Email"
+                                        required
                                     />
-                                    <InputRightElement width='3.5rem' cursor='pointer' onClick={() => setShowPass(!showPass)}>
-                                        {!showPass ? <FaEye /> : <FaEyeSlash />}
-                                    </InputRightElement>
-                                </InputGroup>
-                            </FormControl>
-                            <FormControl id="password">
-                                <FormLabel pl={1}>Xác nhận mật khẩu</FormLabel>
-                                <InputGroup>
+                                </FormControl>
+                                <FormControl id="password" isRequired>
+                                    <FormLabel pl={1}>Mật khẩu</FormLabel>
+                                    <InputGroup>
+                                        <Input
+                                            type={showPass ? 'text' : 'password'}
+                                            value={password}
+                                            onChange={(e) => setPassword(e.target.value)}
+                                            placeholder="Mật khẩu"
+                                            required
+                                        />
+                                        <InputRightElement width='3.5rem' cursor='pointer' onClick={() => setShowPass(!showPass)}>
+                                            {!showPass ? <FaEye /> : <FaEyeSlash />}
+                                        </InputRightElement>
+                                    </InputGroup>
+                                </FormControl>
+                                <FormControl id="confirmPassword" isRequired>
+                                    <FormLabel pl={1}>Xác nhận mật khẩu</FormLabel>
+                                    <InputGroup>
+                                        <Input
+                                            type={showPass ? 'text' : 'password'}
+                                            value={confirmPassword}
+                                            onChange={(e) => setConfirmPassword(e.target.value)}
+                                            placeholder="Xác nhận mật khẩu"
+                                            required
+                                        />
+                                        <InputRightElement width='3.5rem' cursor='pointer' onClick={() => setShowConfirmPass(!showConfirmPass)}>
+                                            {!showPass ? <FaEye /> : <FaEyeSlash />}
+                                        </InputRightElement>
+                                    </InputGroup>
+                                </FormControl>
+                            </Stack>
+
+                            <Stack flex={1} gap={3}>
+                                <Heading fontSize={18} fontWeight={600}>Thông tin cá nhân</Heading>
+                                <FormControl id="fullName" isRequired>
+                                    <FormLabel pl={1}>Họ và Tên</FormLabel>
                                     <Input
-                                        type={showPass ? 'text' : 'password'}
-                                        value={confirmPassword}
-                                        onChange={(e) => setConfirmPassword(e.target.value)}
-                                        placeholder="Xác nhận mật khẩu"
+                                        type="text"
+                                        value={fullName}
+                                        onChange={(e) => setFullName(e.target.value)}
+                                        placeholder="Họ và tên"
+                                        required
                                     />
-                                    <InputRightElement width='3.5rem' cursor='pointer' onClick={() => setShowConfirmPass(!showConfirmPass)}>
-                                        {!showPass ? <FaEye /> : <FaEyeSlash />}
-                                    </InputRightElement>
-                                </InputGroup>
-                            </FormControl>
-                            <Button
-                                bg={'#0C2948'}
-                                _hover={{ bg: '#143252' }}
-                                color={'white'}
-                                fontWeight={'400'}
-                                onClick={handleSignUp}
-                            >
-                                Đăng kí
-                            </Button>
-                        </Stack>
+                                </FormControl>
+                                <FormControl id="phone" isRequired>
+                                    <FormLabel pl={1}>Số điện thoại</FormLabel>
+                                    <Input
+                                        type="text"
+                                        value={phone}
+                                        onChange={(e) => setPhone(e.target.value)}
+                                        placeholder="Số điện thoại"
+                                        required
+                                    />
+                                </FormControl>
+                                <FormControl id="address" isRequired>
+                                    <FormLabel pl={1}>Địa chỉ</FormLabel>
+                                    <Input
+                                        type="text"
+                                        value={address}
+                                        onChange={(e) => setAddress(e.target.value)}
+                                        placeholder="Địa chỉ"
+                                        required
+                                    />
+                                </FormControl>
+                            </Stack>
+                        </HStack>
+                        <Button
+                            bg={'#0C2948'}
+                            _hover={{ bg: '#143252' }}
+                            color={'white'}
+                            fontWeight={'400'}
+                            onClick={handleSignUp}
+                            isDisabled={!areAllFieldsFilled()}
+                        >
+                            Đăng kí
+                        </Button>
                         <Box position='relative'>
                             <Divider borderColor={'black'} />
                             <AbsoluteCenter bg={'white'} px={2}>

@@ -9,11 +9,11 @@ const NotFoundPage = () => {
     const [navigate, setNavigate] = useState<string>('');
 
     useEffect(() => {
-        changeTabTitle('404 Error');
+        changeTabTitle('Không tìm thấy trang');
     }, []);
 
     useEffect(() => {
-        if (role === 'Admin' || role === 'Owner') {
+        if (role === 'Admin') {
             setNavigate('/administrator');
         } else {
             setNavigate('/');
@@ -26,11 +26,11 @@ const NotFoundPage = () => {
                 <CardBody p={10} px={36}>
                     <Stack align={'center'} gap={6}>
                         <Heading fontSize={200} color={'blue.100'} textShadow={'black 0px 0px 2px'}>404</Heading>
-                        <Heading mb={2}>Oops! Page Not Found</Heading>
-                        <Text>Sorry, the page you're looking for doesn't exist.</Text>
+                        <Heading mb={2}>Không tìm thấy trang</Heading>
+                        <Text>Xin lỗi, trang bạn đang tìm kiếm không tồn tại.</Text>
                         <Link to={navigate}>
                             <Button colorScheme="blue">
-                                Go back to Home
+                                Quay lại Trang chủ
                             </Button>
                         </Link>
                     </Stack>

@@ -6,9 +6,8 @@ import { BsSearch } from "react-icons/bs";
 
 import { useNavigate } from "react-router";
 import { changeTabTitle } from "../../utils/changeTabTitle";
-import { Color, Shadow } from "../../styles/styles";
+import { Shadow } from "../../styles/styles";
 import ApproveModal from "../../components/modal/approve";
-import Loading from "../../components/loading";
 import PartnerDetailModal from "../../components/modal/partner_detail";
 
 const ApprovePartnerPage = () => {

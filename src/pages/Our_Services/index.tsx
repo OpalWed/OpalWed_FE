@@ -10,7 +10,7 @@ const OurServicesPage = () => {
     ]
 
     useEffect(() => {
-        changeTabTitle('Our Services');
+        changeTabTitle('Dịch vụ');
     }, []);
 
     return (
@@ -32,10 +32,10 @@ const OurServicesPage = () => {
                     shadow={Shadow.cardShadow}
                     gap={6}
                 >
-                    <Heading fontSize={55}>Our Services</Heading>
+                    <Heading fontSize={55}>Dịch vụ của chúng tôi</Heading>
                     <Text textAlign={'justify'}>
-                        As one of the first premium and professional wedding planners based in Vietnam,
-                        OpalWed specializes in full wedding consultancy, design, planning and execution.
+                        Là một trong những nhà tổ chức tiệc cưới chuyên nghiệp và cao cấp đầu tiên có trụ sở tại Việt Nam,
+                        OpalWed chuyên tư vấn, thiết kế, lập kế hoạch và thực hiện tiệc cưới trọn gói.
                     </Text>
                 </Stack>
             </Box>
@@ -50,7 +50,7 @@ const OurServicesPage = () => {
                         flex={1}
                     />
                     <Stack flex={2} px={16} py={10} align={'center'} bg={Color.lightYellow} gap={8}>
-                        <Heading fontSize={30}>Wedding Planning</Heading>
+                        <Heading fontSize={30}>Tổ chức tiệc cưới</Heading>
                         <Text>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ac dignissim leo. Cras in velit tristique lectus dignissim bibendum fermentum sit amet leo. Etiam vulputate, purus in porta convallis, urna est hendrerit felis, id lobortis leo dui cursus lacus. Vivamus ac tristique eros, vel egestas augue. Etiam eu ultricies risus. Nam imperdiet sapien lacus, eu lobortis diam laoreet id. Curabitur sodales hendrerit urna, sed efficitur sem dictum vel. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut ut volutpat mi, et porttitor justo. Fusce eu velit vel quam ultrices tristique.
                         </Text>
@@ -58,7 +58,7 @@ const OurServicesPage = () => {
                 </HStack>
                 <HStack justify={'space-between'} gap={20}>
                     <Stack flex={2} px={16} py={10} align={'center'} bg={Color.lightYellow} gap={8}>
-                        <Heading fontSize={30}>Compare & Choose Vendors</Heading>
+                        <Heading fontSize={30}>So sánh & chọn nhà cung cấp</Heading>
                         <Text>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ac dignissim leo. Cras in velit tristique lectus dignissim bibendum fermentum sit amet leo. Etiam vulputate, purus in porta convallis, urna est hendrerit felis, id lobortis leo dui cursus lacus. Vivamus ac tristique eros, vel egestas augue. Etiam eu ultricies risus. Nam imperdiet sapien lacus, eu lobortis diam laoreet id. Curabitur sodales hendrerit urna, sed efficitur sem dictum vel. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut ut volutpat mi, et porttitor justo. Fusce eu velit vel quam ultrices tristique.
                         </Text>
@@ -82,7 +82,7 @@ const OurServicesPage = () => {
                         flex={1}
                     />
                     <Stack flex={2} px={16} py={10} align={'center'} bg={Color.lightYellow} gap={8}>
-                        <Heading fontSize={30}>Wedding Consultancy</Heading>
+                        <Heading fontSize={30}>Tư vấn tiệc cưới</Heading>
                         <Text>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ac dignissim leo. Cras in velit tristique lectus dignissim bibendum fermentum sit amet leo. Etiam vulputate, purus in porta convallis, urna est hendrerit felis, id lobortis leo dui cursus lacus. Vivamus ac tristique eros, vel egestas augue. Etiam eu ultricies risus. Nam imperdiet sapien lacus, eu lobortis diam laoreet id. Curabitur sodales hendrerit urna, sed efficitur sem dictum vel. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut ut volutpat mi, et porttitor justo. Fusce eu velit vel quam ultrices tristique.
                         </Text>

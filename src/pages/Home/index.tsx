@@ -38,11 +38,7 @@ const HomePage = () => {
                 >
                     <Heading fontSize={55}>Giới thiệu</Heading>
                     <Text textAlign={'center'}>
-                        We are OpalWed, a newly established startup, pioneer the untapped market,
-                        providing customer representation and assistance in finding and selecting
-                        wedding services from a variety of sources. We'll take care of it all from
-                        finding personalized fonts for invitations, to choosing entertainers and
-                        caterers, making sure every detail is perfect.
+                        Chúng tôi là OpalWed, một công ty khởi nghiệp mới thành lập, đi tiên phong trong thị trường chưa được khai thác, cung cấp dịch vụ đại diện và hỗ trợ khách hàng trong việc tìm kiếm và lựa chọn dịch vụ cưới từ nhiều nguồn khác nhau. Chúng tôi sẽ đảm nhiệm tất cả từ việc tìm phông chữ được cá nhân hóa cho lời mời đến việc chọn người giải trí và người cung cấp thực phẩm, đảm bảo mọi chi tiết đều hoàn hảo.
                     </Text>
                 </Stack>
             </Box>
@@ -185,7 +181,7 @@ const HomePage = () => {
                     boxShadow="sm"
                 >
                     <Heading as="h2" size="md" textAlign="center">
-                        OUR SERVICE PARTNERS
+                        THÀNH VIÊN HỢP TÁC
                     </Heading>
                 </Box>
                 <PartnersSlider />

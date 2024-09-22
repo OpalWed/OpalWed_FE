@@ -3,7 +3,7 @@ import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { ConfigProvider, Menu } from 'antd';
 import { Button, Box, HStack, Stack } from '@chakra-ui/react';
-import { FaRegUser } from 'react-icons/fa6';
+import { FaRegUser, FaUser } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 import { FaRegCheckCircle } from 'react-icons/fa';
 import { FiBox, FiCalendar, FiLogOut } from 'react-icons/fi';
@@ -36,38 +36,38 @@ const menuItems: MenuItem[] = [
         , <DashboardCustomizeOutlinedIcon />
     ),
     getItem(
-        <Link to={'services'} style={{ fontSize: '14px' }}>Services</Link>
+        <Link to={'accounts'} style={{ fontSize: '14px' }}>Quản lý tài khoản</Link>
         , '2'
+        , <FaUser />,
+    ),
+    getItem(
+        <Link to={'services'} style={{ fontSize: '14px' }}>Quản lý dịch vụ</Link>
+        , '3'
         , <FiBox />
     ),
 
     getItem(
-        <Link to={'partners'} style={{ fontSize: '14px' }}>Partners</Link>
-        , '3'
+        <Link to={'partners'} style={{ fontSize: '14px' }}>Quản lý thành viên</Link>
+        , '4'
         , <StorefrontOutlinedIcon fontSize='large' />
     ),
-    // getItem(
-    //     <Link to={'approve-partner'} style={{ fontSize: '14px' }}>Approve Partner</Link>
-    //     , '4'
-    //     , <FaRegCheckCircle />,
-    // ),
     getItem(
-        <Link to={'customer-contact'} style={{ fontSize: '14px' }}>Customer Contacts</Link>
+        <Link to={'customer-contact'} style={{ fontSize: '14px' }}>Liên hệ khách hàng</Link>
         , '5'
         , <FaRegUser />,
     ),
     getItem(
-        <Link to={'schedule'} style={{ fontSize: '14px' }}>Schedule</Link>
+        <Link to={'schedule'} style={{ fontSize: '14px' }}>Lịch tư vấn</Link>
         , '6'
         , <FiCalendar />,
     ),
     getItem(
-        <Link to={'reports'} style={{ fontSize: '14px' }}>Settings</Link>
+        <Link to={'reports'} style={{ fontSize: '14px' }}>Cài đặt</Link>
         , '7'
         , <SettingsOutlinedIcon />,
     ),
     getItem(
-        <Link to={'/login'} style={{ fontSize: '14px' }}>Logout</Link>
+        <Link to={'/'} style={{ fontSize: '14px' }}>Đăng xuất</Link>
         , '8'
         , <FiLogOut />,
     ),
