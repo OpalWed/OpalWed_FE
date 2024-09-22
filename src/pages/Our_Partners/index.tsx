@@ -40,7 +40,7 @@ const OurPartnersPage = () => {
     ];
 
     useEffect(() => {
-        changeTabTitle('Our Partners');
+        changeTabTitle('Thành viên hợp tác');
     }, []);
 
     return (
@@ -62,10 +62,10 @@ const OurPartnersPage = () => {
                     shadow={Shadow.cardShadow}
                     gap={6}
                 >
-                    <Heading fontSize={55}>Our Partners</Heading>
+                    <Heading fontSize={55}>Thành viên hợp tác</Heading>
                     <Text textAlign={'center'}>
-                        The partners have been chosen based on their high quality, excellent reputation,
-                        and alignment with the specific requirements of your wedding.
+                        Các đối tác đã được lựa chọn dựa trên chất lượng cao, danh tiếng xuất sắc,
+                        và phù hợp với các yêu cầu cụ thể của đám cưới của bạn.
                     </Text>
                 </Stack>
             </Box>

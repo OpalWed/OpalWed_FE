@@ -1,5 +1,5 @@
 import { Card, CardBody, Text, Stack, Button, Box, FormControl, FormLabel, Input, useToast, InputGroup, InputRightElement, Divider, AbsoluteCenter, HStack, Icon } from "@chakra-ui/react";
-import { Border, Color } from "../../styles/styles";
+import { Border } from "../../styles/styles";
 import { Link, useNavigate } from "react-router-dom";
 import { changeTabTitle } from "../../utils/changeTabTitle";
 import { FormEvent, useEffect, useRef, useState } from "react";
@@ -8,7 +8,6 @@ import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
 import { AxiosError } from "axios";
 import ApiClient from "../../services/apiClient";
-import { jwtDecode } from "jwt-decode";
 import { useGoogleLogin } from "@react-oauth/google";
 
 const SignUpPage = () => {
@@ -130,7 +129,7 @@ const SignUpPage = () => {
     }
 
     useEffect(() => {
-        changeTabTitle('Sign Up');
+        changeTabTitle('Đăng ký');
     }, []);
 
     return (

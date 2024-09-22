@@ -43,7 +43,7 @@ const AboutPage = () => {
     ];
 
     useEffect(() => {
-        changeTabTitle('About Us');
+        changeTabTitle('Về chúng tôi');
     }, []);
 
     return (
@@ -73,7 +73,7 @@ const AboutPage = () => {
                         flex={1}
                     />
                     <Stack flex={1.5} align={'center'}>
-                        <Heading fontSize={55} mb={12}>ABOUT US</Heading>
+                        <Heading fontSize={55} mb={12}>VỀ CHÚNG TÔI</Heading>
                         <Text>
                             We are OpalWed, a newly established startup, pioneer the untapped market,
                             providing customer representation and assistance in finding and selecting
@@ -100,7 +100,7 @@ const AboutPage = () => {
                     gap={36}
                 >
                     <Stack flex={1.5} align={'center'}>
-                        <Heading fontSize={55} mb={12}>BACKGROUND</Heading>
+                        <Heading fontSize={55} mb={12}>LÝ LỊCH</Heading>
                         <Text>
                             We are OpalWed, a newly established startup, pioneer the untapped market,
                             providing customer representation and assistance in finding and selecting
@@ -141,7 +141,7 @@ const AboutPage = () => {
                         flex={1}
                     />
                     <Stack flex={1.5} align={'center'}>
-                        <Heading fontSize={55} mb={12}>SLOGAN</Heading>
+                        <Heading fontSize={55} mb={12}>KHẨU HIỆU</Heading>
                         <Text>
                             We are OpalWed, a newly established startup, pioneer the untapped market,
                             providing customer representation and assistance in finding and selecting
@@ -166,7 +166,7 @@ const AboutPage = () => {
                     gap={36}
                 >
                     <Stack flex={1.5} align={'center'}>
-                        <Heading fontSize={55} mb={12}>OUR MISSION</Heading>
+                        <Heading fontSize={55} mb={12}>TRÁCH NHIỆM</Heading>
                         <Text>
                             We are OpalWed, a newly established startup, pioneer the untapped market,
                             providing customer representation and assistance in finding and selecting

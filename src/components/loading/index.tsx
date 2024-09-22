@@ -9,7 +9,7 @@ const Loading = () => {
             justify='center'
         >
             <Spinner w='50px' h='50px' />
-            <Text fontSize='20px'>Please wait...</Text>
+            <Text fontSize='20px'>Vui lòng đợi...</Text>
         </Flex>
     )
 }

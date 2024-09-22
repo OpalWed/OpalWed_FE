@@ -1,8 +1,7 @@
 import { Divider, HStack, Stack, Text, Link as ChaLink } from "@chakra-ui/react";
 import Logo from "../../../logo";
 import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
-import { Email, Instagram, Phone, Place } from "@mui/icons-material";
-import { FaTiktok } from "react-icons/fa6";
+import { Email, Phone, Place } from "@mui/icons-material";
 import { Color } from "../../../../styles/styles";
 import { Link } from "react-router-dom";
 
@@ -22,11 +21,11 @@ const Footer = () => {
                     <Text>Slogan</Text>
                 </Stack>
                 <Stack justify={'flex-start'} fontSize='20px' fontWeight='300' align={'center'} gap={4}>
-                    <Text fontWeight={400}>Our Services</Text>
+                    <Text fontWeight={400}>Dịch vụ của chúng tôi</Text>
                     <Stack align={'center'}>
-                        <Text fontSize={17}>Wedding Planning</Text>
-                        <Text fontSize={17}>Compare & Choose Vendors</Text>
-                        <Text fontSize={17}>Wedding Consultancy</Text>
+                        <Text fontSize={17}>Tổ chức tiệc cưới</Text>
+                        <Text fontSize={17}>So sánh & chọn nhà cung cấp</Text>
+                        <Text fontSize={17}>Tư vấn tiệc cưới</Text>
                     </Stack>
                 </Stack>
                 <Stack justify={'flex-start'} fontSize='20px' fontWeight='300'>
@@ -34,13 +33,13 @@ const Footer = () => {
                         <Text fontWeight={400}>Sign In</Text>
                     </Link>
                     <Link to={'/our-services'}>
-                        <Text fontWeight={400}>Our Services</Text>
+                        <Text fontWeight={400}>Dịch vụ</Text>
                     </Link>
                     <Link to={'/our-partners'}>
-                        <Text fontWeight={400}>Our Partners</Text>
+                        <Text fontWeight={400}>Thành viên hợp tác</Text>
                     </Link>
                     <Link to={'/contact'}>
-                        <Text fontWeight={400}>Contact</Text>
+                        <Text fontWeight={400}>Liên hệ</Text>
                     </Link>
                 </Stack>
                 <Stack justify={'flex-start'} fontSize='20px' fontWeight='300' gap={2}>

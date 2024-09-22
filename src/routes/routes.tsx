@@ -15,6 +15,7 @@ import CustomerContactsPage from "../pages/CustomerContacts";
 import { Schedule } from "@mui/icons-material";
 import SchedulePage from "../pages/Schedule";
 import SignUpPage from "../pages/SignUp";
+import AccountSettingsPage from "../pages/AccountSettings";
 
 const routes = [
     {
@@ -50,6 +51,7 @@ const routes = [
         children: [
             { index: true, element: <Navigate to={'dashboard'} /> },
             { path: "dashboard", element: <HomePage /> },
+            { path: "accounts", element: <AccountSettingsPage /> },
             { path: "services", element: <ServicePage /> },
             { path: "partners", element: <PartnerPage /> },
             { path: "approve-partner", element: <ApprovePartnerPage /> },

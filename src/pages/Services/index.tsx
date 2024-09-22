@@ -1,14 +1,10 @@
 import { Button, Card, CardHeader, Divider, Heading, HStack, Input, InputGroup, InputLeftElement, Stack, Table, TableContainer, Tag, TagLabel, Tbody, Td, Th, Thead, Tooltip, Tr, useDisclosure, useToast } from "@chakra-ui/react";
-import { FaArrowRightArrowLeft, FaCheck, FaEye, FaPlus, FaX } from "react-icons/fa6";
+import { FaArrowRightArrowLeft, FaEye, FaPlus } from "react-icons/fa6";
 import { useEffect, useRef, useState } from "react";
 import { BsSearch } from "react-icons/bs";
-
-
 import { useNavigate } from "react-router";
 import { changeTabTitle } from "../../utils/changeTabTitle";
-import { Color, Shadow } from "../../styles/styles";
-import ApproveModal from "../../components/modal/approve";
-import Loading from "../../components/loading";
+import { Shadow } from "../../styles/styles";
 import PartnerDetailModal from "../../components/modal/partner_detail";
 import ChangeStatusModal from "../../components/modal/change_status";
 
@@ -101,7 +97,7 @@ const ServicePage = () => {
     }
 
     useEffect(() => {
-        changeTabTitle('Services');
+        changeTabTitle('Quản lý dịch vụ');
     }, []);
 
     // useEffect(() => {
@@ -127,11 +123,11 @@ const ServicePage = () => {
                 />
             </InputGroup>
             <Stack w={'full'} gap={10}>
-                <Heading fontSize={30}>Services</Heading>
+                <Heading fontSize={30}>Dịch vụ</Heading>
                 <Card shadow={Shadow.cardShadow}>
                     <CardHeader py={3}>
                         <HStack w={'full'} justify={'flex-end'} gap={5}>
-                            <Button leftIcon={<FaPlus />} colorScheme="blue">Create</Button>
+                            <Button leftIcon={<FaPlus />} colorScheme="blue">Tạo</Button>
                         </HStack>
                     </CardHeader>
                     <Divider borderColor={'gainsboro'} />
@@ -140,12 +136,12 @@ const ServicePage = () => {
                             <Thead>
                                 <Tr>
                                     <Th textAlign='center' borderColor={'gainsboro'}>ID</Th>
-                                    <Th textAlign='center' borderColor={'gainsboro'}>Name</Th>
-                                    <Th textAlign='center' borderColor={'gainsboro'}>Content</Th>
-                                    <Th textAlign='center' borderColor={'gainsboro'}>ImageUrl</Th>
-                                    <Th textAlign='center' borderColor={'gainsboro'}>Price</Th>
-                                    <Th textAlign='center' borderColor={'gainsboro'}>Status</Th>
-                                    <Th textAlign='center' borderColor={'gainsboro'}>Action</Th>
+                                    <Th textAlign='center' borderColor={'gainsboro'}>Tên dịch vụ</Th>
+                                    <Th textAlign='center' borderColor={'gainsboro'}>Nội dung</Th>
+                                    <Th textAlign='center' borderColor={'gainsboro'}>Url ảnh</Th>
+                                    <Th textAlign='center' borderColor={'gainsboro'}>Giá tiền</Th>
+                                    <Th textAlign='center' borderColor={'gainsboro'}>Trạng thái</Th>
+                                    <Th textAlign='center' borderColor={'gainsboro'}>Hành động</Th>
                                 </Tr>
                             </Thead>
                             <Tbody>
@@ -208,7 +204,7 @@ const ServicePage = () => {
                                 ) : (
                                     <Tr>
                                         <Td colSpan={8} textAlign="center">
-                                            No pending partner
+                                            Không có dịch vụ
                                         </Td>
                                     </Tr>
                                 )}
