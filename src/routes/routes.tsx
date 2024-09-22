@@ -51,7 +51,7 @@ const routes = [
         children: [
             { index: true, element: <Navigate to={'dashboard'} /> },
             { path: "dashboard", element: <HomePage /> },
-            { path: "accounts", element: <AccountSettingsPage /> },
+            // { path: "accounts", element: <AccountSettingsPage /> },
             { path: "services", element: <ServicePage /> },
             { path: "partners", element: <PartnerPage /> },
             { path: "approve-partner", element: <ApprovePartnerPage /> },

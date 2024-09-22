@@ -1,48 +1,19 @@
-import { Avatar, Button, Card, Divider, Flex, Menu, MenuButton, MenuItem, MenuList, Stack, Text, useToast } from "@chakra-ui/react";
+import { Avatar, Button, Card, Divider, Flex, Menu, MenuButton, MenuItem, MenuList, Stack, Text } from "@chakra-ui/react";
 import { FaDoorOpen } from "react-icons/fa6";
 import { useNavigate } from "react-router";
 import { useAuth } from "../../../../hooks/useAuth";
-import ApiClient from "../../../../services/apiClient";
 
 const PersonalMenu = () => {
-
-    const api = new ApiClient<any>('/auth/logout');
 
     // const { data } = useUserProfile();
     const navigate = useNavigate();
     const { setIsAuthenticated, setRole } = useAuth();
-    const toast = useToast();
 
     const handleLogout = async () => {
-        const refreshToken = localStorage.getItem('refresh_token');
-        try {
-            const response = await api.postUnauthen({ refreshToken });
-            if (response.success) {
-                localStorage.removeItem('access_token');
-                setIsAuthenticated(false);
-                setRole('');
-                localStorage.removeItem('refresh_token');
-                navigate('/');
-            } else {
-                toast({
-                    title: "Error",
-                    description: "An error occurred",
-                    status: "error",
-                    duration: 2500,
-                    position: 'top',
-                    isClosable: true,
-                });
-            }
-        } catch (error: any) {
-            toast({
-                title: "Error",
-                description: error?.response?.data?.message || "An error occurred",
-                status: "error",
-                duration: 2500,
-                position: 'top',
-                isClosable: true,
-            });
-        }
+        localStorage.removeItem('access_token');
+        setIsAuthenticated(false);
+        setRole('');
+        navigate('/');
     }
 
     return (

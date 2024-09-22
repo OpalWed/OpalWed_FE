@@ -20,21 +20,21 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const [isAuthenticated, setIsAuthenticated] = useState<boolean>(!!accessToken);
 
     let initialRole = '';
-    if (accessToken) {
-        const decoded = jwtDecode<DecodeJWTRole>(accessToken);
-        initialRole = formatRoleString(decoded.role[0]);
-    }
+    // if (accessToken) {
+    //     const decoded = jwtDecode<DecodeJWTRole>(accessToken);
+    //     initialRole = formatRoleString(decoded.role[0]);
+    // }
 
     const [role, setRole] = useState<string>(initialRole);
 
-    useEffect(() => {
-        if (accessToken) {
-            const decoded = jwtDecode<DecodeJWTRole>(accessToken);
-            setRole(formatRoleString(decoded.role[0]));
-        } else {
-            setRole('');
-        }
-    }, [accessToken])
+    // useEffect(() => {
+    //     if (accessToken) {
+    //         const decoded = jwtDecode<DecodeJWTRole>(accessToken);
+    //         setRole(formatRoleString(decoded.role[0]));
+    //     } else {
+    //         setRole('');
+    //     }
+    // }, [accessToken])
 
 
     return (

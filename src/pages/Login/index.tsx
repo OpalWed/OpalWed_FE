@@ -1,4 +1,4 @@
-import { Card, CardBody, Text, Stack, Button, Box, FormControl, FormLabel, Input, useToast, InputGroup, InputRightElement, Divider, AbsoluteCenter, HStack, Icon } from "@chakra-ui/react";
+import { Card, CardBody, Text, Stack, Button, Box, FormControl, FormLabel, Input, useToast, InputGroup, InputRightElement, Divider, AbsoluteCenter, HStack, Icon, FormErrorMessage } from "@chakra-ui/react";
 import { Border, Color } from "../../styles/styles";
 import { Link, useNavigate } from "react-router-dom";
 import { changeTabTitle } from "../../utils/changeTabTitle";
@@ -12,10 +12,12 @@ import ApiClient from "../../services/apiClient";
 import { useAuth } from "../../hooks/useAuth";
 
 const LoginPage = () => {
-    const [username, setUsername] = useState<string>("");
+    const [email, setEmail] = useState<string>("");
+    const [emailError, setEmailError] = useState<string>("");
     const [password, setPassword] = useState<string>("");
+    const [passwordError, setPasswordError] = useState<string>("");
     const [showPass, setShowPass] = useState<boolean>(false);
-    const usernameRef = useRef<HTMLInputElement>(null);
+    const emailRef = useRef<HTMLInputElement>(null);
     const toast = useToast();
     const navigate = useNavigate();
     const { setIsAuthenticated, setRole } = useAuth();
@@ -84,16 +86,35 @@ const LoginPage = () => {
 
     const handleLogin = async (e: FormEvent) => {
         e.preventDefault();
+        setEmailError("");
+        setPasswordError("");
+
+        let hasError = false;
+
+        if (email === '') {
+            setEmailError("Hãy nhập email");
+            hasError = true;
+        }
+
+        if (password === '') {
+            setPasswordError("Hãy nhập mật khẩu");
+            hasError = true;
+        }
+
+        if (hasError) {
+            return;
+        }
         const api = new ApiClient<any>('/auth/login');
         const data = {
-            email: username,
+            email,
             password,
         };
 
         try {
             const response = await api.postUnauthen(data);
+            console.log(response);
 
-            if (response.data.success === false) {
+            if (response.isSuccess === false) {
                 toast({
                     title: "Error",
                     description: response.message,
@@ -129,6 +150,7 @@ const LoginPage = () => {
 
     useEffect(() => {
         changeTabTitle('Đăng nhập');
+        emailRef.current?.focus();
     }, []);
 
     return (
@@ -149,18 +171,19 @@ const LoginPage = () => {
                             <Logo width="6rem" height="6rem" />
                         </Box>
                         <Stack w={'md'} gap={5} m={'auto'}>
-                            <FormControl id="email">
+                            <FormControl id="email" isInvalid={!!emailError}>
                                 <FormLabel pl={1}>Email</FormLabel>
                                 <Input
                                     type="text"
-                                    value={username}
-                                    onChange={(e) => setUsername(e.target.value)}
-                                    ref={usernameRef}
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    ref={emailRef}
                                     placeholder="Email"
                                 />
+                                {emailError && <FormErrorMessage mt={0} ml={2}>{emailError}</FormErrorMessage>}
                             </FormControl>
                             <Stack gap={1}>
-                                <FormControl id="password">
+                                <FormControl id="password" isInvalid={!!passwordError}>
                                     <FormLabel pl={1}>Mật khẩu</FormLabel>
                                     <InputGroup>
                                         <Input
@@ -173,6 +196,7 @@ const LoginPage = () => {
                                             {!showPass ? <FaEye /> : <FaEyeSlash />}
                                         </InputRightElement>
                                     </InputGroup>
+                                    {passwordError && <FormErrorMessage mt={0} ml={2}>{passwordError}</FormErrorMessage>}
                                 </FormControl>
                                 <Text
                                     ml={2}
