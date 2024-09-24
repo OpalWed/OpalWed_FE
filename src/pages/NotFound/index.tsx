@@ -13,7 +13,7 @@ const NotFoundPage = () => {
     }, []);
 
     useEffect(() => {
-        if (role === 'Admin') {
+        if (role === 'ADMIN') {
             setNavigate('/administrator');
         } else {
             setNavigate('/');
