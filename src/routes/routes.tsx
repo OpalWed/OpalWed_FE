@@ -16,6 +16,8 @@ import { Schedule } from "@mui/icons-material";
 import SchedulePage from "../pages/Schedule";
 import SignUpPage from "../pages/SignUp";
 import AccountSettingsPage from "../pages/AccountSettings";
+import SystemLayout from "../components/layout/system";
+import ProfilePage from "../pages/Profile";
 
 const routes = [
     {
@@ -58,6 +60,13 @@ const routes = [
             { path: "customer-contact", element: <CustomerContactsPage /> },
             { path: "schedule", element: <SchedulePage /> },
         ],
+    },
+    {
+        path: "/",
+        element: <SystemLayout />,
+        children: [
+            { path: "profile", element: <ProfilePage /> },
+        ]
     },
 ];
 

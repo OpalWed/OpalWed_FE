@@ -2,7 +2,7 @@ import { jwtDecode } from 'jwt-decode';
 import { createContext, useState, ReactNode, Dispatch, SetStateAction, useEffect } from 'react';
 import { formatRoleString } from '../utils/formatRoleString';
 
-interface AuthContextType {
+export interface AuthContextType {
     isAuthenticated: boolean;
     setIsAuthenticated: Dispatch<SetStateAction<boolean>>;
     role: string;

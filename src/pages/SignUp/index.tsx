@@ -174,7 +174,16 @@ const SignUpPage = () => {
                         <Box bg={'#0C2948'} px={4} mx={'auto'} onClick={() => navigate('/')} cursor={'pointer'}>
                             <Logo width="6rem" height="6rem" />
                         </Box>
-                        <HStack m={'auto'} w={'3xl'} gap={10}>
+                        <HStack
+                            m={'auto'}
+                            w={'3xl'}
+                            gap={10}
+                            onKeyDown={(e) => {
+                                if (e.key === 'Enter' && !e.shiftKey) {
+                                    handleSignUp(e);
+                                }
+                            }}
+                        >
                             <Stack flex={1} gap={3}>
                                 <Heading fontSize={18} fontWeight={600}>Thông tin tài khoản</Heading>
                                 <FormControl id="email" isRequired>
