@@ -2,66 +2,58 @@ import { Button, FormControl, FormLabel, HStack, Heading, Image, Input, Select, 
 import { FormEvent, useEffect, useState } from "react";
 import ApiClient from "../../../services/apiClient";
 import { changeTabTitle } from "../../../utils/changeTabTitle";
-import { today } from "../../../components/modal/appointment";
 import { FaPen } from "react-icons/fa6";
 import axios from "axios";
 import { Border } from "../../../styles/styles";
-import useUserProfile from "../../../hooks/useUserProfile";
-import useBranchByClinicId from "../../../hooks/useBranchByClinicId";
-import BranchDetailResponse from "../../../types/BranchDetailResponse";
 import LoadingModal from "../../../components/modal/loading";
 import { trimAll } from "../../../utils/trimAll";
 
 const CreatePartnerPage = () => {
     const [fullName, setFullName] = useState<string>('');
-    const [dob, setDob] = useState<string>('');
-    const [gender, setGender] = useState<string>('');
     const [phone, setPhone] = useState<string>('');
     const [email, setEmail] = useState<string>('');
     const [address, setAddress] = useState<string>('');
     const [description, setDescription] = useState<string>('');
-    const [specialty, setSpecialty] = useState<string>('');
+    const [utilities, setUtilities] = useState<string[]>([]);
     const [experience, setExperience] = useState<string>('');
     const [avatar, setAvatar] = useState<string>('');
     const [avatarData, setAvatarData] = useState<File | null>(null);
+    const [images, setImages] = useState<string[]>([]);
     const [branchId, setBranchId] = useState<number>(0);
-    const [branches, setBranches] = useState<BranchDetailResponse[]>([]);
-    const { data: userData } = useUserProfile();
-    const { data: branchData } = useBranchByClinicId({ clinicId: userData?.clinicId });
     const { isOpen: isOpenLoading, onClose: onCloseLoading, onOpen: onOpenLoading } = useDisclosure();
     const toast = useToast();
 
-    const areAllFieldsFilled = () => {
-        return (
-            fullName.trim() !== '' &&
-            dob !== '' &&
-            gender !== '' &&
-            phone.trim() !== '' &&
-            email.trim() !== '' &&
-            address.trim() !== '' &&
-            description.trim() !== '' &&
-            specialty.trim() !== '' &&
-            experience.trim() !== '' &&
-            avatar !== '' &&
-            avatarData !== null &&
-            branchId !== 0
-        );
-    };
+    // const areAllFieldsFilled = () => {
+    //     return (
+    //         fullName.trim() !== '' &&
+    //         dob !== '' &&
+    //         gender !== '' &&
+    //         phone.trim() !== '' &&
+    //         email.trim() !== '' &&
+    //         address.trim() !== '' &&
+    //         description.trim() !== '' &&
+    //         specialty.trim() !== '' &&
+    //         experience.trim() !== '' &&
+    //         avatar !== '' &&
+    //         avatarData !== null &&
+    //         branchId !== 0
+    //     );
+    // };
 
-    const handleReset = () => {
-        setFullName('');
-        setDob('');
-        setGender('');
-        setPhone('');
-        setEmail('');
-        setAddress('');
-        setDescription('');
-        setSpecialty('');
-        setExperience('');
-        setAvatar('');
-        setAvatarData(null);
-        setBranchId(0);
-    }
+    // const handleReset = () => {
+    //     setFullName('');
+    //     setDob('');
+    //     setGender('');
+    //     setPhone('');
+    //     setEmail('');
+    //     setAddress('');
+    //     setDescription('');
+    //     setSpecialty('');
+    //     setExperience('');
+    //     setAvatar('');
+    //     setAvatarData(null);
+    //     setBranchId(0);
+    // }
 
     const handleAvatarChange = (e: any) => {
         const selectedFile = e.target.files[0];
@@ -100,17 +92,13 @@ const CreatePartnerPage = () => {
         }
 
         const data = {
-            fullName: trimAll(fullName),
-            email: email.trim(),
-            gender,
-            phone: phone.trim(),
-            dob,
-            address: trimAll(address),
-            description: description.trim(),
-            specialty: trimAll(specialty),
-            experience: experience.trim(),
+            fullName,
+            email,
+            phone,
+            address,
+            description,
+            experience,
             avatar: avatarUrl,
-            branchId
         };
 
         try {
@@ -125,7 +113,7 @@ const CreatePartnerPage = () => {
                     position: 'top',
                     isClosable: true,
                 });
-                handleReset();
+                // handleReset();
             } else {
                 toast({
                     title: "Error",
@@ -151,14 +139,8 @@ const CreatePartnerPage = () => {
     };
 
     useEffect(() => {
-        changeTabTitle('Create Dentist');
+        changeTabTitle('Tạo thành viên');
     }, []);
-
-    useEffect(() => {
-        if (branchData) {
-            setBranches(branchData);
-        }
-    }, [branchData]);
 
     return (
         <Stack w={'6xl'} m={'auto'}>

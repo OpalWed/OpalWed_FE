@@ -4,9 +4,11 @@ import { Box } from "@mui/material";
 import { Avatar, HStack, Stack, Text } from "@chakra-ui/react";
 import { Color } from "../../../../styles/styles";
 import { useAuth } from "../../../../hooks/useAuth";
+import useProfile from "../../../../hooks/useProfile";
 
 const Navbar = () => {
     const { isAuthenticated } = useAuth();
+    const { data } = useProfile();
 
     return (
         <Box
@@ -21,25 +23,21 @@ const Navbar = () => {
                     <HStack pos={'absolute'} top={0} right={0}>
                         <HStack>
                             <Avatar size={'sm'} />
-                            <Text color={'white'}>fullname</Text>
+                            <Link to={'/profile'}>
+                                <Text color={'white'}>{data?.fullName}</Text>
+                            </Link>
                         </HStack>
                     </HStack>
                 ) : (
-                    // <HStack pos={'absolute'} top={0} right={0}>
-                    //     <HStack>
-                    //         <Link to={'/login'}>
-                    //             <Text color={'white'} fontSize={15}>Đăng nhập</Text>
-                    //         </Link>
-                    //         <Text color={'white'}>/</Text>
-                    //         <Link to={'/sign-up'}>
-                    //             <Text color={'white'} fontSize={15}>Đăng ký</Text>
-                    //         </Link>
-                    //     </HStack>
-                    // </HStack>
                     <HStack pos={'absolute'} top={0} right={0}>
                         <HStack>
-                            <Avatar size={'sm'} />
-                            <Text color={'white'}>fullname</Text>
+                            <Link to={'/login'}>
+                                <Text color={'white'} fontSize={15}>Đăng nhập</Text>
+                            </Link>
+                            <Text color={'white'}>/</Text>
+                            <Link to={'/sign-up'}>
+                                <Text color={'white'} fontSize={15}>Đăng ký</Text>
+                            </Link>
                         </HStack>
                     </HStack>
                 )}

@@ -17,9 +17,6 @@ const PersonalMenu = () => {
         navigate('/');
     }
 
-    console.log(data);
-
-
     return (
         <Menu autoSelect={false} isLazy>
             <MenuButton>
@@ -34,7 +31,7 @@ const PersonalMenu = () => {
                     <Card maxW={'full'} p={5} m={4} mt={2} borderTop={'0.5px solid #f0f0f0'}>
                         <Flex gap={4} align={'center'}>
                             <Avatar size={'sm'} src={'https://t3.ftcdn.net/jpg/05/16/27/58/360_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg'} />
-                            <Text fontWeight={600} textAlign={'center'} flex={1}>{`Welcome back, ${data.fullName}`}</Text>
+                            <Text fontWeight={600} textAlign={'center'} flex={1}>{`Welcome back, ${data?.fullName}`}</Text>
                         </Flex>
                         <Divider my={3} />
                         <MenuItem

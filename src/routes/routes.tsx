@@ -12,12 +12,14 @@ import ApprovePartnerPage from "../pages/ApprovePartner";
 import ServicePage from "../pages/Services";
 import PartnerPage from "../pages/Partners";
 import CustomerContactsPage from "../pages/CustomerContacts";
-import { Schedule } from "@mui/icons-material";
 import SchedulePage from "../pages/Schedule";
 import SignUpPage from "../pages/SignUp";
 import AccountSettingsPage from "../pages/AccountSettings";
 import SystemLayout from "../components/layout/system";
 import ProfilePage from "../pages/Profile";
+import UserDetailPage from "../pages/AccountSettings/UserDetail";
+import UpdateProfilePage from "../pages/Profile/UpdateProfile";
+import UpdatePasswordPage from "../pages/Profile/UpdatePassword";
 
 const routes = [
     {
@@ -53,7 +55,7 @@ const routes = [
         children: [
             { index: true, element: <Navigate to={'dashboard'} /> },
             { path: "dashboard", element: <HomePage /> },
-            // { path: "accounts", element: <AccountSettingsPage /> },
+            { path: "accounts", element: <AccountSettingsPage /> },
             { path: "services", element: <ServicePage /> },
             { path: "partners", element: <PartnerPage /> },
             { path: "approve-partner", element: <ApprovePartnerPage /> },
@@ -65,7 +67,17 @@ const routes = [
         path: "/",
         element: <SystemLayout />,
         children: [
+            { path: "administrator/profile", element: <ProfilePage /> },
+            { path: "administrator/accounts/:id", element: <UserDetailPage /> },
+        ]
+    },
+    {
+        path: "/",
+        element: <SystemLayout />,
+        children: [
             { path: "profile", element: <ProfilePage /> },
+            { path: "profile/update-profile", element: <UpdateProfilePage /> },
+            { path: "profile/update-password", element: <UpdatePasswordPage /> },
         ]
     },
 ];

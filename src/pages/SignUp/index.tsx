@@ -146,9 +146,9 @@ const SignUpPage = () => {
         return (
             email !== '' &&
             password !== '' &&
-            fullName.trim() !== '' &&
-            phone.trim() !== '' &&
-            address.trim() !== ''
+            fullName !== '' &&
+            phone !== '' &&
+            address !== ''
         );
     };
 

@@ -125,9 +125,9 @@ const LoginPage = () => {
                 });
             } else {
                 localStorage.setItem('access_token', response.data.token);
-                const role = response.data.userInfo.accountRole;
+                const role: string = response.data.userInfo.accountRole;
                 setIsAuthenticated(true);
-                setRole(role);
+                setRole(role.toLowerCase().charAt(0).toUpperCase());
                 if (role === 'CUSTOMER') {
                     navigate('/');
                 } else if (role === 'ADMIN') {

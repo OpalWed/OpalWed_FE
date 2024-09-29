@@ -1,8 +1,8 @@
 import { Stack } from "@chakra-ui/react"
 import { Outlet } from "react-router-dom"
-import AdminNavbar from "../components/admin_navbar"
 import { useAuth } from "../../../hooks/useAuth"
 import NotFoundPage from "../../../pages/NotFound"
+import SystemNavbar from "../components/system_navbar"
 
 const SystemLayout = () => {
     const { isAuthenticated } = useAuth();
@@ -13,7 +13,7 @@ const SystemLayout = () => {
 
     return (
         <>
-            <AdminNavbar type="system" />
+            <SystemNavbar />
             <Stack mt={'96px'} minH={`calc(100vh - 96px)`}>
                 <Outlet />
             </Stack>
