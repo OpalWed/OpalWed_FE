@@ -125,9 +125,9 @@ const LoginPage = () => {
                 });
             } else {
                 localStorage.setItem('access_token', response.data.token);
-                const role = response.data.userInfo.accountRole;
+                const role: string = response.data.userInfo.accountRole;
                 setIsAuthenticated(true);
-                setRole(role);
+                setRole(role.toLowerCase().charAt(0).toUpperCase());
                 if (role === 'CUSTOMER') {
                     navigate('/');
                 } else if (role === 'ADMIN') {
@@ -170,7 +170,16 @@ const LoginPage = () => {
                         <Box bg={'#0C2948'} px={4} mx={'auto'} onClick={() => navigate('/')} cursor={'pointer'}>
                             <Logo width="6rem" height="6rem" />
                         </Box>
-                        <Stack w={'md'} gap={5} m={'auto'}>
+                        <Stack
+                            w={'md'}
+                            gap={5}
+                            m={'auto'}
+                            onKeyDown={(e) => {
+                                if (e.key === 'Enter' && !e.shiftKey) {
+                                    handleLogin(e);
+                                }
+                            }}
+                        >
                             <FormControl id="email" isInvalid={!!emailError}>
                                 <FormLabel pl={1}>Email</FormLabel>
                                 <Input

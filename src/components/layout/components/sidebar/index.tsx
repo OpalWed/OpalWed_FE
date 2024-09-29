@@ -5,7 +5,6 @@ import { ConfigProvider, Menu } from 'antd';
 import { Button, Box, HStack, Stack } from '@chakra-ui/react';
 import { FaRegUser, FaUser } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
-import { FaRegCheckCircle } from 'react-icons/fa';
 import { FiBox, FiCalendar, FiLogOut } from 'react-icons/fi';
 import StorefrontOutlinedIcon from '@mui/icons-material/StorefrontOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';

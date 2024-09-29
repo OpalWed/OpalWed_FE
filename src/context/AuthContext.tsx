@@ -2,7 +2,7 @@ import { jwtDecode } from 'jwt-decode';
 import { createContext, useState, ReactNode, Dispatch, SetStateAction, useEffect } from 'react';
 import { formatRoleString } from '../utils/formatRoleString';
 
-interface AuthContextType {
+export interface AuthContextType {
     isAuthenticated: boolean;
     setIsAuthenticated: Dispatch<SetStateAction<boolean>>;
     role: string;
@@ -10,7 +10,7 @@ interface AuthContextType {
 }
 
 interface DecodeJWTRole {
-    role: string;
+    authorities: string;
 }
 
 export const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -20,21 +20,21 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const [isAuthenticated, setIsAuthenticated] = useState<boolean>(!!accessToken);
 
     let initialRole = '';
-    // if (accessToken) {
-    //     const decoded = jwtDecode<DecodeJWTRole>(accessToken);
-    //     initialRole = formatRoleString(decoded.role[0]);
-    // }
+    if (accessToken) {
+        const decoded = jwtDecode<DecodeJWTRole>(accessToken);
+        initialRole = formatRoleString(decoded.authorities);
+    }
 
     const [role, setRole] = useState<string>(initialRole);
 
-    // useEffect(() => {
-    //     if (accessToken) {
-    //         const decoded = jwtDecode<DecodeJWTRole>(accessToken);
-    //         setRole(formatRoleString(decoded.role[0]));
-    //     } else {
-    //         setRole('');
-    //     }
-    // }, [accessToken])
+    useEffect(() => {
+        if (accessToken) {
+            const decoded = jwtDecode<DecodeJWTRole>(accessToken);
+            setRole(formatRoleString(decoded.authorities));
+        } else {
+            setRole('');
+        }
+    }, [accessToken])
 
 
     return (

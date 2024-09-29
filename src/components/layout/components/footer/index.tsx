@@ -29,8 +29,8 @@ const Footer = () => {
                     </Stack>
                 </Stack>
                 <Stack justify={'flex-start'} fontSize='20px' fontWeight='300'>
-                    <Link to={'/login'}>
-                        <Text fontWeight={400}>Sign In</Text>
+                    <Link to={'/about-us'}>
+                        <Text fontWeight={400}>Về chúng tôi</Text>
                     </Link>
                     <Link to={'/our-services'}>
                         <Text fontWeight={400}>Dịch vụ</Text>
