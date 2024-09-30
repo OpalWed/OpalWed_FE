@@ -20,6 +20,7 @@ import ProfilePage from "../pages/Profile";
 import UserDetailPage from "../pages/AccountSettings/UserDetail";
 import UpdateProfilePage from "../pages/Profile/UpdateProfile";
 import UpdatePasswordPage from "../pages/Profile/UpdatePassword";
+import CustomerSystemLayout from "../components/layout/customer_system";
 
 const routes = [
     {
@@ -73,7 +74,7 @@ const routes = [
     },
     {
         path: "/",
-        element: <SystemLayout />,
+        element: <CustomerSystemLayout />,
         children: [
             { path: "profile", element: <ProfilePage /> },
             { path: "profile/update-profile", element: <UpdateProfilePage /> },

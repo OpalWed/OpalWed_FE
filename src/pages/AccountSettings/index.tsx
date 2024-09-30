@@ -125,7 +125,7 @@ const AccountSettingsPage = () => {
                                                             textAlign='center'
                                                             borderColor={'gainsboro'}
                                                             cursor={'pointer'}
-                                                            onClick={() => navigate(account.id)}
+                                                            onClick={() => navigate(account.id.toString())}
                                                         >
                                                             <FaChevronRight />
                                                         </Td>

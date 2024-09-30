@@ -1,4 +1,4 @@
-import { Button, Card, CardBody, FormControl, FormLabel, HStack, Image, Input, Stack, Textarea, useDisclosure, useToast } from "@chakra-ui/react"
+import { Button, Divider, FormControl, FormLabel, Heading, HStack, Image, Input, Stack, Textarea, useDisclosure, useToast } from "@chakra-ui/react"
 import { FormEvent, useEffect, useState } from "react"
 import { FaPen } from "react-icons/fa6";
 import axios from "axios";
@@ -8,14 +8,13 @@ import { useAuth } from "../../../hooks/useAuth";
 import NotFoundPage from "../../NotFound";
 import ApiClient from "../../../services/apiClient";
 import { changeTabTitle } from "../../../utils/changeTabTitle";
-import { Shadow } from "../../../styles/styles";
+import { Color } from "../../../styles/styles";
 import LoadingModal from "../../../components/modal/loading";
 
 const UpdateProfilePage = () => {
     const [description, setDescription] = useState<string>('');
     const [fullName, setFullName] = useState<string>('');
     const [phone, setPhone] = useState<string>('');
-    const [email, setEmail] = useState<string>('');
     const [address, setAddress] = useState<string>('');
     const [avatar, setAvatar] = useState<any>();
     const [avatarData, setAvatarData] = useState<any>();
@@ -111,7 +110,7 @@ const UpdateProfilePage = () => {
     }
 
     useEffect(() => {
-        changeTabTitle('Thay đổi hồ sơ');
+        changeTabTitle('Cập nhật hồ sơ');
     }, []);
 
     useEffect(() => {
@@ -125,131 +124,151 @@ const UpdateProfilePage = () => {
     }, [userData])
 
     return (
-        <HStack w={'6xl'} m={'auto'} gap={56} align={'flex-start'}>
-            <Card
-                flex={1}
-                align='center'
-                justify='center'
-                gap={0}
-                shadow={Shadow.cardShadow}
-            >
-                <CardBody alignSelf={'center'} py={10}>
-                    <HStack w={'full'} align={'flex-end'} gap={0}>
-                        <Image
-                            border='1px solid gainsboro'
-                            borderRadius='full'
-                            boxSize={'15rem'}
-                            src={
-                                avatar || 'https://t3.ftcdn.net/jpg/05/16/27/58/360_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg'
-                            }
-                            alt='avatar'
-                            bgColor='white'
-                            objectFit={'cover'}
-                        />
-                        <FormLabel
-                            htmlFor="avt"
-                            cursor='pointer'
-                            fontSize='2xl'
-                            ml={-8}
-                        >
-                            <FaPen />
-                        </FormLabel>
-                        <Input
-                            type="file"
-                            id="avt"
-                            accept="image/*"
-                            onChange={handleAvatarChange}
-                            display='none'
-                        />
-                    </HStack>
-                </CardBody>
-            </Card>
-            <Stack flex={1.5}>
-                <Card shadow={Shadow.cardShadow}>
-                    <CardBody py={8}>
-                        <Stack gap={4}>
-                            <HStack>
-                                <FormControl id="fullName" flex={2.5}>
-                                    <FormLabel ml={1}>Full Name</FormLabel>
-                                    <Input
-                                        type="text"
-                                        value={fullName}
-                                        onChange={(e) => setFullName(e.target.value)}
-                                        placeholder={'Enter full name'}
-                                    />
-                                </FormControl>
-                            </HStack>
-                            <FormControl id="description" isRequired>
-                                <FormLabel pl={1}>Description</FormLabel>
-                                <Textarea
-                                    value={description}
-                                    placeholder="Describe dentist description"
-                                    focusBorderColor='#E2E8F0'
-                                    resize={'none'}
-                                    maxH={32}
-                                    minH={32}
-                                    onChange={(e) => setDescription(e.target.value)}
-                                    required
-                                />
-                            </FormControl>
-                            <HStack>
-                                <FormControl id="phone" flex={1}>
-                                    <FormLabel ml={1} pl={1}>Phone number</FormLabel>
-                                    <Input
-                                        type="tel"
-                                        value={phone}
-                                        onChange={(e) => setPhone(e.target.value)}
-                                        placeholder="Enter phone"
-                                    />
-                                </FormControl>
-                            </HStack>
-                            <FormControl id="email" flex={2}>
-                                <FormLabel ml={1}>Email</FormLabel>
-                                <Input
-                                    type="email"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    placeholder="Enter email"
-                                />
-                            </FormControl>
-                            <FormControl id="address" flex={2}>
-                                <FormLabel ml={1}>Address</FormLabel>
+        <>
+            <HStack h={78} bg={Color.darkBlue}>
+                <Heading fontSize={24} color={'white'} fontWeight={500} my={'auto'} ml={6}>Cập nhật hồ sơ</Heading>
+            </HStack>
+            <Stack
+                mt={10}
+                w={'full'}
+                pos={'relative'}
+                h={'calc(100% - 90px)'}>
+                <HStack
+                    w={'5xl'}
+                    mx={'auto'}
+                    gap={20}
+                    align={'flex-end'}
+                >
+                    <Stack flex={1} gap={10}>
+                        <HStack w={'full'} align={'flex-end'} justify={'center'} gap={0} >
+                            <Image
+                                border='1px solid gainsboro'
+                                borderRadius='full'
+                                boxSize={'12rem'}
+                                src={
+                                    avatar || 'https://t3.ftcdn.net/jpg/05/16/27/58/360_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg'
+                                }
+                                alt='avatar'
+                                bgColor='white'
+                                objectFit={'cover'}
+                            />
+                            <FormLabel
+                                htmlFor="avt"
+                                cursor='pointer'
+                                ml={-20}
+                            >
+                                <Button leftIcon={<FaPen />} fontSize={14} p={2}>Thay đổi</Button>
+                            </FormLabel>
+                            <Input
+                                type="file"
+                                id="avt"
+                                accept="image/*"
+                                onChange={handleAvatarChange}
+                                display='none'
+                            />
+                        </HStack>
+                        <FormControl id="description" isRequired>
+                            <Textarea
+                                value={description}
+                                placeholder="Nhập mô tả bản thân"
+                                focusBorderColor='#E2E8F0'
+                                resize={'none'}
+                                maxH={32}
+                                minH={32}
+                                borderRadius={20}
+                                onChange={(e) => setDescription(e.target.value)}
+                                required
+                            />
+                        </FormControl>
+                    </Stack>
+                    <Stack flex={1.5} gap={4}>
+                        <HStack>
+                            <FormControl id="fullName" flex={2.5}>
+                                <FormLabel ml={1}>Họ và tên</FormLabel>
                                 <Input
                                     type="text"
-                                    value={address}
-                                    onChange={(e) => setAddress(e.target.value)}
-                                    placeholder="Enter address"
+                                    value={fullName}
+                                    borderRadius={'full'}
+                                    pl={5}
+                                    onChange={(e) => setFullName(e.target.value)}
+                                    placeholder={'Nhập tên mới'}
                                 />
                             </FormControl>
-                        </Stack>
-                    </CardBody>
-                </Card>
-                <HStack gap={6} mt={6} w={'sm'} ml={'auto'}>
-                    <Button flex={1} onClick={handleResetAllChanges}>
-                        Reset all changes
+                        </HStack>
+                        <HStack>
+                            <FormControl id="phone" flex={1}>
+                                <FormLabel ml={1} pl={1}>Số điện thoại</FormLabel>
+                                <Input
+                                    type="tel"
+                                    value={phone}
+                                    borderRadius={'full'}
+                                    pl={5}
+                                    onChange={(e) => setPhone(e.target.value)}
+                                    placeholder="Nhập số điện thoại mới"
+                                />
+                            </FormControl>
+                        </HStack>
+                        <FormControl id="address" flex={2}>
+                            <FormLabel ml={1}>Địa chỉ</FormLabel>
+                            <Input
+                                type="text"
+                                value={address}
+                                borderRadius={'full'}
+                                pl={5}
+                                onChange={(e) => setAddress(e.target.value)}
+                                placeholder="Nhập địa chỉ mới"
+                            />
+                        </FormControl>
+                    </Stack>
+                </HStack>
+                <Divider
+                    pos={'absolute'}
+                    bottom={16}
+                    w={'5xl'}
+                    left={'50%'}
+                    transform={'translateX(-50%)'}
+                    borderColor={'gainsboro'}
+                />
+                <HStack
+                    gap={4}
+                    bottom={2}
+                    right={8}
+                    w={'300px'}
+                    pos={'absolute'}
+                >
+                    <Button
+                        flex={1}
+                        borderRadius={'full'}
+                        pl={5}
+                        variant={'outline'}
+                        onClick={handleResetAllChanges}
+                    >
+                        Reset change
                     </Button>
                     <Button
-                        colorScheme={"blue"}
-                        variant={"solid"}
+                        bg={Color.darkBlue}
+                        _hover={{ bg: Color.darkBlueHover }}
                         flex={1}
+                        color={'white'}
+                        borderRadius={'full'}
+                        pl={5}
                         isDisabled={
                             fullName.trim() === '' ||
                             phone === '' ||
-                            email.trim() === '' ||
                             address === '' ||
                             avatar === ''
                         }
                         onClick={handleUpdateProfile}
                     >
-                        Save changes
+                        Save change
                     </Button>
                 </HStack>
+                <LoadingModal
+                    isOpen={isOpenLoading}
+                    onClose={onCloseLoading}
+                />
             </Stack>
-            <LoadingModal
-                isOpen={isOpenLoading}
-                onClose={onCloseLoading}
-            />
-        </HStack>
+        </>
     )
 }
 
