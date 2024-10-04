@@ -11,13 +11,20 @@ import useAccounts from "../../hooks/useAccounts";
 import LoadingModal from "../../components/modal/loading";
 import { Status } from "../../types/type.enum";
 import Account from "../../types/Account";
+import ApiClient from "../../services/apiClient";
+import ActivateModal from "../../components/modal/activate";
+import DeactivateModal from "../../components/modal/deactivate";
+import { AxiosError } from "axios";
 
 const AccountSettingsPage = () => {
     const ref = useRef<HTMLInputElement>(null);
+    const [id, setId] = useState<number>(0);
     const [keyword, setKeyword] = useState<string>('');
+    const [status, setStatus] = useState<Status>(Status.INACTIVE);
     const [accounts, setAccounts] = useState<Account[]>([]);
     const { data: accountData, isLoading: isLoadingAccount, refetch: refetchAccount } = useAccounts();
-    const { isOpen: isOpenChange, onClose: onCloseChange, onOpen: onOpenChange } = useDisclosure();
+    const { isOpen: isOpenActivate, onClose: onCloseActivate, onOpen: onOpenActivate } = useDisclosure();
+    const { isOpen: isOpenDeactivate, onClose: onCloseDeactivate, onOpen: onOpenDeactivate } = useDisclosure();
     const { isOpen: isOpenLoading, onClose: onCloseLoading, onOpen: onOpenLoading } = useDisclosure();
     const navigate = useNavigate();
     const toast = useToast();
@@ -25,6 +32,53 @@ const AccountSettingsPage = () => {
     let filteredAccounts = accounts.filter((account) => {
         return account.email.toLowerCase().includes(keyword.toLowerCase())
     })
+
+    const handleChangeStatus = async () => {
+        onCloseActivate();
+        onCloseDeactivate();
+        onOpenLoading();
+        const api = new ApiClient<any>('/accountInfo/change-account-status');
+        const data = {
+            id,
+            status
+        }
+        try {
+            const response = await api.update(data);
+            if (response.isSuccess) {
+                toast({
+                    title: "Thành công",
+                    description: response.message,
+                    status: "success",
+                    duration: 2500,
+                    position: 'top',
+                    isClosable: true,
+                });
+                refetchAccount && refetchAccount();
+            } else {
+                toast({
+                    title: "Xảy ra lỗi",
+                    description: response.message,
+                    status: "error",
+                    duration: 2500,
+                    position: 'top',
+                    isClosable: true,
+                });
+            }
+        } catch (error) {
+            if (error instanceof AxiosError) {
+                toast({
+                    title: "Xảy ra lỗi",
+                    description: error.response?.data?.message || "An error occurred",
+                    status: "error",
+                    duration: 2500,
+                    position: 'top',
+                    isClosable: true,
+                });
+            }
+        } finally {
+            onCloseLoading();
+        }
+    }
 
     useEffect(() => {
         changeTabTitle('Quản lý tài khoản');
@@ -103,7 +157,14 @@ const AccountSettingsPage = () => {
                                                                 colorScheme={account.status === Status.INACTIVE ? 'red' : 'green'}
                                                                 variant='ghost'
                                                                 onClick={() => {
-                                                                    onOpenChange();
+                                                                    setId(account.id);
+                                                                    if (account.status === Status.ACTIVE) {
+                                                                        setStatus(Status.INACTIVE);
+                                                                        onOpenDeactivate();
+                                                                    } else {
+                                                                        setStatus(Status.ACTIVE);
+                                                                        onOpenActivate();
+                                                                    }
                                                                 }}
                                                             >
                                                                 <Tooltip
@@ -156,6 +217,21 @@ const AccountSettingsPage = () => {
                 isOpen={isOpenLoading}
                 onClose={onCloseLoading}
             />
+            {status === Status.ACTIVE ? (
+                <ActivateModal
+                    isOpen={isOpenActivate}
+                    onClose={onCloseActivate}
+                    handleActivate={handleChangeStatus}
+                    type="account"
+                />
+            ) : (
+                <DeactivateModal
+                    isOpen={isOpenDeactivate}
+                    onClose={onCloseDeactivate}
+                    handleDeactivate={handleChangeStatus}
+                    type="account"
+                />
+            )}
         </Stack>
     )
 }

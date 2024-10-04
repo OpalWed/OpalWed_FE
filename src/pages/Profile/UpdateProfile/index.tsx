@@ -85,7 +85,7 @@ const UpdateProfilePage = () => {
             const response = await api.update(data);
             if (response.status) {
                 toast({
-                    title: "Success",
+                    title: "Thành công",
                     description: response.message,
                     status: "success",
                     duration: 2500,
@@ -97,7 +97,7 @@ const UpdateProfilePage = () => {
             handleResetAllChanges();
         } catch (error: any) {
             toast({
-                title: "Error",
+                title: "Xảy ra lỗi",
                 description: error?.response?.data?.message || "An error occurred",
                 status: "error",
                 duration: 2500,

@@ -1,10 +1,9 @@
-import { Button, FormControl, FormLabel, HStack, Input, InputGroup, InputRightElement, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, PinInput, PinInputField, Stack, Text, useToast } from "@chakra-ui/react";
+import { Button, FormControl, FormLabel, HStack, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, PinInput, PinInputField, Stack, Text, useToast } from "@chakra-ui/react";
 import { Border } from "../../../styles/styles";
 import { FormEvent, useEffect, useState } from "react";
 import ApiClient from "../../../services/apiClient";
 import { useNavigate } from "react-router";
 import { AxiosError } from "axios";
-import { FaEye, FaEyeSlash } from "react-icons/fa6";
 
 interface Props {
     isOpen: boolean;
@@ -12,17 +11,15 @@ interface Props {
     email: string;
 }
 
-const RecoverModal = ({ isOpen, onClose, email }: Props) => {
+const VerifyModal = ({ isOpen, onClose, email }: Props) => {
     const [otp, setOtp] = useState<string>('');
-    const [newPassword, setNewPassword] = useState<string>('');
-    const [showPass, setShowPass] = useState<boolean>(false);
     const [sendBack, setSendBack] = useState<boolean>(false);
     const [time, setTime] = useState<number>(30);
     const toast = useToast();
     const navigate = useNavigate();
 
     const getVerifyCode = async (email: string) => {
-        const api = new ApiClient<any>('/auth/forget-password');
+        const api = new ApiClient<any>('/auth/requestOTP');
         try {
             const response = await api.getUnauthen({
                 params: {
@@ -55,10 +52,9 @@ const RecoverModal = ({ isOpen, onClose, email }: Props) => {
 
     const handleRecover = async (e: FormEvent) => {
         e.preventDefault();
-        const api = new ApiClient<any>('/auth/update-otp-password');
+        const api = new ApiClient<any>('/auth/validateOTP');
         const data = {
             email,
-            newPassword,
             otp
         };
 
@@ -90,7 +86,7 @@ const RecoverModal = ({ isOpen, onClose, email }: Props) => {
             if (error instanceof AxiosError) {
                 toast({
                     title: "Xảy ra lỗi",
-                    description: error.response?.data?.message || "An error occurred",
+                    description: error.response?.data?.message || "Đã có lỗi xảy ra",
                     status: "error",
                     duration: 2500,
                     position: 'top',
@@ -139,21 +135,6 @@ const RecoverModal = ({ isOpen, onClose, email }: Props) => {
                                 </PinInput>
                             </HStack>
                         </FormControl>
-                        <FormControl id="newPassword">
-                            <FormLabel pl={1}>Mật khẩu mới</FormLabel>
-                            <InputGroup>
-                                <Input
-                                    type={showPass ? 'text' : 'password'}
-                                    value={newPassword}
-                                    onChange={(e) => setNewPassword(e.target.value)}
-                                    placeholder="Mật khẩu mới"
-                                    borderColor={'gainsboro'}
-                                />
-                                <InputRightElement width='3.5rem' cursor='pointer' onClick={() => setShowPass(!showPass)}>
-                                    {!showPass ? <FaEye /> : <FaEyeSlash />}
-                                </InputRightElement>
-                            </InputGroup>
-                        </FormControl>
                         {sendBack ? (
                             <Text
                                 cursor={'pointer'}
@@ -179,4 +160,4 @@ const RecoverModal = ({ isOpen, onClose, email }: Props) => {
     )
 }
 
-export default RecoverModal;
+export default VerifyModal;

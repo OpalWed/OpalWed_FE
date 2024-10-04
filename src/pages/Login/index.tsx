@@ -27,7 +27,7 @@ const LoginPage = () => {
         },
         onError: () => {
             toast({
-                title: "Sign In Error",
+                title: "Sign In Xảy ra lỗi",
                 description: "Sign in by Google failed. Try again!!!",
                 status: "error",
                 duration: 2500,
@@ -61,7 +61,7 @@ const LoginPage = () => {
                 // }
             } else {
                 toast({
-                    title: "Error",
+                    title: "Xảy ra lỗi",
                     description: response.message,
                     status: "error",
                     duration: 2500,
@@ -70,10 +70,9 @@ const LoginPage = () => {
                 });
             }
         } catch (error) {
-
             if (error instanceof AxiosError) {
                 toast({
-                    title: "Error",
+                    title: "Xảy ra lỗi",
                     description: error.response?.data?.message || "An error occurred",
                     status: "error",
                     duration: 2500,
@@ -116,7 +115,7 @@ const LoginPage = () => {
 
             if (response.isSuccess === false) {
                 toast({
-                    title: "Error",
+                    title: "Xảy ra lỗi",
                     description: response.message,
                     status: "error",
                     duration: 2500,
@@ -137,7 +136,7 @@ const LoginPage = () => {
         } catch (error) {
             if (error instanceof AxiosError) {
                 toast({
-                    title: "Error",
+                    title: "Xảy ra lỗi",
                     description: error.response?.data?.message || "An error occurred",
                     status: "error",
                     duration: 2500,
