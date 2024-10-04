@@ -8,23 +8,14 @@ interface Props {
     handleDeactivate: () => void;
 }
 
-const DeleteModal = ({ isOpen, onClose, type, handleDeactivate }: Props) => {
+const DeactivateModal = ({ isOpen, onClose, type, handleDeactivate }: Props) => {
 
     return (
         <Modal isOpen={isOpen} onClose={onClose} size="xl" isCentered>
             <ModalOverlay backdropFilter={'blur(5px)'} />
             <ModalContent>
-                {type === 'dentist' && (
-                    <ModalHeader fontSize='xl'>Deactivate Dentist Account</ModalHeader>
-                )}
-                {type === 'staff' && (
-                    <ModalHeader fontSize='xl'>Deactivate Staff Account</ModalHeader>
-                )}
-                {type === 'owner' && (
-                    <ModalHeader fontSize='xl'>Deactivate Owner Account</ModalHeader>
-                )}
-                {type === 'customer' && (
-                    <ModalHeader fontSize='xl'>Deactivate Customer Account</ModalHeader>
+                {type === 'account' && (
+                    <ModalHeader fontSize='xl'>Deactivate Account</ModalHeader>
                 )}
                 {(type === 'clinics' || type === 'clinic') && (
                     <ModalHeader fontSize='xl'>Deactivate Dental Clinic</ModalHeader>
@@ -34,7 +25,7 @@ const DeleteModal = ({ isOpen, onClose, type, handleDeactivate }: Props) => {
                 )}
                 <ModalCloseButton />
                 <ModalBody pt={6} pb='4rem' borderY={Border.tableBorder}>
-                    {(type === 'dentist' || type === 'staff' || type === 'owner' || type === 'customer') && (
+                    {(type === 'account') && (
                         <Text fontSize='lg'>Are you sure you want to deactivate this account?</Text>
                     )}
                     {type === 'clinics' && (
@@ -58,4 +49,4 @@ const DeleteModal = ({ isOpen, onClose, type, handleDeactivate }: Props) => {
     )
 }
 
-export default DeleteModal;
+export default DeactivateModal;

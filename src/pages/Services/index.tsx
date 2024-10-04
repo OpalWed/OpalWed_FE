@@ -64,7 +64,7 @@ const ServicePage = () => {
         //     });
         //     if (response.success) {
         //         toast({
-        //             title: "Success",
+        //             title: "Thành công",
         //             description: response.message,
         //             status: "success",
         //             duration: 2500,
@@ -74,7 +74,7 @@ const ServicePage = () => {
         //         refetch && refetch();
         //     } else {
         //         toast({
-        //             title: "Error",
+        //             title: "Xảy ra lỗi",
         //             description: response.message,
         //             status: "error",
         //             duration: 2500,
@@ -84,7 +84,7 @@ const ServicePage = () => {
         //     }
         // } catch (error: any) {
         //     toast({
-        //         title: "Error",
+        //         title: "Xảy ra lỗi",
         //         description: error.response?.data?.message || "An error occurred",
         //         status: "error",
         //         duration: 2500,

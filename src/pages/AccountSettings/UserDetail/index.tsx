@@ -31,7 +31,7 @@ const UserDetailPage = () => {
                 setUserData(response.data);
             } else {
                 toast({
-                    title: "Error",
+                    title: "Xảy ra lỗi",
                     description: response.message,
                     status: "error",
                     duration: 2500,

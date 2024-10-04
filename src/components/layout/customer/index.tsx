@@ -15,7 +15,7 @@ const Layout = () => {
     return (
         <>
             <Navbar />
-            <Stack mt={'147px'} minHeight={'calc(100vh - 96px - 236.8px)'}>
+            <Stack mt={'143.5px'} minHeight={'calc(100vh - 96px - 236.8px)'}>
                 <Outlet />
             </Stack>
             <Footer />

@@ -5,6 +5,54 @@ import { Avatar, HStack, Stack, Text } from "@chakra-ui/react";
 import { Color } from "../../../../styles/styles";
 import { useAuth } from "../../../../hooks/useAuth";
 import useProfile from "../../../../hooks/useProfile";
+import { Dropdown, MenuProps } from "antd";
+import { ArrowDropDown } from "@mui/icons-material";
+
+const productItems: MenuProps['items'] = [
+    {
+        key: '1',
+        label: (
+            <Link to={'/product/clothes'}>
+                Trang phục
+            </Link>
+        ),
+    },
+    {
+        key: '2',
+        label: (
+            <Link to={'/product/jewelry'}>
+                Trang sức
+            </Link>
+        ),
+    },
+];
+
+const conceptItems: MenuProps['items'] = [
+    {
+        key: '1',
+        label: (
+            <Link to={'/wedding-concept/europe'}>
+                Phong cách Châu Âu (Europe)
+            </Link>
+        ),
+    },
+    {
+        key: '2',
+        label: (
+            <Link to={'/wedding-concept/minimalist'}>
+                Phong cách tối giản (Minimalism)
+            </Link>
+        ),
+    },
+    {
+        key: '3',
+        label: (
+            <Link to={'/wedding-concept/vintage'}>
+                Phong cách cổ điển (Vintage)
+            </Link>
+        ),
+    },
+];
 
 const Navbar = () => {
     const { isAuthenticated } = useAuth();
@@ -18,7 +66,7 @@ const Navbar = () => {
             zIndex={10}
             sx={{ background: Color.darkBlue }}
         >
-            <Stack w={'7xl'} m={'auto'} gap={1} my={2} pos={'relative'}>
+            <Stack w={'7xl'} m={'auto'} gap={0} my={2} pos={'relative'}>
                 {isAuthenticated ? (
                     <HStack pos={'absolute'} top={0} right={0}>
                         <HStack>
@@ -49,7 +97,7 @@ const Navbar = () => {
                     </Link>
                 </HStack>
                 <HStack justify={'center'}>
-                    <HStack gap={60}>
+                    <HStack gap={32}>
                         <Link to={'/about-us'}>
                             <Text color={'white'} fontSize={18}>
                                 Về chúng tôi
@@ -60,7 +108,22 @@ const Navbar = () => {
                                 Dịch vụ
                             </Text>
                         </Link>
-
+                        <Dropdown menu={{ items: conceptItems }} placement="bottomLeft">
+                            <HStack cursor={'pointer'} color={'white'} gap={0} align={'flex-end'}>
+                                <Text color={'white'} fontSize={18}>
+                                    Ý tưởng tiệc cưới
+                                </Text>
+                                <ArrowDropDown />
+                            </HStack>
+                        </Dropdown>
+                        <Dropdown menu={{ items: productItems }} placement="bottomLeft">
+                            <HStack cursor={'pointer'} color={'white'} gap={0} align={'flex-end'}>
+                                <Text color={'white'} fontSize={18}>
+                                    Sản phẩm
+                                </Text>
+                                <ArrowDropDown />
+                            </HStack>
+                        </Dropdown>
                         <Link to={'/our-partners'}>
                             <Text color={'white'} fontSize={18}>
                                 Thành viên hợp tác

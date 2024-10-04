@@ -99,6 +99,20 @@
   background-color: #d9d8d8;
 }
 
+.ant-dropdown-menu {
+  padding: 0 !important;
+}
+
+.ant-dropdown-menu-item {
+  padding: 15px 30px !important;
+  font-size: 16px !important;
+  border-bottom: 1px solid gainsboro;
+}
+
+.ant-dropdown-menu-item:last-child {
+  border-bottom: none;
+}
+
 p {
   font-size: 18px;
 }

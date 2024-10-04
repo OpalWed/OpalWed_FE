@@ -189,7 +189,7 @@ const AboutPage = () => {
                     />
                 </HStack>
             </Stack>
-            <Card textAlign="center" w={'7xl'} mx={'auto'} pos={'relative'} mt={20} mb={'55rem'} bg={Color.lightYellow}>
+            {/* <Card textAlign="center" w={'7xl'} mx={'auto'} pos={'relative'} mt={20} mb={'55rem'} bg={Color.lightYellow}>
                 <CardHeader fontSize={36} fontWeight={600}>
                     MEET THE TEAM
                 </CardHeader>
@@ -234,7 +234,7 @@ const AboutPage = () => {
                     </SimpleGrid>
                 </CardBody>
                 <CardFooter></CardFooter>
-            </Card>
+            </Card> */}
         </>
     )
 }

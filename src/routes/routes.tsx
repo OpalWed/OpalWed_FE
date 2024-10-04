@@ -20,6 +20,8 @@ import ProfilePage from "../pages/Profile";
 import UserDetailPage from "../pages/AccountSettings/UserDetail";
 import UpdateProfilePage from "../pages/Profile/UpdateProfile";
 import UpdatePasswordPage from "../pages/Profile/UpdatePassword";
+import CustomerSystemLayout from "../components/layout/customer_system";
+import ForgotPasswordPage from "../pages/ForgotPassword";
 
 const routes = [
     {
@@ -34,10 +36,10 @@ const routes = [
         path: "/sign-up",
         element: <SignUpPage />,
     },
-    // {
-    //     path: "/forgot-password",
-    //     element: <ForgotPasswordPage />,
-    // },
+    {
+        path: "/forgot-password",
+        element: <ForgotPasswordPage />,
+    },
     {
         path: "/",
         element: <Layout />,
@@ -45,6 +47,9 @@ const routes = [
             { index: true, element: <HomePage /> },
             { path: "about-us", element: <AboutPage /> },
             { path: "our-services", element: <OurServicesPage /> },
+            { path: "wedding-concept/:concept", element: <ContactPage /> },
+            { path: "product/clothes", element: <OurPartnersPage /> },
+            { path: "product/jewelry", element: <ContactPage /> },
             { path: "our-partners", element: <OurPartnersPage /> },
             { path: "contact", element: <ContactPage /> },
         ],
@@ -73,7 +78,7 @@ const routes = [
     },
     {
         path: "/",
-        element: <SystemLayout />,
+        element: <CustomerSystemLayout />,
         children: [
             { path: "profile", element: <ProfilePage /> },
             { path: "profile/update-profile", element: <UpdateProfilePage /> },

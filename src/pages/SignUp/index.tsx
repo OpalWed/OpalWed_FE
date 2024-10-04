@@ -1,4 +1,4 @@
-import { Card, CardBody, Text, Stack, Button, Box, FormControl, FormLabel, Input, useToast, InputGroup, InputRightElement, Divider, AbsoluteCenter, HStack, Icon, Heading } from "@chakra-ui/react";
+import { Card, CardBody, Text, Stack, Button, Box, FormControl, FormLabel, Input, useToast, InputGroup, InputRightElement, Divider, AbsoluteCenter, HStack, Icon, Heading, useDisclosure } from "@chakra-ui/react";
 import { Border } from "../../styles/styles";
 import { Link, useNavigate } from "react-router-dom";
 import { changeTabTitle } from "../../utils/changeTabTitle";
@@ -9,6 +9,8 @@ import { FcGoogle } from "react-icons/fc";
 import { AxiosError } from "axios";
 import ApiClient from "../../services/apiClient";
 import { useGoogleLogin } from "@react-oauth/google";
+import VerifyModal from "../../components/modal/verify";
+import LoadingModal from "../../components/modal/loading";
 
 const SignUpPage = () => {
     const [email, setEmail] = useState<string>("");
@@ -19,6 +21,8 @@ const SignUpPage = () => {
     const [fullName, setFullName] = useState<string>("");
     const [phone, setPhone] = useState<string>("");
     const [address, setAddress] = useState<string>("");
+    const { isOpen: isOpenLoading, onClose: onCloseLoading, onOpen: onOpenLoading } = useDisclosure();
+    const { isOpen: isOpenVerify, onClose: onCloseVerify, onOpen: onOpenVerify } = useDisclosure();
     const emailRef = useRef<HTMLInputElement>(null);
     const toast = useToast();
     const navigate = useNavigate();
@@ -28,7 +32,7 @@ const SignUpPage = () => {
         },
         onError: () => {
             toast({
-                title: "Sign In Error",
+                title: "Xảy ra lỗi",
                 description: "Sign up by Google failed. Try again!!!",
                 status: "error",
                 duration: 2500,
@@ -62,7 +66,7 @@ const SignUpPage = () => {
                 // }
             } else {
                 toast({
-                    title: "Error",
+                    title: "Xảy ra lỗi",
                     description: response.message,
                     status: "error",
                     duration: 2500,
@@ -71,10 +75,9 @@ const SignUpPage = () => {
                 });
             }
         } catch (error) {
-
             if (error instanceof AxiosError) {
                 toast({
-                    title: "Error",
+                    title: "Xảy ra lỗi",
                     description: error.response?.data?.message || "An error occurred",
                     status: "error",
                     duration: 2500,
@@ -85,11 +88,47 @@ const SignUpPage = () => {
         }
     };
 
+    const getVerifyCode = async (email: string) => {
+        const api = new ApiClient<any>('/auth/requestOTP');
+        try {
+            const response = await api.getUnauthen({
+                params: {
+                    email
+                }
+            });
+            if (!response.isSuccess) {
+                toast({
+                    title: "Xảy ra lỗi",
+                    description: response.message,
+                    status: "error",
+                    duration: 2500,
+                    position: 'top',
+                    isClosable: true,
+                });
+                return;
+            }
+        } catch (error) {
+            if (error instanceof AxiosError) {
+                toast({
+                    title: "Xảy ra lỗi",
+                    description: error.response?.data?.message || "Đã có lỗi xảy ra",
+                    status: "error",
+                    duration: 2500,
+                    position: 'top',
+                    isClosable: true,
+                });
+                return
+            }
+        } finally {
+            onCloseLoading();
+        }
+    }
+
     const handleSignUp = async (e: FormEvent) => {
         e.preventDefault();
         if (password !== confirmPassword) {
             toast({
-                title: "Error",
+                title: "Xảy ra lỗi",
                 description: "Xác nhận mật khẩu phải đúng với mật khẩu",
                 status: "error",
                 duration: 2500,
@@ -98,6 +137,7 @@ const SignUpPage = () => {
             });
             return;
         }
+        onOpenLoading();
         const api = new ApiClient<any>("/auth/register");
         const data = {
             email,
@@ -110,18 +150,11 @@ const SignUpPage = () => {
         try {
             const response = await api.postUnauthen(data);
             if (response.isSuccess) {
-                toast({
-                    title: "Success",
-                    description: response.message,
-                    status: "success",
-                    duration: 2500,
-                    position: 'top',
-                    isClosable: true,
-                });
-                navigate('/login');
+                getVerifyCode(email);
+                onOpenVerify();
             } else {
                 toast({
-                    title: "Error",
+                    title: "Xảy ra lỗi",
                     description: response.message,
                     status: "error",
                     duration: 2500,
@@ -132,7 +165,7 @@ const SignUpPage = () => {
         } catch (error) {
             if (error instanceof AxiosError)
                 toast({
-                    title: "Error",
+                    title: "Xảy ra lỗi",
                     description: error.response?.data?.message || "An error occurred",
                     status: "error",
                     duration: 2500,
@@ -303,6 +336,15 @@ const SignUpPage = () => {
                     </Stack>
                 </CardBody>
             </Card>
+            <VerifyModal
+                isOpen={isOpenVerify}
+                onClose={onCloseVerify}
+                email={email}
+            />
+            <LoadingModal
+                isOpen={isOpenLoading}
+                onClose={onCloseLoading}
+            />
         </Stack>
     );
 };
