@@ -10,7 +10,8 @@ export const Color = {
 
 export const Border = {
     tableBorder: '1px solid #8080808f',
-    lightBorder: '1px solid gainsboro'
+    lightBorder: '1px solid gainsboro',
+    thinLightBorder: '1px solid #dcdcdc6e',
 };
 
 export const Shadow = {

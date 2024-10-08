@@ -80,60 +80,64 @@ const Navbar = () => {
                     <HStack pos={'absolute'} top={0} right={0}>
                         <HStack>
                             <Link to={'/login'}>
-                                <Text color={'white'} fontSize={15}>Đăng nhập</Text>
+                                <Text color={'gainsboro'} fontSize={15}>Đăng nhập</Text>
                             </Link>
-                            <Text color={'white'}>/</Text>
+                            <Text color={'gainsboro'}>/</Text>
                             <Link to={'/sign-up'}>
-                                <Text color={'white'} fontSize={15}>Đăng ký</Text>
+                                <Text color={'gainsboro'} fontSize={15}>Đăng ký</Text>
                             </Link>
                         </HStack>
                     </HStack>
                 )}
                 <HStack justify={'center'}>
-                    <Link to={'/'}>
-                        <Box>
-                            <Logo height="100px" width="100px" />
+                    <HStack gap={24} align={'flex-end'}>
+                        <HStack gap={20}>
+                            <Link to={'/about-us'}>
+                                <Text color={'gainsboro'} fontSize={18}>
+                                    Về chúng tôi
+                                </Text>
+                            </Link>
+                            <Link to={'/our-services'}>
+                                <Text color={'gainsboro'} fontSize={18}>
+                                    Dịch vụ
+                                </Text>
+                            </Link>
+                            <Dropdown menu={{ items: conceptItems }} placement="bottomLeft">
+                                <HStack cursor={'pointer'} color={'gainsboro'} gap={0} align={'flex-end'}>
+                                    <Text color={'gainsboro'} fontSize={18}>
+                                        Ý tưởng tiệc cưới
+                                    </Text>
+                                    <ArrowDropDown />
+                                </HStack>
+                            </Dropdown>
+                        </HStack>
+                        <Box mb={0}>
+                            <Link to={'/'}>
+                                <Box>
+                                    <Logo height="100px" width="100px" />
+                                </Box>
+                            </Link>
                         </Box>
-                    </Link>
-                </HStack>
-                <HStack justify={'center'}>
-                    <HStack gap={32}>
-                        <Link to={'/about-us'}>
-                            <Text color={'white'} fontSize={18}>
-                                Về chúng tôi
-                            </Text>
-                        </Link>
-                        <Link to={'/our-services'}>
-                            <Text color={'white'} fontSize={18}>
-                                Dịch vụ
-                            </Text>
-                        </Link>
-                        <Dropdown menu={{ items: conceptItems }} placement="bottomLeft">
-                            <HStack cursor={'pointer'} color={'white'} gap={0} align={'flex-end'}>
-                                <Text color={'white'} fontSize={18}>
-                                    Ý tưởng tiệc cưới
+                        <HStack gap={20}>
+                            <Dropdown menu={{ items: productItems }} placement="bottomLeft">
+                                <HStack cursor={'pointer'} color={'gainsboro'} gap={0} align={'flex-end'}>
+                                    <Text color={'gainsboro'} fontSize={18}>
+                                        Sản phẩm
+                                    </Text>
+                                    <ArrowDropDown />
+                                </HStack>
+                            </Dropdown>
+                            <Link to={'/our-partners'}>
+                                <Text color={'gainsboro'} fontSize={18}>
+                                    Thành viên hợp tác
                                 </Text>
-                                <ArrowDropDown />
-                            </HStack>
-                        </Dropdown>
-                        <Dropdown menu={{ items: productItems }} placement="bottomLeft">
-                            <HStack cursor={'pointer'} color={'white'} gap={0} align={'flex-end'}>
-                                <Text color={'white'} fontSize={18}>
-                                    Sản phẩm
+                            </Link>
+                            <Link to={'/contact'}>
+                                <Text color={'gainsboro'} fontSize={18}>
+                                    Liên hệ
                                 </Text>
-                                <ArrowDropDown />
-                            </HStack>
-                        </Dropdown>
-                        <Link to={'/our-partners'}>
-                            <Text color={'white'} fontSize={18}>
-                                Thành viên hợp tác
-                            </Text>
-                        </Link>
-                        <Link to={'/contact'}>
-                            <Text color={'white'} fontSize={18}>
-                                Liên hệ
-                            </Text>
-                        </Link>
+                            </Link>
+                        </HStack>
                     </HStack>
                 </HStack>
             </Stack>
