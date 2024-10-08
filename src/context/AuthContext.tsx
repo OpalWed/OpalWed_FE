@@ -36,7 +36,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         }
     }, [accessToken])
 
-
     return (
         <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated, role, setRole }}>
             {children}

@@ -1,4 +1,4 @@
-import { Card, CardBody, Text, Stack, Button, Box, FormControl, FormLabel, Input, useToast, InputGroup, InputRightElement, Divider, AbsoluteCenter, HStack, Icon, Heading, useDisclosure } from "@chakra-ui/react";
+import { Card, CardBody, Text, Stack, Button, Box, FormControl, FormLabel, Input, useToast, InputGroup, InputRightElement, Divider, AbsoluteCenter, HStack, Icon, Heading, useDisclosure, FormErrorMessage } from "@chakra-ui/react";
 import { Border } from "../../styles/styles";
 import { Link, useNavigate } from "react-router-dom";
 import { changeTabTitle } from "../../utils/changeTabTitle";
@@ -21,6 +21,12 @@ const SignUpPage = () => {
     const [fullName, setFullName] = useState<string>("");
     const [phone, setPhone] = useState<string>("");
     const [address, setAddress] = useState<string>("");
+    const [emailError, setEmailError] = useState<string>("");
+    const [passwordError, setPasswordError] = useState<string>("");
+    const [confirmPasswordError, setConfirmPasswordError] = useState<string>("");
+    const [fullNameError, setFullNameError] = useState<string>("");
+    const [phoneError, setPhoneError] = useState<string>("");
+    const [addressError, setAddressError] = useState<string>("");
     const { isOpen: isOpenLoading, onClose: onCloseLoading, onOpen: onOpenLoading } = useDisclosure();
     const { isOpen: isOpenVerify, onClose: onCloseVerify, onOpen: onOpenVerify } = useDisclosure();
     const emailRef = useRef<HTMLInputElement>(null);
@@ -126,15 +132,14 @@ const SignUpPage = () => {
 
     const handleSignUp = async (e: FormEvent) => {
         e.preventDefault();
+        setEmailError("");
+        setPasswordError("");
+        setConfirmPasswordError("");
+        setFullNameError("");
+        setPhoneError("");
+        setAddressError("");
         if (password !== confirmPassword) {
-            toast({
-                title: "Xảy ra lỗi",
-                description: "Xác nhận mật khẩu phải đúng với mật khẩu",
-                status: "error",
-                duration: 2500,
-                position: 'top',
-                isClosable: true,
-            });
+            setConfirmPasswordError("Xác nhận mật khẩu phải giống với mật khẩu")
             return;
         }
         onOpenLoading();
@@ -149,13 +154,20 @@ const SignUpPage = () => {
 
         try {
             const response = await api.postUnauthen(data);
+            console.log(response);
+
             if (response.isSuccess) {
                 getVerifyCode(email);
                 onOpenVerify();
             } else {
+                setEmailError(response.data.errors.email || '');
+                setPasswordError(response.data.errors.password || '');
+                setFullNameError(response.data.errors.fullName || '');
+                setPhoneError(response.data.errors.phone || '');
+                setAddressError(response.data.errors.address || '');
                 toast({
                     title: "Xảy ra lỗi",
-                    description: response.message,
+                    description: "Đăng ký không thành công",
                     status: "error",
                     duration: 2500,
                     position: 'top',
@@ -172,6 +184,8 @@ const SignUpPage = () => {
                     position: 'top',
                     isClosable: true,
                 });
+        } finally {
+            onCloseLoading();
         }
     }
 
@@ -219,7 +233,7 @@ const SignUpPage = () => {
                         >
                             <Stack flex={1} gap={3}>
                                 <Heading fontSize={18} fontWeight={600}>Thông tin tài khoản</Heading>
-                                <FormControl id="email" isRequired>
+                                <FormControl id="email" isRequired isInvalid={!!emailError}>
                                     <FormLabel pl={1}>Email</FormLabel>
                                     <Input
                                         type="text"
@@ -229,8 +243,9 @@ const SignUpPage = () => {
                                         placeholder="Email"
                                         required
                                     />
+                                    {emailError && <FormErrorMessage mt={0} ml={2}>{emailError}</FormErrorMessage>}
                                 </FormControl>
-                                <FormControl id="password" isRequired>
+                                <FormControl id="password" isRequired isInvalid={!!passwordError}>
                                     <FormLabel pl={1}>Mật khẩu</FormLabel>
                                     <InputGroup>
                                         <Input
@@ -244,27 +259,29 @@ const SignUpPage = () => {
                                             {!showPass ? <FaEye /> : <FaEyeSlash />}
                                         </InputRightElement>
                                     </InputGroup>
+                                    {passwordError && <FormErrorMessage mt={0} ml={2}>{passwordError}</FormErrorMessage>}
                                 </FormControl>
-                                <FormControl id="confirmPassword" isRequired>
+                                <FormControl id="confirmPassword" isRequired isInvalid={!!confirmPasswordError}>
                                     <FormLabel pl={1}>Xác nhận mật khẩu</FormLabel>
                                     <InputGroup>
                                         <Input
-                                            type={showPass ? 'text' : 'password'}
+                                            type={showConfirmPass ? 'text' : 'password'}
                                             value={confirmPassword}
                                             onChange={(e) => setConfirmPassword(e.target.value)}
                                             placeholder="Xác nhận mật khẩu"
                                             required
                                         />
                                         <InputRightElement width='3.5rem' cursor='pointer' onClick={() => setShowConfirmPass(!showConfirmPass)}>
-                                            {!showPass ? <FaEye /> : <FaEyeSlash />}
+                                            {!showConfirmPass ? <FaEye /> : <FaEyeSlash />}
                                         </InputRightElement>
                                     </InputGroup>
+                                    <FormErrorMessage mt={0} ml={2}>{confirmPasswordError}</FormErrorMessage>
                                 </FormControl>
                             </Stack>
 
                             <Stack flex={1} gap={3}>
                                 <Heading fontSize={18} fontWeight={600}>Thông tin cá nhân</Heading>
-                                <FormControl id="fullName" isRequired>
+                                <FormControl id="fullName" isRequired isInvalid={!!fullNameError}>
                                     <FormLabel pl={1}>Họ và Tên</FormLabel>
                                     <Input
                                         type="text"
@@ -273,8 +290,9 @@ const SignUpPage = () => {
                                         placeholder="Họ và tên"
                                         required
                                     />
+                                    {fullNameError && <FormErrorMessage mt={0} ml={2}>{fullNameError}</FormErrorMessage>}
                                 </FormControl>
-                                <FormControl id="phone" isRequired>
+                                <FormControl id="phone" isRequired isInvalid={!!phoneError}>
                                     <FormLabel pl={1}>Số điện thoại</FormLabel>
                                     <Input
                                         type="text"
@@ -283,8 +301,9 @@ const SignUpPage = () => {
                                         placeholder="Số điện thoại"
                                         required
                                     />
+                                    {phoneError && <FormErrorMessage mt={0} ml={2}>{phoneError}</FormErrorMessage>}
                                 </FormControl>
-                                <FormControl id="address" isRequired>
+                                <FormControl id="address" isRequired isInvalid={!!addressError}>
                                     <FormLabel pl={1}>Địa chỉ</FormLabel>
                                     <Input
                                         type="text"
@@ -293,6 +312,7 @@ const SignUpPage = () => {
                                         placeholder="Địa chỉ"
                                         required
                                     />
+                                    {addressError && <FormErrorMessage mt={0} ml={2}>{addressError}</FormErrorMessage>}
                                 </FormControl>
                             </Stack>
                         </HStack>

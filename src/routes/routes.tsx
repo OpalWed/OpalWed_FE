@@ -22,6 +22,13 @@ import UpdateProfilePage from "../pages/Profile/UpdateProfile";
 import UpdatePasswordPage from "../pages/Profile/UpdatePassword";
 import CustomerSystemLayout from "../components/layout/customer_system";
 import ForgotPasswordPage from "../pages/ForgotPassword";
+import ProductPage from "../pages/Product";
+import ProductDetailPage from "../pages/Product/ProductDetail";
+import WeddingConceptPage from "../pages/WeddingConcept";
+import AccessoriesPage from "../pages/WeddingDesign/pages/Accessories";
+import ClothesPage from "../pages/WeddingDesign/pages/Clothes";
+import RestaurantsPage from "../pages/WeddingDesign/pages/Restaurants";
+import ConfirmDesignPage from "../pages/WeddingDesign/pages/ConfirmDesign";
 
 const routes = [
     {
@@ -47,9 +54,13 @@ const routes = [
             { index: true, element: <HomePage /> },
             { path: "about-us", element: <AboutPage /> },
             { path: "our-services", element: <OurServicesPage /> },
-            { path: "wedding-concept/:concept", element: <ContactPage /> },
-            { path: "product/clothes", element: <OurPartnersPage /> },
-            { path: "product/jewelry", element: <ContactPage /> },
+            { path: "wedding-concept/:concept", element: <WeddingConceptPage /> },
+            { path: "wedding-concept/:concept/:segment", element: <AccessoriesPage /> },
+            { path: "wedding-concept/:concept/:segment/clothes", element: <ClothesPage /> },
+            { path: "wedding-concept/:concept/:segment/restaurants", element: <RestaurantsPage /> },
+            { path: "wedding-concept/:concept/:segment/confirm-design", element: <ConfirmDesignPage /> },
+            { path: "product/:utility", element: <ProductPage /> },
+            { path: "product/:utility/detail", element: <ProductDetailPage /> },
             { path: "our-partners", element: <OurPartnersPage /> },
             { path: "contact", element: <ContactPage /> },
         ],
