@@ -22,6 +22,16 @@ const CarouselSlider = ({ imageList }: Prop) => {
     };
     return (
         <Slider {...settings}>
+            {imageList.map((image) => (
+                <Image
+                    alt={"Slider Image"}
+                    objectFit={"cover"}
+                    h={'60vh'}
+                    borderRadius={5}
+                    p={0}
+                    src={image}
+                />
+            ))}
             <Image
                 alt={"Slider Image"}
                 objectFit={"cover"}

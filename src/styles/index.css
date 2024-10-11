@@ -147,6 +147,37 @@ p {
   display: none !important;
 }
 
+.custom-prev,
+.custom-next {
+  position: absolute;
+  color: rgba(190, 190, 190, 0.6);
+  border: none;
+  padding: 8px 13px;
+  font-size: 24px;
+  border-radius: 100%;
+  transition: background-color 0.3s, transform 0.3s;
+  top: 35%;
+}
+
+.custom-prev {
+  left: -60px;
+}
+
+.custom-next {
+  right: -60px;
+}
+
+.custom-prev:hover,
+.custom-next:hover {
+  background-color: rgba(210, 210, 210, 0.18);
+}
+
+.custom-prev i,
+.custom-next i {
+  font-size: 20px;
+  color: white;
+}
+
 .slick-slider .slick-list {
   margin: 0;
 }

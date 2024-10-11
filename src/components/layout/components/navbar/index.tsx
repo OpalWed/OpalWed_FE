@@ -8,25 +8,6 @@ import useProfile from "../../../../hooks/useProfile";
 import { Dropdown, MenuProps } from "antd";
 import { ArrowDropDown } from "@mui/icons-material";
 
-const productItems: MenuProps['items'] = [
-    {
-        key: '1',
-        label: (
-            <Link to={'/product/clothes'}>
-                Trang phục
-            </Link>
-        ),
-    },
-    {
-        key: '2',
-        label: (
-            <Link to={'/product/jewelry'}>
-                Trang sức
-            </Link>
-        ),
-    },
-];
-
 const conceptItems: MenuProps['items'] = [
     {
         key: '1',
@@ -90,8 +71,8 @@ const Navbar = () => {
                     </HStack>
                 )}
                 <HStack justify={'center'}>
-                    <HStack gap={24} align={'flex-end'}>
-                        <HStack gap={20}>
+                    <HStack gap={40} align={'flex-end'}>
+                        <HStack gap={60}>
                             <Link to={'/about-us'}>
                                 <Text color={'gainsboro'} fontSize={18}>
                                     Về chúng tôi
@@ -102,14 +83,6 @@ const Navbar = () => {
                                     Dịch vụ
                                 </Text>
                             </Link>
-                            <Dropdown menu={{ items: conceptItems }} placement="bottomLeft">
-                                <HStack cursor={'pointer'} color={'gainsboro'} gap={0} align={'flex-end'}>
-                                    <Text color={'gainsboro'} fontSize={18}>
-                                        Ý tưởng tiệc cưới
-                                    </Text>
-                                    <ArrowDropDown />
-                                </HStack>
-                            </Dropdown>
                         </HStack>
                         <Box mb={0}>
                             <Link to={'/'}>
@@ -118,20 +91,15 @@ const Navbar = () => {
                                 </Box>
                             </Link>
                         </Box>
-                        <HStack gap={20}>
-                            <Dropdown menu={{ items: productItems }} placement="bottomLeft">
+                        <HStack gap={60}>
+                            <Dropdown menu={{ items: conceptItems }} placement="bottomLeft">
                                 <HStack cursor={'pointer'} color={'gainsboro'} gap={0} align={'flex-end'}>
                                     <Text color={'gainsboro'} fontSize={18}>
-                                        Sản phẩm
+                                        Ý tưởng tiệc cưới
                                     </Text>
                                     <ArrowDropDown />
                                 </HStack>
                             </Dropdown>
-                            <Link to={'/our-partners'}>
-                                <Text color={'gainsboro'} fontSize={18}>
-                                    Thành viên hợp tác
-                                </Text>
-                            </Link>
                             <Link to={'/contact'}>
                                 <Text color={'gainsboro'} fontSize={18}>
                                     Liên hệ

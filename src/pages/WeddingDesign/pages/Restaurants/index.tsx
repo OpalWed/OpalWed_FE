@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Button, HStack, SimpleGrid, Stack, useDisclosure } from "@chakra-ui/react";
 import { ArrowBack, ArrowForward } from "@mui/icons-material";
 import { changeTabTitle } from "../../../../utils/changeTabTitle";
@@ -7,7 +7,7 @@ import ProductItem from "../../components/product_item";
 import NotifyDesignModal from "../../../../components/modal/notify_design";
 
 const RestaurantsPage = () => {
-    const param = useParams<{ concept: string }>();
+    // const param = useParams<{ concept: string }>();
     const navigate = useNavigate();
     const { isOpen, onClose, onOpen } = useDisclosure();
 

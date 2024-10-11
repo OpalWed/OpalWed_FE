@@ -1,4 +1,4 @@
-import { AbsoluteCenter, Box, Divider, Heading, HStack, Select, SimpleGrid, Stack, Text } from "@chakra-ui/react"
+import { AbsoluteCenter, Box, Divider, HStack, Select, SimpleGrid, Stack } from "@chakra-ui/react"
 import ProductItem from "../../components/product_item"
 import { useEffect } from "react";
 import { changeTabTitle } from "../../utils/changeTabTitle";

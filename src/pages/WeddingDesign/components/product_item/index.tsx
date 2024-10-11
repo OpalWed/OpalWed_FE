@@ -1,9 +1,7 @@
 import { Box, Image, Stack, Text, useDisclosure } from '@chakra-ui/react';
-import { useNavigate } from 'react-router-dom';
 import ProductDetailModal from '../../../../components/modal/product_detail';
 
 const ProductItem = () => {
-    const navigate = useNavigate();
     const { isOpen, onClose, onOpen } = useDisclosure();
 
     return (
