@@ -1,4 +1,4 @@
-import { Box, Card, CardBody, CardFooter, CardHeader, Heading, HStack, Image, SimpleGrid, Stack, Text } from "@chakra-ui/react"
+import { Box, Heading, HStack, Image, Stack, Text } from "@chakra-ui/react"
 import CarouselSlider from "../../components/slider"
 import { Color, Shadow } from "../../styles/styles"
 import { useEffect } from "react"
@@ -8,39 +8,6 @@ const AboutPage = () => {
     const imageList: string[] = [
 
     ]
-
-    const teamMembers = [
-        {
-            name: 'CEO Nguyen Bao Long',
-            position: 'Operational Strategy General Management',
-            imageSrc: 'image 18.png',
-        },
-        {
-            name: 'CMO Bui Lam Phuong Nhi',
-            position: 'Project Manager Marketing',
-            imageSrc: 'image 18.png',
-        },
-        {
-            name: 'CFO Le Ngoc Tam Nhu',
-            position: 'Operational Strategy General Management',
-            imageSrc: 'image 18.png',
-        },
-        {
-            name: 'CTO Nguyen Cao Minh',
-            position: 'Online Platform Management',
-            imageSrc: 'image 18.png',
-        },
-        {
-            name: 'CIO Nguyen Hoang Phuc',
-            position: 'Online Platform Development',
-            imageSrc: 'image 18.png',
-        },
-        {
-            name: 'CDO Nguyen Le Ngoc Cuong',
-            position: 'Digital Transformation Management',
-            imageSrc: 'image 18.png',
-        },
-    ];
 
     useEffect(() => {
         changeTabTitle('Về chúng tôi');
@@ -189,52 +156,56 @@ const AboutPage = () => {
                     />
                 </HStack>
             </Stack>
-            {/* <Card textAlign="center" w={'7xl'} mx={'auto'} pos={'relative'} mt={20} mb={'55rem'} bg={Color.lightYellow}>
-                <CardHeader fontSize={36} fontWeight={600}>
-                    MEET THE TEAM
-                </CardHeader>
-                <CardBody>
-                    <Image src="image 18.png" alt="Team Group" mb={8} h={550} w={'full'} />
-                    <SimpleGrid
-                        columns={3}
-                        spacingX={24}
-                        pos={'absolute'}
-                        w={'6xl'}
-                        px={6}
-                        left="50%"
-                        transform="translate(-50%)"
-                    >
-                        {teamMembers.map((member, index) => (
-                            <Box key={index} pos={'relative'} mb={24}>
-                                <Image
-                                    src={member.imageSrc}
-                                    alt={member.name}
-                                    borderRadius="md"
-                                    mb={4}
-                                    h={350}
-                                    w={310}
-                                    shadow={'lg'}
-                                />
-                                <Stack
-                                    w={64}
-                                    h={129}
-                                    bg={Color.lightYellow}
-                                    p={5}
-                                    pos={'absolute'}
-                                    bottom={-16}
-                                    left={'50%'}
-                                    transform="translate(-50%)"
-                                    justify={'center'}
-                                >
-                                    <Text fontWeight="bold" color={'#0C2948'}>{member.name}</Text>
-                                    <Text>{member.position}</Text>
-                                </Stack>
-                            </Box>
-                        ))}
-                    </SimpleGrid>
-                </CardBody>
-                <CardFooter></CardFooter>
-            </Card> */}
+            <Stack w={'5xl'} mx={'auto'} my={16} gap={24}>
+                <HStack justify={'space-between'} gap={20}>
+                    <Image
+                        src="./image 18.png"
+                        alt="Wedding"
+                        borderRadius="md"
+                        objectFit="cover"
+                        h="450px"
+                        flex={1}
+                    />
+                    <Stack flex={2} px={16} py={10} align={'center'} bg={Color.lightYellow} gap={8}>
+                        <Heading fontSize={30}>Tổ chức tiệc cưới</Heading>
+                        <Text>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ac dignissim leo. Cras in velit tristique lectus dignissim bibendum fermentum sit amet leo. Etiam vulputate, purus in porta convallis, urna est hendrerit felis, id lobortis leo dui cursus lacus. Vivamus ac tristique eros, vel egestas augue. Etiam eu ultricies risus. Nam imperdiet sapien lacus, eu lobortis diam laoreet id. Curabitur sodales hendrerit urna, sed efficitur sem dictum vel. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut ut volutpat mi, et porttitor justo. Fusce eu velit vel quam ultrices tristique.
+                        </Text>
+                    </Stack>
+                </HStack>
+                <HStack justify={'space-between'} gap={20}>
+                    <Stack flex={2} px={16} py={10} align={'center'} bg={Color.lightYellow} gap={8}>
+                        <Heading fontSize={30}>So sánh & chọn nhà cung cấp</Heading>
+                        <Text>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ac dignissim leo. Cras in velit tristique lectus dignissim bibendum fermentum sit amet leo. Etiam vulputate, purus in porta convallis, urna est hendrerit felis, id lobortis leo dui cursus lacus. Vivamus ac tristique eros, vel egestas augue. Etiam eu ultricies risus. Nam imperdiet sapien lacus, eu lobortis diam laoreet id. Curabitur sodales hendrerit urna, sed efficitur sem dictum vel. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut ut volutpat mi, et porttitor justo. Fusce eu velit vel quam ultrices tristique.
+                        </Text>
+                    </Stack>
+                    <Image
+                        src="./image 18.png"
+                        alt="Wedding"
+                        borderRadius="md"
+                        objectFit="cover"
+                        h="450px"
+                        flex={1}
+                    />
+                </HStack>
+                <HStack justify={'space-between'} gap={20}>
+                    <Image
+                        src="./image 18.png"
+                        alt="Wedding"
+                        borderRadius="md"
+                        objectFit="cover"
+                        h="450px"
+                        flex={1}
+                    />
+                    <Stack flex={2} px={16} py={10} align={'center'} bg={Color.lightYellow} gap={8}>
+                        <Heading fontSize={30}>Tư vấn tiệc cưới</Heading>
+                        <Text>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ac dignissim leo. Cras in velit tristique lectus dignissim bibendum fermentum sit amet leo. Etiam vulputate, purus in porta convallis, urna est hendrerit felis, id lobortis leo dui cursus lacus. Vivamus ac tristique eros, vel egestas augue. Etiam eu ultricies risus. Nam imperdiet sapien lacus, eu lobortis diam laoreet id. Curabitur sodales hendrerit urna, sed efficitur sem dictum vel. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut ut volutpat mi, et porttitor justo. Fusce eu velit vel quam ultrices tristique.
+                        </Text>
+                    </Stack>
+                </HStack>
+            </Stack>
         </>
     )
 }

@@ -7,7 +7,6 @@ const ConfirmDesignPage = () => {
 
     return (
         <HStack gap={20} my={10} w={'6xl'} mx={'auto'} align={'flex-start'}>
-            {/* Cart Container */}
             <Box
                 flex="1"
                 m="10px"
@@ -48,9 +47,7 @@ const ConfirmDesignPage = () => {
                     Thống kê
                 </Text>
                 <Divider />
-                {/* Customer Information */}
                 <Stack p="15px" mb="10px" gap={4}>
-                    {/* Payment Section */}
                     <Stack gap={0}>
                         <Text>Trang phục</Text>
                         <UnorderedList ml={12}>

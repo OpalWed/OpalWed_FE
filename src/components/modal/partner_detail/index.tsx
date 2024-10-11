@@ -1,6 +1,6 @@
 import { Button, FormControl, FormLabel, HStack, Heading, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Stack } from "@chakra-ui/react"
-import { useEffect, useState } from "react"
-import Loading from "../../loading";
+import ApiClient from "../../../services/apiClient";
+import { useEffect } from "react";
 
 interface Props {
     isOpen: boolean;
@@ -9,6 +9,18 @@ interface Props {
 }
 
 const PartnerDetailModal = ({ isOpen, onClose, id }: Props) => {
+
+    const getPartnerDetail = async () => {
+        const api = new ApiClient<any>(`/partner`);
+        const response = await api.getDetail(id);
+        if (response) {
+
+        }
+    }
+
+    useEffect(() => {
+        getPartnerDetail();
+    })
 
     return (
         <Modal isOpen={isOpen} onClose={onClose} isCentered size={'5xl'}>

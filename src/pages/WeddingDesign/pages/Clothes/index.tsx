@@ -1,12 +1,12 @@
 import { useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Button, HStack, SimpleGrid, Stack } from "@chakra-ui/react";
 import { ArrowBack, ArrowForward } from "@mui/icons-material";
 import { changeTabTitle } from "../../../../utils/changeTabTitle";
 import ProductItem from "../../components/product_item";
 
 const ClothesPage = () => {
-    const param = useParams<{ concept: string }>();
+    // const param = useParams<{ concept: string }>();
     const navigate = useNavigate();
 
     useEffect(() => {

@@ -1,3 +1,5 @@
+export const today = new Date().toISOString().split('T')[0];
+
 export const formatTime = (time: string): string => {
     const parts = time.split(':');
 

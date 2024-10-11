@@ -1,8 +1,7 @@
-import { Button, Card, CardHeader, Divider, Heading, HStack, Input, InputGroup, InputLeftElement, Stack, Table, TableContainer, Tag, TagLabel, Tbody, Td, Th, Thead, Tooltip, Tr, useDisclosure, useToast } from "@chakra-ui/react";
+import { Button, Card, CardHeader, Divider, Heading, HStack, Input, InputGroup, InputLeftElement, Stack, Table, TableContainer, Tag, TagLabel, Tbody, Td, Th, Thead, Tooltip, Tr, useDisclosure } from "@chakra-ui/react";
 import { FaArrowRightArrowLeft, FaEye, FaPlus } from "react-icons/fa6";
 import { useEffect, useRef, useState } from "react";
 import { BsSearch } from "react-icons/bs";
-import { useNavigate } from "react-router";
 import { changeTabTitle } from "../../utils/changeTabTitle";
 import { Shadow } from "../../styles/styles";
 import PartnerDetailModal from "../../components/modal/partner_detail";
@@ -11,12 +10,9 @@ import ChangeStatusModal from "../../components/modal/change_status";
 const ServicePage = () => {
     const ref = useRef<HTMLInputElement>(null);
     const [keyword, setKeyword] = useState<string>('');
-    const [approve, setApprove] = useState<boolean>(false);
     const [id, setId] = useState<number>(0);
     const { isOpen: isOpenChange, onClose: onCloseChange, onOpen: onOpenChange } = useDisclosure();
     const { isOpen: isOpenDetail, onClose: onCloseDetail, onOpen: onOpenDetail } = useDisclosure();
-    const toast = useToast();
-    const navigate = useNavigate();
 
     const partners = [
         {
@@ -53,48 +49,6 @@ const ServicePage = () => {
     let filteredPartners = partners.filter((partner) => {
         return partner.partnerName.toLowerCase().includes(keyword.toLowerCase())
     })
-
-    const handleApprove = async () => {
-        // const api = new ApiClient<any>(`/blog/approval`);
-        // try {
-        //     const response = await api.createWithId(id, {
-        //         params: {
-        //             isApproved: approve
-        //         }
-        //     });
-        //     if (response.success) {
-        //         toast({
-        //             title: "Thành công",
-        //             description: response.message,
-        //             status: "success",
-        //             duration: 2500,
-        //             position: 'top',
-        //             isClosable: true,
-        //         });
-        //         refetch && refetch();
-        //     } else {
-        //         toast({
-        //             title: "Xảy ra lỗi",
-        //             description: response.message,
-        //             status: "error",
-        //             duration: 2500,
-        //             position: 'top',
-        //             isClosable: true,
-        //         });
-        //     }
-        // } catch (error: any) {
-        //     toast({
-        //         title: "Xảy ra lỗi",
-        //         description: error.response?.data?.message || "An error occurred",
-        //         status: "error",
-        //         duration: 2500,
-        //         position: 'top',
-        //         isClosable: true,
-        //     });
-        // } finally {
-        //     onCloseApprove();
-        // }
-    }
 
     useEffect(() => {
         changeTabTitle('Quản lý dịch vụ');

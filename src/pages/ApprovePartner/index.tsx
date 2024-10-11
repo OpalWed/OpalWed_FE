@@ -1,10 +1,7 @@
-import { Button, Card, CardHeader, Divider, Heading, HStack, Input, InputGroup, InputLeftElement, Stack, Table, TableContainer, Tag, TagLabel, Tbody, Td, Th, Thead, Tooltip, Tr, useDisclosure, useToast } from "@chakra-ui/react";
+import { Button, Card, CardHeader, Divider, Heading, HStack, Input, InputGroup, InputLeftElement, Stack, Table, TableContainer, Tag, TagLabel, Tbody, Td, Th, Thead, Tooltip, Tr, useDisclosure } from "@chakra-ui/react";
 import { FaCheck, FaEye, FaX } from "react-icons/fa6";
 import { useEffect, useRef, useState } from "react";
 import { BsSearch } from "react-icons/bs";
-
-
-import { useNavigate } from "react-router";
 import { changeTabTitle } from "../../utils/changeTabTitle";
 import { Shadow } from "../../styles/styles";
 import ApproveModal from "../../components/modal/approve";
@@ -17,8 +14,6 @@ const ApprovePartnerPage = () => {
     const [id, setId] = useState<number>(0);
     const { isOpen: isOpenApprove, onClose: onCloseApprove, onOpen: onOpenApprove } = useDisclosure();
     const { isOpen: isOpenDetail, onClose: onCloseDetail, onOpen: onOpenDetail } = useDisclosure();
-    const toast = useToast();
-    const navigate = useNavigate();
 
     const partners = [
         {
