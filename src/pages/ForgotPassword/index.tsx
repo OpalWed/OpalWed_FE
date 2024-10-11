@@ -35,7 +35,6 @@ const ForgotPasswordPage = () => {
                     email
                 }
             });
-            console.log(response);
 
             if (response.isSuccess) {
                 onOpenRecover();
@@ -50,7 +49,6 @@ const ForgotPasswordPage = () => {
                 });
             }
         } catch (error: any) {
-            console.log(error);
 
             toast({
                 title: "Xảy ra lỗi",
@@ -131,6 +129,7 @@ const ForgotPasswordPage = () => {
                 isOpen={isOpenRecover}
                 onClose={onCloseRecover}
                 email={email}
+                sendTime={30}
             />
             <LoadingModal
                 isOpen={isOpenLoading}
