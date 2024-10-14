@@ -14,8 +14,8 @@ const ChangeStatusModal = ({ isOpen, onClose, type, handleChangeStatus }: Props)
         <Modal isOpen={isOpen} onClose={onClose} size="xl" isCentered>
             <ModalOverlay backdropFilter={'blur(5px)'} />
             <ModalContent>
-                {type === 'category' && (
-                    <ModalHeader fontSize='xl'>Change Category Status</ModalHeader>
+                {type === 'account' && (
+                    <ModalHeader fontSize='xl'>Change Account Status</ModalHeader>
                 )}
                 {type === 'service' && (
                     <ModalHeader fontSize='xl'>Change Service Status</ModalHeader>
@@ -25,8 +25,8 @@ const ChangeStatusModal = ({ isOpen, onClose, type, handleChangeStatus }: Props)
                 )}
                 <ModalCloseButton />
                 <ModalBody pt={6} pb='4rem' borderY={Border.tableBorder}>
-                    {type === 'category' && (
-                        <Text fontSize='lg'>Are you sure you want to change this category status?</Text>
+                    {type === 'account' && (
+                        <Text fontSize='lg'>Are you sure you want to change this account status?</Text>
                     )}
                     {type === 'service' && (
                         <Text fontSize='lg'>Are you sure you want to change this service status?</Text>

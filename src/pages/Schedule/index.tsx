@@ -31,17 +31,17 @@ const SchedulePage = () => {
         alert(`Event clicked: ${event.title}`);
     };
 
-    const handleEventAdded = (event: ProcessedEvent) => {
-        console.log("Event added", event);
-    };
+    // const handleEventAdded = (event: ProcessedEvent) => {
+    //     console.log("Event added", event);
+    // };
 
-    const handleEventDeleted = (eventId: number) => {
-        console.log("Event deleted", eventId);
-    };
+    // const handleEventDeleted = (eventId: number) => {
+    //     console.log("Event deleted", eventId);
+    // };
 
-    const handleEventUpdated = (event: ProcessedEvent) => {
-        console.log("Event updated", event);
-    };
+    // const handleEventUpdated = (event: ProcessedEvent) => {
+    //     console.log("Event updated", event);
+    // };
 
     return (
         <div style={{ height: "600px", width: "100%" }}>

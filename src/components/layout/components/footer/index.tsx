@@ -29,8 +29,8 @@ const Footer = () => {
                     </Stack>
                 </Stack>
                 <Stack justify={'flex-start'} fontSize='20px' fontWeight='300'>
-                    <Link to={'/login'}>
-                        <Text fontWeight={400}>Sign In</Text>
+                    <Link to={'/about-us'}>
+                        <Text fontWeight={400}>Về chúng tôi</Text>
                     </Link>
                     <Link to={'/our-services'}>
                         <Text fontWeight={400}>Dịch vụ</Text>
@@ -60,7 +60,10 @@ const Footer = () => {
                         </HStack>
                         <HStack gap={2} align={'center'}>
                             <Place />
-                            <Text>0912345678</Text>
+                            <Stack gap={0}>
+                                <Text>Lô E2a-7, Đường D1, Đ. D1, Long Thạnh Mỹ,</Text>
+                                <Text>Thành Phố Thủ Đức, Hồ Chí Minh</Text>
+                            </Stack>
                         </HStack>
                     </Stack>
                 </Stack>

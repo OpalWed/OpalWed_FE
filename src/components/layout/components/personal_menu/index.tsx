@@ -2,10 +2,11 @@ import { Avatar, Button, Card, Divider, Flex, Menu, MenuButton, MenuItem, MenuLi
 import { FaDoorOpen } from "react-icons/fa6";
 import { useNavigate } from "react-router";
 import { useAuth } from "../../../../hooks/useAuth";
+import useProfile from "../../../../hooks/useProfile";
 
 const PersonalMenu = () => {
 
-    // const { data } = useUserProfile();
+    const { data } = useProfile();
     const navigate = useNavigate();
     const { setIsAuthenticated, setRole } = useAuth();
 
@@ -30,7 +31,7 @@ const PersonalMenu = () => {
                     <Card maxW={'full'} p={5} m={4} mt={2} borderTop={'0.5px solid #f0f0f0'}>
                         <Flex gap={4} align={'center'}>
                             <Avatar size={'sm'} src={'https://t3.ftcdn.net/jpg/05/16/27/58/360_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg'} />
-                            <Text fontWeight={600} textAlign={'center'} flex={1}>{`Welcome back, `}</Text>
+                            <Text fontWeight={600} textAlign={'center'} flex={1}>{`Welcome back, ${data?.fullName}`}</Text>
                         </Flex>
                         <Divider my={3} />
                         <MenuItem

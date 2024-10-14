@@ -6,10 +6,14 @@ export const Color = {
     darkBlueHover: '#143252',
     lightYellow: '#F8F6F3',
     lightBlue: '#E0EFF4',
+    lightGold: '#F8F6F3',
 };
 
 export const Border = {
-    tableBorder: '1px solid #8080808f'
+    tableBorder: '1px solid #8080808f',
+    lightBorder: '1px solid gainsboro',
+    thinLightBorder: '1px solid #dcdcdc6e',
+    goldBorder: '1px solid #B58B61'
 };
 
 export const Shadow = {

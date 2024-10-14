@@ -1,4 +1,4 @@
-import { Box, Button, Divider, Heading, HStack, Image, Stack, Text } from "@chakra-ui/react"
+import { Box, Button, Divider, Heading, HStack, Image, Popover, PopoverArrow, PopoverBody, PopoverCloseButton, PopoverContent, PopoverHeader, PopoverTrigger, Portal, Stack, Text, useDisclosure } from "@chakra-ui/react"
 import CarouselSlider from "../../components/slider"
 import { Color, Shadow } from "../../styles/styles"
 import { ArrowForward, SentimentSatisfiedAlt } from "@mui/icons-material"
@@ -6,9 +6,13 @@ import PartnersSlider from "./components/slider"
 import { useEffect } from "react"
 import { changeTabTitle } from "../../utils/changeTabTitle"
 import { useNavigate } from "react-router-dom"
+import { useAuth } from "../../hooks/useAuth"
+import ConceptModal from "../../components/modal/concept"
 
 const HomePage = () => {
     const navigate = useNavigate();
+    const { isAuthenticated } = useAuth();
+    const { isOpen, onClose, onOpen } = useDisclosure();
     const imageList: string[] = [
 
     ]
@@ -168,6 +172,71 @@ const HomePage = () => {
                     </HStack>
                 </Stack>
             </Stack>
+            <Box
+                pos={'relative'}
+                width="100%"
+                height="50vh"
+                bgImage="url('https://media.istockphoto.com/id/1388616087/vector/magic-night-dark-blue-banner-with-sparkling-glitter-bokeh-and-line-art.jpg?s=612x612&w=0&k=20&c=lJafdN3veT2xulp8L_89g6qQttnlo_phniBUNNwWEtU=')"
+                bgSize="cover"
+                bgPosition="center"
+                mb={16}
+                mt={10}
+            >
+                <Stack
+                    align={'center'}
+                    pos={'absolute'}
+                    w={'5xl'}
+                    left="50%"
+                    transform="translate(-50%, 0)"
+                    bottom={"15%"}
+                    gap={6}
+                    color={'white'}
+                >
+                    <Heading fontSize={50} fontWeight={400} textAlign={'center'} w={'3xl'}>Nắm bắt tương lai của việc lên kế hoạch cùng OpalWed</Heading>
+                    <Text textAlign={'justify'} fontSize={24}>
+                        Điểm đến trực tuyến cuối cùng của bạn
+                    </Text>
+                    {isAuthenticated ? (
+                        <Button
+                            borderRadius={'full'}
+                            w={60}
+                            m={'auto'}
+                            onClick={onOpen}
+                            color={'#203963'}
+                            textTransform={'uppercase'}
+                        >
+                            Tạo kế hoạch
+                        </Button>
+                    ) : (
+                        <Popover>
+                            <PopoverTrigger>
+                                <Button
+                                    borderRadius={'full'}
+                                    w={60}
+                                    m={'auto'}
+                                    color={'#203963'}
+                                    textTransform={'uppercase'}
+                                >
+                                    Tạo kế hoạch
+                                </Button>
+                            </PopoverTrigger>
+                            <Portal>
+                                <PopoverContent>
+                                    <PopoverArrow />
+                                    <PopoverHeader>Cần đăng nhập</PopoverHeader>
+                                    <PopoverCloseButton />
+                                    <PopoverBody>
+                                        <Stack align={'center'} gap={4}>
+                                            <Text>Bạn cần đăng nhập để tạo kế hoạch cho buổi tiệc cưới</Text>
+                                            <Button colorScheme='blue' w={'full'} onClick={() => navigate('/login')}>Đăng nhập ngay</Button>
+                                        </Stack>
+                                    </PopoverBody>
+                                </PopoverContent>
+                            </Portal>
+                        </Popover>
+                    )}
+                </Stack>
+            </Box>
             <Box position="relative" bg="#E0EFF4" pt={16} pb={12} borderRadius="md" mb={16} mt={10}>
                 <Box
                     position="absolute"
@@ -225,6 +294,10 @@ const HomePage = () => {
                     </Stack>
                 </Box>
             </Box>
+            <ConceptModal
+                isOpen={isOpen}
+                onClose={onClose}
+            />
         </>
     )
 }

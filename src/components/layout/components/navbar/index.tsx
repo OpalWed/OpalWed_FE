@@ -1,14 +1,43 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Logo from "../../../logo";
 import { Box } from "@mui/material";
-import { Button, HStack, Text } from "@chakra-ui/react";
-import { Border, Color } from "../../../../styles/styles";
+import { Avatar, HStack, Stack, Text } from "@chakra-ui/react";
+import { Color } from "../../../../styles/styles";
 import { useAuth } from "../../../../hooks/useAuth";
-import PersonalMenu from "../personal_menu";
+import useProfile from "../../../../hooks/useProfile";
+import { Dropdown, MenuProps } from "antd";
+import { ArrowDropDown } from "@mui/icons-material";
+
+const conceptItems: MenuProps['items'] = [
+    {
+        key: '1',
+        label: (
+            <Link to={'/wedding-concept/europe'}>
+                Phong cách Châu Âu (Europe)
+            </Link>
+        ),
+    },
+    {
+        key: '2',
+        label: (
+            <Link to={'/wedding-concept/minimalist'}>
+                Phong cách tối giản (Minimalism)
+            </Link>
+        ),
+    },
+    {
+        key: '3',
+        label: (
+            <Link to={'/wedding-concept/vintage'}>
+                Phong cách cổ điển (Vintage)
+            </Link>
+        ),
+    },
+];
 
 const Navbar = () => {
-    const navigate = useNavigate();
     const { isAuthenticated } = useAuth();
+    const { data } = useProfile();
 
     return (
         <Box
@@ -18,65 +47,68 @@ const Navbar = () => {
             zIndex={10}
             sx={{ background: Color.darkBlue }}
         >
-            {isAuthenticated ? (
-                <HStack
-                    py={2}
-                    px={10}
-                    gap={5}
-                    borderBottom={Border.tableBorder}
-                    justify={'flex-end'}
-                >
-                    <PersonalMenu />
+            <Stack w={'7xl'} m={'auto'} gap={0} my={2} pos={'relative'}>
+                {isAuthenticated ? (
+                    <HStack pos={'absolute'} top={0} right={0}>
+                        <HStack>
+                            <Avatar size={'sm'} />
+                            <Link to={'/profile'}>
+                                <Text color={'white'}>{data?.fullName}</Text>
+                            </Link>
+                        </HStack>
+                    </HStack>
+                ) : (
+                    <HStack pos={'absolute'} top={0} right={0}>
+                        <HStack>
+                            <Link to={'/login'}>
+                                <Text color={'gainsboro'} fontSize={15}>Đăng nhập</Text>
+                            </Link>
+                            <Text color={'gainsboro'}>/</Text>
+                            <Link to={'/sign-up'}>
+                                <Text color={'gainsboro'} fontSize={15}>Đăng ký</Text>
+                            </Link>
+                        </HStack>
+                    </HStack>
+                )}
+                <HStack justify={'center'}>
+                    <HStack gap={40} align={'flex-end'}>
+                        <HStack gap={60}>
+                            <Link to={'/about-us'}>
+                                <Text color={'gainsboro'} fontSize={18}>
+                                    Về chúng tôi
+                                </Text>
+                            </Link>
+                            <Link to={'/our-services'}>
+                                <Text color={'gainsboro'} fontSize={18}>
+                                    Dịch vụ
+                                </Text>
+                            </Link>
+                        </HStack>
+                        <Box mb={0}>
+                            <Link to={'/'}>
+                                <Box>
+                                    <Logo height="100px" width="100px" />
+                                </Box>
+                            </Link>
+                        </Box>
+                        <HStack gap={60}>
+                            <Dropdown menu={{ items: conceptItems }} placement="bottomLeft">
+                                <HStack cursor={'pointer'} color={'gainsboro'} gap={0} align={'flex-end'}>
+                                    <Text color={'gainsboro'} fontSize={18}>
+                                        Ý tưởng tiệc cưới
+                                    </Text>
+                                    <ArrowDropDown />
+                                </HStack>
+                            </Dropdown>
+                            <Link to={'/contact'}>
+                                <Text color={'gainsboro'} fontSize={18}>
+                                    Liên hệ
+                                </Text>
+                            </Link>
+                        </HStack>
+                    </HStack>
                 </HStack>
-            ) : (
-                <HStack
-                    py={2}
-                    px={10}
-                    gap={5}
-                    borderBottom={Border.tableBorder}
-                    justify={'flex-end'}
-                >
-                    <Button py={6} px={5} onClick={() => navigate('/sign-up')}>
-                        Sign Up
-                    </Button>
-                    <Link to={'/login'}>
-                        <Text color={'white'}>
-                            Sign In
-                        </Text>
-                    </Link>
-                </HStack>
-            )}
-
-            <HStack
-                p={2}
-                justify='space-between'
-                maxW={'6xl'}
-                m={'auto'}
-            >
-                <Link to={'/about-us'}>
-                    <Text color={'white'}>
-                        Về chúng tôi
-                    </Text>
-                </Link>
-                <Link to={'/our-services'}>
-                    <Text color={'white'}>
-                        Dịch vụ
-                    </Text>
-                </Link>
-                <Link to={'/'}>
-                    <Logo height="60px" width="60px" />
-                </Link>
-                <Link to={'/our-partners'}>
-                    <Text color={'white'}>
-                        Thành viên hợp tác
-                    </Text>
-                </Link>
-                <Link to={'/contact'}>
-                    <Text color={'white'}>
-                        Liên hệ
-                    </Text>
-                </Link>
-            </HStack>
+            </Stack>
         </Box>
     );
 };

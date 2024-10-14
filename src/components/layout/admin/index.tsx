@@ -19,13 +19,13 @@ const AdminLayout = () => {
         setCollapsed(!collapsed);
     };
 
-    // if (role !== 'Admin' && role !== 'Owner') {
-    //     return <NotFoundPage />
-    // }
+    if (role !== 'Admin') {
+        return <NotFoundPage />
+    }
 
     return (
         <>
-            <AdminNavbar type="admin" />
+            <AdminNavbar />
             <HStack align='flex-start' mt={'76px'}>
                 <Box flex={1}>
                     <SideBar collapsed={collapsed} toggleCollapsed={toggleCollapsed} />

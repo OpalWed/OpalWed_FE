@@ -99,6 +99,20 @@
   background-color: #d9d8d8;
 }
 
+.ant-dropdown-menu {
+  padding: 0 !important;
+}
+
+.ant-dropdown-menu-item {
+  padding: 15px 30px !important;
+  font-size: 16px !important;
+  border-bottom: 1px solid gainsboro;
+}
+
+.ant-dropdown-menu-item:last-child {
+  border-bottom: none;
+}
+
 p {
   font-size: 18px;
 }
@@ -131,6 +145,37 @@ p {
 
 .css-1e3qdf3 option:first-child {
   display: none !important;
+}
+
+.custom-prev,
+.custom-next {
+  position: absolute;
+  color: rgba(190, 190, 190, 0.6);
+  border: none;
+  padding: 8px 13px;
+  font-size: 24px;
+  border-radius: 100%;
+  transition: background-color 0.3s, transform 0.3s;
+  top: 35%;
+}
+
+.custom-prev {
+  left: -60px;
+}
+
+.custom-next {
+  right: -60px;
+}
+
+.custom-prev:hover,
+.custom-next:hover {
+  background-color: rgba(210, 210, 210, 0.18);
+}
+
+.custom-prev i,
+.custom-next i {
+  font-size: 20px;
+  color: white;
 }
 
 .slick-slider .slick-list {
