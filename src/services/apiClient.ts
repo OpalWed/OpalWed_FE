@@ -53,6 +53,7 @@ class ApiClient<T> {
     };
 
     postUnauthen = (data: T, config?: AxiosRequestConfig) => {
+        console.log(import.meta.env.VITE_SERVER_URL);
         return axiosInstance
             .post<T>(this.endpoint, data, config)
             .then((res) => res.data)

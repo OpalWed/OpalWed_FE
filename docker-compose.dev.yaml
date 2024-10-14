@@ -1,0 +1,18 @@
+services:
+  opal-client:
+    container_name: opal_client
+    image: opal-client:latest
+    env_file: .env
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SERVER_URL: ${API_URL}
+    restart: always
+    ports:
+      - 3000:80
+    networks:
+      - opal-web-networks
+networks:
+  opal-web-networks:
+    name: opal_web_networks
