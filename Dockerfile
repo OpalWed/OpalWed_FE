@@ -4,7 +4,7 @@ WORKDIR /opal
 
 COPY package*.json ./
 
-RUN npm install
+RUN npm ci
 
 COPY . .
 
@@ -12,8 +12,8 @@ RUN npm run build
 
 FROM nginx:alpine AS runner
 
-COPY --from=build /bachhoasi/nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=build /opal/nginx.conf /etc/nginx/conf.d/default.conf
 WORKDIR /usr/share/nginx/html
-COPY --from=build /bachhoasi/dist .
+COPY --from=build /opal/dist .
 
 CMD ["nginx", "-g", "daemon off;"]
