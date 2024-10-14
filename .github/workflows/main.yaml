@@ -23,6 +23,7 @@ jobs:
         needs: build-image
         env:
           DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
+          API_URL: ${{secrets.API_URL}}
         steps:
             - name: Checkout Code
               uses: actions/checkout@v3
