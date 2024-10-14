@@ -1,7 +1,11 @@
 import { Box, Button, HStack, Image, Stack, Text } from "@chakra-ui/react"
 import { FaTrashAlt } from "react-icons/fa"
 
-const ConfirmDesignProductItem = () => {
+interface Prop {
+    productName: string;
+}
+
+const ConfirmDesignProductItem = ({ productName }: Prop) => {
     return (
         <Box
             p="15px"
@@ -40,7 +44,7 @@ const ConfirmDesignProductItem = () => {
                 <Stack gap={4}>
                     <Box textAlign="left">
                         <Text fontWeight={500}>
-                            {'productName'}
+                            {productName}
                         </Text>
                     </Box>
                     <Stack gap={1}>

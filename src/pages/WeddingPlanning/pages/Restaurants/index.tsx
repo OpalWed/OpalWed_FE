@@ -5,9 +5,9 @@ import { ArrowBack, ArrowForward } from "@mui/icons-material";
 import { changeTabTitle } from "../../../../utils/changeTabTitle";
 import ProductItem from "../../components/product_item";
 import NotifyDesignModal from "../../../../components/modal/notify_design";
+import WeddingCart from "../../../../components/wedding_cart";
 
 const RestaurantsPage = () => {
-    // const param = useParams<{ concept: string }>();
     const navigate = useNavigate();
     const { isOpen, onClose, onOpen } = useDisclosure();
 
@@ -34,6 +34,7 @@ const RestaurantsPage = () => {
                 <ProductItem />
                 <ProductItem />
             </SimpleGrid>
+            <WeddingCart />
             <HStack justify={'space-between'}>
                 <Button variant={'ghost'} leftIcon={<ArrowBack />} onClick={() => navigate(-1)}>
                     Trở lại mục phía trước

@@ -10,14 +10,15 @@ interface Props {
     isOpen: boolean;
     onClose: () => void;
     email: string;
+    sendTime: number;
 }
 
-const RecoverModal = ({ isOpen, onClose, email }: Props) => {
+const RecoverModal = ({ isOpen, onClose, email, sendTime }: Props) => {
     const [otp, setOtp] = useState<string>('');
     const [newPassword, setNewPassword] = useState<string>('');
     const [showPass, setShowPass] = useState<boolean>(false);
     const [sendBack, setSendBack] = useState<boolean>(false);
-    const [time, setTime] = useState<number>(30);
+    const [time, setTime] = useState<number>(sendTime);
     const toast = useToast();
     const navigate = useNavigate();
 
@@ -65,7 +66,7 @@ const RecoverModal = ({ isOpen, onClose, email }: Props) => {
         try {
             const response = await api.postUnauthen(data);
 
-            if (response.success) {
+            if (response.isSuccess) {
                 toast({
                     title: "Thành công",
                     description: response.message,
@@ -114,8 +115,8 @@ const RecoverModal = ({ isOpen, onClose, email }: Props) => {
 
     const resendCode = () => {
         getVerifyCode(email);
-        setTime(30); // Reset the countdown to 30 seconds
-        setSendBack(false); // Hide the "Send verification code again" text
+        setTime(sendTime);
+        setSendBack(false);
     };
 
     return (

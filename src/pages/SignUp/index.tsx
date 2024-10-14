@@ -360,6 +360,7 @@ const SignUpPage = () => {
                 isOpen={isOpenVerify}
                 onClose={onCloseVerify}
                 email={email}
+                sendTime={30}
             />
             <LoadingModal
                 isOpen={isOpenLoading}

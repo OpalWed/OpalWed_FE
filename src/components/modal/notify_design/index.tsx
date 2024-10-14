@@ -1,6 +1,6 @@
 import { Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Text } from "@chakra-ui/react";
 import { Border } from "../../../styles/styles";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 interface Props {
     isOpen: boolean;
@@ -9,6 +9,7 @@ interface Props {
 }
 
 const NotifyDesignModal = ({ isOpen, onClose, type }: Props) => {
+    const param = useParams<{ concept: string, segment: string }>();
     const navigate = useNavigate();
 
     return (
@@ -31,7 +32,7 @@ const NotifyDesignModal = ({ isOpen, onClose, type }: Props) => {
                 <ModalFooter>
                     <Button colorScheme='green' mr={3} onClick={() => {
                         if (type === 'finish') {
-                            navigate('/wedding-concept/:concept/:segment/confirm-design');
+                            navigate(`/wedding-planning/${param.concept}/${param.segment}/confirm-design`);
                         } else {
                             navigate('/');
                         }

@@ -1,8 +1,15 @@
 import { Box, Image, Stack, Text, useDisclosure } from '@chakra-ui/react';
 import ProductDetailModal from '../../../../components/modal/product_detail';
+import { useWedding } from '../../../../hooks/useWedding';
 
 const ProductItem = () => {
     const { isOpen, onClose, onOpen } = useDisclosure();
+    const { addAccessory } = useWedding();
+
+    const handleAddAccessory = () => {
+        addAccessory({ accessoriesName: 'Silver Aurora Charms' });
+        onClose();
+    };
 
     return (
         <Box
@@ -38,6 +45,7 @@ const ProductItem = () => {
             <ProductDetailModal
                 isOpen={isOpen}
                 onClose={onClose}
+                handleAddProduct={handleAddAccessory}
             />
         </Box>
     );
