@@ -1,0 +1,7 @@
+services:
+  opal-client:
+    container_name: opal_client
+    image: ${DOCKER_USERNAME}/opal-client:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
