@@ -8,6 +8,9 @@ RUN npm ci
 
 COPY . .
 
+ARG SERVER_URL
+ENV VITE_SERVER_URL = ${SERVER_URL}
+ENV GENERATE_SOURCEMAP = false
 RUN npm run build
 
 FROM nginx:alpine AS runner
