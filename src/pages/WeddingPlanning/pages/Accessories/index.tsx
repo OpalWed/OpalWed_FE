@@ -1,16 +1,17 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Button, HStack, SimpleGrid, Stack } from "@chakra-ui/react";
-import { ArrowBack, ArrowForward } from "@mui/icons-material";
+import { ArrowForward } from "@mui/icons-material";
 import { changeTabTitle } from "../../../../utils/changeTabTitle";
 import ProductItem from "../../components/product_item";
+import WeddingCart from "../../../../components/wedding_cart";
 
-const ClothesPage = () => {
-    // const param = useParams<{ concept: string }>();
+const AccessoriesPage = () => {
+    const param = useParams<{ concept: string, segment: string }>();
     const navigate = useNavigate();
 
     useEffect(() => {
-        changeTabTitle('Trang phục');
+        changeTabTitle('Phụ kiện');
     }, []);
 
     return (
@@ -32,11 +33,9 @@ const ClothesPage = () => {
                 <ProductItem />
                 <ProductItem />
             </SimpleGrid>
-            <HStack justify={'space-between'}>
-                <Button variant={'ghost'} leftIcon={<ArrowBack />} onClick={() => navigate(-1)}>
-                    Trở lại mục phía trước
-                </Button>
-                <Button variant={'ghost'} rightIcon={<ArrowForward />} onClick={() => navigate('/wedding-concept/:concept/:segment/restaurants')}>
+            <WeddingCart />
+            <HStack justify={'flex-end'}>
+                <Button variant={'ghost'} rightIcon={<ArrowForward />} onClick={() => navigate(`/wedding-planning/${param.concept}/${param.segment}/clothes`)}>
                     Sang mục tiếp theo
                 </Button>
             </HStack>
@@ -44,4 +43,4 @@ const ClothesPage = () => {
     )
 }
 
-export default ClothesPage
+export default AccessoriesPage

@@ -1,23 +1,25 @@
 import { useEffect } from "react";
 import { changeTabTitle } from "../../../utils/changeTabTitle";
-import { Box, Button, Card, CardBody, CardHeader, Divider, Heading, HStack, Image, Stack, Text } from "@chakra-ui/react";
+import { Box, Button, Card, CardBody, CardHeader, Divider, Heading, HStack, Image, Popover, PopoverArrow, PopoverBody, PopoverCloseButton, PopoverContent, PopoverHeader, PopoverTrigger, Portal, Stack, Text } from "@chakra-ui/react";
 import { Border, Color, Shadow } from "../../../styles/styles";
 import CarouselSlider from "../../../components/slider";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../../hooks/useAuth";
 
-const MinimalistWeddingConceptPage = () => {
+const MinimalismWeddingConceptPage = () => {
     const navigate = useNavigate();
+    const { isAuthenticated } = useAuth();
     const imageList: string[] = [
 
     ]
 
     useEffect(() => {
-        changeTabTitle('Phong cách Châu Âu');
+        changeTabTitle('Phong cách tối giản (Minimalism)');
     }, []);
 
     return (
         <>
-            <Box pos={'relative'} mb={48}>
+            <Box pos={'relative'} mb={36}>
                 <CarouselSlider imageList={imageList} />
                 <Stack
                     align={'center'}
@@ -28,7 +30,7 @@ const MinimalistWeddingConceptPage = () => {
                     pt={8}
                     left="50%"
                     transform="translate(-50%, 0)"
-                    bottom={-48}
+                    bottom={-36}
                     bg={Color.lightBlue}
                     borderRadius={5}
                     shadow={Shadow.cardShadow}
@@ -41,7 +43,7 @@ const MinimalistWeddingConceptPage = () => {
                     </Text>
                 </Stack>
             </Box>
-            <Stack gap={28} my={20}>
+            <Stack gap={28} my={16}>
                 <Stack w={'6xl'} mx={'auto'} gap={10}>
                     <Heading textAlign={'center'}>
                         Điều đặc biệt bạn sẽ tìm thấy
@@ -427,16 +429,45 @@ const MinimalistWeddingConceptPage = () => {
                         <Text textAlign={'justify'} fontSize={24}>
                             Điểm đến trực tuyến cuối cùng của bạn
                         </Text>
-                        <Button
-                            borderRadius={'full'}
-                            w={60}
-                            m={'auto'}
-                            onClick={() => navigate('wedding-information')}
-                            color={'#203963'}
-                            textTransform={'uppercase'}
-                        >
-                            Tạo kế hoạch
-                        </Button>
+                        {isAuthenticated ? (
+                            <Button
+                                borderRadius={'full'}
+                                w={60}
+                                m={'auto'}
+                                onClick={() => navigate('/wedding-planning/minimalism/wedding-information')}
+                                color={'#203963'}
+                                textTransform={'uppercase'}
+                            >
+                                Tạo kế hoạch
+                            </Button>
+                        ) : (
+                            <Popover>
+                                <PopoverTrigger>
+                                    <Button
+                                        borderRadius={'full'}
+                                        w={60}
+                                        m={'auto'}
+                                        color={'#203963'}
+                                        textTransform={'uppercase'}
+                                    >
+                                        Tạo kế hoạch
+                                    </Button>
+                                </PopoverTrigger>
+                                <Portal>
+                                    <PopoverContent>
+                                        <PopoverArrow />
+                                        <PopoverHeader>Cần đăng nhập</PopoverHeader>
+                                        <PopoverCloseButton />
+                                        <PopoverBody>
+                                            <Stack align={'center'} gap={4}>
+                                                <Text>Bạn cần đăng nhập để tạo kế hoạch cho buổi tiệc cưới</Text>
+                                                <Button colorScheme='blue' w={'full'} onClick={() => navigate('/login')}>Đăng nhập ngay</Button>
+                                            </Stack>
+                                        </PopoverBody>
+                                    </PopoverContent>
+                                </Portal>
+                            </Popover>
+                        )}
                     </Stack>
                 </Box>
             </Stack>
@@ -444,4 +475,4 @@ const MinimalistWeddingConceptPage = () => {
     )
 }
 
-export default MinimalistWeddingConceptPage
+export default MinimalismWeddingConceptPage

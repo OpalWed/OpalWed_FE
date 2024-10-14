@@ -3,9 +3,10 @@ import { Button, Heading, Image, Modal, ModalBody, ModalCloseButton, ModalConten
 interface Props {
     isOpen: boolean;
     onClose: () => void;
+    handleAddProduct: () => void
 }
 
-const ProductDetailModal = ({ isOpen, onClose }: Props) => {
+const ProductDetailModal = ({ isOpen, onClose, handleAddProduct }: Props) => {
 
     return (
         <Modal isOpen={isOpen} onClose={onClose} size="lg" isCentered>
@@ -29,7 +30,7 @@ const ProductDetailModal = ({ isOpen, onClose }: Props) => {
                     <Text m={2} mt={4} fontSize={'18px'}>Mô tả sản phẩm</Text>
                 </ModalBody>
                 <ModalFooter gap={4}>
-                    <Button colorScheme="green" onClick={onClose}>Chọn</Button>
+                    <Button colorScheme="green" onClick={handleAddProduct}>Thêm vào giỏ hàng</Button>
                     <Button onClick={onClose}>Đóng</Button>
                 </ModalFooter>
             </ModalContent>
