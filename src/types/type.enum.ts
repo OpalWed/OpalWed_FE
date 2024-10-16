@@ -3,9 +3,23 @@ export enum Status {
     INACTIVE = 'INACTIVE',
 }
 
-export enum Utilities {
-    RESTAURANT = 'RESTAURANT',
-    CLOTHES = 'CLOTHES',
-    MAKEKUP = 'MAKEKUP',
-    JEWELRY = 'JEWELRY'
+export enum Concept {
+    TRADITIONAL = "TRADITIONAL",
+    MODERN = "MODERN",
+    MINIMALISM = "MINIMALISM",
+    VINTAGE = "VINTAGE",
+}
+
+export enum Budget {
+    LOW = "LOW",
+    MEDIUM = "MEDIUM",
+    HIGH = "HIGH",
+    PREMIUM = "PREMIUM",
+}
+
+export enum Utility {
+    RESTAURANT = "RESTAURANT",
+    CLOTHES = "CLOTHES",
+    MAKEUP = "MAKEUP",
+    JEWELRY = "JEWELRY",
 }

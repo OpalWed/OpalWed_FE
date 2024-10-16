@@ -11,13 +11,13 @@ const WeddingInformationPage = () => {
     const navigate = useNavigate();
     const param = useParams<{ concept: string }>();
     const [segmentPrice, setSegmentPrice] = useState<string>('');
-    const { fullName, segment, place, weddingDate, setWeddingInfo } = useWedding();
+    const { fullName, budget, place, weddingDate, setWeddingInfo } = useWedding();
     const { data } = useProfile();
 
     const areAllFieldsFilled = () => {
         return (
             fullName !== '' &&
-            segment !== '' &&
+            budget !== '' &&
             place !== '' &&
             weddingDate !== ''
         );
@@ -35,16 +35,16 @@ const WeddingInformationPage = () => {
     }, [data?.fullName]);
 
     useEffect(() => {
-        if (segment == 'thấp') {
+        if (budget == 'thấp') {
             setSegmentPrice('low');
-        } else if (segment == 'trung bình') {
+        } else if (budget == 'trung bình') {
             setSegmentPrice('medium');
-        } else if (segment == 'cao') {
+        } else if (budget == 'cao') {
             setSegmentPrice('high');
         } else {
             setSegmentPrice('premium');
         }
-    }, [segment]);
+    }, [budget]);
 
     return (
         <Stack align={'center'} justify={'center'} gap={8} mt={10}>
@@ -63,12 +63,12 @@ const WeddingInformationPage = () => {
                         placeholder="Tên khách hàng"
                     />
                 </FormControl>
-                <FormControl id="segment" flex={1} isRequired>
+                <FormControl id="budget" flex={1} isRequired>
                     <FormLabel pl={1}>Phân khúc</FormLabel>
                     <Select
-                        name="segment"
-                        value={segment}
-                        onChange={e => setWeddingInfo({ segment: e.target.value })}
+                        name="budget"
+                        value={budget}
+                        onChange={e => setWeddingInfo({ budget: e.target.value })}
                         placeholder={'Chọn phân khúc'}
                     >
                         <option value="thấp">Thấp</option>

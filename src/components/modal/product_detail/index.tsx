@@ -1,4 +1,5 @@
 import { Button, Heading, Image, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalOverlay, Text } from "@chakra-ui/react";
+import useProductDetail from "../../../hooks/useProductDetail";
 
 interface Props {
     isOpen: boolean;
@@ -7,6 +8,11 @@ interface Props {
 }
 
 const ProductDetailModal = ({ isOpen, onClose, handleAddProduct }: Props) => {
+    const id: number = 10;
+    const { data } = useProductDetail({ id });
+
+    console.log(data);
+
 
     return (
         <Modal isOpen={isOpen} onClose={onClose} size="lg" isCentered>

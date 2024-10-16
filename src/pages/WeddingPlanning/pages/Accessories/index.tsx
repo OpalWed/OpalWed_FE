@@ -7,7 +7,7 @@ import ProductItem from "../../components/product_item";
 import WeddingCart from "../../../../components/wedding_cart";
 
 const AccessoriesPage = () => {
-    const param = useParams<{ concept: string, segment: string }>();
+    const param = useParams<{ concept: string, budget: string }>();
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -24,18 +24,18 @@ const AccessoriesPage = () => {
                 mx={'auto'}
                 pb={8}
             >
-                <ProductItem />
-                <ProductItem />
-                <ProductItem />
-                <ProductItem />
-                <ProductItem />
-                <ProductItem />
-                <ProductItem />
-                <ProductItem />
+                <ProductItem type="accessories" />
+                <ProductItem type="accessories" />
+                <ProductItem type="accessories" />
+                <ProductItem type="accessories" />
+                <ProductItem type="accessories" />
+                <ProductItem type="accessories" />
+                <ProductItem type="accessories" />
+                <ProductItem type="accessories" />
             </SimpleGrid>
             <WeddingCart />
             <HStack justify={'flex-end'}>
-                <Button variant={'ghost'} rightIcon={<ArrowForward />} onClick={() => navigate(`/wedding-planning/${param.concept}/${param.segment}/clothes`)}>
+                <Button variant={'ghost'} rightIcon={<ArrowForward />} onClick={() => navigate(`/wedding-planning/${param.concept}/${param.budget}/clothes`)}>
                     Sang mục tiếp theo
                 </Button>
             </HStack>

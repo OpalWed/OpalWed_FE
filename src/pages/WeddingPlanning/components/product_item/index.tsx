@@ -2,12 +2,22 @@ import { Box, Image, Stack, Text, useDisclosure } from '@chakra-ui/react';
 import ProductDetailModal from '../../../../components/modal/product_detail';
 import { useWedding } from '../../../../hooks/useWedding';
 
-const ProductItem = () => {
-    const { isOpen, onClose, onOpen } = useDisclosure();
-    const { addAccessory } = useWedding();
+interface Prop {
+    type: string
+}
 
-    const handleAddAccessory = () => {
-        addAccessory({ accessoriesName: 'Silver Aurora Charms' });
+const ProductItem = ({ type }: Prop) => {
+    const { isOpen, onClose, onOpen } = useDisclosure();
+    const { addAccessory, addClothes, addRestaurant } = useWedding();
+
+    const handleAddProduct = () => {
+        if (type === 'accessories') {
+            addAccessory({ accessoriesName: 'Silver Aurora Charms' });
+        } else if (type === 'clothes') {
+            addClothes({ clothesName: 'Silver Aurora Charms' });
+        } else if (type === 'restaurants') {
+            addRestaurant({ restaurantsName: 'Silver Aurora Charms' });
+        }
         onClose();
     };
 
@@ -45,7 +55,7 @@ const ProductItem = () => {
             <ProductDetailModal
                 isOpen={isOpen}
                 onClose={onClose}
-                handleAddProduct={handleAddAccessory}
+                handleAddProduct={handleAddProduct}
             />
         </Box>
     );

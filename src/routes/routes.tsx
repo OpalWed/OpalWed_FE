@@ -73,11 +73,11 @@ const routes = [
         element: <WeddingPlanningLayout />,
         children: [
             { path: "wedding-planning/:concept/wedding-information", element: <WeddingInformationPage /> },
-            { path: "wedding-planning/:concept/:segment/style", element: <WeddingStylePage /> },
-            { path: "wedding-planning/:concept/:segment/accessories", element: <AccessoriesPage /> },
-            { path: "wedding-planning/:concept/:segment/clothes", element: <ClothesPage /> },
-            { path: "wedding-planning/:concept/:segment/restaurants", element: <RestaurantsPage /> },
-            { path: "wedding-planning/:concept/:segment/confirm-design", element: <ConfirmDesignPage /> },
+            { path: "wedding-planning/:concept/:budget/style", element: <WeddingStylePage /> },
+            { path: "wedding-planning/:concept/:budget/accessories", element: <AccessoriesPage /> },
+            { path: "wedding-planning/:concept/:budget/clothes", element: <ClothesPage /> },
+            { path: "wedding-planning/:concept/:budget/restaurants", element: <RestaurantsPage /> },
+            { path: "wedding-planning/:concept/:budget/confirm-design", element: <ConfirmDesignPage /> },
         ]
     },
     {

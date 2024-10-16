@@ -8,7 +8,7 @@ import { useWedding } from '../../../../hooks/useWedding';
 const WeddingStylePage = () => {
     const { decorationLevel, mainColor, setWeddingStyle } = useWedding();
     const navigate = useNavigate();
-    const params = useParams<{ concept: string, segment: string }>();
+    const params = useParams<{ concept: string, budget: string }>();
 
     useEffect(() => {
         changeTabTitle('Trang trí tiệc cưới');
@@ -66,7 +66,7 @@ const WeddingStylePage = () => {
                         size="lg"
                         width="full"
                         mt={6}
-                        onClick={() => navigate(`/wedding-planning/${params.concept}/${params.segment}/accessories`)}
+                        onClick={() => navigate(`/wedding-planning/${params.concept}/${params.budget}/accessories`)}
                     >
                         Thêm vào kế hoạch
                     </Button>

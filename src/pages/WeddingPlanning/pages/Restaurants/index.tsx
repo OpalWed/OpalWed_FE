@@ -25,14 +25,14 @@ const RestaurantsPage = () => {
                 mx={'auto'}
                 pb={8}
             >
-                <ProductItem />
-                <ProductItem />
-                <ProductItem />
-                <ProductItem />
-                <ProductItem />
-                <ProductItem />
-                <ProductItem />
-                <ProductItem />
+                <ProductItem type="restaurants" />
+                <ProductItem type="restaurants" />
+                <ProductItem type="restaurants" />
+                <ProductItem type="restaurants" />
+                <ProductItem type="restaurants" />
+                <ProductItem type="restaurants" />
+                <ProductItem type="restaurants" />
+                <ProductItem type="restaurants" />
             </SimpleGrid>
             <WeddingCart />
             <HStack justify={'space-between'}>

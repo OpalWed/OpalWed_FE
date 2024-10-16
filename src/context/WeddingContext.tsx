@@ -3,7 +3,7 @@ import { createContext, useState, ReactNode } from 'react';
 // Define the props for the context, which include wedding details, style, and lists of items
 export interface WeddingContextProps {
     fullName: string;
-    segment: string;
+    budget: string;
     place: string;
     weddingDate: string;
     decorationLevel: string;
@@ -21,7 +21,7 @@ export interface WeddingContextProps {
 // Define interfaces for wedding information, style, and items
 interface WeddingInfo {
     fullName: string;
-    segment: string;
+    budget: string;
     place: string;
     weddingDate: string;
 }
@@ -50,7 +50,7 @@ export const WeddingContext = createContext<WeddingContextProps | undefined>(und
 export const WeddingProvider = ({ children }: { children: ReactNode }) => {
     const [weddingInfo, setWeddingInfo] = useState<WeddingInfo>({
         fullName: '',
-        segment: '',
+        budget: '',
         place: '',
         weddingDate: '',
     });

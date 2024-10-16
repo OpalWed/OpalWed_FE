@@ -1,14 +1,11 @@
-import { Box, Divider, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerHeader, DrawerOverlay, HStack, Icon, Stack, Text, useDisclosure } from "@chakra-ui/react";
+import { Box, Divider, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerHeader, DrawerOverlay, Stack, Text, useDisclosure } from "@chakra-ui/react";
 import { ConfigProvider, FloatButton } from "antd";
-import { FaCartShopping, FaGem, FaMoneyBillWave } from "react-icons/fa6";
+import { FaCartShopping } from "react-icons/fa6";
 import { useWedding } from "../../hooks/useWedding";
-import { formatDate } from "../../utils/formatDate";
-import { FaCalendarAlt, FaMapMarkerAlt, FaUserAlt } from "react-icons/fa";
-import { ColorLens } from "@mui/icons-material";
 
 const WeddingCart = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const { fullName, segment, place, weddingDate, decorationLevel, mainColor, accessories } = useWedding();
+    const { accessories, clothes, restaurants } = useWedding();
 
     return (
         <>
@@ -37,90 +34,72 @@ const WeddingCart = () => {
                     <Divider />
                     <DrawerBody>
                         <Stack py="15px" mb="10px" gap={6}>
-                            <Box
-                                bg="#fff"
-                                borderRadius="xl"
-                                boxShadow="lg"
-                                py={4}
-                                px={6}
-                                border="1px solid"
-                                borderColor="pink.200"
-                            >
-                                <Stack gap={4}>
-                                    <Text fontSize="xl" fontWeight="bold" color="#d53f8c">
-                                        Thông tin khách hàng
-                                    </Text>
-                                    <Stack align="start" gap={2}>
-                                        <HStack w={'full'}>
-                                            <HStack flex={1}>
-                                                <Icon as={FaUserAlt} color="pink.500" />
-                                                <Text fontSize={17}>Tên: {fullName}</Text>
-                                            </HStack>
-                                            <HStack flex={1}>
-                                                <Icon as={FaMoneyBillWave} color="pink.500" />
-                                                <Text fontSize={17}>Phân khúc: {segment}</Text>
-                                            </HStack>
-                                        </HStack>
-                                        <HStack w={'full'}>
-                                            <HStack flex={1}>
-                                                <Icon as={FaMapMarkerAlt} color="pink.500" />
-                                                <Text fontSize={17}>Khu vực: {place}</Text>
-                                            </HStack>
-                                            <HStack flex={1}>
-                                                <Icon as={FaCalendarAlt} color="pink.500" />
-                                                <Text fontSize={17}>Ngày cưới: {formatDate(weddingDate)}</Text>
-                                            </HStack>
-                                        </HStack>
+                            {accessories.length && (
+                                <Box
+                                    bg="#fff"
+                                    borderRadius="xl"
+                                    boxShadow="lg"
+                                    py={4}
+                                    px={8}
+                                    border="1px solid"
+                                    borderColor="pink.200"
+                                >
+                                    <Stack gap={4}>
+                                        <Text fontSize="xl" fontWeight="bold" color="#d53f8c">
+                                            Phụ kiện
+                                        </Text>
+                                        <Stack align="start" spacing={2}>
+                                            {accessories.map(a => (
+                                                <Text>{a.accessoriesName}</Text>
+                                            ))}
+                                        </Stack>
                                     </Stack>
-                                </Stack>
-                            </Box>
-
-                            <Box
-                                bg="#fff"
-                                borderRadius="xl"
-                                boxShadow="lg"
-                                py={4}
-                                px={8}
-                                border="1px solid"
-                                borderColor="pink.200"
-                            >
-                                <Stack gap={4}>
-                                    <Text fontSize="xl" fontWeight="bold" color="#d53f8c">
-                                        Trang trí tiệc cưới
-                                    </Text>
-                                    <Stack align="start" spacing={2}>
-                                        <HStack>
-                                            <Icon as={FaGem} color="pink.500" />
-                                            <Text fontSize={17}>Mức độ trang trí: {decorationLevel}</Text>
-                                        </HStack>
-                                        <HStack gap={1}>
-                                            <Icon boxSize={5} as={ColorLens} color="pink.500" />
-                                            <Text fontSize={17}>Màu sắc chủ đạo: {mainColor}</Text>
-                                        </HStack>
+                                </Box>
+                            )}
+                            {clothes.length && (
+                                <Box
+                                    bg="#fff"
+                                    borderRadius="xl"
+                                    boxShadow="lg"
+                                    py={4}
+                                    px={8}
+                                    border="1px solid"
+                                    borderColor="pink.200"
+                                >
+                                    <Stack gap={4}>
+                                        <Text fontSize="xl" fontWeight="bold" color="#d53f8c">
+                                            Trang phục
+                                        </Text>
+                                        <Stack align="start" spacing={2}>
+                                            {clothes.map(c => (
+                                                <Text>{c.clothesName}</Text>
+                                            ))}
+                                        </Stack>
                                     </Stack>
-                                </Stack>
-                            </Box>
-
-                            <Box
-                                bg="#fff"
-                                borderRadius="xl"
-                                boxShadow="lg"
-                                py={4}
-                                px={8}
-                                border="1px solid"
-                                borderColor="pink.200"
-                            >
-                                <Stack gap={4}>
-                                    <Text fontSize="xl" fontWeight="bold" color="#d53f8c">
-                                        Phụ kiện
-                                    </Text>
-                                    <Stack align="start" spacing={2}>
-                                        {accessories.map(a => (
-                                            <Text>{a.accessoriesName}</Text>
-                                        ))}
+                                </Box>
+                            )}
+                            {restaurants.length && (
+                                <Box
+                                    bg="#fff"
+                                    borderRadius="xl"
+                                    boxShadow="lg"
+                                    py={4}
+                                    px={8}
+                                    border="1px solid"
+                                    borderColor="pink.200"
+                                >
+                                    <Stack gap={4}>
+                                        <Text fontSize="xl" fontWeight="bold" color="#d53f8c">
+                                            Nhà hàng
+                                        </Text>
+                                        <Stack align="start" spacing={2}>
+                                            {restaurants.map(r => (
+                                                <Text>{r.restaurantsName}</Text>
+                                            ))}
+                                        </Stack>
                                     </Stack>
-                                </Stack>
-                            </Box>
+                                </Box>
+                            )}
                         </Stack>
                     </DrawerBody>
                 </DrawerContent>

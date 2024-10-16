@@ -9,7 +9,7 @@ interface Props {
 }
 
 const NotifyDesignModal = ({ isOpen, onClose, type }: Props) => {
-    const param = useParams<{ concept: string, segment: string }>();
+    const param = useParams<{ concept: string, budget: string }>();
     const navigate = useNavigate();
 
     return (
@@ -32,7 +32,7 @@ const NotifyDesignModal = ({ isOpen, onClose, type }: Props) => {
                 <ModalFooter>
                     <Button colorScheme='green' mr={3} onClick={() => {
                         if (type === 'finish') {
-                            navigate(`/wedding-planning/${param.concept}/${param.segment}/confirm-design`);
+                            navigate(`/wedding-planning/${param.concept}/${param.budget}/confirm-design`);
                         } else {
                             navigate('/');
                         }
