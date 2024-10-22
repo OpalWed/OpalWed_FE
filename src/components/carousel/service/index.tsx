@@ -28,7 +28,7 @@ const ServiceItem = ({ image, title, link }: ItemProp) => {
                 borderRadius={8}
             >
                 <Heading
-                    fontSize={16}
+                    fontSize={14}
                     fontWeight={500}
                     py={3}
                     px={6}
@@ -38,6 +38,7 @@ const ServiceItem = ({ image, title, link }: ItemProp) => {
                     top={3}
                     border={Border.goldBorder}
                     textTransform={'uppercase'}
+                    fontFamily={'Noto Sans JP'}
                 >
                     {title}
                 </Heading>
@@ -65,8 +66,8 @@ const ServiceCarousel = () => {
                 ]}
             >
                 <Stack h={200} align={'center'} justify={'center'}>
-                    <Heading>Dịch vụ</Heading>
-                    <Text>Bộ sưu tập cần có</Text>
+                    <Heading fontFamily={'Canela'}>Dịch vụ</Heading>
+                    <Text fontSize={15} fontFamily={'Noto Sans JP'}>Bộ sưu tập cần có</Text>
                 </Stack>
                 <ServiceItem image="https://asiana-plaza.com/wp-content/uploads/2021/01/cong-cuoi-lung-linh-va-lang-man-cung-hoa-va-den-anh-nen.jpg" title="Trang trí" link="/our-services#decoration" />
                 <ServiceItem image="https://vncdesign.com.vn/wp-content/uploads/2018/07/thiet-ke-showroom-noi-that-cua-hang-vay-cuoi-cao-cap-2.jpg" title="Trang phục" link="/our-services#clothes" />

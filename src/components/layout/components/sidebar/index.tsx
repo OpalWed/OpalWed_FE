@@ -46,7 +46,7 @@ const menuItems: MenuItem[] = [
     ),
 
     getItem(
-        <Link to={'partners'} style={{ fontSize: '14px' }}>Quản lý thành viên</Link>
+        <Link to={'partners'} style={{ fontSize: '14px' }}>Quản lý nhà cung cấp</Link>
         , '4'
         , <StorefrontOutlinedIcon fontSize='large' />
     ),
@@ -56,7 +56,7 @@ const menuItems: MenuItem[] = [
         , <FaRegUser />,
     ),
     getItem(
-        <Link to={'schedule'} style={{ fontSize: '14px' }}>Lịch tư vấn</Link>
+        <Link to={'customer-design'} style={{ fontSize: '14px' }}>Quản lý khách hàng tư vấn</Link>
         , '6'
         , <FiCalendar />,
     ),

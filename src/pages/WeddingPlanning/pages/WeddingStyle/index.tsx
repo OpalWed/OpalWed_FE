@@ -1,14 +1,9 @@
 import { useEffect } from 'react';
 import { Box, Text, Heading, Button, Stack, HStack } from '@chakra-ui/react';
 import StyleSlider from '../../components/style_slider';
-import { useNavigate, useParams } from 'react-router-dom';
 import { changeTabTitle } from '../../../../utils/changeTabTitle';
-import { useWedding } from '../../../../hooks/useWedding';
 
 const WeddingStylePage = () => {
-    const { decorationLevel, mainColor, setWeddingStyle } = useWedding();
-    const navigate = useNavigate();
-    const params = useParams<{ concept: string, segment: string }>();
 
     useEffect(() => {
         changeTabTitle('Trang trí tiệc cưới');
@@ -33,11 +28,11 @@ const WeddingStylePage = () => {
                     <HStack gap={4}>
                         {["Đơn giản", "Bình thường", "Chỉn chu", "Cầu kỳ"].map((level) => (
                             <Button
-                                key={level}
-                                onClick={() => setWeddingStyle({ decorationLevel: level })}
-                                bg={decorationLevel === level ? "blue.500" : "gray.300"}
-                                color={decorationLevel === level ? "white" : "black"}
-                                _hover={{ bg: decorationLevel === level ? "blue.600" : "gray.400" }}
+                                // key={level}
+                                // onClick={() => setWeddingStyle({ decorationLevel: level })}
+                                // bg={decorationLevel === level ? "blue.500" : "gray.300"}
+                                // color={decorationLevel === level ? "white" : "black"}
+                                // _hover={{ bg: decorationLevel === level ? "blue.600" : "gray.400" }}
                                 width="full"
                             >
                                 {level}
@@ -50,10 +45,10 @@ const WeddingStylePage = () => {
                         {["Trắng + Hồng Phấn", "Hồng + Xanh Pastel", "Màu tím", "Màu xanh lá cây"].map((color) => (
                             <Button
                                 key={color}
-                                onClick={() => setWeddingStyle({ mainColor: color })}
-                                bg={mainColor === color ? "blue.500" : "gray.300"}
-                                color={mainColor === color ? "white" : "black"}
-                                _hover={{ bg: mainColor === color ? "blue.600" : "gray.400" }}
+                                // onClick={() => setWeddingStyle({ mainColor: color })}
+                                // bg={mainColor === color ? "blue.500" : "gray.300"}
+                                // color={mainColor === color ? "white" : "black"}
+                                // _hover={{ bg: mainColor === color ? "blue.600" : "gray.400" }}
                                 width="full"
                             >
                                 {color}
@@ -66,7 +61,6 @@ const WeddingStylePage = () => {
                         size="lg"
                         width="full"
                         mt={6}
-                        onClick={() => navigate(`/wedding-planning/${params.concept}/${params.segment}/accessories`)}
                     >
                         Thêm vào kế hoạch
                     </Button>

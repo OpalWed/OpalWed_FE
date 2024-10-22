@@ -213,6 +213,7 @@ const LoginPage = () => {
                                     onClick={() => navigate('/forgot-password')}
                                     maxW={28}
                                     color={'gray'}
+                                    fontFamily={'Noto Sans JP'}
                                     _hover={{ color: Color.hoverBlue }}
                                 >
                                     Quên mật khẩu?
@@ -230,7 +231,7 @@ const LoginPage = () => {
                         </Stack>
                         <Box position='relative'>
                             <Divider borderColor={'black'} />
-                            <AbsoluteCenter bg={'white'} px={2}>
+                            <AbsoluteCenter bg={'white'} px={2} fontFamily={'Hatton'}>
                                 hoặc
                             </AbsoluteCenter>
                         </Box>
@@ -246,10 +247,10 @@ const LoginPage = () => {
                             </Button>
                         </HStack>
                         <HStack gap={2} justify={'center'}>
-                            <Text align={"center"}>
+                            <Text align={"center"} fontFamily={'Noto Sans JP'} fontSize={16}>
                                 Không có tài khoản?
                             </Text>
-                            <Text style={{ color: "#00d4d8" }}>
+                            <Text color={"#00d4d8"} fontFamily={'Canela'}>
                                 <Link to={'/sign-up'}>
                                     Đăng ký
                                 </Link>

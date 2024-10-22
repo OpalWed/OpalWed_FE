@@ -1,23 +1,22 @@
-import { Stack, Button, FormControl, FormLabel, Input, Select, Heading, Text } from "@chakra-ui/react";
+import { Stack, Button, FormControl, FormLabel, Input, Select, Heading, Text, useDisclosure } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
 import { changeTabTitle } from "../../../../utils/changeTabTitle";
-import { useNavigate, useParams } from "react-router-dom";
 import { today } from "../../../../utils/formatTime";
 import { useWedding } from "../../../../hooks/useWedding";
 import useProfile from "../../../../hooks/useProfile";
+import DesignInformation from "../../../../components/modal/design_infomation";
 
 const WeddingInformationPage = () => {
     const fullNameRef = useRef<HTMLInputElement>(null);
-    const navigate = useNavigate();
-    const param = useParams<{ concept: string }>();
     const [segmentPrice, setSegmentPrice] = useState<string>('');
-    const { fullName, segment, place, weddingDate, setWeddingInfo } = useWedding();
+    const { fullName, budget, place, weddingDate, setWeddingInfo } = useWedding();
     const { data } = useProfile();
+    const { isOpen, onClose, onOpen } = useDisclosure();
 
     const areAllFieldsFilled = () => {
         return (
             fullName !== '' &&
-            segment !== '' &&
+            budget !== '' &&
             place !== '' &&
             weddingDate !== ''
         );
@@ -35,22 +34,22 @@ const WeddingInformationPage = () => {
     }, [data?.fullName]);
 
     useEffect(() => {
-        if (segment == 'thấp') {
+        if (budget == 'thấp') {
             setSegmentPrice('low');
-        } else if (segment == 'trung bình') {
+        } else if (budget == 'trung bình') {
             setSegmentPrice('medium');
-        } else if (segment == 'cao') {
+        } else if (budget == 'cao') {
             setSegmentPrice('high');
         } else {
             setSegmentPrice('premium');
         }
-    }, [segment]);
+    }, [budget]);
 
     return (
         <Stack align={'center'} justify={'center'} gap={8} mt={10}>
-            <Heading>Thông tin tiệc cưới</Heading>
-            <Text w={'lg'}>
-                Bảng lập kế hoạch này sẽ giúp các bạn định hình ý tưởng của mình, hãy cùng với đội ngũ nhà OPAL WED thực hiện nhé!
+            <Heading fontFamily={'Hatton'}>Thông tin tiệc cưới</Heading>
+            <Text w={'lg'} fontFamily={'Noto Sans JP'}>
+                Bảng lập kế hoạch này sẽ giúp các bạn định hình ý tưởng của mình, hãy cùng với đội ngũ nhà OPALWED thực hiện nhé!
             </Text>
             <Stack w={'md'} gap={5} mx={'auto'}>
                 <FormControl id="fullName">
@@ -63,12 +62,12 @@ const WeddingInformationPage = () => {
                         placeholder="Tên khách hàng"
                     />
                 </FormControl>
-                <FormControl id="segment" flex={1} isRequired>
+                <FormControl id="budget" flex={1} isRequired>
                     <FormLabel pl={1}>Phân khúc</FormLabel>
                     <Select
-                        name="segment"
-                        value={segment}
-                        onChange={e => setWeddingInfo({ segment: e.target.value })}
+                        name="budget"
+                        value={budget}
+                        onChange={e => setWeddingInfo({ budget: e.target.value })}
                         placeholder={'Chọn phân khúc'}
                     >
                         <option value="thấp">Thấp</option>
@@ -78,12 +77,12 @@ const WeddingInformationPage = () => {
                     </Select>
                 </FormControl>
                 <FormControl id="place">
-                    <FormLabel pl={1}>Khu vực</FormLabel>
+                    <FormLabel pl={1}>Địa điểm</FormLabel>
                     <Input
                         type="text"
                         value={place}
                         onChange={(e) => setWeddingInfo({ place: e.target.value })}
-                        placeholder="Khu vực"
+                        placeholder="Địa điểm"
                     />
                 </FormControl>
                 <FormControl id="weddingDate">
@@ -99,12 +98,17 @@ const WeddingInformationPage = () => {
                     bg={'#0C2948'}
                     _hover={{ bg: '#143252' }}
                     color={'white'}
-                    onClick={() => navigate(`/wedding-planning/${param.concept}/${segmentPrice}/style`)}
+                    onClick={onOpen}
                     isDisabled={!areAllFieldsFilled()}
                 >
                     Tiếp theo
                 </Button>
             </Stack>
+            <DesignInformation
+                isOpen={isOpen}
+                onClose={onClose}
+                budget={segmentPrice}
+            />
         </Stack>
     );
 };

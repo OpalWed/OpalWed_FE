@@ -1,14 +1,28 @@
-import { Box, Divider, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerHeader, DrawerOverlay, HStack, Icon, Stack, Text, useDisclosure } from "@chakra-ui/react";
+import { Box, Button, Divider, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerHeader, DrawerOverlay, HStack, Stack, Text, useDisclosure } from "@chakra-ui/react";
 import { ConfigProvider, FloatButton } from "antd";
-import { FaCartShopping, FaGem, FaMoneyBillWave } from "react-icons/fa6";
+import { FaCartShopping, FaX } from "react-icons/fa6";
 import { useWedding } from "../../hooks/useWedding";
-import { formatDate } from "../../utils/formatDate";
-import { FaCalendarAlt, FaMapMarkerAlt, FaUserAlt } from "react-icons/fa";
-import { ColorLens } from "@mui/icons-material";
 
 const WeddingCart = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const { fullName, segment, place, weddingDate, decorationLevel, mainColor, accessories } = useWedding();
+    const {
+        accessories,
+        clothes,
+        restaurants,
+        makeup,
+        flowers,
+        weddingPhotography,
+        decoration,
+        weddingInvitations,
+        removeAccessory,
+        removeClothes,
+        removeRestaurant,
+        removeMakeup,
+        removeFlowers,
+        removeWeddingPhotography,
+        removeDecoration,
+        removeWeddingInvitations
+    } = useWedding();
 
     return (
         <>
@@ -33,100 +47,285 @@ const WeddingCart = () => {
                 <DrawerOverlay />
                 <DrawerContent>
                     <DrawerCloseButton borderRadius={'full'} />
-                    <DrawerHeader>Đơn hàng của bạn</DrawerHeader>
+                    <DrawerHeader>Giỏ hàng của bạn</DrawerHeader>
                     <Divider />
                     <DrawerBody>
                         <Stack py="15px" mb="10px" gap={6}>
-                            <Box
-                                bg="#fff"
-                                borderRadius="xl"
-                                boxShadow="lg"
-                                py={4}
-                                px={6}
-                                border="1px solid"
-                                borderColor="pink.200"
-                            >
-                                <Stack gap={4}>
-                                    <Text fontSize="xl" fontWeight="bold" color="#d53f8c">
-                                        Thông tin khách hàng
-                                    </Text>
-                                    <Stack align="start" gap={2}>
-                                        <HStack w={'full'}>
-                                            <HStack flex={1}>
-                                                <Icon as={FaUserAlt} color="pink.500" />
-                                                <Text fontSize={17}>Tên: {fullName}</Text>
-                                            </HStack>
-                                            <HStack flex={1}>
-                                                <Icon as={FaMoneyBillWave} color="pink.500" />
-                                                <Text fontSize={17}>Phân khúc: {segment}</Text>
-                                            </HStack>
-                                        </HStack>
-                                        <HStack w={'full'}>
-                                            <HStack flex={1}>
-                                                <Icon as={FaMapMarkerAlt} color="pink.500" />
-                                                <Text fontSize={17}>Khu vực: {place}</Text>
-                                            </HStack>
-                                            <HStack flex={1}>
-                                                <Icon as={FaCalendarAlt} color="pink.500" />
-                                                <Text fontSize={17}>Ngày cưới: {formatDate(weddingDate)}</Text>
-                                            </HStack>
-                                        </HStack>
+                            {clothes.length > 0 && (
+                                <Box
+                                    bg="#fff"
+                                    borderRadius="xl"
+                                    boxShadow="lg"
+                                    py={4}
+                                    px={8}
+                                    border="1px solid"
+                                    borderColor="pink.200"
+                                >
+                                    <Stack gap={4}>
+                                        <Text fontSize="xl" fontWeight="bold" color="#d53f8c">
+                                            Trang phục
+                                        </Text>
+                                        <Stack align="start" spacing={2}>
+                                            {clothes.map((c, index) => (
+                                                <HStack key={index} justify={'space-between'} w={'full'}>
+                                                    <Text>{c.clothesName}</Text>
+                                                    <Button
+                                                        fontSize={12}
+                                                        p={3}
+                                                        borderRadius={'full'}
+                                                        variant={'ghost'}
+                                                        onClick={() => removeClothes(c.clothesName)}
+                                                    ><FaX /></Button>
+                                                </HStack>
+                                            ))}
+                                        </Stack>
                                     </Stack>
-                                </Stack>
-                            </Box>
+                                </Box>
+                            )}
 
-                            <Box
-                                bg="#fff"
-                                borderRadius="xl"
-                                boxShadow="lg"
-                                py={4}
-                                px={8}
-                                border="1px solid"
-                                borderColor="pink.200"
-                            >
-                                <Stack gap={4}>
-                                    <Text fontSize="xl" fontWeight="bold" color="#d53f8c">
-                                        Trang trí tiệc cưới
-                                    </Text>
-                                    <Stack align="start" spacing={2}>
-                                        <HStack>
-                                            <Icon as={FaGem} color="pink.500" />
-                                            <Text fontSize={17}>Mức độ trang trí: {decorationLevel}</Text>
-                                        </HStack>
-                                        <HStack gap={1}>
-                                            <Icon boxSize={5} as={ColorLens} color="pink.500" />
-                                            <Text fontSize={17}>Màu sắc chủ đạo: {mainColor}</Text>
-                                        </HStack>
+                            {accessories.length > 0 && (
+                                <Box
+                                    bg="#fff"
+                                    borderRadius="xl"
+                                    boxShadow="lg"
+                                    py={4}
+                                    px={8}
+                                    border="1px solid"
+                                    borderColor="pink.200"
+                                >
+                                    <Stack gap={4}>
+                                        <Text fontSize="xl" fontWeight="bold" color="#d53f8c">
+                                            Phụ kiện
+                                        </Text>
+                                        <Stack align="start" spacing={2}>
+                                            {accessories.map((a, index) => (
+                                                <HStack key={index} justify={'space-between'} w={'full'}>
+                                                    <Text>{a.accessoriesName}</Text>
+                                                    <Button
+                                                        fontSize={12}
+                                                        p={3}
+                                                        borderRadius={'full'}
+                                                        variant={'ghost'}
+                                                        onClick={() => removeAccessory(a.accessoriesName)}
+                                                    ><FaX /></Button>
+                                                </HStack>
+                                            ))}
+                                        </Stack>
                                     </Stack>
-                                </Stack>
-                            </Box>
+                                </Box>
+                            )}
 
-                            <Box
-                                bg="#fff"
-                                borderRadius="xl"
-                                boxShadow="lg"
-                                py={4}
-                                px={8}
-                                border="1px solid"
-                                borderColor="pink.200"
-                            >
-                                <Stack gap={4}>
-                                    <Text fontSize="xl" fontWeight="bold" color="#d53f8c">
-                                        Phụ kiện
-                                    </Text>
-                                    <Stack align="start" spacing={2}>
-                                        {accessories.map(a => (
-                                            <Text>{a.accessoriesName}</Text>
-                                        ))}
+                            {restaurants.length > 0 && (
+                                <Box
+                                    bg="#fff"
+                                    borderRadius="xl"
+                                    boxShadow="lg"
+                                    py={4}
+                                    px={8}
+                                    border="1px solid"
+                                    borderColor="pink.200"
+                                >
+                                    <Stack gap={4}>
+                                        <Text fontSize="xl" fontWeight="bold" color="#d53f8c">
+                                            Nhà hàng
+                                        </Text>
+                                        <Stack align="start" spacing={2}>
+                                            {restaurants.map((r, index) => (
+                                                <HStack key={index} justify={'space-between'} w={'full'}>
+                                                    <Text>{r.restaurantsName}</Text>
+                                                    <Button
+                                                        fontSize={12}
+                                                        p={3}
+                                                        borderRadius={'full'}
+                                                        variant={'ghost'}
+                                                        onClick={() => removeRestaurant(r.restaurantsName)}
+                                                    ><FaX /></Button>
+                                                </HStack>
+                                            ))}
+                                        </Stack>
                                     </Stack>
-                                </Stack>
-                            </Box>
+                                </Box>
+                            )}
+
+                            {makeup.length > 0 && (
+                                <Box
+                                    bg="#fff"
+                                    borderRadius="xl"
+                                    boxShadow="lg"
+                                    py={4}
+                                    px={8}
+                                    border="1px solid"
+                                    borderColor="pink.200"
+                                >
+                                    <Stack gap={4}>
+                                        <Text fontSize="xl" fontWeight="bold" color="#d53f8c">
+                                            Trang điểm
+                                        </Text>
+                                        <Stack align="start" spacing={2}>
+                                            {makeup.map((m, index) => (
+                                                <HStack key={index} justify={'space-between'} w={'full'}>
+                                                    <Text>{m.makeupName}</Text>
+                                                    <Button
+                                                        fontSize={12}
+                                                        p={3}
+                                                        borderRadius={'full'}
+                                                        variant={'ghost'}
+                                                        onClick={() => removeMakeup(m.makeupName)}
+                                                    ><FaX /></Button>
+                                                </HStack>
+                                            ))}
+                                        </Stack>
+                                    </Stack>
+                                </Box>
+                            )}
+
+                            {flowers.length > 0 && (
+                                <Box
+                                    bg="#fff"
+                                    borderRadius="xl"
+                                    boxShadow="lg"
+                                    py={4}
+                                    px={8}
+                                    border="1px solid"
+                                    borderColor="pink.200"
+                                >
+                                    <Stack gap={4}>
+                                        <Text fontSize="xl" fontWeight="bold" color="#d53f8c">
+                                            Hoa cưới
+                                        </Text>
+                                        <Stack align="start" spacing={2}>
+                                            {flowers.map((f, index) => (
+                                                <HStack key={index} justify={'space-between'} w={'full'}>
+                                                    <Text>{f.flowersName}</Text>
+                                                    <Button
+                                                        fontSize={12}
+                                                        p={3}
+                                                        borderRadius={'full'}
+                                                        variant={'ghost'}
+                                                        onClick={() => removeFlowers(f.flowersName)}
+                                                    ><FaX /></Button>
+                                                </HStack>
+                                            ))}
+                                        </Stack>
+                                    </Stack>
+                                </Box>
+                            )}
+
+                            {weddingPhotography.length > 0 && (
+                                <Box
+                                    bg="#fff"
+                                    borderRadius="xl"
+                                    boxShadow="lg"
+                                    py={4}
+                                    px={8}
+                                    border="1px solid"
+                                    borderColor="pink.200"
+                                >
+                                    <Stack gap={4}>
+                                        <Text fontSize="xl" fontWeight="bold" color="#d53f8c">
+                                            Chụp ảnh cưới
+                                        </Text>
+                                        <Stack align="start" spacing={2}>
+                                            {weddingPhotography.map((wp, index) => (
+                                                <HStack key={index} justify={'space-between'} w={'full'}>
+                                                    <Text>{wp.photographyName}</Text>
+                                                    <Button
+                                                        fontSize={12}
+                                                        p={3}
+                                                        borderRadius={'full'}
+                                                        variant={'ghost'}
+                                                        onClick={() => removeWeddingPhotography(wp.photographyName)}
+                                                    ><FaX /></Button>
+                                                </HStack>
+                                            ))}
+                                        </Stack>
+                                    </Stack>
+                                </Box>
+                            )}
+
+                            {decoration.length > 0 && (
+                                <Box
+                                    bg="#fff"
+                                    borderRadius="xl"
+                                    boxShadow="lg"
+                                    py={4}
+                                    px={8}
+                                    border="1px solid"
+                                    borderColor="pink.200"
+                                >
+                                    <Stack gap={4}>
+                                        <Text fontSize="xl" fontWeight="bold" color="#d53f8c">
+                                            Trang trí
+                                        </Text>
+                                        <Stack align="start" spacing={2}>
+                                            {decoration.map((d, index) => (
+                                                <HStack key={index} justify={'space-between'} w={'full'}>
+                                                    <Text>{d.decorationName}</Text>
+                                                    <Button
+                                                        fontSize={12}
+                                                        p={3}
+                                                        borderRadius={'full'}
+                                                        variant={'ghost'}
+                                                        onClick={() => removeDecoration(d.decorationName)}
+                                                    ><FaX /></Button>
+                                                </HStack>
+                                            ))}
+                                        </Stack>
+                                    </Stack>
+                                </Box>
+                            )}
+
+                            {weddingInvitations.length > 0 && (
+                                <Box
+                                    bg="#fff"
+                                    borderRadius="xl"
+                                    boxShadow="lg"
+                                    py={4}
+                                    px={8}
+                                    border="1px solid"
+                                    borderColor="pink.200"
+                                >
+                                    <Stack gap={4}>
+                                        <Text fontSize="xl" fontWeight="bold" color="#d53f8c">
+                                            Thiệp cưới
+                                        </Text>
+                                        <Stack align="start" spacing={2}>
+                                            {weddingInvitations.map((wi, index) => (
+                                                <HStack key={index} justify={'space-between'} w={'full'}>
+                                                    <Text>{wi.invitationsName}</Text>
+                                                    <Button
+                                                        fontSize={12}
+                                                        p={3}
+                                                        borderRadius={'full'}
+                                                        variant={'ghost'}
+                                                        onClick={() => removeWeddingInvitations(wi.invitationsName)}
+                                                    ><FaX /></Button>
+                                                </HStack>
+                                            ))}
+                                        </Stack>
+                                    </Stack>
+                                </Box>
+                            )}
+
+                            {!clothes &&
+                                !accessories &&
+                                !makeup &&
+                                !flowers &&
+                                !weddingPhotography &&
+                                !decoration &&
+                                !restaurants &&
+                                !weddingInvitations && (
+                                    <Stack align={'center'}>
+                                        <Text>Giỏ hàng trống</Text>
+                                    </Stack>
+                                )}
                         </Stack>
+
                     </DrawerBody>
                 </DrawerContent>
             </Drawer>
         </>
     );
-}
+};
 
 export default WeddingCart;

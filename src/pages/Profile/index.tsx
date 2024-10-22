@@ -24,7 +24,7 @@ const ProfilePage = () => {
     return (
         <>
             <HStack h={78} bg={Color.darkBlue}>
-                <Heading fontSize={24} color={'white'} fontWeight={500} my={'auto'} ml={6}>Thông tin cá nhân</Heading>
+                <Heading fontSize={24} color={'white'} fontWeight={500} my={'auto'} ml={6} fontFamily={'Hatton'}>Thông tin cá nhân</Heading>
             </HStack>
             <Stack w={'6xl'} m={'auto'} align={'flex-start'} gap={0}>
                 <HStack borderBottom={Border.lightBorder} w={'full'} py={5} pl={6} align={'flex-start'}>
