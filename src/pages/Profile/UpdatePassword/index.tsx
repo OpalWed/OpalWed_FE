@@ -70,7 +70,7 @@ const UpdatePasswordPage = () => {
     return (
         <>
             <HStack h={78} bg={Color.darkBlue}>
-                <Heading fontSize={24} color={'white'} fontWeight={500} my={'auto'} ml={6}>Cập nhật mật khẩu</Heading>
+                <Heading fontSize={24} color={'white'} fontWeight={500} my={'auto'} ml={6} fontFamily={'Hatton'}>Cập nhật mật khẩu</Heading>
             </HStack>
             {!updateEnable ? (
                 <HStack borderBottom={Border.lightBorder} w={'6xl'} mx={'auto'} py={5} pl={6} align={'flex-start'}>

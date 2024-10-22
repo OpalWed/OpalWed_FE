@@ -1,11 +1,12 @@
 import { Box, Button, HStack, Image, Stack, Text } from "@chakra-ui/react"
-import { FaTrashAlt } from "react-icons/fa"
+import { FaX } from "react-icons/fa6";
 
 interface Prop {
     productName: string;
+    onRemove: () => void;
 }
 
-const ConfirmDesignProductItem = ({ productName }: Prop) => {
+const ConfirmDesignProductItem = ({ productName, onRemove }: Prop) => {
     return (
         <Box
             p="15px"
@@ -29,8 +30,9 @@ const ConfirmDesignProductItem = ({ productName }: Prop) => {
                 borderRadius="50%"
                 float="right"
                 _hover={{ bg: "rgba(255, 0, 0, 0.2)" }}
+                onClick={onRemove}
             >
-                <FaTrashAlt />
+                <FaX />
             </Button>
 
             <HStack align="center" alignItems={'flex-start'}>

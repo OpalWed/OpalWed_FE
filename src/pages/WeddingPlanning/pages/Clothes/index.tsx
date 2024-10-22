@@ -1,36 +1,29 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Button, HStack, SimpleGrid, Stack } from "@chakra-ui/react";
-import { ArrowBack, ArrowForward } from "@mui/icons-material";
+import { Button, Heading, HStack, SimpleGrid, Stack } from "@chakra-ui/react";
+import { ArrowForward } from "@mui/icons-material";
 import { changeTabTitle } from "../../../../utils/changeTabTitle";
 import ProductItem from "../../components/product_item";
 import WeddingCart from "../../../../components/wedding_cart";
 import useProduct from "../../../../hooks/useProduct";
-import { Budget, Concept, Utility } from "../../../../types/type.enum";
+import { Budget, Utility } from "../../../../types/type.enum";
+import { Product } from "../../../../types/Product";
+import Loading from "../../../../components/loading";
 
 const ClothesPage = () => {
-    const param = useParams<{ concept: string, budget: string }>();
+    const param = useParams<{ budget: string }>();
     const navigate = useNavigate();
+    const [products, setProducts] = useState<Product[]>([]);
     const [budgetLevel, setBudgetLevel] = useState<Budget>(Budget.LOW);
-    const [weddingConcept, setWeddingConcept] = useState<Concept>(Concept.MINIMALISM);
+
     const utilityType: Utility = Utility.CLOTHES;
-    const { data } = useProduct({ budgetLevel, weddingConcept, utilityType });
+    const { data, isLoading } = useProduct({ budgetLevel, utilityType });
 
     useEffect(() => {
         changeTabTitle('Trang phục');
     }, []);
 
-    useEffect(() => {
-        if (param.concept) {
-            const conceptKey = param.concept.toUpperCase() as keyof typeof Concept;
 
-            if (Concept[conceptKey]) {
-                setWeddingConcept(Concept[conceptKey]);
-            } else {
-                console.warn("Invalid concept value:", param.concept);
-            }
-        }
-    }, [param.concept]);
 
     useEffect(() => {
         if (param.budget) {
@@ -44,34 +37,37 @@ const ClothesPage = () => {
         }
     }, [param.budget]);
 
-    console.log(data);
-
+    useEffect(() => {
+        if (data?.content) {
+            setProducts(data.content);
+        }
+    }, [data?.content]);
 
     return (
-        <Stack w={'6xl'} mx={'auto'} my={10}>
-            <SimpleGrid
-                columns={4}
-                spacingX={8}
-                spacingY={6}
-                maxW={'full'}
-                mx={'auto'}
-                pb={8}
-            >
-                <ProductItem type="clothes" />
-                <ProductItem type="clothes" />
-                <ProductItem type="clothes" />
-                <ProductItem type="clothes" />
-                <ProductItem type="clothes" />
-                <ProductItem type="clothes" />
-                <ProductItem type="clothes" />
-                <ProductItem type="clothes" />
-            </SimpleGrid>
+        <Stack w={'6xl'} mx={'auto'} my={10} gap={5}>
+            <Heading>Trang phục</Heading>
+            {!isLoading ? (
+                <SimpleGrid
+                    columns={4}
+                    spacingX={8}
+                    spacingY={6}
+                    maxW={'full'}
+                    mx={'auto'}
+                    pb={8}
+                >
+                    {products.map(product => (
+                        <ProductItem type="clothes" product={product} />
+                    ))}
+
+                </SimpleGrid>
+            ) : (
+                <Stack minH={'calc(100vh - 50px - 11rem - 64px)'}>
+                    <Loading />
+                </Stack>
+            )}
             <WeddingCart />
-            <HStack justify={'space-between'}>
-                <Button variant={'ghost'} leftIcon={<ArrowBack />} onClick={() => navigate(-1)}>
-                    Trở lại mục phía trước
-                </Button>
-                <Button variant={'ghost'} rightIcon={<ArrowForward />} onClick={() => navigate(`/wedding-planning/${param.concept}/${param.budget}/restaurants`)}>
+            <HStack justify={'flex-end'}>
+                <Button variant={'ghost'} rightIcon={<ArrowForward />} onClick={() => navigate(`/wedding-planning/${param.budget}/accessories`)}>
                     Sang mục tiếp theo
                 </Button>
             </HStack>

@@ -1,4 +1,4 @@
-import { Box, Button, Divider, Heading, HStack, Image, Popover, PopoverArrow, PopoverBody, PopoverCloseButton, PopoverContent, PopoverHeader, PopoverTrigger, Portal, Stack, Text, useDisclosure } from "@chakra-ui/react"
+import { Box, Button, Divider, Heading, HStack, Image, Popover, PopoverArrow, PopoverBody, PopoverCloseButton, PopoverContent, PopoverHeader, PopoverTrigger, Portal, Stack, Text } from "@chakra-ui/react"
 import CarouselSlider from "../../components/slider"
 import { Color, Shadow } from "../../styles/styles"
 import { ArrowForward, SentimentSatisfiedAlt } from "@mui/icons-material"
@@ -7,12 +7,10 @@ import { useEffect } from "react"
 import { changeTabTitle } from "../../utils/changeTabTitle"
 import { useNavigate } from "react-router-dom"
 import { useAuth } from "../../hooks/useAuth"
-import ConceptModal from "../../components/modal/concept"
 
 const HomePage = () => {
     const navigate = useNavigate();
     const { isAuthenticated } = useAuth();
-    const { isOpen, onClose, onOpen } = useDisclosure();
     const imageList: string[] = [
 
     ]
@@ -40,25 +38,25 @@ const HomePage = () => {
                     shadow={Shadow.cardShadow}
                     gap={6}
                 >
-                    <Heading fontSize={55}>Giới thiệu</Heading>
-                    <Text textAlign={'center'}>
+                    <Heading fontSize={55} fontFamily={'Canela'} fontWeight={300}>Chào mừng đến với OpalWed</Heading>
+                    <Text textAlign={'center'} fontFamily={'Noto Sans JP'}>
                         Chúng tôi là OpalWed, một công ty khởi nghiệp mới thành lập, đi tiên phong trong thị trường chưa được khai thác, cung cấp dịch vụ đại diện và hỗ trợ khách hàng trong việc tìm kiếm và lựa chọn dịch vụ cưới từ nhiều nguồn khác nhau. Chúng tôi sẽ đảm nhiệm tất cả từ việc tìm phông chữ được cá nhân hóa cho lời mời đến việc chọn người giải trí và người cung cấp thực phẩm, đảm bảo mọi chi tiết đều hoàn hảo.
                     </Text>
                 </Stack>
             </Box>
             <Stack w={'5xl'} mx={'auto'} my={16}>
                 <Stack gap={10}>
-                    <Heading textAlign={'center'} fontSize={24}>| DỊCH VỤ CỦA CHÚNG TÔI |</Heading>
-                    <Text textAlign={'center'}>
+                    <Heading textAlign={'center'} fontSize={24} fontFamily={'Noto Sans JP'} fontWeight={400}>| DỊCH VỤ CỦA CHÚNG TÔI |</Heading>
+                    <Text textAlign={'center'} fontFamily={'Noto Sans JP'}>
                         Là một trong những đơn vị tổ chức tiệc cưới chuyên nghiệp và cao cấp đầu tiên tại Việt Nam,
                         OpalWed chuyên tư vấn, thiết kế, lập kế hoạch và thực hiện trọn gói tiệc cưới.
                     </Text>
                     <HStack justify={'space-between'} gap={4}>
-                        <Heading textAlign={'center'}>TỔ CHỨC TIỆC CƯỚI</Heading>
+                        <Heading textAlign={'center'} fontFamily={'Canela'} fontWeight={400}>TỔ CHỨC TIỆC CƯỚI</Heading>
                         <SentimentSatisfiedAlt />
-                        <Heading textAlign={'center'}>SO SÁNH & CHỌN NHÀ CUNG CẤP</Heading>
+                        <Heading textAlign={'center'} fontFamily={'Canela'} fontWeight={400}>SO SÁNH & CHỌN NHÀ CUNG CẤP</Heading>
                         <SentimentSatisfiedAlt />
-                        <Heading textAlign={'center'}>TƯ VẤN TIỆC CƯỚI</Heading>
+                        <Heading textAlign={'center'} fontFamily={'Canela'} fontWeight={400}>TƯ VẤN TIỆC CƯỚI</Heading>
                     </HStack>
                 </Stack>
                 <Divider w={'3xl'} mx={'auto'} my={12} borderColor={'black'} />
@@ -66,16 +64,18 @@ const HomePage = () => {
                     <HStack align="center" justify="space-between" w={'full'}>
                         <Box flex="1">
                             <Heading
-                                fontSize={60}
-                                fontFamily="'Great Vibes', cursive"
+                                fontSize={72}
+                                fontFamily="Great Vibes"
+                                fontWeight={500}
                                 lineHeight="shorter"
                                 mb={4}
                             >
                                 Tầm
                             </Heading>
                             <Heading
-                                fontSize={60}
-                                fontFamily="'Great Vibes', cursive"
+                                fontSize={72}
+                                fontFamily="Great Vibes"
+                                fontWeight={500}
                                 lineHeight="shorter"
                                 ml={20}
                             >
@@ -102,14 +102,14 @@ const HomePage = () => {
                                 bottom={-36}
                                 right={'25%'}
                             >
-                                <Text fontSize={15} textAlign={'justify'}>
+                                <Text fontSize={15} textAlign={'justify'} fontFamily={'Noto Sans JP'}>
                                     OpalWed, a newly established startup, has quickly become the helper
                                     that brides and grooms didn't know they needed. We pioneer the
                                     untapped market, providing customer representation and assistance in
                                     finding and selecting wedding services from a variety of sources.
                                 </Text>
                                 <br />
-                                <Text fontSize={15} textAlign={'justify'}>
+                                <Text fontSize={15} textAlign={'justify'} fontFamily={'Noto Sans JP'}>
                                     We'll take care of it all from finding personalized fonts for
                                     invitations, to choosing entertainers and caterers, making sure
                                     every detail is perfect.
@@ -138,13 +138,13 @@ const HomePage = () => {
                                 bottom={-36}
                                 left={'25%'}
                             >
-                                <Text fontSize={15} textAlign={'justify'}>
+                                <Text fontSize={15} textAlign={'justify'} fontFamily={'Noto Sans JP'}>
                                     Initial Interview and Consultation: Our team of experts will meet with
                                     clients to understand their desires, style and budget. Based on this
                                     information, we will make the most suitable suggestions.
                                 </Text>
                                 <br />
-                                <Text fontSize={15} textAlign={'justify'}>
+                                <Text fontSize={15} textAlign={'justify'} fontFamily={'Noto Sans JP'}>
                                     Detailed Planning: We will develop a detailed plan, including specific
                                     implementation steps and timelines, to ensure everything goes smoothly
                                     and on schedule.
@@ -153,16 +153,18 @@ const HomePage = () => {
                         </HStack>
                         <Box flex="1">
                             <Heading
-                                fontSize={60}
-                                fontFamily="'Great Vibes', cursive"
+                                fontSize={72}
+                                fontFamily="Great Vibes"
+                                fontWeight={500}
                                 lineHeight="shorter"
                                 mb={4}
                             >
                                 Bản
                             </Heading>
                             <Heading
-                                fontSize={60}
-                                fontFamily="'Great Vibes', cursive"
+                                fontSize={72}
+                                fontFamily="Great Vibes"
+                                fontWeight={500}
                                 lineHeight="shorter"
                                 ml={20}
                             >
@@ -192,8 +194,8 @@ const HomePage = () => {
                     gap={6}
                     color={'white'}
                 >
-                    <Heading fontSize={50} fontWeight={400} textAlign={'center'} w={'3xl'}>Nắm bắt tương lai của việc lên kế hoạch cùng OpalWed</Heading>
-                    <Text textAlign={'justify'} fontSize={24}>
+                    <Heading fontSize={50} fontWeight={400} textAlign={'center'} w={'3xl'} fontFamily={'Hatton'}>Nắm bắt tương lai của việc lên kế hoạch cùng OpalWed</Heading>
+                    <Text textAlign={'justify'} fontSize={24} fontFamily={'Canela'}>
                         Điểm đến trực tuyến cuối cùng của bạn
                     </Text>
                     {isAuthenticated ? (
@@ -201,9 +203,10 @@ const HomePage = () => {
                             borderRadius={'full'}
                             w={60}
                             m={'auto'}
-                            onClick={onOpen}
+                            onClick={() => navigate('wedding-planning/wedding-information')}
                             color={'#203963'}
                             textTransform={'uppercase'}
+                            fontFamily={'Noto Sans JP'}
                         >
                             Tạo kế hoạch
                         </Button>
@@ -216,6 +219,8 @@ const HomePage = () => {
                                     m={'auto'}
                                     color={'#203963'}
                                     textTransform={'uppercase'}
+                                    fontFamily={'Noto Sans JP'}
+                                    fontWeight={500}
                                 >
                                     Tạo kế hoạch
                                 </Button>
@@ -223,12 +228,21 @@ const HomePage = () => {
                             <Portal>
                                 <PopoverContent>
                                     <PopoverArrow />
-                                    <PopoverHeader>Cần đăng nhập</PopoverHeader>
+                                    <PopoverHeader fontFamily={'Noto Sans JP'}>Cần đăng nhập</PopoverHeader>
                                     <PopoverCloseButton />
                                     <PopoverBody>
                                         <Stack align={'center'} gap={4}>
-                                            <Text>Bạn cần đăng nhập để tạo kế hoạch cho buổi tiệc cưới</Text>
-                                            <Button colorScheme='blue' w={'full'} onClick={() => navigate('/login')}>Đăng nhập ngay</Button>
+                                            <Text fontFamily={'Noto Sans JP'} fontSize={17} mb={2}>Bạn cần đăng nhập để tạo kế hoạch cho buổi tiệc cưới</Text>
+                                            <Button
+                                                colorScheme='blue'
+                                                w={'full'}
+                                                onClick={() => navigate('/login')}
+                                                fontFamily={'Noto Sans JP'}
+                                                fontSize={14}
+                                                fontWeight={500}
+                                            >
+                                                Đăng nhập ngay
+                                            </Button>
                                         </Stack>
                                     </PopoverBody>
                                 </PopoverContent>
@@ -249,7 +263,7 @@ const HomePage = () => {
                     borderRadius="md"
                     boxShadow="sm"
                 >
-                    <Heading as="h2" size="md" textAlign="center">
+                    <Heading as="h2" size="md" textAlign="center" fontFamily={'Canela'} fontWeight={400} fontSize={17}>
                         THÀNH VIÊN HỢP TÁC
                     </Heading>
                 </Box>
@@ -278,7 +292,7 @@ const HomePage = () => {
                     maxW="xl"
                 >
                     <Stack gap={8}>
-                        <Text fontSize={16}>
+                        <Text fontSize={18} fontFamily={'Canela'}>
                             Hãy liên hệ với chúng tôi ngay để được tư vấn miễn phí và lên kế hoạch cho ngày cưới hoàn hảo!
                         </Text>
                         <Button
@@ -287,6 +301,9 @@ const HomePage = () => {
                             rightIcon={<ArrowForward />}
                             w={'xs'}
                             m={'auto'}
+                            fontSize={15}
+                            fontFamily={'Noto Sans JP'}
+                            fontWeight={500}
                             onClick={() => navigate('/contact')}
                         >
                             Liên hệ chúng tôi
@@ -294,10 +311,6 @@ const HomePage = () => {
                     </Stack>
                 </Box>
             </Box>
-            <ConceptModal
-                isOpen={isOpen}
-                onClose={onClose}
-            />
         </>
     )
 }

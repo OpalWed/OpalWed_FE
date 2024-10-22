@@ -5,7 +5,7 @@ export enum Status {
 
 export enum Concept {
     TRADITIONAL = "TRADITIONAL",
-    MODERN = "MODERN",
+    EUROPE = "EUROPE",
     MINIMALISM = "MINIMALISM",
     VINTAGE = "VINTAGE",
 }
@@ -18,8 +18,12 @@ export enum Budget {
 }
 
 export enum Utility {
-    RESTAURANT = "RESTAURANT",
     CLOTHES = "CLOTHES",
+    ACCESSORIES = "ACCESSORIES",
     MAKEUP = "MAKEUP",
-    JEWELRY = "JEWELRY",
+    FLOWERS = "FLOWERS",
+    PHOTOGRAPHY = "PHOTOGRAPHY",
+    DECORATION = "DECORATION",
+    RESTAURANT = "RESTAURANT",
+    INVITATIONS = "INVITATIONS"
 }

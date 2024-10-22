@@ -1,12 +1,10 @@
-import { Box, Button, HStack } from "@chakra-ui/react";
-import { Link, useNavigate } from "react-router-dom";
+import { Box, HStack } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 import { Color } from "../../../../styles/styles";
-import { FaChevronLeft } from "react-icons/fa6";
 import { useAuth } from "../../../../hooks/useAuth";
 import Logo from "../../../logo";
 
 const WeddingPlanningNavbar = () => {
-    const navigate = useNavigate();
     const { role } = useAuth();
 
     return (
@@ -18,17 +16,7 @@ const WeddingPlanningNavbar = () => {
             bg={Color.darkBlue}
             my={'auto'}
         >
-            <HStack>
-                <Button
-                    variant={'ghost'}
-                    ml={10}
-                    py={8}
-                    color={'white'}
-                    _hover={{ bg: '#ffffff1c' }}
-                    onClick={() => navigate(-1)}
-                >
-                    <FaChevronLeft />
-                </Button>
+            <HStack py={1} ml={4}>
                 <Box ml={5}>
                     <Link to={(role === 'Admin') ? '/administrator' : '/'}>
                         <Logo height="60px" width="60px" />

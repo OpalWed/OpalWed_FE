@@ -232,7 +232,7 @@ const SignUpPage = () => {
                             }}
                         >
                             <Stack flex={1} gap={3}>
-                                <Heading fontSize={18} fontWeight={600}>Thông tin tài khoản</Heading>
+                                <Heading fontSize={18} fontWeight={600} fontFamily={'Hatton'}>Thông tin tài khoản</Heading>
                                 <FormControl id="email" isRequired isInvalid={!!emailError}>
                                     <FormLabel pl={1}>Email</FormLabel>
                                     <Input
@@ -280,7 +280,7 @@ const SignUpPage = () => {
                             </Stack>
 
                             <Stack flex={1} gap={3}>
-                                <Heading fontSize={18} fontWeight={600}>Thông tin cá nhân</Heading>
+                                <Heading fontSize={18} fontWeight={600} fontFamily={'Hatton'}>Thông tin cá nhân</Heading>
                                 <FormControl id="fullName" isRequired isInvalid={!!fullNameError}>
                                     <FormLabel pl={1}>Họ và Tên</FormLabel>
                                     <Input
@@ -328,7 +328,7 @@ const SignUpPage = () => {
                         </Button>
                         <Box position='relative'>
                             <Divider borderColor={'black'} />
-                            <AbsoluteCenter bg={'white'} px={2}>
+                            <AbsoluteCenter bg={'white'} px={2} fontFamily={'Hatton'}>
                                 hoặc
                             </AbsoluteCenter>
                         </Box>
@@ -344,10 +344,10 @@ const SignUpPage = () => {
                             </Button>
                         </HStack>
                         <HStack gap={2} justify={'center'}>
-                            <Text align={"center"}>
+                            <Text align={"center"} fontFamily={'Noto Sans JP'} fontSize={16}>
                                 Đã có tài khoản?
                             </Text>
-                            <Text style={{ color: "#00d4d8" }}>
+                            <Text color={"#00d4d8"} fontFamily={'Canela'}>
                                 <Link to={'/login'}>
                                     Đăng nhập
                                 </Link>

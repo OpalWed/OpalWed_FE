@@ -13,12 +13,20 @@ const conceptItems: MenuProps['items'] = [
         key: '1',
         label: (
             <Link to={'/wedding-concept/europe'}>
-                Phong cách Châu Âu (Europe)
+                Phong cách truyền thống (Traditional)
             </Link>
         ),
     },
     {
         key: '2',
+        label: (
+            <Link to={'/wedding-concept/europe'}>
+                Phong cách Châu Âu (Europe)
+            </Link>
+        ),
+    },
+    {
+        key: '3',
         label: (
             <Link to={'/wedding-concept/minimalist'}>
                 Phong cách tối giản (Minimalism)
@@ -26,7 +34,7 @@ const conceptItems: MenuProps['items'] = [
         ),
     },
     {
-        key: '3',
+        key: '4',
         label: (
             <Link to={'/wedding-concept/vintage'}>
                 Phong cách cổ điển (Vintage)
@@ -53,7 +61,7 @@ const Navbar = () => {
                         <HStack>
                             <Avatar size={'sm'} />
                             <Link to={'/profile'}>
-                                <Text color={'white'}>{data?.fullName}</Text>
+                                <Text color={'gainsboro'} fontFamily={'Hatton'}>{data?.fullName}</Text>
                             </Link>
                         </HStack>
                     </HStack>
@@ -61,25 +69,25 @@ const Navbar = () => {
                     <HStack pos={'absolute'} top={0} right={0}>
                         <HStack>
                             <Link to={'/login'}>
-                                <Text color={'gainsboro'} fontSize={15}>Đăng nhập</Text>
+                                <Text color={'gainsboro'} fontSize={15} fontFamily={'Hatton'}>Đăng nhập</Text>
                             </Link>
                             <Text color={'gainsboro'}>/</Text>
                             <Link to={'/sign-up'}>
-                                <Text color={'gainsboro'} fontSize={15}>Đăng ký</Text>
+                                <Text color={'gainsboro'} fontSize={15} fontFamily={'Hatton'}>Đăng ký</Text>
                             </Link>
                         </HStack>
                     </HStack>
                 )}
                 <HStack justify={'center'}>
-                    <HStack gap={40} align={'flex-end'}>
+                    <HStack gap={36} align={'flex-end'}>
                         <HStack gap={60}>
                             <Link to={'/about-us'}>
-                                <Text color={'gainsboro'} fontSize={18}>
+                                <Text color={'gainsboro'} fontSize={18} fontFamily={'Hatton'}>
                                     Về chúng tôi
                                 </Text>
                             </Link>
                             <Link to={'/our-services'}>
-                                <Text color={'gainsboro'} fontSize={18}>
+                                <Text color={'gainsboro'} fontSize={18} fontFamily={'Hatton'}>
                                     Dịch vụ
                                 </Text>
                             </Link>
@@ -94,14 +102,14 @@ const Navbar = () => {
                         <HStack gap={60}>
                             <Dropdown menu={{ items: conceptItems }} placement="bottomLeft">
                                 <HStack cursor={'pointer'} color={'gainsboro'} gap={0} align={'flex-end'}>
-                                    <Text color={'gainsboro'} fontSize={18}>
+                                    <Text color={'gainsboro'} fontSize={18} fontFamily={'Hatton'}>
                                         Ý tưởng tiệc cưới
                                     </Text>
                                     <ArrowDropDown />
                                 </HStack>
                             </Dropdown>
                             <Link to={'/contact'}>
-                                <Text color={'gainsboro'} fontSize={18}>
+                                <Text color={'gainsboro'} fontSize={18} fontFamily={'Hatton'}>
                                     Liên hệ
                                 </Text>
                             </Link>

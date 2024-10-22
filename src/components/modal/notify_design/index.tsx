@@ -6,10 +6,11 @@ interface Props {
     isOpen: boolean;
     onClose: () => void;
     type: string;
+    handleCheckout: () => void;
 }
 
-const NotifyDesignModal = ({ isOpen, onClose, type }: Props) => {
-    const param = useParams<{ concept: string, budget: string }>();
+const NotifyDesignModal = ({ isOpen, onClose, type, handleCheckout }: Props) => {
+    const param = useParams<{ budget: string }>();
     const navigate = useNavigate();
 
     return (
@@ -32,9 +33,9 @@ const NotifyDesignModal = ({ isOpen, onClose, type }: Props) => {
                 <ModalFooter>
                     <Button colorScheme='green' mr={3} onClick={() => {
                         if (type === 'finish') {
-                            navigate(`/wedding-planning/${param.concept}/${param.budget}/confirm-design`);
+                            navigate(`/wedding-planning/${param.budget}/confirm-design`);
                         } else {
-                            navigate('/');
+                            handleCheckout();
                         }
                     }}>
                         Xác nhận

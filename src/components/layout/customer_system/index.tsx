@@ -39,7 +39,7 @@ const CustomerSystemLayout = () => {
                     <Stack gap={6}>
                         <HStack pl={4}>
                             <Avatar src="/opalwed_web_logo.svg" bg={Color.darkBlue} p={1} />
-                            <Heading fontSize={28} fontWeight={700}>OPALWED</Heading>
+                            <Heading fontSize={28} fontWeight={700} userSelect={'none'} fontFamily={'Hatton'} mb={-2}>OPALWED</Heading>
                         </HStack>
                         <Stack gap={0}>
                             <HStack

@@ -34,8 +34,8 @@ const ContactPage = () => {
                     shadow={Shadow.cardShadow}
                     gap={6}
                 >
-                    <Text fontSize={20}>Liên hệ</Text>
-                    <Heading textAlign={'center'}>
+                    <Text fontSize={26} fontFamily={'Canela'}>Liên hệ</Text>
+                    <Heading textAlign={'center'} fontFamily={'Canela'} fontWeight={400} fontSize={40}>
                         "Crafting Cherish Celebration"
                     </Heading>
                 </Stack>
@@ -43,8 +43,8 @@ const ContactPage = () => {
             <Box bg={Color.lightYellow} py={16} my={10}>
                 <HStack w={'5xl'} m={'auto'} gap={28}>
                     <Stack flex={1} gap={8}>
-                        <Heading>Kết nối</Heading>
-                        <Text>
+                        <Heading fontFamily={'Canela'} fontWeight={300}>Kết nối</Heading>
+                        <Text fontFamily={'Noto Sans JP'}>
                             Bạn đang tìm kiếm một đội ngũ chuyên nghiệp để giúp bạn biến đám cưới trong mơ của mình thành hiện thực?
                             Hãy liên hệ với chúng tôi. Đội ngũ lập kế hoạch giàu kinh nghiệm của chúng tôi sẽ tư vấn và hướng dẫn bạn trong suốt quá trình.
                             Bạn có thắc mắc gì không?
@@ -53,27 +53,27 @@ const ContactPage = () => {
                             <Link href="https://www.facebook.com/profile.php?id=61565969699038&mibextid=LQQJ4d" isExternal>
                                 <HStack>
                                     <FacebookRoundedIcon />
-                                    <Text>OpalWed</Text>
+                                    <Text fontFamily={'Noto Sans JP'} fontWeight={400}>OpalWed</Text>
                                 </HStack>
                             </Link>
                             <Stack>
                                 <HStack gap={2} align={'center'}>
                                     <Phone />
-                                    <Text>0912345678</Text>
+                                    <Text fontFamily={'Noto Sans JP'} fontWeight={400}>0912345678</Text>
                                 </HStack>
                                 <HStack gap={2} align={'center'}>
                                     <Email />
-                                    <Text>opalwed16@gmail.com</Text>
+                                    <Text fontFamily={'Noto Sans JP'} fontWeight={400}>opalwed16@gmail.com</Text>
                                 </HStack>
                                 <HStack gap={2} align={'center'}>
                                     <Place />
-                                    <Text>Lô E2a-7, Đường D1, Đ. D1, Long Thạnh Mỹ, Thành Phố Thủ Đức, Hồ Chí Minh</Text>
+                                    <Text fontFamily={'Noto Sans JP'} fontWeight={400}>Lô E2a-7, Đường D1, Đ. D1, Long Thạnh Mỹ, Thành Phố Thủ Đức, Hồ Chí Minh</Text>
                                 </HStack>
                             </Stack>
                         </Stack>
                     </Stack>
                     <Stack gap={6} flex={1.5}>
-                        <Heading as="h1" size="lg">
+                        <Heading fontSize={32} fontFamily={'Canela'}>
                             Thông tin liên lạc
                         </Heading>
                         <Stack gap={3}>
@@ -99,7 +99,7 @@ const ContactPage = () => {
                                 </FormControl>
                             </HStack>
                         </Stack>
-                        <Heading as="h1" size="lg">
+                        <Heading fontSize={32} fontFamily={'Canela'}>
                             Chi tiết sự kiện
                         </Heading>
                         <Stack gap={3}>
@@ -108,7 +108,7 @@ const ContactPage = () => {
                                     <FormLabel>Số lượng khách</FormLabel>
                                     <InputGroup>
                                         <Input type="number" placeholder="Vd. 500" bg={'white'} />
-                                        <InputRightAddon>
+                                        <InputRightAddon fontFamily={'Noto Sans JP'}>
                                             Khách
                                         </InputRightAddon>
                                     </InputGroup>
@@ -117,7 +117,7 @@ const ContactPage = () => {
                                     <FormLabel>Ngân sách</FormLabel>
                                     <InputGroup>
                                         <Input type="number" placeholder="Vd. 500.000.000" bg={'white'} />
-                                        <InputRightAddon>
+                                        <InputRightAddon fontFamily={'Noto Sans JP'}>
                                             VND
                                         </InputRightAddon>
                                     </InputGroup>
@@ -151,6 +151,7 @@ const ContactPage = () => {
                             fontWeight={400}
                             w={52}
                             m={'auto'}
+                            fontFamily={'Noto Sans JP'}
                             _hover={{ bg: Color.darkBlueHover }}
                         >
                             Gửi yêu cầu

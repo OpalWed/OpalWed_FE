@@ -93,7 +93,7 @@ const CustomerContactsPage = () => {
     // }
 
     useEffect(() => {
-        changeTabTitle('Liên hệ khách hàng');
+        changeTabTitle('Quản lý khách hàng tư vấn');
     }, []);
 
     // useEffect(() => {
@@ -109,7 +109,7 @@ const CustomerContactsPage = () => {
                 <Input
                     ref={ref}
                     borderRadius={20}
-                    placeholder="Search title..."
+                    placeholder="Tìm kiếm theo tên..."
                     variant="filled"
                     border='1px solid gainsboro'
                     onChange={(e) => {

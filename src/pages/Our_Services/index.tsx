@@ -100,7 +100,7 @@ const OurServicesPage = () => {
                     w={'5xl'}
                     left="50%"
                     transform="translate(-50%, 0)"
-                    bottom={"25%"}
+                    bottom={"30%"}
                     gap={6}
                     color={'white'}
                 >
@@ -108,10 +108,11 @@ const OurServicesPage = () => {
                         fontSize={55}
                         fontWeight={500}
                         textAlign={'center'}
+                        fontFamily={'Hatton'}
                     >
                         Các dịch vụ hiện đại và đa dạng tại OPALWED
                     </Heading>
-                    <Text textAlign={'justify'}>
+                    <Text textAlign={'justify'} fontSize={15} fontFamily={'Noto Sans JP'}>
                         Hãy tìm hiểu và lựa chọn giá trị của bạn
                     </Text>
                 </Stack>
@@ -120,11 +121,11 @@ const OurServicesPage = () => {
                 <ServiceCarousel />
             </Stack>
             <Stack align={'center'} w={'6xl'} mx={'auto'} mt={16} gap={12} id="decoration">
-                <Heading>Trang trí tiệc cưới</Heading>
+                <Heading fontFamily={'Hatton'}>Trang trí tiệc cưới</Heading>
                 <HStack gap={10} mb={10} align={'flex-start'}>
                     <Stack gap={4} flex={1}>
                         <Heading fontSize={32} fontWeight={500}>Mordern Wedding</Heading>
-                        <Text fontSize={17}>Bien écrire est un art. Commencez par utiliser des expressions simples et de tous les jours que les gens peuvent facilement comprendre. Soyez clair et allez à l'essentiel. Faites en sorte que vos arguments s'enchaînent logiquement et soyez concis sauf si vous écrivez un essai.</Text>
+                        <Text fontSize={17}>Trang trí tiệc cưới không chỉ là việc tạo ra không gian đẹp mắt mà còn là cách thể hiện cá tính và sự sáng tạo của các cặp đôi.</Text>
                     </Stack>
                     <Image
                         src="/image 18.png"
@@ -137,7 +138,7 @@ const OurServicesPage = () => {
                     />
                     <Stack gap={4} flex={1}>
                         <Heading fontSize={32} fontWeight={500}>Mordern Wedding</Heading>
-                        <Text fontSize={17}>Bien écrire est un art. Commencez par utiliser des expressions simples et de tous les jours que les gens peuvent facilement comprendre. Soyez clair et allez à l'essentiel. Faites en sorte que vos arguments s'enchaînent logiquement et soyez concis sauf si vous écrivez un essai.</Text>
+                        <Text fontSize={17}>Chúng tôi mang đến những sự  lựa chọn về concept độc đáo, từ hoa tươi, ánh đèn lung linh đến bàn tiệc sang trọng.</Text>
                     </Stack>
                 </HStack>
                 <HStack gap={10}>
@@ -152,7 +153,7 @@ const OurServicesPage = () => {
                     />
                     <Stack gap={4} flex={1.8}>
                         <Heading fontSize={32} fontWeight={500}>Mordern Wedding</Heading>
-                        <Text fontSize={17}>Bien écrire est un art. Commencez par utiliser des expressions simples et de tous les jours que les gens peuvent facilement comprendre. Soyez clair et allez à l'essentiel. Faites en sorte que vos arguments s'enchaînent logiquement et soyez concis sauf si vous écrivez un essai.</Text>
+                        <Text fontSize={17}>Với sự sáng tạo và tâm huyết, mỗi chi tiết sẽ được chăm chút tỉ mỉ và mang đậm dấu ấn tình yêu và phong cách riêng của bạn.</Text>
                     </Stack>
                     <Image
                         src="/image 18.png"
@@ -165,8 +166,11 @@ const OurServicesPage = () => {
                     />
                 </HStack>
             </Stack>
-            <Stack align={'center'} w={'6xl'} mx={'auto'} mt={16} gap={12} id="clothes">
-                <Heading>Trang phục tiệc cưới</Heading>
+            <Stack align={'center'} w={'6xl'} mx={'auto'} mt={16} gap={8} id="clothes">
+                <Heading fontFamily={'Hatton'}>Trang phục tiệc cưới</Heading>
+                <Text w={'75%'} mx={'auto'} fontFamily={'Noto Sans JP'}>
+                    Với bộ sưu tập trang phục cưới đa dạng và tinh tế từ các nhà cung cấp, OpalWed mang đến những mẫu váy cưới sang trọng và vest lịch lãm, các mẫu mã đa dạng  phù hợp với mọi phong cách và sở thích. Từ thiết kế cổ điển đến hiện đại, mỗi bộ trang phục đều được chăm chút kỹ lưỡng, đảm bảo độ phù hợp về phong cách và mang đến vẻ đẹp hoàn hảo cho ngày trọng đại của các cặp đôi.
+                </Text>
                 <SimpleGrid
                     columns={4}
                     spacingX={8}
@@ -185,8 +189,10 @@ const OurServicesPage = () => {
                     <ProductItem />
                 </SimpleGrid>
             </Stack>
-            <Stack align={'center'} w={'6xl'} mx={'auto'} mt={16} gap={12} id="photo">
-                <Heading>Chụp ảnh cưới</Heading>
+            <Stack align={'center'} w={'6xl'} mx={'auto'} mt={16} gap={8} id="photo">
+                <Heading fontFamily={'Hatton'}>Chụp ảnh cưới</Heading>
+                <Text w={'75%'} mx={'auto'} fontFamily={'Noto Sans JP'}>
+                    Ghi lại những khoảnh khắc đáng nhớ trong ngày trọng đại của bạn với dịch vụ chụp ảnh cưới chuyên nghiệp từ các nhà cung cấp được tư vấn bởi OpalWed. Với đội ngũ nhiếp ảnh gia tài năng, luôn sẵn sàng bắt trọn từng cảm xúc và nét đẹp trong những khung hình ấn tượng. Hãy để chúng tôi giúp bạn lưu giữ những kỷ niệm tuyệt vời qua những bức ảnh lãng mạn và độc đáo.                </Text>
                 <SimpleGrid
                     columns={3}
                     spacingX={8}
@@ -246,7 +252,7 @@ const OurServicesPage = () => {
                 </SimpleGrid>
             </Stack>
             <Stack w={'6xl'} mx={'auto'} mt={16} gap={12} id="card">
-                <Heading textAlign={'center'}>Thiệp cưới</Heading>
+                <Heading textAlign={'center'} fontFamily={'Hatton'}>Thiệp cưới</Heading>
                 <HStack gap={10} mb={10} w={'90%'} align={'flex-start'}>
                     <Image
                         src="/image 18.png"
