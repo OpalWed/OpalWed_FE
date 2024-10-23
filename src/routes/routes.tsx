@@ -42,6 +42,7 @@ import CustomerDesignPage from "../pages/CustomerDesign";
 import CreateServicePage from "../pages/Services/CreateService";
 import ServiceDetailPage from "../pages/Services/ServiceDetail";
 import UpdateServicePage from "../pages/Services/UpdateService";
+import TraditionalWeddingConceptPage from "../pages/WeddingConcept/Traditional";
 
 const routes = [
     {
@@ -67,6 +68,7 @@ const routes = [
             { index: true, element: <HomePage /> },
             { path: "about-us", element: <AboutPage /> },
             { path: "our-services", element: <OurServicesPage /> },
+            { path: "wedding-concept/traditional", element: <TraditionalWeddingConceptPage /> },
             { path: "wedding-concept/europe", element: <EuropeWeddingConceptPage /> },
             { path: "wedding-concept/minimalist", element: <MinimalismWeddingConceptPage /> },
             { path: "wedding-concept/vintage", element: <VintageWeddingConceptPage /> },

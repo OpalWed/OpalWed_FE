@@ -12,7 +12,7 @@ const conceptItems: MenuProps['items'] = [
     {
         key: '1',
         label: (
-            <Link to={'/wedding-concept/europe'}>
+            <Link to={'/wedding-concept/traditional'}>
                 Phong cách truyền thống (Traditional)
             </Link>
         ),

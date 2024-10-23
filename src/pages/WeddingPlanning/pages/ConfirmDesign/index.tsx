@@ -9,9 +9,13 @@ import { useEffect } from "react";
 import { changeTabTitle } from "../../../../utils/changeTabTitle";
 import ApiClient from "../../../../services/apiClient";
 import { useNavigate } from "react-router-dom";
+import jsPDF from "jspdf";
+import axios from "axios";
+import LoadingModal from "../../../../components/modal/loading";
 
 const ConfirmDesignPage = () => {
     const { isOpen, onClose, onOpen } = useDisclosure();
+    const { isOpen: isOpenLoading, onClose: onCloseLoading, onOpen: onOpenLoading } = useDisclosure();
     const {
         fullName,
         budget,
@@ -40,6 +44,113 @@ const ConfirmDesignPage = () => {
     useEffect(() => {
         changeTabTitle('Đăng ký tư vấn');
     }, []);
+
+    const generatePDF = () => {
+        const doc = new jsPDF();
+
+        // Set font and styles
+        doc.addFont(
+            'https://db.onlinewebfonts.com/t/32441506567156636049eb850b53f02a.ttf',
+            'Times New Roman',
+            'normal'
+        );
+
+        // Set font and styles
+        doc.setFont('Times New Roman');
+        doc.setFontSize(16);
+        doc.setTextColor(0, 0, 0);
+
+        // Add logo (Make sure to provide the correct path to your logo image)
+        doc.addImage('/OpalWed.jpg', 'JPG', 10, 10, 25, 20); // Adjust size and position as needed
+
+        // Title
+        doc.setFontSize(16);
+        doc.setTextColor(76, 175, 80); // #4CAF50
+        doc.text("OpalWed", 105, 30, { align: "center" });
+
+        // Tagline
+        doc.setFontSize(12);
+        doc.text("Lập kế hoạch cho đám cưới mơ ước của bạn", 105, 40, { align: "center" });
+
+        // Add a horizontal line
+        doc.setDrawColor(0);
+        doc.line(10, 45, 200, 45);
+
+        // Wedding Info
+        doc.setFontSize(14);
+        doc.setTextColor(0, 0, 0);
+        doc.text("Thông tin tiệc cưới:", 10, 55);
+        doc.setFontSize(12);
+        doc.text(`- Tên: ${fullName}`, 10, 65);
+        doc.text(`- Ngân sách: ${budget}`, 10, 70);
+        doc.text(`- Địa điểm: ${place}`, 10, 75);
+        doc.text(`- Ngày cưới: ${new Date(weddingDate).toLocaleDateString('vi-VN')}`, 10, 80);
+
+        // Products
+        doc.setFontSize(14);
+        doc.setTextColor(76, 175, 80); // #4CAF50
+        doc.text("Sản phẩm:", 10, 90);
+
+        const productCategories = [
+            { title: "Trang phục", items: clothes.map(c => c.clothesName) },
+            { title: "Phụ kiện", items: accessories.map(a => a.accessoriesName) },
+            { title: "Trang điểm", items: makeup.map(m => m.makeupName) },
+            { title: "Hoa cưới", items: flowers.map(f => f.flowersName) },
+            { title: "Chụp ảnh cưới", items: weddingPhotography.map(p => p.photographyName) },
+            { title: "Trang trí", items: decoration.map(d => d.decorationName) },
+            { title: "Nhà hàng", items: restaurants.map(r => r.restaurantsName) },
+            { title: "Thiệp cưới", items: weddingInvitations.map(i => i.invitationsName) }
+        ];
+
+        let y = 100;
+        productCategories.forEach(category => {
+            if (category.items.length > 0) {
+                doc.setFontSize(12);
+                doc.setTextColor(76, 175, 80); // #4CAF50
+                doc.text(category.title, 10, y);
+                doc.setTextColor(0, 0, 0);
+                category.items.forEach(item => {
+                    y += 5; // Space between items
+                    doc.text(`- ${item}`, 15, y);
+                });
+                y += 10; // Space after category
+            }
+        });
+
+        // Footer
+        doc.setFontSize(12);
+        doc.text("Cảm ơn bạn đã chọn OpalWed!", 105, y, { align: "center" });
+
+        doc.save("wedding_consultation_details.pdf");
+        // Save the PDF to a blob
+        const pdfBlob: Blob = doc.output("blob");
+        handleUploadCloudinary(pdfBlob);
+    };
+
+    const handleUploadCloudinary = async (pdfBlob: Blob) => {
+        const fileName = 'wedding_consultation_details.pdf';
+        const fileToUpload = new File([pdfBlob], fileName, { type: 'application/pdf' });
+        let fileUrl: string = '';
+
+        const formDataFile = new FormData();
+        // Append the generated PDF blob instead of clinicRegistration
+        formDataFile.append("file", fileToUpload);
+        formDataFile.append("upload_preset", "z5r1wkcn"); // Your upload preset
+
+        try {
+            const response = await axios.post(
+                `https://api.cloudinary.com/v1_1/dy1t2fqsc/auto/upload`,
+                formDataFile
+            );
+            console.log(response);
+
+            fileUrl = response.data.secure_url; // Get the URL of the uploaded file
+            console.log("Uploaded PDF URL:", fileUrl); // Log the URL for debugging
+            window.location.href = fileUrl;
+        } catch (error) {
+            console.error("Error uploading PDF:", error);
+        }
+    };
 
     const handleCreateOrder = async () => {
         const api = new ApiClient<any>('/order');
@@ -86,8 +197,16 @@ const ConfirmDesignPage = () => {
                 isClosable: true,
             });
         } finally {
+            onCloseLoading();
         }
     };
+
+    const handleDesignRegister = () => {
+        onClose();
+        onOpenLoading();
+        generatePDF();
+        handleCreateOrder();
+    }
 
     useEffect(() => {
         // Check to see if this is a redirect back from Checkout
@@ -188,14 +307,14 @@ const ConfirmDesignPage = () => {
                         />
                     ))}
 
-                    {!clothes &&
-                        !accessories &&
-                        !makeup &&
-                        !flowers &&
-                        !weddingPhotography &&
-                        !decoration &&
-                        !restaurants &&
-                        !weddingInvitations && (
+                    {clothes.length === 0 &&
+                        accessories.length === 0 &&
+                        makeup.length === 0 &&
+                        flowers.length === 0 &&
+                        weddingPhotography.length === 0 &&
+                        decoration.length === 0 &&
+                        restaurants.length === 0 &&
+                        weddingInvitations.length === 0 && (
                             <Text>Không có dịch vụ</Text>
                         )}
                 </Box>
@@ -446,14 +565,14 @@ const ConfirmDesignPage = () => {
                             </Box>
                         )}
 
-                        {!clothes &&
-                            !accessories &&
-                            !makeup &&
-                            !flowers &&
-                            !weddingPhotography &&
-                            !decoration &&
-                            !restaurants &&
-                            !weddingInvitations && (
+                        {clothes.length === 0 &&
+                            accessories.length === 0 &&
+                            makeup.length === 0 &&
+                            flowers.length === 0 &&
+                            weddingPhotography.length === 0 &&
+                            decoration.length === 0 &&
+                            restaurants.length === 0 &&
+                            weddingInvitations.length === 0 && (
                                 <Text textAlign={'center'}>Không có dịch vụ để tư vấn</Text>
                             )}
                     </Stack>
@@ -469,7 +588,11 @@ const ConfirmDesignPage = () => {
                 isOpen={isOpen}
                 onClose={onClose}
                 type="confirm-design"
-                handleCheckout={handleCreateOrder}
+                handleCheckout={handleDesignRegister}
+            />
+            <LoadingModal
+                isOpen={isOpenLoading}
+                onClose={onCloseLoading}
             />
         </HStack >
     );

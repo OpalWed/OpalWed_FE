@@ -224,6 +224,7 @@ const LoginPage = () => {
                                 _hover={{ bg: '#143252' }}
                                 color={'white'}
                                 fontWeight={'400'}
+                                fontFamily={'Noto Sans JP'}
                                 onClick={handleLogin}
                             >
                                 Đăng nhập
