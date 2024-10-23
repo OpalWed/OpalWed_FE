@@ -6,7 +6,7 @@ import CarouselSlider from "../../../components/slider";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../hooks/useAuth";
 
-const MinimalismWeddingConceptPage = () => {
+const TraditionalWeddingConceptPage = () => {
     const navigate = useNavigate();
     const { isAuthenticated } = useAuth();
     const imageList: string[] = [
@@ -14,7 +14,7 @@ const MinimalismWeddingConceptPage = () => {
     ]
 
     useEffect(() => {
-        changeTabTitle('Phong cách tối giản (Minimalism)');
+        changeTabTitle('Phong cách cổ điển (Vintage)');
     }, []);
 
     return (
@@ -604,4 +604,4 @@ const MinimalismWeddingConceptPage = () => {
     )
 }
 
-export default MinimalismWeddingConceptPage
+export default TraditionalWeddingConceptPage

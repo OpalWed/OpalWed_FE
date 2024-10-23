@@ -307,14 +307,14 @@ const WeddingCart = () => {
                                 </Box>
                             )}
 
-                            {!clothes &&
-                                !accessories &&
-                                !makeup &&
-                                !flowers &&
-                                !weddingPhotography &&
-                                !decoration &&
-                                !restaurants &&
-                                !weddingInvitations && (
+                            {clothes.length === 0 &&
+                                accessories.length === 0 &&
+                                makeup.length === 0 &&
+                                flowers.length === 0 &&
+                                weddingPhotography.length === 0 &&
+                                decoration.length === 0 &&
+                                restaurants.length === 0 &&
+                                weddingInvitations.length === 0 && (
                                     <Stack align={'center'}>
                                         <Text>Giỏ hàng trống</Text>
                                     </Stack>
