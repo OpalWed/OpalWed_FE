@@ -12,6 +12,8 @@ import { useNavigate } from "react-router-dom";
 import jsPDF from "jspdf";
 import axios from "axios";
 import LoadingModal from "../../../../components/modal/loading";
+import { Concept } from "../../../../types/type.enum";
+import { Color } from "../../../../styles/styles";
 
 const ConfirmDesignPage = () => {
     const { isOpen, onClose, onOpen } = useDisclosure();
@@ -81,10 +83,10 @@ const ConfirmDesignPage = () => {
         doc.setTextColor(0, 0, 0);
         doc.text("Thông tin tiệc cưới:", 10, 55);
         doc.setFontSize(12);
-        doc.text(`- Tên: ${fullName}`, 10, 65);
-        doc.text(`- Ngân sách: ${budget}`, 10, 70);
-        doc.text(`- Địa điểm: ${place}`, 10, 75);
-        doc.text(`- Ngày cưới: ${new Date(weddingDate).toLocaleDateString('vi-VN')}`, 10, 80);
+        doc.text(` Tên: ${fullName}`, 10, 65);
+        doc.text(` Ngân sách: ${budget}`, 10, 70);
+        doc.text(` Địa điểm: ${place}`, 10, 75);
+        doc.text(` Ngày cưới: ${new Date(weddingDate).toLocaleDateString('vi-VN')}`, 10, 80);
 
         // Products
         doc.setFontSize(14);
@@ -92,14 +94,14 @@ const ConfirmDesignPage = () => {
         doc.text("Sản phẩm:", 10, 90);
 
         const productCategories = [
-            { title: "Trang phục", items: clothes.map(c => c.clothesName) },
-            { title: "Phụ kiện", items: accessories.map(a => a.accessoriesName) },
-            { title: "Trang điểm", items: makeup.map(m => m.makeupName) },
-            { title: "Hoa cưới", items: flowers.map(f => f.flowersName) },
-            { title: "Chụp ảnh cưới", items: weddingPhotography.map(p => p.photographyName) },
-            { title: "Trang trí", items: decoration.map(d => d.decorationName) },
-            { title: "Nhà hàng", items: restaurants.map(r => r.restaurantsName) },
-            { title: "Thiệp cưới", items: weddingInvitations.map(i => i.invitationsName) }
+            { title: "Trang phục", items: clothes.map(c => ({ productName: c.clothesName, concept: c.concept, color: c.color })) },
+            { title: "Phụ kiện", items: accessories.map(a => ({ productName: a.accessoriesName })) },
+            { title: "Trang điểm", items: makeup.map(m => ({ productName: m.makeupName, concept: m.concept })) },
+            { title: "Hoa cưới", items: flowers.map(f => ({ productName: f.flowersName })) },
+            { title: "Chụp ảnh cưới", items: weddingPhotography.map(p => ({ productName: p.photographyName, concept: p.concept })) },
+            { title: "Trang trí", items: decoration.map(d => ({ productName: d.decorationName, concept: d.concept, color: d.color })) },
+            { title: "Nhà hàng", items: restaurants.map(r => ({ productName: r.restaurantsName, concept: r.concept })) },
+            { title: "Thiệp cưới", items: weddingInvitations.map(i => ({ productName: i.invitationsName, concept: i.concept })) }
         ];
 
         let y = 100;
@@ -109,9 +111,30 @@ const ConfirmDesignPage = () => {
                 doc.setTextColor(76, 175, 80); // #4CAF50
                 doc.text(category.title, 10, y);
                 doc.setTextColor(0, 0, 0);
+
                 category.items.forEach(item => {
                     y += 5; // Space between items
-                    doc.text(`- ${item}`, 15, y);
+
+                    // Check for optional fields (concept and color) before using them
+                    const productName = item.productName;
+                    const concept = 'concept' in item ? item.concept : null;
+                    const color = 'color' in item ? item.color : null;
+
+                    // Format product name according to the presence of concept and color
+                    let formattedProductName = productName;
+                    if (concept && color) {
+                        formattedProductName += ` (${concept === Concept.TRADITIONAL
+                            ? "Truyền thống" : concept === Concept.EUROPE
+                                ? "Châu Âu" : concept === Concept.MINIMALISM
+                                    ? "Tối giản" : "Cổ điển"}, ${color})`;
+                    } else if (concept) {
+                        formattedProductName += ` (${concept === Concept.TRADITIONAL
+                            ? "Truyền thống" : concept === Concept.EUROPE
+                                ? "Châu Âu" : concept === Concept.MINIMALISM
+                                    ? "Tối giản" : "Cổ điển"})`;
+                    }
+
+                    doc.text(formattedProductName, 15, y);
                 });
                 y += 10; // Space after category
             }
@@ -122,10 +145,12 @@ const ConfirmDesignPage = () => {
         doc.text("Cảm ơn bạn đã chọn OpalWed!", 105, y, { align: "center" });
 
         doc.save("wedding_consultation_details.pdf");
+
         // Save the PDF to a blob
         const pdfBlob: Blob = doc.output("blob");
         handleUploadCloudinary(pdfBlob);
     };
+
 
     const handleUploadCloudinary = async (pdfBlob: Blob) => {
         const fileName = 'wedding_consultation_details.pdf';
@@ -241,17 +266,17 @@ const ConfirmDesignPage = () => {
         <HStack gap={10} my={10} w={'6xl'} mx={'auto'} align={'flex-start'}>
             <Box
                 flex="1"
-                m="10px"
                 p="20px"
                 pb="0"
                 bg="white"
                 borderRadius="8px"
-                border="1px solid #ccc"
+                border="1px solid"
+                borderColor={Color.darkBlue}
             >
-                <Text color="#4CAF50" fontSize="21px" mt="0" mb="20px">
+                <Text fontSize="xl" fontWeight="bold" color="#d53f8c" fontFamily={'Hatton'} mb={3}>
                     Sản phẩm
                 </Text>
-                <Divider mb={3} />
+                <Divider mb={3} borderColor={'pink'} />
                 <Box maxHeight="645px" overflowY="auto" css={{
                     '&::-webkit-scrollbar': { width: '4px' },
                     '&::-webkit-scrollbar-track': { backgroundColor: '#f1f1f1' },
@@ -261,49 +286,57 @@ const ConfirmDesignPage = () => {
                     {clothes.map(c => (
                         <ConfirmDesignProductItem
                             productName={c.clothesName}
-                            onRemove={() => removeClothes(c.clothesName)}
+                            concept={c.concept}
+                            color={c.color}
+                            onRemove={() => removeClothes(c)}
                         />
                     ))}
                     {accessories.map(a => (
                         <ConfirmDesignProductItem
                             productName={a.accessoriesName}
-                            onRemove={() => removeAccessory(a.accessoriesName)}
+                            onRemove={() => removeAccessory(a)}
                         />
                     ))}
                     {makeup.map(m => (
                         <ConfirmDesignProductItem
                             productName={m.makeupName}
-                            onRemove={() => removeMakeup(m.makeupName)}
+                            concept={m.concept}
+                            onRemove={() => removeMakeup(m)}
                         />
                     ))}
                     {flowers.map(f => (
                         <ConfirmDesignProductItem
                             productName={f.flowersName}
-                            onRemove={() => removeFlowers(f.flowersName)}
+                            onRemove={() => removeFlowers(f)}
                         />
                     ))}
                     {weddingPhotography.map(p => (
                         <ConfirmDesignProductItem
                             productName={p.photographyName}
-                            onRemove={() => removeWeddingPhotography(p.photographyName)}
+                            concept={p.concept}
+                            onRemove={() => removeWeddingPhotography(p)}
                         />
                     ))}
                     {decoration.map(d => (
                         <ConfirmDesignProductItem
                             productName={d.decorationName}
-                            onRemove={() => removeDecoration(d.decorationName)}
+                            concept={d.concept}
+                            color={d.color}
+                            onRemove={() => removeDecoration(d)}
                         />
                     ))}
                     {restaurants.map(r => (
                         <ConfirmDesignProductItem
                             productName={r.restaurantsName}
-                            onRemove={() => removeRestaurant(r.restaurantsName)}
+                            concept={r.concept}
+                            onRemove={() => removeRestaurant(r)}
                         />
                     ))}
                     {weddingInvitations.map(i => (
                         <ConfirmDesignProductItem
                             productName={i.invitationsName}
-                            onRemove={() => removeWeddingInvitations(i.invitationsName)}
+                            concept={i.concept}
+                            onRemove={() => removeWeddingInvitations(i)}
                         />
                     ))}
 
@@ -315,18 +348,20 @@ const ConfirmDesignPage = () => {
                         decoration.length === 0 &&
                         restaurants.length === 0 &&
                         weddingInvitations.length === 0 && (
-                            <Text>Không có dịch vụ</Text>
+                            <Stack minH={470} justify={'center'}>
+                                <Text textAlign={'center'} fontFamily={'Noto Sans JP'}>Không có dịch vụ để tư vấn</Text>
+                            </Stack>
                         )}
                 </Box>
             </Box>
 
             <Box
                 flex="1"
-                m="10px"
                 p="20px"
                 bg="white"
                 borderRadius="8px"
-                border="1px solid #ccc"
+                border="1px solid"
+                borderColor={Color.darkBlue}
             >
                 <Box
                     bg="#fff"
@@ -338,35 +373,35 @@ const ConfirmDesignPage = () => {
                     borderColor="pink.200"
                 >
                     <Stack gap={4}>
-                        <Text fontSize="xl" fontWeight="bold" color="#d53f8c">
+                        <Text fontSize="xl" fontWeight="bold" color="#d53f8c" fontFamily={'Hatton'}>
                             Thông tin tiệc cưới
                         </Text>
                         <Stack align="start" gap={2}>
                             <HStack w={'full'}>
                                 <HStack flex={1}>
                                     <Icon as={FaUserAlt} color="pink.500" />
-                                    <Text fontSize={17}>Tên: {fullName}</Text>
+                                    <Text fontSize={16} fontFamily={'Noto Sans JP'}>Tên: {fullName}</Text>
                                 </HStack>
                                 <HStack flex={1}>
                                     <Icon as={FaMoneyBillWave} color="pink.500" />
-                                    <Text fontSize={17}>Phân khúc: {budget}</Text>
+                                    <Text fontSize={16} fontFamily={'Noto Sans JP'}>Phân khúc: {budget}</Text>
                                 </HStack>
                             </HStack>
                             <HStack w={'full'}>
                                 <HStack flex={1}>
                                     <Icon as={FaMapMarkerAlt} color="pink.500" />
-                                    <Text fontSize={17}>Địa điểm: {place}</Text>
+                                    <Text fontSize={16} fontFamily={'Noto Sans JP'}>Địa điểm: {place}</Text>
                                 </HStack>
                                 <HStack flex={1}>
                                     <Icon as={FaCalendarAlt} color="pink.500" />
-                                    <Text fontSize={17}>Ngày cưới: {formatDate(weddingDate)}</Text>
+                                    <Text fontSize={16} fontFamily={'Noto Sans JP'}>Ngày cưới: {formatDate(weddingDate)}</Text>
                                 </HStack>
                             </HStack>
                         </Stack>
                     </Stack>
                 </Box>
-                <Divider my={4} />
-                <Text color="#4CAF50" fontSize="21px" mt="0">
+                <Divider my={4} borderColor={'pink'} />
+                <Text fontSize="xl" fontWeight="bold" color="#d53f8c" fontFamily={'Hatton'}>
                     Thống kê
                 </Text>
                 <Stack
@@ -392,12 +427,16 @@ const ConfirmDesignPage = () => {
                                 borderColor="pink.200"
                             >
                                 <Stack gap={4}>
-                                    <Text fontSize="xl" fontWeight="bold" color="#d53f8c">
+                                    <Text fontSize="xl" fontWeight="bold" color="#d53f8c" fontFamily={'Hatton'}>
                                         Trang phục
                                     </Text>
                                     <Stack align="start" spacing={2}>
-                                        {clothes.map(c => (
-                                            <Text fontSize={17}>{c.clothesName}</Text>
+                                        {clothes.map((c, index) => (
+                                            <Text key={index} fontFamily={'Noto Sans JP'} fontSize={17}>{`${c.clothesName} (${c.concept === Concept.TRADITIONAL
+                                                ? "Truyền thống" : c.concept === Concept.EUROPE
+                                                    ? "Châu Âu" : c.concept === Concept.MINIMALISM
+                                                        ? "Tối giản" : "Cổ điển"
+                                                }, ${c.color})`}</Text>
                                         ))}
                                     </Stack>
                                 </Stack>
@@ -415,12 +454,12 @@ const ConfirmDesignPage = () => {
                                 borderColor="pink.200"
                             >
                                 <Stack gap={4}>
-                                    <Text fontSize="xl" fontWeight="bold" color="#d53f8c">
+                                    <Text fontSize="xl" fontWeight="bold" color="#d53f8c" fontFamily={'Hatton'}>
                                         Phụ kiện
                                     </Text>
                                     <Stack align="start" spacing={2}>
-                                        {accessories.map(a => (
-                                            <Text fontSize={17}>{a.accessoriesName}</Text>
+                                        {accessories.map((a, index) => (
+                                            <Text key={index}>{a.accessoriesName}</Text>
                                         ))}
                                     </Stack>
                                 </Stack>
@@ -438,12 +477,15 @@ const ConfirmDesignPage = () => {
                                 borderColor="pink.200"
                             >
                                 <Stack gap={4}>
-                                    <Text fontSize="xl" fontWeight="bold" color="#d53f8c">
+                                    <Text fontSize="xl" fontWeight="bold" color="#d53f8c" fontFamily={'Hatton'}>
                                         Trang điểm
                                     </Text>
                                     <Stack align="start" spacing={2}>
-                                        {makeup.map(m => (
-                                            <Text fontSize={17}>{m.makeupName}</Text>
+                                        {makeup.map((m, index) => (
+                                            <Text key={index} fontFamily={'Noto Sans JP'} fontSize={17}>{`${m.makeupName} (${m.concept === Concept.TRADITIONAL
+                                                ? "Truyền thống" : m.concept === Concept.EUROPE
+                                                    ? "Châu Âu" : m.concept === Concept.MINIMALISM
+                                                        ? "Tối giản" : "Cổ điển"})`}</Text>
                                         ))}
                                     </Stack>
                                 </Stack>
@@ -461,12 +503,12 @@ const ConfirmDesignPage = () => {
                                 borderColor="pink.200"
                             >
                                 <Stack gap={4}>
-                                    <Text fontSize="xl" fontWeight="bold" color="#d53f8c">
+                                    <Text fontSize="xl" fontWeight="bold" color="#d53f8c" fontFamily={'Hatton'}>
                                         Hoa cưới
                                     </Text>
                                     <Stack align="start" spacing={2}>
-                                        {flowers.map(f => (
-                                            <Text fontSize={17}>{f.flowersName}</Text>
+                                        {flowers.map((f, index) => (
+                                            <Text key={index}>{f.flowersName}</Text>
                                         ))}
                                     </Stack>
                                 </Stack>
@@ -484,12 +526,15 @@ const ConfirmDesignPage = () => {
                                 borderColor="pink.200"
                             >
                                 <Stack gap={4}>
-                                    <Text fontSize="xl" fontWeight="bold" color="#d53f8c">
+                                    <Text fontSize="xl" fontWeight="bold" color="#d53f8c" fontFamily={'Hatton'}>
                                         Chụp ảnh cưới
                                     </Text>
                                     <Stack align="start" spacing={2}>
-                                        {weddingPhotography.map(p => (
-                                            <Text fontSize={17}>{p.photographyName}</Text>
+                                        {weddingPhotography.map((wp, index) => (
+                                            <Text key={index} fontFamily={'Noto Sans JP'} fontSize={17}>{`${wp.photographyName} (${wp.concept === Concept.TRADITIONAL
+                                                ? "Truyền thống" : wp.concept === Concept.EUROPE
+                                                    ? "Châu Âu" : wp.concept === Concept.MINIMALISM
+                                                        ? "Tối giản" : "Cổ điển"})`}</Text>
                                         ))}
                                     </Stack>
                                 </Stack>
@@ -507,12 +552,15 @@ const ConfirmDesignPage = () => {
                                 borderColor="pink.200"
                             >
                                 <Stack gap={4}>
-                                    <Text fontSize="xl" fontWeight="bold" color="#d53f8c">
+                                    <Text fontSize="xl" fontWeight="bold" color="#d53f8c" fontFamily={'Hatton'}>
                                         Trang trí
                                     </Text>
                                     <Stack align="start" spacing={2}>
-                                        {decoration.map(d => (
-                                            <Text fontSize={17}>{d.decorationName}</Text>
+                                        {decoration.map((d, index) => (
+                                            <Text key={index} fontFamily={'Noto Sans JP'} fontSize={17}>{`${d.decorationName} (${d.concept === Concept.TRADITIONAL
+                                                ? "Truyền thống" : d.concept === Concept.EUROPE
+                                                    ? "Châu Âu" : d.concept === Concept.MINIMALISM
+                                                        ? "Tối giản" : "Cổ điển"}, ${d.color})`}</Text>
                                         ))}
                                     </Stack>
                                 </Stack>
@@ -530,12 +578,15 @@ const ConfirmDesignPage = () => {
                                 borderColor="pink.200"
                             >
                                 <Stack gap={4}>
-                                    <Text fontSize="xl" fontWeight="bold" color="#d53f8c">
+                                    <Text fontSize="xl" fontWeight="bold" color="#d53f8c" fontFamily={'Hatton'}>
                                         Nhà hàng
                                     </Text>
                                     <Stack align="start" spacing={2}>
-                                        {restaurants.map(r => (
-                                            <Text fontSize={17}>{r.restaurantsName}</Text>
+                                        {restaurants.map((r, index) => (
+                                            <Text key={index} fontFamily={'Noto Sans JP'} fontSize={17}>{`${r.restaurantsName} (${r.concept === Concept.TRADITIONAL
+                                                ? "Truyền thống" : r.concept === Concept.EUROPE
+                                                    ? "Châu Âu" : r.concept === Concept.MINIMALISM
+                                                        ? "Tối giản" : "Cổ điển"})`}</Text>
                                         ))}
                                     </Stack>
                                 </Stack>
@@ -553,12 +604,15 @@ const ConfirmDesignPage = () => {
                                 borderColor="pink.200"
                             >
                                 <Stack gap={4}>
-                                    <Text fontSize="xl" fontWeight="bold" color="#d53f8c">
+                                    <Text fontSize="xl" fontWeight="bold" color="#d53f8c" fontFamily={'Hatton'}>
                                         Thiệp cưới
                                     </Text>
                                     <Stack align="start" spacing={2}>
-                                        {weddingInvitations.map(i => (
-                                            <Text fontSize={17}>{i.invitationsName}</Text>
+                                        {weddingInvitations.map((wi, index) => (
+                                            <Text key={index} fontFamily={'Noto Sans JP'} fontSize={17}>{`${wi.invitationsName} (${wi.concept === Concept.TRADITIONAL
+                                                ? "Truyền thống" : wi.concept === Concept.EUROPE
+                                                    ? "Châu Âu" : wi.concept === Concept.MINIMALISM
+                                                        ? "Tối giản" : "Cổ điển"})`}</Text>
                                         ))}
                                     </Stack>
                                 </Stack>
@@ -573,16 +627,27 @@ const ConfirmDesignPage = () => {
                             decoration.length === 0 &&
                             restaurants.length === 0 &&
                             weddingInvitations.length === 0 && (
-                                <Text textAlign={'center'}>Không có dịch vụ để tư vấn</Text>
+                                <Stack minH={24} justify={'center'}>
+                                    <Text textAlign={'center'} fontFamily={'Noto Sans JP'}>Không có dịch vụ để tư vấn</Text>
+                                </Stack>
                             )}
                     </Stack>
                 </Stack>
                 <HStack justify={'space-between'} mx={4}>
-                    <Text fontWeight={500}>Phí tư vấn:</Text>
-                    <Text fontWeight={500}>50,000đ</Text>
+                    <Text fontSize="xl" fontWeight="bold" color="#d53f8c" fontFamily={'Hatton'}>Phí tư vấn:</Text>
+                    <Text fontSize="xl" fontWeight="bold" color="#d53f8c" fontFamily={'Hatton'}>50,000đ</Text>
                 </HStack>
-                <Divider mb={5} mt={3} />
-                <Button w={'full'} onClick={onOpen}>Xác nhận đăng ký tư vấn</Button>
+                <Divider mb={5} mt={3} borderColor={'pink'} />
+                <Button
+                    w={'full'}
+                    onClick={onOpen}
+                    bg={Color.darkBlue}
+                    _hover={{ bg: Color.darkBlueHover }}
+                    color={'white'}
+                    borderRadius={'full'}
+                >
+                    Xác nhận đăng ký tư vấn
+                </Button>
             </Box>
             <NotifyDesignModal
                 isOpen={isOpen}

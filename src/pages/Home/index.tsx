@@ -10,7 +10,7 @@ import { useAuth } from "../../hooks/useAuth"
 
 const HomePage = () => {
     const navigate = useNavigate();
-    const { isAuthenticated } = useAuth();
+    const { isAuthenticated, setIntendedRoute } = useAuth();
     const imageList: string[] = [
 
     ]
@@ -40,7 +40,7 @@ const HomePage = () => {
                 >
                     <Heading fontSize={55} fontFamily={'Canela'} fontWeight={300}>Chào mừng đến với OpalWed</Heading>
                     <Text textAlign={'center'} fontFamily={'Noto Sans JP'}>
-                        Chúng tôi là OpalWed, một công ty khởi nghiệp mới thành lập, đi tiên phong trong thị trường chưa được khai thác, cung cấp dịch vụ đại diện và hỗ trợ khách hàng trong việc tìm kiếm và lựa chọn dịch vụ cưới từ nhiều nguồn khác nhau. Chúng tôi sẽ đảm nhiệm tất cả từ việc tìm phông chữ được cá nhân hóa cho lời mời đến việc chọn người giải trí và người cung cấp thực phẩm, đảm bảo mọi chi tiết đều hoàn hảo.
+                        Chúng tôi là OpalWed - doanh nghiệp cung cấp dịch vụ tư vấn, đại diện và hỗ trợ khách hàng trong việc tìm kiếm và lựa chọn dịch vụ cưới từ nhiều nguồn khác nhau. Với website trực tuyến đa dạng các dịch vụ từ các nhà cung cấp dịch vụ cưới và tính năng tìm kiếm thông minh giúp cho khách hàng dễ dàng tìm kiếm các dịch vụ phù hợp với nhu cầu và phong cách của mình
                     </Text>
                 </Stack>
             </Box>
@@ -84,7 +84,7 @@ const HomePage = () => {
                         </Box>
                         <HStack justify={'flex-end'} flex="3" pos={'relative'}>
                             <Image
-                                src="./image 18.png"
+                                src="./vision.png"
                                 alt="Wedding"
                                 borderRadius="md"
                                 objectFit="cover"
@@ -120,7 +120,7 @@ const HomePage = () => {
                     <HStack align="center" justify="space-between" w={'full'}>
                         <HStack justify={'flex-start'} flex="3" pos={'relative'}>
                             <Image
-                                src="./image 18.png"
+                                src="./special.png"
                                 alt="Wedding"
                                 borderRadius="md"
                                 objectFit="cover"
@@ -236,7 +236,10 @@ const HomePage = () => {
                                             <Button
                                                 colorScheme='blue'
                                                 w={'full'}
-                                                onClick={() => navigate('/login')}
+                                                onClick={() => {
+                                                    navigate('/login');
+                                                    setIntendedRoute('/wedding-planning/wedding-information');
+                                                }}
                                                 fontFamily={'Noto Sans JP'}
                                                 fontSize={14}
                                                 fontWeight={500}

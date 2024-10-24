@@ -1,12 +1,15 @@
 import { Box, Button, HStack, Image, Stack, Text } from "@chakra-ui/react"
 import { FaX } from "react-icons/fa6";
+import { Concept } from "../../../../types/type.enum";
 
 interface Prop {
     productName: string;
+    color?: string;
+    concept?: Concept;
     onRemove: () => void;
 }
 
-const ConfirmDesignProductItem = ({ productName, onRemove }: Prop) => {
+const ConfirmDesignProductItem = ({ productName, color, concept, onRemove }: Prop) => {
     return (
         <Box
             p="15px"
@@ -43,15 +46,22 @@ const ConfirmDesignProductItem = ({ productName, onRemove }: Prop) => {
                         w="100%"
                         h="100%" />
                 </Box>
-                <Stack gap={4}>
+                <Stack gap={3}>
                     <Box textAlign="left">
-                        <Text fontWeight={500}>
+                        <Text fontWeight={500} fontFamily={'Noto Sans JP'} fontSize={17}>
                             {productName}
                         </Text>
                     </Box>
                     <Stack gap={1}>
-                        <Text fontSize={14}>Brand: brand</Text>
-                        <Text fontSize={14}>Model: model</Text>
+                        {concept && (
+                            <Text fontSize={14} fontFamily={'Noto Sans JP'}>Ý tưởng: {concept === Concept.TRADITIONAL
+                                ? "Truyền thống" : concept === Concept.EUROPE
+                                    ? "Châu Âu" : concept === Concept.MINIMALISM
+                                        ? "Tối giản" : "Cổ điển"}</Text>
+                        )}
+                        {color && (
+                            <Text fontSize={14} fontFamily={'Noto Sans JP'}>Màu sắc: {color}</Text>
+                        )}
                     </Stack>
                 </Stack>
             </HStack>

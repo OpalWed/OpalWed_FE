@@ -89,7 +89,7 @@ const OurServicesPage = () => {
                 pos={'relative'}
                 width="100%"
                 height="70vh"
-                bgImage="url('https://linhnga.vn/wp-content/uploads/2021/07/Untitled-2.jpg')"
+                bgImage="/service.png"
                 bgSize="cover"
                 bgPosition="center"
             >

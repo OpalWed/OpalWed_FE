@@ -10,6 +10,7 @@ import { useGoogleLogin } from "@react-oauth/google";
 import { AxiosError } from "axios";
 import ApiClient from "../../services/apiClient";
 import { useAuth } from "../../hooks/useAuth";
+import { convertToTitleCase } from "../../utils/convertToTitleCase";
 
 const LoginPage = () => {
     const [email, setEmail] = useState<string>("");
@@ -20,7 +21,7 @@ const LoginPage = () => {
     const emailRef = useRef<HTMLInputElement>(null);
     const toast = useToast();
     const navigate = useNavigate();
-    const { setIsAuthenticated, setRole } = useAuth();
+    const { setIsAuthenticated, setRole, intendedRoute } = useAuth();
     const googleLogin = useGoogleLogin({
         onSuccess: (token) => {
             handleGoogleLogin(token.access_token);
@@ -124,12 +125,16 @@ const LoginPage = () => {
                 });
             } else {
                 localStorage.setItem('access_token', response.data.token);
-                const role: string = response.data.userInfo.accountRole;
+                const role: string = convertToTitleCase(response.data.userInfo.accountRole);
+                setRole(role);
                 setIsAuthenticated(true);
-                setRole(role.toLowerCase().charAt(0).toUpperCase());
-                if (role === 'CUSTOMER') {
-                    navigate('/');
-                } else if (role === 'ADMIN') {
+                if (role === 'Customer') {
+                    if (intendedRoute) {
+                        navigate(intendedRoute);
+                    } else {
+                        navigate('/');
+                    }
+                } else if (role === 'Admin') {
                     navigate('/administrator');
                 }
             }

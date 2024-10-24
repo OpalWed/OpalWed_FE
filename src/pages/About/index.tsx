@@ -32,7 +32,7 @@ const AboutPage = () => {
                     gap={36}
                 >
                     <Image
-                        src="./image 18.png"
+                        src="./slogan.png"
                         alt="Wedding"
                         borderRadius="md"
                         objectFit="cover"
@@ -81,7 +81,7 @@ const AboutPage = () => {
                         </Text>
                     </Stack>
                     <Image
-                        src="./image 18.png"
+                        src="./background.png"
                         alt="Wedding"
                         borderRadius="md"
                         objectFit="cover"
@@ -100,7 +100,7 @@ const AboutPage = () => {
                     gap={36}
                 >
                     <Image
-                        src="./image 18.png"
+                        src="./slogan.png"
                         alt="Wedding"
                         borderRadius="md"
                         objectFit="cover"
@@ -143,7 +143,7 @@ const AboutPage = () => {
                         </Text>
                     </Stack>
                     <Image
-                        src="./image 18.png"
+                        src="./responsibility.png"
                         alt="Wedding"
                         borderRadius="md"
                         objectFit="cover"
@@ -152,17 +152,17 @@ const AboutPage = () => {
                     />
                 </HStack>
             </Stack>
-            <Stack w={'5xl'} mx={'auto'} my={16} gap={24}>
+            <Stack w={'7xl'} mx={'auto'} my={16} gap={24}>
                 <HStack justify={'space-between'} gap={20}>
                     <Image
-                        src="./image 18.png"
+                        src="./wedding c&p.png"
                         alt="Wedding"
                         borderRadius="md"
                         objectFit="cover"
                         h="450px"
                         flex={1}
                     />
-                    <Stack flex={2} px={16} py={16} align={'center'} bg={Color.lightYellow} gap={8}>
+                    <Stack flex={1.5} px={16} py={16} align={'center'} bg={Color.lightYellow} gap={8}>
                         <Heading fontSize={30} fontFamily={'Canela'} fontWeight={300}>Tổ chức & tư vấn tiệc cưới</Heading>
                         <Text fontFamily={'Noto Sans JP'} fontSize={17}>
                             Chúng tôi hiểu rằng tiệc cưới không chỉ là một sự kiện, mà là kỷ niệm đáng nhớ trong đời bạn. Với dịch vụ tư vấn tổ chức tiệc cưới chuyên nghiệp, từ việc lựa chọn địa điểm, thiết kế không gian, đến thực đơn ẩm thực đa dạng và phong phú, đội ngũ của chúng tôi sẽ đồng hành cùng bạn trong từng bước chuẩn bị. Với sự tận tâm và chu đáo, chúng tôi đảm bảo rằng mỗi chi tiết đều được chăm chút, mang đến cho bạn một buổi tiệc cưới đáng nhớ và trọn vẹn.
@@ -177,7 +177,7 @@ const AboutPage = () => {
                         </Text>
                     </Stack>
                     <Image
-                        src="./image 18.png"
+                        src="./compare vendor.png"
                         alt="Wedding"
                         borderRadius="md"
                         objectFit="cover"

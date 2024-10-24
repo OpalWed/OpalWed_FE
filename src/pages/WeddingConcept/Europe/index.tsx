@@ -36,10 +36,9 @@ const EuropeWeddingConceptPage = () => {
                     shadow={Shadow.cardShadow}
                     gap={6}
                 >
-                    <Heading fontSize={55} fontFamily={'Canela'}>Phong cách Châu Âu</Heading>
+                    <Heading fontSize={55} fontWeight={300} fontFamily={'Canela'}>Phong cách Châu Âu</Heading>
                     <Text textAlign={'justify'} fontFamily={'Noto Sans JP'}>
-                        Là một trong những nhà tổ chức tiệc cưới chuyên nghiệp và cao cấp đầu tiên có trụ sở tại Việt Nam,
-                        OpalWed chuyên tư vấn, thiết kế, lập kế hoạch và thực hiện tiệc cưới trọn gói.
+                        Concept tiệc cưới Châu Âu mang lại cảm giác sang trọng và lãng mạn, thường được truyền cảm hứng từ kiến trúc cổ điển. Tiệc cưới mang đậm nét sang trọng, tinh tế và lãng mạn, thường lấy cảm hứng từ các truyền thống và phong cách kiến trúc của các nước châu Âu.
                     </Text>
                 </Stack>
             </Box>
@@ -61,9 +60,9 @@ const EuropeWeddingConceptPage = () => {
                         <Stack flex={1} align={'center'} gap={8}>
                             <Heading fontFamily={'Cormorant'} fontSize={70}>1</Heading>
                             <Divider w={32} borderColor={'#B58B61'} />
-                            <Text fontFamily={'Hatton'} fontSize={20}>Sự thanh lịch và nét quyến rũ</Text>
+                            <Text fontFamily={'Hatton'} fontSize={20}>Không gian sang trọng</Text>
                             <Text fontFamily={'Noto Sans JP'} fontWeight={300} fontSize={17}>
-                                Đám cưới theo phong cách châu Âu thường chú trọng vào vẻ đẹp cổ điển với các yếu tố như váy cưới ren, áo tuxedo thanh lịch và đồ trang trí tinh tế như đèn chùm và hoa tươi được sắp xếp cẩn thận.
+                                Tiệc cưới Châu Âu thường diễn ra tại những địa điểm lãng mạn như lâu đài, biệt thự cổ điển hay sân vườn được chăm sóc tỉ mỉ, tạo nên bầu không khí trang nhã và lãng mạn.
                             </Text>
                         </Stack>
                         <Image
@@ -81,9 +80,9 @@ const EuropeWeddingConceptPage = () => {
                         <Stack flex={1} align={'center'} gap={8}>
                             <Heading fontFamily={'Cormorant'} fontSize={70}>2</Heading>
                             <Divider w={32} borderColor={'#B58B61'} />
-                            <Text fontFamily={'Hatton'} fontSize={20}>Không gian lãng mạn</Text>
+                            <Text fontFamily={'Hatton'} fontSize={20}>Thời trang cưới đẳng cấp</Text>
                             <Text fontFamily={'Noto Sans JP'} fontWeight={300} fontSize={17}>
-                                Những đám cưới này thường sử dụng ánh sáng dịu nhẹ, tông màu trung tính (trắng, phấn) và các loại hoa cổ điển như hoa hồng và hoa oải hương, tạo nên bầu không khí mơ màng.
+                                Cô dâu và chú rể thường chọn những bộ trang phục sang trọng, tinh tế, được thiết kế riêng hoặc từ các thương hiệu nổi tiếng, thể hiện gu thẩm mỹ và phong cách cá nhân.
                             </Text>
                         </Stack>
                         <Image
@@ -98,9 +97,9 @@ const EuropeWeddingConceptPage = () => {
                         <Stack flex={1} align={'center'} gap={8}>
                             <Heading fontFamily={'Cormorant'} fontSize={70}>3</Heading>
                             <Divider w={32} borderColor={'#B58B61'} />
-                            <Text fontFamily={'Hatton'} fontSize={20}>Ẩm thực tinh tế</Text>
+                            <Text fontFamily={'Hatton'} fontSize={20}>Thực đơn tinh tế</Text>
                             <Text fontFamily={'Noto Sans JP'} fontWeight={300} fontSize={17}>
-                                Đám cưới theo phong cách châu Âu còn gây ấn tượng với khách mời bằng những món ăn ngon và rượu vang hảo hạng, đặc biệt là từ những vùng nổi tiếng như Pháp, Ý và Tây Ban Nha.
+                                Các món ăn trong tiệc cưới Châu Âu thường được chế biến công phu, từ món khai vị đến món tráng miệng, kết hợp hương vị độc đáo của từng vùng miền, mang đến trải nghiệm ẩm thực phong phú cho khách mời.
                             </Text>
                         </Stack>
                     </HStack>
@@ -118,9 +117,9 @@ const EuropeWeddingConceptPage = () => {
                         <Stack flex={1} align={'center'} gap={8}>
                             <Heading fontFamily={'Cormorant'} fontSize={70}>4</Heading>
                             <Divider w={32} borderColor={'#B58B61'} />
-                            <Text>Elegance and classic charm</Text>
+                            <Text>Nghi thức và truyền thống độc đáo</Text>
                             <Text fontFamily={'Noto Sans JP'} fontWeight={300} fontSize={17}>
-                                Tuy không quá cầu kỳ, nhưng mọi chi tiết đều được lựa chọn cẩn thận để tạo nên sự hài hòa, mang lại cảm giác sang trọng mà không quá phô trương.
+                                Tiệc cưới Châu Âu thường kết hợp nhiều nghi thức truyền thống độc đáo, từ lễ trao nhẫn đến những điệu nhảy cổ điển, tạo nên sự hưng phấn và ý nghĩa trong ngày trọng đại.
                             </Text>
                         </Stack>
                         <Image
@@ -187,7 +186,7 @@ const EuropeWeddingConceptPage = () => {
                     </Box>
                     <HStack gap={4}>
                         <HStack flex={2.2} gap={0} align={'flex-end'}>
-                            <Card bgColor={Color.lightGold} flex={1.2}>
+                            <Card bgColor={Color.lightGold} flex={1.2} pb={10}>
                                 <CardHeader
                                     fontSize={70}
                                     ml={10}
@@ -200,7 +199,7 @@ const EuropeWeddingConceptPage = () => {
                                 </CardHeader>
                                 <CardBody px={10}>
                                     <Text fontSize={14} color={'#737373'} fontFamily={'Noto Sans JP'}>
-                                        Lần đầu gặp gỡ trong bối cảnh lãng mạn của vùng đất châu Âu xinh đẹp và thanh lịch, cặp đôi này đã có những ấn tượng rất đặc biệt về nhau và để chứng minh cho cuộc gặp gỡ này đã ảnh hưởng đến quyết định lựa chọn phong cách tiệc cưới chủ đạo theo phong cách châu Âu. Màu sắc chủ đạo của tiệc cưới ngoài trời là xanh pastel và hồng thạch anh. Hai tông màu pastel này cũng đã trở thành xu hướng được nhiều người lựa chọn trong những năm gần đây.
+                                        Màu chủ đạo của tiệc cưới phong cách Châu Âu thường là những gam màu nhẹ nhàng và thanh lịch như pastel, trắng, hay vàng gold. Những tông màu này không chỉ tạo cảm giác sang trọng mà còn dễ dàng kết hợp với các yếu tố trang trí khác.
                                     </Text>
                                 </CardBody>
                             </Card>
@@ -210,7 +209,7 @@ const EuropeWeddingConceptPage = () => {
                                 borderRadius="md"
                                 objectFit="cover"
                                 w="100px"
-                                h="auto"
+                                h="498px"
                                 flex={1}
                             />
                         </HStack>
@@ -246,7 +245,7 @@ const EuropeWeddingConceptPage = () => {
                                 h="400px"
                                 flex={1}
                             />
-                            <Card bgColor={Color.lightGold} flex={1.2}>
+                            <Card bgColor={Color.lightGold} flex={1.2} pb={10}>
                                 <CardHeader
                                     fontSize={70}
                                     ml={10}
@@ -259,7 +258,7 @@ const EuropeWeddingConceptPage = () => {
                                 </CardHeader>
                                 <CardBody px={10}>
                                     <Text fontSize={14} color={'#737373'} fontFamily={'Noto Sans JP'}>
-                                        Với phong cách và màu sắc tươi sáng của buổi tiệc, tổ chức ở một vùng biển là một ý tưởng hoàn hảo. Màu hồng pastel và trắng sẽ trở nên thơ mộng và ngọt ngào nếu bạn tổ chức ngoài trời giữa biển xanh mênh mông. Vì bạn cần di chuyển đồ trang trí cho tiệc cưới ngoài trời đến một địa điểm gần biển nên bạn cần tổ chức theo phong cách đơn giản, nhẹ nhàng, không quá cầu kỳ và mang lại ấn tượng cho khách mời. Bạn có thể liên hệ với đơn vị cung cấp dịch vụ cưới hỏi để đặt xe và xác nhận số lượng đồ cần di chuyển.
+                                        Các địa điểm tổ chức tiệc cưới thường chọn lựa không gian mở hoặc những kiến trúc cổ điển như lâu đài, nhà thờ hoặc khu vườn, mang lại khung cảnh lãng mạn và độc đáo cho ngày trọng đại.
                                     </Text>
                                 </CardBody>
                             </Card>
@@ -298,7 +297,7 @@ const EuropeWeddingConceptPage = () => {
                     </Heading>
                     <HStack gap={4}>
                         <HStack flex={2.2} gap={0} align={'center'}>
-                            <Card bgColor={Color.lightGold} flex={1.2}>
+                            <Card bgColor={Color.lightGold} flex={1.2} pb={10}>
                                 <CardHeader
                                     fontSize={70}
                                     ml={10}
@@ -311,7 +310,7 @@ const EuropeWeddingConceptPage = () => {
                                 </CardHeader>
                                 <CardBody px={10}>
                                     <Text fontSize={14} color={'#737373'} fontFamily={'Noto Sans JP'}>
-                                        Sân khấu nơi cô dâu và chú rể đứng cùng linh mục để chứng kiến ​​lễ cưới được thiết kế hướng ra biển với phông nền trắng cơ bản cùng cánh cửa gỗ trang trí hoa nhẹ phía trên, mang ý nghĩa cánh cửa mở ra điều gì đó mới mẻ, cuộc sống mới và đặc biệt hơn cho đôi uyên ương trẻ.
+                                        Sân khấu được thiết kế tinh tế, thường sử dụng phông nền nhẹ nhàng cùng với ánh sáng dịu dàng, tạo ra không gian ấm cúng cho các nghi thức và hoạt động trong lễ cưới.
                                     </Text>
                                 </CardBody>
                             </Card>
@@ -321,7 +320,7 @@ const EuropeWeddingConceptPage = () => {
                                 borderRadius="md"
                                 objectFit="cover"
                                 w="100px"
-                                h="auto"
+                                h="498px"
                                 flex={1}
                             />
                         </HStack>
@@ -342,10 +341,10 @@ const EuropeWeddingConceptPage = () => {
                             borderRadius="md"
                             objectFit="cover"
                             w="100px"
-                            h="248px"
+                            h="291px"
                             flex={1}
                         />
-                        <Card bgColor={Color.lightGold} flex={1}>
+                        <Card bgColor={Color.lightGold} flex={1} py={10}>
                             <CardBody px={10}>
                                 <Text fontSize={14} color={'#737373'} fontFamily={'Noto Sans JP'}>
                                     Chủ đề đám cưới của cả hai mang ý nghĩa tình yêu sẽ là chìa khóa giải quyết xung đột, là chất liệu để tình yêu của đôi uyên ương bền chặt trăm năm.
@@ -439,7 +438,7 @@ const EuropeWeddingConceptPage = () => {
                                 h="250px"
                             />
                         </Stack>
-                        <Card bgColor={Color.lightGold} flex={1}>
+                        <Card bgColor={Color.lightGold} flex={1} py={10}>
                             <CardBody px={10}>
                                 <Text fontSize={14} color={'#737373'} fontFamily={'Noto Sans JP'}>
                                     Sau buổi lễ, cặp đôi đã tổ chức một bữa tối nhẹ nhàng cho khách mời trong không gian ấm cúng và nhẹ nhàng, cùng nhau chia sẻ mọi niềm vui trong ngày cưới quan trọng nhất cuộc đời. Cô dâu thể hiện sự thích thú của mình với những chiếc đèn chùm treo trên trần nhà, tạo nên không gian ấm áp và lung linh hơn khi mặt trời dần lặn
@@ -463,44 +462,42 @@ const EuropeWeddingConceptPage = () => {
                         Photobooth và Quà tặng
                     </Heading>
                     <Stack gap={10} w={'6xl'} mx={'auto'} align={'flex-end'}>
-                        <HStack gap={4}>
-                            <HStack flex={2.2} gap={0} align={'flex-end'}>
-                                <Card bgColor={Color.lightGold} flex={1.2}>
-                                    <CardHeader
-                                        fontSize={70}
-                                        ml={10}
-                                        mt={-10}
-                                        mb={-5}
-                                        fontFamily={'Cormorant'}
-                                        color={Color.darkBlue}
-                                    >
-                                        05
-                                    </CardHeader>
-                                    <CardBody px={10}>
-                                        <Text fontSize={14} color={'#737373'} fontFamily={'Noto Sans JP'}>
-                                            Cặp đôi này còn thiết lập một khu vực chụp ảnh lưu niệm với nội thất theo phong cách châu Âu để khách có thể chụp ảnh lưu niệm.
-                                        </Text>
-                                    </CardBody>
-                                </Card>
+                        <HStack flex={2.2} gap={0} align={'flex-end'}>
+                            <Card bgColor={Color.lightGold} flex={1} py={10}>
+                                <CardHeader
+                                    fontSize={70}
+                                    ml={10}
+                                    mt={-10}
+                                    mb={-5}
+                                    fontFamily={'Cormorant'}
+                                    color={Color.darkBlue}
+                                >
+                                    05
+                                </CardHeader>
+                                <CardBody px={10}>
+                                    <Text fontSize={14} color={'#737373'} fontFamily={'Noto Sans JP'}>
+                                        Khu vực photobooth được thiết kế bắt mắt với backdrop theo chủ đề cưới, tạo cơ hội cho khách mời ghi lại những khoảnh khắc vui vẻ. Quà tặng cho khách mời thường là những món quà nhỏ xinh xắn, mang tính cá nhân và thể hiện sự tri ân từ cặp đôi.
+                                    </Text>
+                                </CardBody>
+                            </Card>
+                            <Stack flex={1.5}>
                                 <Image
                                     src="/Europe/Rectangle 536.png"
                                     alt="Wedding"
                                     borderRadius="md"
                                     objectFit="cover"
-                                    w="100px"
+                                    w="full"
                                     h="auto"
-                                    flex={1}
                                 />
-                            </HStack>
-                            <Image
-                                src="/Europe/Rectangle 548.png"
-                                alt="Wedding"
-                                borderRadius="md"
-                                objectFit="cover"
-                                w="100px"
-                                h="auto"
-                                flex={1}
-                            />
+                                <Image
+                                    src="/Europe/Rectangle 548.png"
+                                    alt="Wedding"
+                                    borderRadius="md"
+                                    objectFit="cover"
+                                    w="full"
+                                    h="auto"
+                                />
+                            </Stack>
                         </HStack>
                         <HStack w={'4xl'} gap={0} align={'flex-end'}>
                             <Image
@@ -512,7 +509,7 @@ const EuropeWeddingConceptPage = () => {
                                 h="248px"
                                 flex={1}
                             />
-                            <Card bgColor={Color.lightGold} flex={1}>
+                            <Card bgColor={Color.lightGold} flex={1} py={10}>
                                 <CardBody px={10}>
                                     <Text fontSize={14} color={'#737373'} fontFamily={'Noto Sans JP'}>
                                         Những lọ kẹo dẻo mềm, thơm là món quà nhỏ xinh mà cặp đôi muốn gửi đến khách mời như lời cảm ơn vì đã đến dự tiệc và chia sẻ niềm hạnh phúc của đôi vợ chồng trẻ.

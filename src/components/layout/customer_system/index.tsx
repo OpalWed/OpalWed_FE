@@ -8,7 +8,7 @@ import { FaArrowLeft, FaDoorOpen, FaLock, FaUser, FaUserGear } from "react-icons
 import { Border, Color } from "../../../styles/styles"
 
 const CustomerSystemLayout = () => {
-    const { role, setIsAuthenticated, setRole } = useAuth();
+    const { role, intendedRoute, setIsAuthenticated, setRole, setIntendedRoute } = useAuth();
     const { pathname } = useLocation();
     const navigate = useNavigate();
 
@@ -24,6 +24,7 @@ const CustomerSystemLayout = () => {
         localStorage.removeItem('access_token');
         setIsAuthenticated(false);
         setRole('');
+        setIntendedRoute(null);
         navigate('/');
     }
 
@@ -32,7 +33,7 @@ const CustomerSystemLayout = () => {
             <HStack align='flex-start' gap={0}>
                 <Stack borderRight={Border.lightBorder} h={'100vh'} w={'400px'} pos={'relative'}>
                     <HStack pt={1}>
-                        <Button bg={'none'} _hover={{ bg: 'none' }} onClick={() => navigate('/')}>
+                        <Button bg={'none'} _hover={{ bg: 'none' }} onClick={() => navigate(intendedRoute || '/')}>
                             <FaArrowLeft />
                         </Button>
                     </HStack>

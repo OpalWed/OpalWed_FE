@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Logo from "../../../logo";
 import { Box } from "@mui/material";
 import { Avatar, HStack, Stack, Text } from "@chakra-ui/react";
@@ -44,8 +44,12 @@ const conceptItems: MenuProps['items'] = [
 ];
 
 const Navbar = () => {
-    const { isAuthenticated } = useAuth();
+    const { isAuthenticated, setIntendedRoute } = useAuth();
     const { data } = useProfile();
+    const location = useLocation();
+
+    console.log(location.pathname);
+
 
     return (
         <Box
@@ -60,7 +64,7 @@ const Navbar = () => {
                     <HStack pos={'absolute'} top={0} right={0}>
                         <HStack>
                             <Avatar size={'sm'} />
-                            <Link to={'/profile'}>
+                            <Link to={'/profile'} onClick={() => setIntendedRoute(location.pathname)}>
                                 <Text color={'gainsboro'} fontFamily={'Hatton'}>{data?.fullName}</Text>
                             </Link>
                         </HStack>

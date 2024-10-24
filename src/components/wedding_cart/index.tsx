@@ -2,6 +2,7 @@ import { Box, Button, Divider, Drawer, DrawerBody, DrawerCloseButton, DrawerCont
 import { ConfigProvider, FloatButton } from "antd";
 import { FaCartShopping, FaX } from "react-icons/fa6";
 import { useWedding } from "../../hooks/useWedding";
+import { Concept } from "../../types/type.enum";
 
 const WeddingCart = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -50,7 +51,7 @@ const WeddingCart = () => {
                     <DrawerHeader>Giỏ hàng của bạn</DrawerHeader>
                     <Divider />
                     <DrawerBody>
-                        <Stack py="15px" mb="10px" gap={6}>
+                        <Stack py="15px" gap={6} h={'full'}>
                             {clothes.length > 0 && (
                                 <Box
                                     bg="#fff"
@@ -68,13 +69,17 @@ const WeddingCart = () => {
                                         <Stack align="start" spacing={2}>
                                             {clothes.map((c, index) => (
                                                 <HStack key={index} justify={'space-between'} w={'full'}>
-                                                    <Text>{c.clothesName}</Text>
+                                                    <Text>{`${c.clothesName} (${c.concept === Concept.TRADITIONAL
+                                                        ? "Truyền thống" : c.concept === Concept.EUROPE
+                                                            ? "Châu Âu" : c.concept === Concept.MINIMALISM
+                                                                ? "Tối giản" : "Cổ điển"
+                                                        }, ${c.color})`}</Text>
                                                     <Button
                                                         fontSize={12}
                                                         p={3}
                                                         borderRadius={'full'}
                                                         variant={'ghost'}
-                                                        onClick={() => removeClothes(c.clothesName)}
+                                                        onClick={() => removeClothes(c)}
                                                     ><FaX /></Button>
                                                 </HStack>
                                             ))}
@@ -106,39 +111,7 @@ const WeddingCart = () => {
                                                         p={3}
                                                         borderRadius={'full'}
                                                         variant={'ghost'}
-                                                        onClick={() => removeAccessory(a.accessoriesName)}
-                                                    ><FaX /></Button>
-                                                </HStack>
-                                            ))}
-                                        </Stack>
-                                    </Stack>
-                                </Box>
-                            )}
-
-                            {restaurants.length > 0 && (
-                                <Box
-                                    bg="#fff"
-                                    borderRadius="xl"
-                                    boxShadow="lg"
-                                    py={4}
-                                    px={8}
-                                    border="1px solid"
-                                    borderColor="pink.200"
-                                >
-                                    <Stack gap={4}>
-                                        <Text fontSize="xl" fontWeight="bold" color="#d53f8c">
-                                            Nhà hàng
-                                        </Text>
-                                        <Stack align="start" spacing={2}>
-                                            {restaurants.map((r, index) => (
-                                                <HStack key={index} justify={'space-between'} w={'full'}>
-                                                    <Text>{r.restaurantsName}</Text>
-                                                    <Button
-                                                        fontSize={12}
-                                                        p={3}
-                                                        borderRadius={'full'}
-                                                        variant={'ghost'}
-                                                        onClick={() => removeRestaurant(r.restaurantsName)}
+                                                        onClick={() => removeAccessory(a)}
                                                     ><FaX /></Button>
                                                 </HStack>
                                             ))}
@@ -164,13 +137,16 @@ const WeddingCart = () => {
                                         <Stack align="start" spacing={2}>
                                             {makeup.map((m, index) => (
                                                 <HStack key={index} justify={'space-between'} w={'full'}>
-                                                    <Text>{m.makeupName}</Text>
+                                                    <Text>{`${m.makeupName} (${m.concept === Concept.TRADITIONAL
+                                                        ? "Truyền thống" : m.concept === Concept.EUROPE
+                                                            ? "Châu Âu" : m.concept === Concept.MINIMALISM
+                                                                ? "Tối giản" : "Cổ điển"})`}</Text>
                                                     <Button
                                                         fontSize={12}
                                                         p={3}
                                                         borderRadius={'full'}
                                                         variant={'ghost'}
-                                                        onClick={() => removeMakeup(m.makeupName)}
+                                                        onClick={() => removeMakeup(m)}
                                                     ><FaX /></Button>
                                                 </HStack>
                                             ))}
@@ -202,7 +178,7 @@ const WeddingCart = () => {
                                                         p={3}
                                                         borderRadius={'full'}
                                                         variant={'ghost'}
-                                                        onClick={() => removeFlowers(f.flowersName)}
+                                                        onClick={() => removeFlowers(f)}
                                                     ><FaX /></Button>
                                                 </HStack>
                                             ))}
@@ -228,13 +204,16 @@ const WeddingCart = () => {
                                         <Stack align="start" spacing={2}>
                                             {weddingPhotography.map((wp, index) => (
                                                 <HStack key={index} justify={'space-between'} w={'full'}>
-                                                    <Text>{wp.photographyName}</Text>
+                                                    <Text>{`${wp.photographyName} (${wp.concept === Concept.TRADITIONAL
+                                                        ? "Truyền thống" : wp.concept === Concept.EUROPE
+                                                            ? "Châu Âu" : wp.concept === Concept.MINIMALISM
+                                                                ? "Tối giản" : "Cổ điển"})`}</Text>
                                                     <Button
                                                         fontSize={12}
                                                         p={3}
                                                         borderRadius={'full'}
                                                         variant={'ghost'}
-                                                        onClick={() => removeWeddingPhotography(wp.photographyName)}
+                                                        onClick={() => removeWeddingPhotography(wp)}
                                                     ><FaX /></Button>
                                                 </HStack>
                                             ))}
@@ -260,13 +239,51 @@ const WeddingCart = () => {
                                         <Stack align="start" spacing={2}>
                                             {decoration.map((d, index) => (
                                                 <HStack key={index} justify={'space-between'} w={'full'}>
-                                                    <Text>{d.decorationName}</Text>
+                                                    <Text>{`${d.decorationName} (${d.concept === Concept.TRADITIONAL
+                                                        ? "Truyền thống" : d.concept === Concept.EUROPE
+                                                            ? "Châu Âu" : d.concept === Concept.MINIMALISM
+                                                                ? "Tối giản" : "Cổ điển"}, ${d.color})`}</Text>
                                                     <Button
                                                         fontSize={12}
                                                         p={3}
                                                         borderRadius={'full'}
                                                         variant={'ghost'}
-                                                        onClick={() => removeDecoration(d.decorationName)}
+                                                        onClick={() => removeDecoration(d)}
+                                                    ><FaX /></Button>
+                                                </HStack>
+                                            ))}
+                                        </Stack>
+                                    </Stack>
+                                </Box>
+                            )}
+
+                            {restaurants.length > 0 && (
+                                <Box
+                                    bg="#fff"
+                                    borderRadius="xl"
+                                    boxShadow="lg"
+                                    py={4}
+                                    px={8}
+                                    border="1px solid"
+                                    borderColor="pink.200"
+                                >
+                                    <Stack gap={4}>
+                                        <Text fontSize="xl" fontWeight="bold" color="#d53f8c">
+                                            Nhà hàng
+                                        </Text>
+                                        <Stack align="start" spacing={2}>
+                                            {restaurants.map((r, index) => (
+                                                <HStack key={index} justify={'space-between'} w={'full'}>
+                                                    <Text>{`${r.restaurantsName} (${r.concept === Concept.TRADITIONAL
+                                                        ? "Truyền thống" : r.concept === Concept.EUROPE
+                                                            ? "Châu Âu" : r.concept === Concept.MINIMALISM
+                                                                ? "Tối giản" : "Cổ điển"})`}</Text>
+                                                    <Button
+                                                        fontSize={12}
+                                                        p={3}
+                                                        borderRadius={'full'}
+                                                        variant={'ghost'}
+                                                        onClick={() => removeRestaurant(r)}
                                                     ><FaX /></Button>
                                                 </HStack>
                                             ))}
@@ -292,13 +309,16 @@ const WeddingCart = () => {
                                         <Stack align="start" spacing={2}>
                                             {weddingInvitations.map((wi, index) => (
                                                 <HStack key={index} justify={'space-between'} w={'full'}>
-                                                    <Text>{wi.invitationsName}</Text>
+                                                    <Text>{`${wi.invitationsName} (${wi.concept === Concept.TRADITIONAL
+                                                        ? "Truyền thống" : wi.concept === Concept.EUROPE
+                                                            ? "Châu Âu" : wi.concept === Concept.MINIMALISM
+                                                                ? "Tối giản" : "Cổ điển"})`}</Text>
                                                     <Button
                                                         fontSize={12}
                                                         p={3}
                                                         borderRadius={'full'}
                                                         variant={'ghost'}
-                                                        onClick={() => removeWeddingInvitations(wi.invitationsName)}
+                                                        onClick={() => removeWeddingInvitations(wi)}
                                                     ><FaX /></Button>
                                                 </HStack>
                                             ))}
@@ -315,12 +335,11 @@ const WeddingCart = () => {
                                 decoration.length === 0 &&
                                 restaurants.length === 0 &&
                                 weddingInvitations.length === 0 && (
-                                    <Stack align={'center'}>
+                                    <Stack align={'center'} justify={'center'} h={'full'}>
                                         <Text>Giỏ hàng trống</Text>
                                     </Stack>
                                 )}
                         </Stack>
-
                     </DrawerBody>
                 </DrawerContent>
             </Drawer>
