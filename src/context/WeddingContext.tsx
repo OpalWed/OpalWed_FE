@@ -1,4 +1,5 @@
 import { createContext, useState, ReactNode } from 'react';
+import { Concept } from '../types/type.enum';
 
 // Define the props for the context, which include wedding details, style, and lists of items
 export interface WeddingContextProps {
@@ -23,14 +24,14 @@ export interface WeddingContextProps {
     addWeddingPhotography: (photography: WeddingPhotography) => void;
     addDecoration: (decoration: Decoration) => void;
     addWeddingInvitations: (invitations: WeddingInvitations) => void;
-    removeAccessory: (accessoryName: string) => void;
-    removeClothes: (clothesName: string) => void;
-    removeRestaurant: (restaurantName: string) => void;
-    removeMakeup: (makeupName: string) => void;
-    removeFlowers: (flowersName: string) => void;
-    removeWeddingPhotography: (photographyName: string) => void;
-    removeDecoration: (decorationName: string) => void;
-    removeWeddingInvitations: (invitationName: string) => void;
+    removeAccessory: (accessory: Accessories) => void;
+    removeClothes: (clothes: Clothes) => void;
+    removeRestaurant: (restaurant: Restaurants) => void;
+    removeMakeup: (makeup: Makeup) => void;
+    removeFlowers: (flowers: Flowers) => void;
+    removeWeddingPhotography: (photography: WeddingPhotography) => void;
+    removeDecoration: (decoration: Decoration) => void;
+    removeWeddingInvitations: (invitation: WeddingInvitations) => void;
 }
 
 // Define interfaces for wedding information, style, and items
@@ -47,14 +48,18 @@ interface Accessories {
 
 interface Clothes {
     clothesName: string;
+    color: string;
+    concept: Concept;
 }
 
 interface Restaurants {
     restaurantsName: string;
+    concept: Concept;
 }
 
 interface Makeup {
     makeupName: string;
+    concept: Concept;
 }
 
 interface Flowers {
@@ -63,14 +68,18 @@ interface Flowers {
 
 interface WeddingPhotography {
     photographyName: string;
+    concept: Concept;
 }
 
 interface Decoration {
     decorationName: string;
+    color: string;
+    concept: Concept;
 }
 
 interface WeddingInvitations {
     invitationsName: string;
+    concept: Concept;
 }
 
 // Create the WeddingContext with undefined as the default value
@@ -132,38 +141,78 @@ export const WeddingProvider = ({ children }: { children: ReactNode }) => {
         setWeddingInvitations((prev) => [...prev, invitations]);
     };
 
-    // In your useWedding hook or WeddingProvider component
-    const removeAccessory = (accessoryName: string) => {
-        setAccessories((prev) => prev.filter(item => item.accessoriesName !== accessoryName));
+    const removeAccessory = (accessoryToRemove: Accessories) => {
+        setAccessories((prev) =>
+            prev.filter(item =>
+                item.accessoriesName !== accessoryToRemove.accessoriesName
+            )
+        );
     };
 
-    const removeClothes = (clothesName: string) => {
-        setClothes((prev) => prev.filter(item => item.clothesName !== clothesName));
+    const removeClothes = (clothesToRemove: Clothes) => {
+        setClothes((prev) =>
+            prev.filter(item =>
+                item.clothesName !== clothesToRemove.clothesName ||
+                item.color !== clothesToRemove.color ||
+                item.concept !== clothesToRemove.concept
+            )
+        );
     };
 
-    const removeRestaurant = (restaurantName: string) => {
-        setRestaurants((prev) => prev.filter(item => item.restaurantsName !== restaurantName));
+    const removeRestaurant = (restaurantToRemove: Restaurants) => {
+        setRestaurants((prev) =>
+            prev.filter(item =>
+                item.restaurantsName !== restaurantToRemove.restaurantsName ||
+                item.concept !== restaurantToRemove.concept
+            )
+        );
     };
 
-    const removeMakeup = (makeupName: string) => {
-        setMakeup((prev) => prev.filter(item => item.makeupName !== makeupName));
+    const removeMakeup = (makeupToRemove: Makeup) => {
+        setMakeup((prev) =>
+            prev.filter(item =>
+                item.makeupName !== makeupToRemove.makeupName ||
+                item.concept !== makeupToRemove.concept
+            )
+        );
     };
 
-    const removeFlowers = (flowersName: string) => {
-        setFlowers((prev) => prev.filter(item => item.flowersName !== flowersName));
+    const removeFlowers = (flowersToRemove: Flowers) => {
+        setFlowers((prev) =>
+            prev.filter(item =>
+                item.flowersName !== flowersToRemove.flowersName
+            )
+        );
     };
 
-    const removeWeddingPhotography = (photographyName: string) => {
-        setWeddingPhotography((prev) => prev.filter(item => item.photographyName !== photographyName));
+    const removeWeddingPhotography = (photographyToRemove: WeddingPhotography) => {
+        setWeddingPhotography((prev) =>
+            prev.filter(item =>
+                item.photographyName !== photographyToRemove.photographyName ||
+                item.concept !== photographyToRemove.concept
+            )
+        );
     };
 
-    const removeDecoration = (decorationName: string) => {
-        setDecoration((prev) => prev.filter(item => item.decorationName !== decorationName));
+    const removeDecoration = (decorationToRemove: Decoration) => {
+        setDecoration((prev) =>
+            prev.filter(item =>
+                item.decorationName !== decorationToRemove.decorationName ||
+                item.color !== decorationToRemove.color ||
+                item.concept !== decorationToRemove.concept
+            )
+        );
     };
 
-    const removeWeddingInvitations = (invitationName: string) => {
-        setWeddingInvitations((prev) => prev.filter(item => item.invitationsName !== invitationName));
+    const removeWeddingInvitations = (invitationToRemove: WeddingInvitations) => {
+        setWeddingInvitations((prev) =>
+            prev.filter(item =>
+                item.invitationsName !== invitationToRemove.invitationsName ||
+                item.concept !== invitationToRemove.concept
+            )
+        );
     };
+
 
     return (
         <WeddingContext.Provider

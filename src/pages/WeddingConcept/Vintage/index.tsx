@@ -10,7 +10,8 @@ const VintageWeddingConceptPage = () => {
     const navigate = useNavigate();
     const { isAuthenticated } = useAuth();
     const imageList: string[] = [
-
+        '/Vintage/Rectangle 559.png',
+        '/Vintage/Rectangle 539.png'
     ]
 
     useEffect(() => {
@@ -36,10 +37,9 @@ const VintageWeddingConceptPage = () => {
                     shadow={Shadow.cardShadow}
                     gap={6}
                 >
-                    <Heading fontSize={55} fontFamily={'Canela'}>Phong cách Châu Âu</Heading>
+                    <Heading fontSize={55} fontWeight={300} fontFamily={'Canela'}>Phong cách cổ điển</Heading>
                     <Text textAlign={'justify'} fontFamily={'Noto Sans JP'}>
-                        Là một trong những nhà tổ chức tiệc cưới chuyên nghiệp và cao cấp đầu tiên có trụ sở tại Việt Nam,
-                        OpalWed chuyên tư vấn, thiết kế, lập kế hoạch và thực hiện tiệc cưới trọn gói.
+                        Sử dụng các yếu tố cổ điển, từ trang trí đến trang phục, mang lại không khí ấm áp và lãng mạn. Các chi tiết như bàn ghế gỗ, hoa khô, và đèn treo tạo ra vẻ đẹp hoài cổ và đầy ý nghĩa.
                     </Text>
                 </Stack>
             </Box>
@@ -48,91 +48,65 @@ const VintageWeddingConceptPage = () => {
                     <Heading textAlign={'center'} fontFamily={'Hatton'}>
                         Điều đặc biệt bạn sẽ tìm thấy
                     </Heading>
-                    <HStack gap={16} align={'flex-start'}>
-                        <Image
-                            src="/Europe/Rectangle 443.png"
-                            alt="Wedding"
-                            borderRadius="md"
-                            objectFit="cover"
-                            w="100px"
-                            h="auto"
-                            flex={1.3}
-                        />
-                        <Stack flex={1} align={'center'} gap={8}>
-                            <Heading fontFamily={'Cormorant'} fontSize={70}>1</Heading>
-                            <Divider w={32} borderColor={'#B58B61'} />
-                            <Text fontFamily={'Hatton'} fontSize={20}>Sự thanh lịch và nét quyến rũ</Text>
-                            <Text fontFamily={'Noto Sans JP'} fontWeight={300} fontSize={17}>
-                                Đám cưới theo phong cách châu Âu thường chú trọng vào vẻ đẹp cổ điển với các yếu tố như váy cưới ren, áo tuxedo thanh lịch và đồ trang trí tinh tế như đèn chùm và hoa tươi được sắp xếp cẩn thận.
-                            </Text>
-                        </Stack>
-                        <Image
-                            src="/Europe/Rectangle 442.png"
-                            alt="Wedding"
-                            borderRadius="md"
-                            objectFit="cover"
-                            w="100px"
-                            h="auto"
-                            flex={1.3}
-                        />
-                    </HStack>
-
-                    <HStack gap={16} align={'flex-start'}>
-                        <Stack flex={1} align={'center'} gap={8}>
-                            <Heading fontFamily={'Cormorant'} fontSize={70}>2</Heading>
-                            <Divider w={32} borderColor={'#B58B61'} />
-                            <Text fontFamily={'Hatton'} fontSize={20}>Không gian lãng mạn</Text>
-                            <Text fontFamily={'Noto Sans JP'} fontWeight={300} fontSize={17}>
-                                Những đám cưới này thường sử dụng ánh sáng dịu nhẹ, tông màu trung tính (trắng, phấn) và các loại hoa cổ điển như hoa hồng và hoa oải hương, tạo nên bầu không khí mơ màng.
-                            </Text>
-                        </Stack>
-                        <Image
-                            src="/Europe/Author Bio Photo.png"
-                            alt="Wedding"
-                            borderRadius="md"
-                            objectFit="cover"
-                            w="100px"
-                            h="auto"
-                            flex={1.3}
-                        />
-                        <Stack flex={1} align={'center'} gap={8}>
-                            <Heading fontFamily={'Cormorant'} fontSize={70}>3</Heading>
-                            <Divider w={32} borderColor={'#B58B61'} />
-                            <Text fontFamily={'Hatton'} fontSize={20}>Ẩm thực tinh tế</Text>
-                            <Text fontFamily={'Noto Sans JP'} fontWeight={300} fontSize={17}>
-                                Đám cưới theo phong cách châu Âu còn gây ấn tượng với khách mời bằng những món ăn ngon và rượu vang hảo hạng, đặc biệt là từ những vùng nổi tiếng như Pháp, Ý và Tây Ban Nha.
-                            </Text>
-                        </Stack>
-                    </HStack>
-
-                    <HStack gap={16} align={'flex-start'}>
-                        <Image
-                            src="/Europe/Rectangle 450.png"
-                            alt="Wedding"
-                            borderRadius="md"
-                            objectFit="cover"
-                            w="100px"
-                            h="auto"
-                            flex={1.3}
-                        />
-                        <Stack flex={1} align={'center'} gap={8}>
-                            <Heading fontFamily={'Cormorant'} fontSize={70}>4</Heading>
-                            <Divider w={32} borderColor={'#B58B61'} />
-                            <Text>Elegance and classic charm</Text>
-                            <Text fontFamily={'Noto Sans JP'} fontWeight={300} fontSize={17}>
-                                Tuy không quá cầu kỳ, nhưng mọi chi tiết đều được lựa chọn cẩn thận để tạo nên sự hài hòa, mang lại cảm giác sang trọng mà không quá phô trương.
-                            </Text>
-                        </Stack>
-                        <Image
-                            src="/Europe/Rectangle 449.png"
-                            alt="Wedding"
-                            borderRadius="md"
-                            objectFit="cover"
-                            w="100px"
-                            h="auto"
-                            flex={1.3}
-                        />
-                    </HStack>
+                    <Stack gap={16} align={'flex-start'}>
+                        <HStack>
+                            <Image
+                                src="/Vintage/Rectangle 549.png"
+                                alt="Wedding"
+                                borderRadius="md"
+                                objectFit="cover"
+                                w="100px"
+                                h="auto"
+                                flex={1}
+                            />
+                            <Stack flex={1} align={'center'} gap={8}>
+                                <Heading fontFamily={'Cormorant'} fontSize={70}>1</Heading>
+                                <Divider w={'md'} borderColor={'#B58B61'} />
+                                <Text fontFamily={'Hatton'} fontSize={20}>Thời trang đặc trưng</Text>
+                                <Text fontFamily={'Noto Sans JP'} fontWeight={300} fontSize={17} w={'75%'}>
+                                    Cô dâu và chú rể thường chọn những bộ trang phục theo phong cách retro, như váy xòe với ren, hoặc áo vest cổ điển. Những phụ kiện như mũ, găng tay và trang sức vintage cũng thường được sử dụng.
+                                </Text>
+                            </Stack>
+                        </HStack>
+                        <HStack gap={16} align={'flex-start'}>
+                            <Stack flex={1} align={'center'} gap={8}>
+                                <Heading fontFamily={'Cormorant'} fontSize={70}>2</Heading>
+                                <Divider w={'md'} borderColor={'#B58B61'} />
+                                <Text fontFamily={'Hatton'} fontSize={20}>Chi tiết thủ công</Text>
+                                <Text fontFamily={'Noto Sans JP'} fontWeight={300} fontSize={17} w={'75%'}>
+                                    Những chi tiết như thiệp cưới handmade, bàn tiệc được trang trí bằng hoa tươi và các vật dụng cổ điển được sắp xếp khéo léo, mang lại cảm giác cá nhân và độc đáo cho ngày trọng đại.
+                                </Text>
+                            </Stack>
+                            <Image
+                                src="/Vintage/Rectangle 448.png"
+                                alt="Wedding"
+                                borderRadius="md"
+                                objectFit="cover"
+                                w="100px"
+                                h="auto"
+                                flex={1}
+                            />
+                        </HStack>
+                        <HStack>
+                            <Image
+                                src="/Minimalism/Author Bio Photo.png"
+                                alt="Wedding"
+                                borderRadius="md"
+                                objectFit="cover"
+                                w="100px"
+                                h="auto"
+                                flex={1}
+                            />
+                            <Stack flex={1} align={'center'} gap={8}>
+                                <Heading fontFamily={'Cormorant'} fontSize={70}>3</Heading>
+                                <Divider w={'md'} borderColor={'#B58B61'} />
+                                <Text fontFamily={'Hatton'} fontSize={20}>Thực đơn đậm đà</Text>
+                                <Text fontFamily={'Noto Sans JP'} fontWeight={300} fontSize={17} w={'75%'}>
+                                    Thực đơn trong tiệc cưới vintage thường bao gồm các món ăn truyền thống hoặc mang hương vị cổ điển, được trình bày tinh tế, tạo cảm giác gần gũi và thân thuộc cho khách mời.
+                                </Text>
+                            </Stack>
+                        </HStack>
+                    </Stack>
                 </Stack>
                 <HStack gap={0} pos={'relative'}>
                     <Image
@@ -163,10 +137,10 @@ const VintageWeddingConceptPage = () => {
                             h={'full'}
                         >
                             <Heading textAlign={'center'} fontWeight={500} fontFamily={'Hatton'}>
-                                Lễ nghi và truyền thống
+                                Nét hoài cổ
                             </Heading>
                             <Text fontSize={16} fontFamily={'Noto Sans JP'}>
-                                Đám cưới châu Âu thường có các nghi lễ truyền thống giàu di sản văn hóa, chẳng hạn như tiệc chiêu đãi được tổ chức trong lâu đài, vườn nho hoặc biệt thự lịch sử. Điều này mang lại cảm giác hùng vĩ, tinh tế và kết nối với thiên nhiên.
+                                Tiệc cưới vintage thường mang đậm ảnh hưởng từ các thập niên trước, với những chi tiết trang trí như bàn ghế gỗ cũ, đèn chùm và các vật dụng cổ điển, tạo nên không gian ấm áp và lãng mạn.
                             </Text>
                         </Stack>
                     </Box>
@@ -185,9 +159,18 @@ const VintageWeddingConceptPage = () => {
                             Màu chủ đạo
                         </Heading>
                     </Box>
-                    <HStack gap={4}>
+                    <HStack gap={0} align={'flex-start'}>
                         <HStack flex={2.2} gap={0} align={'flex-end'}>
-                            <Card bgColor={Color.lightGold} flex={1.2}>
+                            <Image
+                                src="/Vintage/Rectangle 524.png"
+                                alt="Wedding"
+                                borderRadius="md"
+                                objectFit="cover"
+                                w="100px"
+                                h="350px"
+                                flex={1}
+                            />
+                            <Card bgColor={Color.lightGold} flex={1.2} pb={10}>
                                 <CardHeader
                                     fontSize={70}
                                     ml={10}
@@ -200,32 +183,24 @@ const VintageWeddingConceptPage = () => {
                                 </CardHeader>
                                 <CardBody px={10}>
                                     <Text fontSize={14} color={'#737373'} fontFamily={'Noto Sans JP'}>
-                                        Lần đầu gặp gỡ trong bối cảnh lãng mạn của vùng đất châu Âu xinh đẹp và thanh lịch, cặp đôi này đã có những ấn tượng rất đặc biệt về nhau và để chứng minh cho cuộc gặp gỡ này đã ảnh hưởng đến quyết định lựa chọn phong cách tiệc cưới chủ đạo theo phong cách châu Âu. Màu sắc chủ đạo của tiệc cưới ngoài trời là xanh pastel và hồng thạch anh. Hai tông màu pastel này cũng đã trở thành xu hướng được nhiều người lựa chọn trong những năm gần đây.
+                                        Màu chủ đạo thường là những tông màu nhẹ nhàng, như hồng pastel, xanh mint, hoặc nâu đất. Những gam màu này không chỉ mang lại cảm giác ấm áp mà còn thể hiện sự ngọt ngào và lãng mạn, phù hợp với phong cách vintage.
                                     </Text>
                                 </CardBody>
                             </Card>
-                            <Image
-                                src="/Europe/Rectangle 524.png"
-                                alt="Wedding"
-                                borderRadius="md"
-                                objectFit="cover"
-                                w="100px"
-                                h="auto"
-                                flex={1}
-                            />
                         </HStack>
                         <Image
-                            src="/Europe/Rectangle 525.png"
+                            src="/Vintage/Rectangle 557.png"
                             alt="Wedding"
                             borderRadius="md"
                             objectFit="cover"
                             w="100px"
-                            h="auto"
+                            h="350px"
+                            mt={20}
                             flex={1}
                         />
                     </HStack>
                 </Stack>
-                <Stack gap={10} w={'6xl'} mx={'auto'}>
+                <Stack gap={10} w={'6xl'} mx={'auto'} mt={-8}>
                     <Heading
                         fontSize={40}
                         fontWeight={400}
@@ -238,7 +213,7 @@ const VintageWeddingConceptPage = () => {
                     <Stack gap={10}>
                         <HStack gap={0} align={'flex-end'}>
                             <Image
-                                src="/Europe/Rectangle 527.png"
+                                src="/Vintage/Rectangle 527.png"
                                 alt="Wedding"
                                 borderRadius="md"
                                 objectFit="cover"
@@ -246,7 +221,7 @@ const VintageWeddingConceptPage = () => {
                                 h="400px"
                                 flex={1}
                             />
-                            <Card bgColor={Color.lightGold} flex={1.2}>
+                            <Card bgColor={Color.lightGold} flex={1.2} pb={10}>
                                 <CardHeader
                                     fontSize={70}
                                     ml={10}
@@ -259,29 +234,33 @@ const VintageWeddingConceptPage = () => {
                                 </CardHeader>
                                 <CardBody px={10}>
                                     <Text fontSize={14} color={'#737373'} fontFamily={'Noto Sans JP'}>
-                                        Với phong cách và màu sắc tươi sáng của buổi tiệc, tổ chức ở một vùng biển là một ý tưởng hoàn hảo. Màu hồng pastel và trắng sẽ trở nên thơ mộng và ngọt ngào nếu bạn tổ chức ngoài trời giữa biển xanh mênh mông. Vì bạn cần di chuyển đồ trang trí cho tiệc cưới ngoài trời đến một địa điểm gần biển nên bạn cần tổ chức theo phong cách đơn giản, nhẹ nhàng, không quá cầu kỳ và mang lại ấn tượng cho khách mời. Bạn có thể liên hệ với đơn vị cung cấp dịch vụ cưới hỏi để đặt xe và xác nhận số lượng đồ cần di chuyển.
+                                        Địa điểm tổ chức tiệc cưới thường là những không gian mang đậm chất cổ điển như nhà cổ, quán cà phê vintage, hoặc khu vườn với những hàng cây xanh mát. Những địa điểm này giúp tạo ra bầu không khí lãng mạn và hoài cổ.
+                                    </Text>
+                                    <br />
+                                    <Text fontSize={14} color={'#737373'} fontFamily={'Noto Sans JP'}>
+                                        Biệt thự cổ điển với kiến trúc trang nhã, nội thất tinh tế mang đến một không gian ấm áp, lãng mạn, nơi mà mọi khoảnh khắc đều trở nên quý giá hơn. Những nhà hàng với ánh đèn vàng ấm áp, được trang trí tỉ mỉ giúp các cặp đôi và khách mời có thể giao lưu, kết nối trong một bầu không khí thân mật và ấm cúng.
                                     </Text>
                                 </CardBody>
                             </Card>
                         </HStack>
                         <HStack gap={6}>
                             <Image
-                                src="/Europe/Rectangle 547.png"
+                                src="/Vintage/Rectangle 559.png"
                                 alt="Wedding"
                                 borderRadius="md"
                                 objectFit="cover"
                                 w="100px"
-                                h="400px"
-                                flex={1}
+                                h="300px"
+                                flex={1.5}
                             />
                             <Image
-                                src="/Europe/Rectangle 546.png"
+                                src="/Vintage/Rectangle 539.png"
                                 alt="Wedding"
                                 borderRadius="md"
                                 objectFit="cover"
                                 w="100px"
-                                h="400px"
-                                flex={1.7}
+                                h="300px"
+                                flex={1}
                             />
                         </HStack>
                     </Stack>
@@ -298,7 +277,7 @@ const VintageWeddingConceptPage = () => {
                     </Heading>
                     <HStack gap={4}>
                         <HStack flex={2.2} gap={0} align={'center'}>
-                            <Card bgColor={Color.lightGold} flex={1.2}>
+                            <Card bgColor={Color.lightGold} flex={1.2} pb={10}>
                                 <CardHeader
                                     fontSize={70}
                                     ml={10}
@@ -311,22 +290,26 @@ const VintageWeddingConceptPage = () => {
                                 </CardHeader>
                                 <CardBody px={10}>
                                     <Text fontSize={14} color={'#737373'} fontFamily={'Noto Sans JP'}>
-                                        Sân khấu nơi cô dâu và chú rể đứng cùng linh mục để chứng kiến ​​lễ cưới được thiết kế hướng ra biển với phông nền trắng cơ bản cùng cánh cửa gỗ trang trí hoa nhẹ phía trên, mang ý nghĩa cánh cửa mở ra điều gì đó mới mẻ, cuộc sống mới và đặc biệt hơn cho đôi uyên ương trẻ.
+                                        Sân khấu được thiết kế tinh tế, thường sử dụng phông nền nhẹ nhàng cùng với ánh sáng dịu dàng, tạo ra không gian ấm cúng cho các nghi thức và hoạt động trong lễ cưới.
+                                    </Text>
+                                    <br />
+                                    <Text fontSize={14} color={'#737373'} fontFamily={'Noto Sans JP'}>
+                                        Giữa sân khấu, một chiếc cửa gỗ cổ điển được trang trí tinh tế bằng hoa tươi và dây leo như một biểu tượng của tình yêu bền vững, mở ra một chương mới trong cuộc đời của cặp đôi. Bàn lễ đường, được chăm chút tỉ mỉ với những bình hoa rực rỡ và ánh nến lung linh, thể hiện sự trân trọng đối với tình yêu và những khoảnh khắc thiêng liêng.
                                     </Text>
                                 </CardBody>
                             </Card>
                             <Image
-                                src="/Europe/Rectangle 530.png"
+                                src="/Vintage/Rectangle 530.png"
                                 alt="Wedding"
                                 borderRadius="md"
                                 objectFit="cover"
                                 w="100px"
-                                h="auto"
+                                h="498px"
                                 flex={1}
                             />
                         </HStack>
                         <Image
-                            src="/Europe/Rectangle 531.png"
+                            src="/Vintage/Rectangle 531.png"
                             alt="Wedding"
                             borderRadius="md"
                             objectFit="cover"
@@ -334,28 +317,6 @@ const VintageWeddingConceptPage = () => {
                             h="auto"
                             flex={1}
                         />
-                    </HStack>
-                    <HStack flex={2.2} gap={0} align={'flex-end'}>
-                        <Image
-                            src="/Europe/Rectangle 539.png"
-                            alt="Wedding"
-                            borderRadius="md"
-                            objectFit="cover"
-                            w="100px"
-                            h="248px"
-                            flex={1}
-                        />
-                        <Card bgColor={Color.lightGold} flex={1}>
-                            <CardBody px={10}>
-                                <Text fontSize={14} color={'#737373'} fontFamily={'Noto Sans JP'}>
-                                    Chủ đề đám cưới của cả hai mang ý nghĩa tình yêu sẽ là chìa khóa giải quyết xung đột, là chất liệu để tình yêu của đôi uyên ương bền chặt trăm năm.
-                                </Text>
-                                <br />
-                                <Text fontSize={14} color={'#737373'} fontFamily={'Noto Sans JP'}>
-                                    Không gian sảnh cưới được trang trí với tông màu trắng và hồng, mang đến vẻ đẹp ngọt ngào và lãng mạn. Cặp đôi đã lựa chọn ghế chiavary để phục vụ 100 khách. Loại ghế này còn được gọi là Tiffany, thường được sử dụng cho các buổi tiệc và tiệc cưới theo phong cách sang trọng. Tuy nhiên, nhược điểm của ghế là khó thuê vào những thời điểm cao điểm vì nhu cầu cao.
-                                </Text>
-                            </CardBody>
-                        </Card>
                     </HStack>
                 </Stack>
                 <Stack gap={10} w={'6xl'} mx={'auto'}>
@@ -369,7 +330,36 @@ const VintageWeddingConceptPage = () => {
                         Trang trí
                     </Heading>
                     <HStack gap={0} align={'flex-end'}>
-                        <Card bgColor={Color.lightGold} flex={1}>
+                        <HStack flex={2}>
+                            <Stack flex={1}>
+                                <Image
+                                    src="/Vintage/Rectangle 533.png"
+                                    alt="Wedding"
+                                    borderRadius="md"
+                                    objectFit="cover"
+                                    w="auto"
+                                    h="245px"
+                                />
+                                <Image
+                                    src="/Vintage/Rectangle 534.png"
+                                    alt="Wedding"
+                                    borderRadius="md"
+                                    objectFit="cover"
+                                    w="auto"
+                                    h="245px"
+                                />
+                            </Stack>
+                            <Image
+                                src="/Vintage/Rectangle 560.png"
+                                alt="Wedding"
+                                borderRadius="md"
+                                objectFit="cover"
+                                w="auto"
+                                h="500px"
+                                flex={1}
+                            />
+                        </HStack>
+                        <Card bgColor={Color.lightGold} flex={1} pb={10}>
                             <CardHeader
                                 fontSize={70}
                                 ml={10}
@@ -382,71 +372,7 @@ const VintageWeddingConceptPage = () => {
                             </CardHeader>
                             <CardBody px={10}>
                                 <Text fontSize={14} color={'#737373'} fontFamily={'Noto Sans JP'}>
-                                    Những chiếc đèn nhỏ xinh màu trắng và hồng phù hợp với phong cách chính của tiệc cưới và cũng mang đến không gian đáng yêu để khách check in. Bàn tiệc gỗ mộc mạc được trang trí bằng lồng chim - thể hiện cặp đôi đã về chung một nhà, nến trắng và ảnh cưới của cặp đôi.
-                                </Text>
-                                <br />
-                                <Text fontSize={14} color={'#737373'} fontFamily={'Noto Sans JP'}>
-                                    Những chiếc đèn nhỏ xinh màu trắng và hồng phù hợp với phong cách chính của tiệc cưới và cũng mang đến không gian đáng yêu để khách check in. Bàn tiệc gỗ mộc mạc được trang trí bằng lồng chim - thể hiện cặp đôi đã về chung một nhà, nến trắng và ảnh cưới của cặp đôi.
-                                </Text>
-                            </CardBody>
-                        </Card>
-                        <HStack flex={2}>
-                            <Stack flex={1}>
-                                <Image
-                                    src="/Europe/Rectangle 533.png"
-                                    alt="Wedding"
-                                    borderRadius="md"
-                                    objectFit="cover"
-                                    w="auto"
-                                    h="245px"
-                                />
-                                <Image
-                                    src="/Europe/Rectangle 540.png"
-                                    alt="Wedding"
-                                    borderRadius="md"
-                                    objectFit="cover"
-                                    w="auto"
-                                    h="245px"
-                                />
-                            </Stack>
-                            <Image
-                                src="/Europe/Rectangle 534.png"
-                                alt="Wedding"
-                                borderRadius="md"
-                                objectFit="cover"
-                                w="auto"
-                                h="500px"
-                                flex={1}
-                            />
-                        </HStack>
-                    </HStack>
-                    <HStack gap={0}>
-                        <Stack flex={2}>
-                            <Image
-                                src="/Europe/Rectangle 542.png"
-                                alt="Wedding"
-                                borderRadius="md"
-                                objectFit="cover"
-                                w="auto"
-                                h="250px"
-                            />
-                            <Image
-                                src="/Europe/Rectangle 543.png"
-                                alt="Wedding"
-                                borderRadius="md"
-                                objectFit="cover"
-                                w="auto"
-                                h="250px"
-                            />
-                        </Stack>
-                        <Card bgColor={Color.lightGold} flex={1}>
-                            <CardBody px={10}>
-                                <Text fontSize={14} color={'#737373'} fontFamily={'Noto Sans JP'}>
-                                    Sau buổi lễ, cặp đôi đã tổ chức một bữa tối nhẹ nhàng cho khách mời trong không gian ấm cúng và nhẹ nhàng, cùng nhau chia sẻ mọi niềm vui trong ngày cưới quan trọng nhất cuộc đời. Cô dâu thể hiện sự thích thú của mình với những chiếc đèn chùm treo trên trần nhà, tạo nên không gian ấm áp và lung linh hơn khi mặt trời dần lặn
-                                </Text>
-                                <br />
-                                <Text fontSize={14} color={'#737373'} fontFamily={'Noto Sans JP'}>
-                                    Với chủ đề hoa chính là hoa hồng và hoa lan như trong sảnh cưới, trang trí bàn tiệc cũng sử dụng hai loại hoa này. Đồng thời, wedding planner cũng sơn những chiếc bình hoa màu đồng để tạo nên vẻ hiện đại cho tiệc cưới
+                                    Trang trí tiệc cưới vintage thường bao gồm hoa tươi theo mùa, bàn ghế gỗ mộc mạc, và các chi tiết nhỏ như khăn trải bàn hoa văn hoặc đĩa cổ. Những vật dụng như máy đánh chữ hoặc bình hoa cổ điển cũng thường được sử dụng để tăng thêm phần phong cách.
                                 </Text>
                             </CardBody>
                         </Card>
@@ -463,48 +389,42 @@ const VintageWeddingConceptPage = () => {
                         Photobooth và Quà tặng
                     </Heading>
                     <Stack gap={10} w={'6xl'} mx={'auto'} align={'flex-end'}>
-                        <HStack gap={4}>
-                            <HStack flex={2.2} gap={0} align={'flex-end'}>
-                                <Card bgColor={Color.lightGold} flex={1.2}>
-                                    <CardHeader
-                                        fontSize={70}
-                                        ml={10}
-                                        mt={-10}
-                                        mb={-5}
-                                        fontFamily={'Cormorant'}
-                                        color={Color.darkBlue}
-                                    >
-                                        05
-                                    </CardHeader>
-                                    <CardBody px={10}>
-                                        <Text fontSize={14} color={'#737373'} fontFamily={'Noto Sans JP'}>
-                                            Cặp đôi này còn thiết lập một khu vực chụp ảnh lưu niệm với nội thất theo phong cách châu Âu để khách có thể chụp ảnh lưu niệm.
-                                        </Text>
-                                    </CardBody>
-                                </Card>
+                        <HStack flex={2.2} gap={0} align={'flex-end'}>
+                            <Card bgColor={Color.lightGold} flex={1} py={10}>
+                                <CardHeader
+                                    fontSize={70}
+                                    ml={10}
+                                    mt={-10}
+                                    mb={-5}
+                                    fontFamily={'Cormorant'}
+                                    color={Color.darkBlue}
+                                >
+                                    05
+                                </CardHeader>
+                                <CardBody px={10}>
+                                    <Text fontSize={14} color={'#737373'} fontFamily={'Noto Sans JP'}>
+                                        Trong không gian lãng mạn của một đám cưới phong cách cổ điển, góc photobooth và quà tặng nhỏ trở thành hai điểm nhấn thú vị, góp phần tạo nên những kỷ niệm khó quên cho khách mời.
+                                    </Text>
+                                    <br />
+                                    <Text fontSize={14} color={'#737373'} fontFamily={'Noto Sans JP'}>
+                                        Góc photobooth được trang trí tinh tế, với phông nền làm từ vải satin mềm mại và hoa tươi rực rỡ. Những phụ kiện vui nhộn như mũ, kính râm và bảng chữ độc đáo không chỉ khơi gợi sự sáng tạo mà còn mang lại những khoảnh khắc vui vẻ và tự nhiên. Mỗi bức ảnh được chụp không chỉ là một hình ảnh, mà còn là một câu chuyện, một kỷ niệm đầy ắp tiếng cười và tình yêu.
+                                    </Text>
+                                </CardBody>
+                            </Card>
+                            <Stack flex={1.5}>
                                 <Image
-                                    src="/Europe/Rectangle 536.png"
+                                    src="/Vintage/Rectangle 532.png"
                                     alt="Wedding"
                                     borderRadius="md"
                                     objectFit="cover"
-                                    w="100px"
+                                    w="full"
                                     h="auto"
-                                    flex={1}
                                 />
-                            </HStack>
-                            <Image
-                                src="/Europe/Rectangle 548.png"
-                                alt="Wedding"
-                                borderRadius="md"
-                                objectFit="cover"
-                                w="100px"
-                                h="auto"
-                                flex={1}
-                            />
+                            </Stack>
                         </HStack>
                         <HStack w={'4xl'} gap={0} align={'flex-end'}>
                             <Image
-                                src="/Europe/Rectangle 545.png"
+                                src="/Vintage/Rectangle 535.png"
                                 alt="Wedding"
                                 borderRadius="md"
                                 objectFit="cover"
@@ -512,10 +432,10 @@ const VintageWeddingConceptPage = () => {
                                 h="248px"
                                 flex={1}
                             />
-                            <Card bgColor={Color.lightGold} flex={1}>
+                            <Card bgColor={Color.lightGold} flex={1} py={10}>
                                 <CardBody px={10}>
                                     <Text fontSize={14} color={'#737373'} fontFamily={'Noto Sans JP'}>
-                                        Những lọ kẹo dẻo mềm, thơm là món quà nhỏ xinh mà cặp đôi muốn gửi đến khách mời như lời cảm ơn vì đã đến dự tiệc và chia sẻ niềm hạnh phúc của đôi vợ chồng trẻ.
+                                        Cạnh bên, những món quà tặng nhỏ được chuẩn bị chu đáo, từ nến thơm đến hộp socola ngọt ngào, tất cả đều được bọc trong những chiếc hộp đẹp mắt, thắt nơ tinh tế. Những món quà này không chỉ thể hiện lòng biết ơn của cặp đôi dành cho khách mời mà còn mang đến cảm giác gần gũi và ấm áp. Khi khách mời cầm trên tay món quà, họ không chỉ nhận được một vật phẩm mà còn là một phần của kỷ niệm đặc biệt trong ngày trọng đại.
                                     </Text>
                                 </CardBody>
                             </Card>

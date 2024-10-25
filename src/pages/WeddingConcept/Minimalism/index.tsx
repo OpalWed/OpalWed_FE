@@ -36,10 +36,9 @@ const MinimalismWeddingConceptPage = () => {
                     shadow={Shadow.cardShadow}
                     gap={6}
                 >
-                    <Heading fontSize={55} fontFamily={'Canela'}>Phong cách Châu Âu</Heading>
+                    <Heading fontSize={55} fontWeight={300} fontFamily={'Canela'}>Phong cách tối giản</Heading>
                     <Text textAlign={'justify'} fontFamily={'Noto Sans JP'}>
-                        Là một trong những nhà tổ chức tiệc cưới chuyên nghiệp và cao cấp đầu tiên có trụ sở tại Việt Nam,
-                        OpalWed chuyên tư vấn, thiết kế, lập kế hoạch và thực hiện tiệc cưới trọn gói.
+                        Phong cách Minimalism xuất hiện vào những năm 1970 tại phương Tây. Hôn lễ được tổ chức theo phong cách minimalist áp dụng nguyên tắc trang trí ít hơn về “lượng” nhưng đồng thời nhiều hơn về “chất”. Như chính tên gọi, phong cách minimalism mang đến sự đơn giản nhưng kèm theo đó là sự tinh tế, hài hoà bắt lấy sự ấn tượng của người xem.
                     </Text>
                 </Stack>
             </Box>
@@ -48,91 +47,64 @@ const MinimalismWeddingConceptPage = () => {
                     <Heading textAlign={'center'} fontFamily={'Hatton'}>
                         Điều đặc biệt bạn sẽ tìm thấy
                     </Heading>
-                    <HStack gap={16} align={'flex-start'}>
-                        <Image
-                            src="/Europe/Rectangle 443.png"
-                            alt="Wedding"
-                            borderRadius="md"
-                            objectFit="cover"
-                            w="100px"
-                            h="auto"
-                            flex={1.3}
-                        />
-                        <Stack flex={1} align={'center'} gap={8}>
-                            <Heading fontFamily={'Cormorant'} fontSize={70}>1</Heading>
-                            <Divider w={32} borderColor={'#B58B61'} />
-                            <Text fontFamily={'Hatton'} fontSize={20}>Sự thanh lịch và nét quyến rũ</Text>
-                            <Text fontFamily={'Noto Sans JP'} fontWeight={300} fontSize={17}>
-                                Đám cưới theo phong cách châu Âu thường chú trọng vào vẻ đẹp cổ điển với các yếu tố như váy cưới ren, áo tuxedo thanh lịch và đồ trang trí tinh tế như đèn chùm và hoa tươi được sắp xếp cẩn thận.
-                            </Text>
-                        </Stack>
-                        <Image
-                            src="/Europe/Rectangle 442.png"
-                            alt="Wedding"
-                            borderRadius="md"
-                            objectFit="cover"
-                            w="100px"
-                            h="auto"
-                            flex={1.3}
-                        />
-                    </HStack>
-
-                    <HStack gap={16} align={'flex-start'}>
-                        <Stack flex={1} align={'center'} gap={8}>
-                            <Heading fontFamily={'Cormorant'} fontSize={70}>2</Heading>
-                            <Divider w={32} borderColor={'#B58B61'} />
-                            <Text fontFamily={'Hatton'} fontSize={20}>Không gian lãng mạn</Text>
-                            <Text fontFamily={'Noto Sans JP'} fontWeight={300} fontSize={17}>
-                                Những đám cưới này thường sử dụng ánh sáng dịu nhẹ, tông màu trung tính (trắng, phấn) và các loại hoa cổ điển như hoa hồng và hoa oải hương, tạo nên bầu không khí mơ màng.
-                            </Text>
-                        </Stack>
-                        <Image
-                            src="/Europe/Author Bio Photo.png"
-                            alt="Wedding"
-                            borderRadius="md"
-                            objectFit="cover"
-                            w="100px"
-                            h="auto"
-                            flex={1.3}
-                        />
-                        <Stack flex={1} align={'center'} gap={8}>
-                            <Heading fontFamily={'Cormorant'} fontSize={70}>3</Heading>
-                            <Divider w={32} borderColor={'#B58B61'} />
-                            <Text fontFamily={'Hatton'} fontSize={20}>Ẩm thực tinh tế</Text>
-                            <Text fontFamily={'Noto Sans JP'} fontWeight={300} fontSize={17}>
-                                Đám cưới theo phong cách châu Âu còn gây ấn tượng với khách mời bằng những món ăn ngon và rượu vang hảo hạng, đặc biệt là từ những vùng nổi tiếng như Pháp, Ý và Tây Ban Nha.
-                            </Text>
-                        </Stack>
-                    </HStack>
-
-                    <HStack gap={16} align={'flex-start'}>
-                        <Image
-                            src="/Europe/Rectangle 450.png"
-                            alt="Wedding"
-                            borderRadius="md"
-                            objectFit="cover"
-                            w="100px"
-                            h="auto"
-                            flex={1.3}
-                        />
-                        <Stack flex={1} align={'center'} gap={8}>
-                            <Heading fontFamily={'Cormorant'} fontSize={70}>4</Heading>
-                            <Divider w={32} borderColor={'#B58B61'} />
-                            <Text>Elegance and classic charm</Text>
-                            <Text fontFamily={'Noto Sans JP'} fontWeight={300} fontSize={17}>
-                                Tuy không quá cầu kỳ, nhưng mọi chi tiết đều được lựa chọn cẩn thận để tạo nên sự hài hòa, mang lại cảm giác sang trọng mà không quá phô trương.
-                            </Text>
-                        </Stack>
-                        <Image
-                            src="/Europe/Rectangle 449.png"
-                            alt="Wedding"
-                            borderRadius="md"
-                            objectFit="cover"
-                            w="100px"
-                            h="auto"
-                            flex={1.3}
-                        />
-                    </HStack>
+                    <Stack gap={16} align={'flex-start'}>
+                        <HStack>
+                            <Image
+                                src="/Minimalism/Author Bio Photo-2.png"
+                                alt="Wedding"
+                                borderRadius="md"
+                                objectFit="cover"
+                                w="100px"
+                                h="auto"
+                                flex={1}
+                            />
+                            <Stack flex={1} align={'center'} gap={8}>
+                                <Heading fontFamily={'Cormorant'} fontSize={70}>1</Heading>
+                                <Divider w={'md'} borderColor={'#B58B61'} />
+                                <Text fontFamily={'Hatton'} fontSize={20}>Thiết kế đơn giản</Text>
+                                <Text fontFamily={'Noto Sans JP'} fontWeight={300} fontSize={17} w={'75%'}>
+                                    Tiệc cưới phong cách tối giản thường tập trung vào sự tinh tế, với các đường nét sạch sẽ và hình khối rõ ràng. Không gian được trang trí nhẹ nhàng, hạn chế chi tiết rườm rà.
+                                </Text>
+                            </Stack>
+                        </HStack>
+                        <HStack gap={16} align={'flex-start'}>
+                            <Stack flex={1} align={'center'} gap={8}>
+                                <Heading fontFamily={'Cormorant'} fontSize={70}>2</Heading>
+                                <Divider w={'md'} borderColor={'#B58B61'} />
+                                <Text fontFamily={'Hatton'} fontSize={20}>Màu sắc nhẹ nhàng</Text>
+                                <Text fontFamily={'Noto Sans JP'} fontWeight={300} fontSize={17} w={'75%'}>
+                                    Gam màu chủ đạo thường là những tông màu trung tính như trắng, đen, xám hoặc pastel. Sự kết hợp này tạo cảm giác thanh lịch và dễ chịu, giúp nổi bật những khoảnh khắc quan trọng.
+                                </Text>
+                            </Stack>
+                            <Image
+                                src="/Minimalism/Author Bio Photo-1.png"
+                                alt="Wedding"
+                                borderRadius="md"
+                                objectFit="cover"
+                                w="100px"
+                                h="auto"
+                                flex={1}
+                            />
+                        </HStack>
+                        <HStack>
+                            <Image
+                                src="/Minimalism/Author Bio Photo.png"
+                                alt="Wedding"
+                                borderRadius="md"
+                                objectFit="cover"
+                                w="100px"
+                                h="auto"
+                                flex={1}
+                            />
+                            <Stack flex={1} align={'center'} gap={8}>
+                                <Heading fontFamily={'Cormorant'} fontSize={70}>3</Heading>
+                                <Divider w={'md'} borderColor={'#B58B61'} />
+                                <Text fontFamily={'Hatton'} fontSize={20}>Thực đơn tinh gọn</Text>
+                                <Text fontFamily={'Noto Sans JP'} fontWeight={300} fontSize={17} w={'75%'}>
+                                    Thực đơn thường chọn lọc, với những món ăn ngon và chất lượng, tập trung vào hương vị thay vì số lượng. Điều này không chỉ tạo sự thoải mái cho khách mời mà còn thể hiện sự chú trọng vào trải nghiệm ẩm thực.                            </Text>
+                            </Stack>
+                        </HStack>
+                    </Stack>
                 </Stack>
                 <HStack gap={0} pos={'relative'}>
                     <Image
@@ -163,10 +135,10 @@ const MinimalismWeddingConceptPage = () => {
                             h={'full'}
                         >
                             <Heading textAlign={'center'} fontWeight={500} fontFamily={'Hatton'}>
-                                Lễ nghi và truyền thống
+                                Tập trung vào cảm xúc
                             </Heading>
                             <Text fontSize={16} fontFamily={'Noto Sans JP'}>
-                                Đám cưới châu Âu thường có các nghi lễ truyền thống giàu di sản văn hóa, chẳng hạn như tiệc chiêu đãi được tổ chức trong lâu đài, vườn nho hoặc biệt thự lịch sử. Điều này mang lại cảm giác hùng vĩ, tinh tế và kết nối với thiên nhiên.
+                                Tiệc cưới tối giản thường chú trọng vào những khoảnh khắc chân thành và ý nghĩa. Các nghi thức và hoạt động được tổ chức một cách tự nhiên, giúp cặp đôi và khách mời dễ dàng kết nối và chia sẻ cảm xúc.
                             </Text>
                         </Stack>
                     </Box>
@@ -185,44 +157,46 @@ const MinimalismWeddingConceptPage = () => {
                             Màu chủ đạo
                         </Heading>
                     </Box>
-                    <HStack gap={4}>
-                        <HStack flex={2.2} gap={0} align={'flex-end'}>
-                            <Card bgColor={Color.lightGold} flex={1.2}>
-                                <CardHeader
-                                    fontSize={70}
-                                    ml={10}
-                                    mt={-10}
-                                    mb={-5}
-                                    fontFamily={'Cormorant'}
-                                    color={Color.darkBlue}
-                                >
-                                    01
-                                </CardHeader>
-                                <CardBody px={10}>
-                                    <Text fontSize={14} color={'#737373'} fontFamily={'Noto Sans JP'}>
-                                        Lần đầu gặp gỡ trong bối cảnh lãng mạn của vùng đất châu Âu xinh đẹp và thanh lịch, cặp đôi này đã có những ấn tượng rất đặc biệt về nhau và để chứng minh cho cuộc gặp gỡ này đã ảnh hưởng đến quyết định lựa chọn phong cách tiệc cưới chủ đạo theo phong cách châu Âu. Màu sắc chủ đạo của tiệc cưới ngoài trời là xanh pastel và hồng thạch anh. Hai tông màu pastel này cũng đã trở thành xu hướng được nhiều người lựa chọn trong những năm gần đây.
-                                    </Text>
-                                </CardBody>
-                            </Card>
+                    <HStack gap={0} align={'flex-start'}>
+                        <Card bgColor={Color.lightGold} flex={1} mt={2}>
+                            <CardHeader
+                                fontSize={70}
+                                ml={10}
+                                mt={-10}
+                                mb={-5}
+                                fontFamily={'Cormorant'}
+                                color={Color.darkBlue}
+                            >
+                                01
+                            </CardHeader>
+                            <CardBody px={10}>
+                                <Text fontSize={14} color={'#737373'} fontFamily={'Noto Sans JP'}>
+                                    Tối giản không đồng nghĩa với tẻ nhạt, đám cưới minimalist không hề thiếu đi những sắc màu tươi sáng. Cặp vợ chồng sẽ sử dụng màu sắc một cách có chủ ý, màu đậm hơn sẽ dùng cho các chi tiết quan trọng, có ý nghĩa với uyên ương.
+                                </Text>
+                                <br />
+                                <Text fontSize={14} color={'#737373'} fontFamily={'Noto Sans JP'}>
+                                    Tuy nhiên, tông màu trắng xám là tông màu thường thấy trong khi trang trí đám cưới theo phong cách này. Kết hợp với nguyên liệu chủ yếu từ kim loại có hình dáng độc đáo sẽ tạo nên sự khác biệt mà vẫn vô cùng “chất” cho đám cưới của bạn.
+                                </Text>
+                            </CardBody>
+                        </Card>
+                        <Stack flex={1.5}>
                             <Image
-                                src="/Europe/Rectangle 524.png"
+                                src="/Minimalism/Rectangle 524.png"
                                 alt="Wedding"
                                 borderRadius="md"
                                 objectFit="cover"
-                                w="100px"
-                                h="auto"
-                                flex={1}
+                                w="auto"
+                                h="250px"
                             />
-                        </HStack>
-                        <Image
-                            src="/Europe/Rectangle 525.png"
-                            alt="Wedding"
-                            borderRadius="md"
-                            objectFit="cover"
-                            w="100px"
-                            h="auto"
-                            flex={1}
-                        />
+                            <Image
+                                src="/Minimalism/Rectangle 546.png"
+                                alt="Wedding"
+                                borderRadius="md"
+                                objectFit="cover"
+                                w="auto"
+                                h="250px"
+                            />
+                        </Stack>
                     </HStack>
                 </Stack>
                 <Stack gap={10} w={'6xl'} mx={'auto'}>
@@ -235,16 +209,34 @@ const MinimalismWeddingConceptPage = () => {
                     >
                         Địa điểm
                     </Heading>
-                    <Stack gap={10}>
-                        <HStack gap={0} align={'flex-end'}>
+                    <HStack gap={0} align={'flex-end'}>
+                        <Stack gap={3} flex={1.7} h={616}>
                             <Image
-                                src="/Europe/Rectangle 527.png"
+                                src="/Minimalism/Rectangle 527.png"
                                 alt="Wedding"
                                 borderRadius="md"
                                 objectFit="cover"
-                                w="100px"
-                                h="400px"
-                                flex={1}
+                                w="full"
+                                h="60%"
+                            />
+                            <Image
+                                src="/Minimalism/Rectangle 547.png"
+                                alt="Wedding"
+                                borderRadius="md"
+                                objectFit="cover"
+                                w="full"
+                                h="39%"
+                            />
+                        </Stack>
+                        <Stack gap={5} justify={'space-between'} flex={1} h={616}>
+                            <Image
+                                src="/Minimalism/Rectangle 548.png"
+                                alt="Wedding"
+                                borderRadius="md"
+                                objectFit="cover"
+                                w="97%"
+                                h="auto"
+                                ml={3}
                             />
                             <Card bgColor={Color.lightGold} flex={1.2}>
                                 <CardHeader
@@ -259,34 +251,18 @@ const MinimalismWeddingConceptPage = () => {
                                 </CardHeader>
                                 <CardBody px={10}>
                                     <Text fontSize={14} color={'#737373'} fontFamily={'Noto Sans JP'}>
-                                        Với phong cách và màu sắc tươi sáng của buổi tiệc, tổ chức ở một vùng biển là một ý tưởng hoàn hảo. Màu hồng pastel và trắng sẽ trở nên thơ mộng và ngọt ngào nếu bạn tổ chức ngoài trời giữa biển xanh mênh mông. Vì bạn cần di chuyển đồ trang trí cho tiệc cưới ngoài trời đến một địa điểm gần biển nên bạn cần tổ chức theo phong cách đơn giản, nhẹ nhàng, không quá cầu kỳ và mang lại ấn tượng cho khách mời. Bạn có thể liên hệ với đơn vị cung cấp dịch vụ cưới hỏi để đặt xe và xác nhận số lượng đồ cần di chuyển.
+                                        Khá đa dạng khi lựa chọn địa điểm tổ chức tiệc cưới theo phong cách này, chỉ cần tông màu sáng không màu mè cùng với việc bài trí đơn giản bắt mắt thì bạn có thể lựa chọn những địa điểm này ở nhiều nơi: nhà hàng, khách sạn, sân vườn hoặc nhà thờ.
+                                    </Text>
+                                    <br />
+                                    <Text fontSize={14} color={'#737373'} fontFamily={'Noto Sans JP'}>
+                                        Các đặc điểm chung của những địa điểm này là có trần gỗ, trần có chi tiết kim loại, tường gạch, tường trống, sàn bê tông hoặc sàn gỗ
                                     </Text>
                                 </CardBody>
                             </Card>
-                        </HStack>
-                        <HStack gap={6}>
-                            <Image
-                                src="/Europe/Rectangle 547.png"
-                                alt="Wedding"
-                                borderRadius="md"
-                                objectFit="cover"
-                                w="100px"
-                                h="400px"
-                                flex={1}
-                            />
-                            <Image
-                                src="/Europe/Rectangle 546.png"
-                                alt="Wedding"
-                                borderRadius="md"
-                                objectFit="cover"
-                                w="100px"
-                                h="400px"
-                                flex={1.7}
-                            />
-                        </HStack>
-                    </Stack>
+                        </Stack>
+                    </HStack>
                 </Stack>
-                <Stack gap={10} w={'6xl'} mx={'auto'}>
+                <Stack gap={7} w={'6xl'} mx={'auto'}>
                     <Heading
                         fontSize={40}
                         fontWeight={400}
@@ -298,7 +274,7 @@ const MinimalismWeddingConceptPage = () => {
                     </Heading>
                     <HStack gap={4}>
                         <HStack flex={2.2} gap={0} align={'center'}>
-                            <Card bgColor={Color.lightGold} flex={1.2}>
+                            <Card bgColor={Color.lightGold} flex={1.2} pb={10}>
                                 <CardHeader
                                     fontSize={70}
                                     ml={10}
@@ -311,22 +287,22 @@ const MinimalismWeddingConceptPage = () => {
                                 </CardHeader>
                                 <CardBody px={10}>
                                     <Text fontSize={14} color={'#737373'} fontFamily={'Noto Sans JP'}>
-                                        Sân khấu nơi cô dâu và chú rể đứng cùng linh mục để chứng kiến ​​lễ cưới được thiết kế hướng ra biển với phông nền trắng cơ bản cùng cánh cửa gỗ trang trí hoa nhẹ phía trên, mang ý nghĩa cánh cửa mở ra điều gì đó mới mẻ, cuộc sống mới và đặc biệt hơn cho đôi uyên ương trẻ.
+                                        Sân khấu thường được thiết kế đơn giản nhưng tinh tế, với phông nền màu sắc nhẹ nhàng và ánh sáng tự nhiên. Những chi tiết như cây xanh hoặc hoa tươi cũng được chọn lựa kỹ càng để không làm mất đi sự tối giản của không gian.
                                     </Text>
                                 </CardBody>
                             </Card>
                             <Image
-                                src="/Europe/Rectangle 530.png"
+                                src="/Minimalism/Rectangle 530.png"
                                 alt="Wedding"
                                 borderRadius="md"
                                 objectFit="cover"
                                 w="100px"
-                                h="auto"
+                                h="498px"
                                 flex={1}
                             />
                         </HStack>
                         <Image
-                            src="/Europe/Rectangle 531.png"
+                            src="/Minimalism/Rectangle 531.png"
                             alt="Wedding"
                             borderRadius="md"
                             objectFit="cover"
@@ -337,22 +313,18 @@ const MinimalismWeddingConceptPage = () => {
                     </HStack>
                     <HStack flex={2.2} gap={0} align={'flex-end'}>
                         <Image
-                            src="/Europe/Rectangle 539.png"
+                            src="/Minimalism/Rectangle 539.png"
                             alt="Wedding"
                             borderRadius="md"
                             objectFit="cover"
                             w="100px"
-                            h="248px"
+                            h="291px"
                             flex={1}
                         />
-                        <Card bgColor={Color.lightGold} flex={1}>
+                        <Card bgColor={Color.lightGold} flex={1} py={10}>
                             <CardBody px={10}>
                                 <Text fontSize={14} color={'#737373'} fontFamily={'Noto Sans JP'}>
-                                    Chủ đề đám cưới của cả hai mang ý nghĩa tình yêu sẽ là chìa khóa giải quyết xung đột, là chất liệu để tình yêu của đôi uyên ương bền chặt trăm năm.
-                                </Text>
-                                <br />
-                                <Text fontSize={14} color={'#737373'} fontFamily={'Noto Sans JP'}>
-                                    Không gian sảnh cưới được trang trí với tông màu trắng và hồng, mang đến vẻ đẹp ngọt ngào và lãng mạn. Cặp đôi đã lựa chọn ghế chiavary để phục vụ 100 khách. Loại ghế này còn được gọi là Tiffany, thường được sử dụng cho các buổi tiệc và tiệc cưới theo phong cách sang trọng. Tuy nhiên, nhược điểm của ghế là khó thuê vào những thời điểm cao điểm vì nhu cầu cao.
+                                    Để tạo nên phong cách tối giản, hãy ưu tiên các chất liệu thuộc về rustic và metallic. Dễ thấy nhất là bàn ghế từ gỗ hay thanh sắt mảnh vàng gold. Sự kết hợp này mang đến một chút sang trọng, tinh tế của chất liệu kim loại sáng. Hay một chút gần gũi và mộc mạc với thiên nhiên của rustic.
                                 </Text>
                             </CardBody>
                         </Card>
@@ -369,7 +341,7 @@ const MinimalismWeddingConceptPage = () => {
                         Trang trí
                     </Heading>
                     <HStack gap={0} align={'flex-end'}>
-                        <Card bgColor={Color.lightGold} flex={1}>
+                        <Card bgColor={Color.lightGold} flex={1} pb={10}>
                             <CardHeader
                                 fontSize={70}
                                 ml={10}
@@ -382,74 +354,40 @@ const MinimalismWeddingConceptPage = () => {
                             </CardHeader>
                             <CardBody px={10}>
                                 <Text fontSize={14} color={'#737373'} fontFamily={'Noto Sans JP'}>
-                                    Những chiếc đèn nhỏ xinh màu trắng và hồng phù hợp với phong cách chính của tiệc cưới và cũng mang đến không gian đáng yêu để khách check in. Bàn tiệc gỗ mộc mạc được trang trí bằng lồng chim - thể hiện cặp đôi đã về chung một nhà, nến trắng và ảnh cưới của cặp đôi.
-                                </Text>
-                                <br />
-                                <Text fontSize={14} color={'#737373'} fontFamily={'Noto Sans JP'}>
-                                    Những chiếc đèn nhỏ xinh màu trắng và hồng phù hợp với phong cách chính của tiệc cưới và cũng mang đến không gian đáng yêu để khách check in. Bàn tiệc gỗ mộc mạc được trang trí bằng lồng chim - thể hiện cặp đôi đã về chung một nhà, nến trắng và ảnh cưới của cặp đôi.
+                                    Trang trí chủ yếu sử dụng các vật liệu tự nhiên như gỗ, đá, và kim loại, với các chi tiết như nến, hoa đơn sắc hoặc các tác phẩm nghệ thuật đơn giản, tạo nên sự cân bằng và thanh lịch.
                                 </Text>
                             </CardBody>
                         </Card>
-                        <HStack flex={2}>
-                            <Stack flex={1}>
+                        <Stack flex={1.5}>
+                            <HStack>
                                 <Image
-                                    src="/Europe/Rectangle 533.png"
+                                    src="/Minimalism/Rectangle 533.png"
                                     alt="Wedding"
                                     borderRadius="md"
                                     objectFit="cover"
                                     w="auto"
                                     h="245px"
+                                    flex={1}
                                 />
                                 <Image
-                                    src="/Europe/Rectangle 540.png"
+                                    src="/Minimalism/Rectangle 534.png"
                                     alt="Wedding"
                                     borderRadius="md"
                                     objectFit="cover"
                                     w="auto"
                                     h="245px"
+                                    flex={1}
                                 />
-                            </Stack>
+                            </HStack>
                             <Image
-                                src="/Europe/Rectangle 534.png"
+                                src="/Minimalism/Rectangle 540.png"
                                 alt="Wedding"
                                 borderRadius="md"
                                 objectFit="cover"
-                                w="auto"
-                                h="500px"
-                                flex={1}
-                            />
-                        </HStack>
-                    </HStack>
-                    <HStack gap={0}>
-                        <Stack flex={2}>
-                            <Image
-                                src="/Europe/Rectangle 542.png"
-                                alt="Wedding"
-                                borderRadius="md"
-                                objectFit="cover"
-                                w="auto"
-                                h="250px"
-                            />
-                            <Image
-                                src="/Europe/Rectangle 543.png"
-                                alt="Wedding"
-                                borderRadius="md"
-                                objectFit="cover"
-                                w="auto"
-                                h="250px"
+                                w="full"
+                                h="auto"
                             />
                         </Stack>
-                        <Card bgColor={Color.lightGold} flex={1}>
-                            <CardBody px={10}>
-                                <Text fontSize={14} color={'#737373'} fontFamily={'Noto Sans JP'}>
-                                    Sau buổi lễ, cặp đôi đã tổ chức một bữa tối nhẹ nhàng cho khách mời trong không gian ấm cúng và nhẹ nhàng, cùng nhau chia sẻ mọi niềm vui trong ngày cưới quan trọng nhất cuộc đời. Cô dâu thể hiện sự thích thú của mình với những chiếc đèn chùm treo trên trần nhà, tạo nên không gian ấm áp và lung linh hơn khi mặt trời dần lặn
-                                </Text>
-                                <br />
-                                <Text fontSize={14} color={'#737373'} fontFamily={'Noto Sans JP'}>
-                                    Với chủ đề hoa chính là hoa hồng và hoa lan như trong sảnh cưới, trang trí bàn tiệc cũng sử dụng hai loại hoa này. Đồng thời, wedding planner cũng sơn những chiếc bình hoa màu đồng để tạo nên vẻ hiện đại cho tiệc cưới
-                                </Text>
-                            </CardBody>
-                        </Card>
                     </HStack>
                 </Stack>
                 <Stack gap={10}>
@@ -462,49 +400,27 @@ const MinimalismWeddingConceptPage = () => {
                     >
                         Photobooth và Quà tặng
                     </Heading>
-                    <Stack gap={10} w={'6xl'} mx={'auto'} align={'flex-end'}>
-                        <HStack gap={4}>
-                            <HStack flex={2.2} gap={0} align={'flex-end'}>
-                                <Card bgColor={Color.lightGold} flex={1.2}>
-                                    <CardHeader
-                                        fontSize={70}
-                                        ml={10}
-                                        mt={-10}
-                                        mb={-5}
-                                        fontFamily={'Cormorant'}
-                                        color={Color.darkBlue}
-                                    >
-                                        05
-                                    </CardHeader>
-                                    <CardBody px={10}>
-                                        <Text fontSize={14} color={'#737373'} fontFamily={'Noto Sans JP'}>
-                                            Cặp đôi này còn thiết lập một khu vực chụp ảnh lưu niệm với nội thất theo phong cách châu Âu để khách có thể chụp ảnh lưu niệm.
-                                        </Text>
-                                    </CardBody>
-                                </Card>
-                                <Image
-                                    src="/Europe/Rectangle 536.png"
-                                    alt="Wedding"
-                                    borderRadius="md"
-                                    objectFit="cover"
-                                    w="100px"
-                                    h="auto"
-                                    flex={1}
-                                />
-                            </HStack>
-                            <Image
-                                src="/Europe/Rectangle 548.png"
-                                alt="Wedding"
-                                borderRadius="md"
-                                objectFit="cover"
-                                w="100px"
-                                h="auto"
-                                flex={1}
-                            />
-                        </HStack>
+                    <Stack gap={10} w={'6xl'} mx={'auto'} align={'flex-start'}>
                         <HStack w={'4xl'} gap={0} align={'flex-end'}>
+                            <Card bgColor={Color.lightGold} flex={1} pb={5}>
+                                <CardHeader
+                                    fontSize={70}
+                                    ml={10}
+                                    mt={-10}
+                                    mb={-5}
+                                    fontFamily={'Cormorant'}
+                                    color={Color.darkBlue}
+                                >
+                                    05
+                                </CardHeader>
+                                <CardBody px={10}>
+                                    <Text fontSize={14} color={'#737373'} fontFamily={'Noto Sans JP'}>
+                                        Khu vực photobooth được thiết kế tối giản với backdrop đơn sắc, tạo không gian cho khách mời ghi lại những khoảnh khắc đẹp.
+                                    </Text>
+                                </CardBody>
+                            </Card>
                             <Image
-                                src="/Europe/Rectangle 545.png"
+                                src="/Minimalism/Rectangle 545.png"
                                 alt="Wedding"
                                 borderRadius="md"
                                 objectFit="cover"
@@ -512,13 +428,35 @@ const MinimalismWeddingConceptPage = () => {
                                 h="248px"
                                 flex={1}
                             />
-                            <Card bgColor={Color.lightGold} flex={1}>
-                                <CardBody px={10}>
-                                    <Text fontSize={14} color={'#737373'} fontFamily={'Noto Sans JP'}>
-                                        Những lọ kẹo dẻo mềm, thơm là món quà nhỏ xinh mà cặp đôi muốn gửi đến khách mời như lời cảm ơn vì đã đến dự tiệc và chia sẻ niềm hạnh phúc của đôi vợ chồng trẻ.
-                                    </Text>
-                                </CardBody>
-                            </Card>
+                        </HStack>
+                        <HStack gap={5}>
+                            <Image
+                                src="/Minimalism/Rectangle 536.png"
+                                alt="Wedding"
+                                borderRadius="md"
+                                objectFit="cover"
+                                w="100px"
+                                h="auto"
+                                flex={1}
+                            />
+                            <HStack flex={2.2} gap={0} align={'flex-start'}>
+                                <Image
+                                    src="/Minimalism/Rectangle 537.png"
+                                    alt="Wedding"
+                                    borderRadius="md"
+                                    objectFit="cover"
+                                    w="100px"
+                                    h="auto"
+                                    flex={1}
+                                />
+                                <Card bgColor={Color.lightGold} flex={1.2} py={10}>
+                                    <CardBody px={10}>
+                                        <Text fontSize={14} color={'#737373'} fontFamily={'Noto Sans JP'}>
+                                            Quà tặng cho khách mời thường là những món đồ hữu ích hoặc nhỏ gọn, thể hiện sự tri ân mà không quá cầu kỳ.
+                                        </Text>
+                                    </CardBody>
+                                </Card>
+                            </HStack>
                         </HStack>
                     </Stack>
                 </Stack>

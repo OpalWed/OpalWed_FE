@@ -69,10 +69,10 @@ const ServiceCarousel = () => {
                     <Heading fontFamily={'Canela'}>Dịch vụ</Heading>
                     <Text fontSize={15} fontFamily={'Noto Sans JP'}>Bộ sưu tập cần có</Text>
                 </Stack>
-                <ServiceItem image="https://asiana-plaza.com/wp-content/uploads/2021/01/cong-cuoi-lung-linh-va-lang-man-cung-hoa-va-den-anh-nen.jpg" title="Trang trí" link="/our-services#decoration" />
-                <ServiceItem image="https://vncdesign.com.vn/wp-content/uploads/2018/07/thiet-ke-showroom-noi-that-cua-hang-vay-cuoi-cao-cap-2.jpg" title="Trang phục" link="/our-services#clothes" />
-                <ServiceItem image="https://linhnga.vn/wp-content/uploads/2021/08/Trang-tri%CC%81-tie%CC%A3%CC%82c-cu%CC%9Bo%CC%9B%CC%81i-ngoa%CC%80i-tro%CC%9B%CC%80i.jpeg" title="Chụp hình" link="/our-services#photo" />
-                <ServiceItem image="https://inthiepcuoinhanh.vn/wp-content/uploads/2023/03/1e3c2539036ecd30947f.jpg" title="Thiệp cưới" link="/our-services#card" />
+                <ServiceItem image="/decoration.png" title="Trang trí" link="/our-services#decoration" />
+                <ServiceItem image="/clothes.png" title="Trang phục" link="/our-services#clothes" />
+                <ServiceItem image="/photography.png" title="Chụp hình" link="/our-services#photo" />
+                <ServiceItem image="/invitation.png" title="Thiệp cưới" link="/our-services#card" />
             </OwlCarousel>
         </>
     )

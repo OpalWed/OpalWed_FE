@@ -7,6 +7,8 @@ export interface AuthContextType {
     setIsAuthenticated: Dispatch<SetStateAction<boolean>>;
     role: string;
     setRole: Dispatch<SetStateAction<string>>;
+    intendedRoute: string | null;
+    setIntendedRoute: Dispatch<SetStateAction<string | null>>;
 }
 
 interface DecodeJWTRole {
@@ -18,6 +20,7 @@ export const AuthContext = createContext<AuthContextType | undefined>(undefined)
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const accessToken = localStorage.getItem('access_token');
     const [isAuthenticated, setIsAuthenticated] = useState<boolean>(!!accessToken);
+    const [intendedRoute, setIntendedRoute] = useState<string | null>(null);
 
     let initialRole = '';
     if (accessToken) {
@@ -37,7 +40,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }, [accessToken])
 
     return (
-        <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated, role, setRole }}>
+        <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated, role, setRole, intendedRoute, setIntendedRoute }}>
             {children}
         </AuthContext.Provider>
     );
