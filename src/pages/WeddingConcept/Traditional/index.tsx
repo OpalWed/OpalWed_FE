@@ -8,7 +8,7 @@ import { useAuth } from "../../../hooks/useAuth";
 
 const TraditionalWeddingConceptPage = () => {
     const navigate = useNavigate();
-    const { isAuthenticated } = useAuth();
+    const { isAuthenticated, setIntendedRoute } = useAuth();
     const imageList: string[] = [
 
     ]
@@ -544,7 +544,7 @@ const TraditionalWeddingConceptPage = () => {
                                 borderRadius={'full'}
                                 w={60}
                                 m={'auto'}
-                                onClick={() => navigate('wedding-planning/wedding-information')}
+                                onClick={() => navigate('/wedding-planning/wedding-information')}
                                 color={'#203963'}
                                 textTransform={'uppercase'}
                                 fontFamily={'Noto Sans JP'}
@@ -577,7 +577,10 @@ const TraditionalWeddingConceptPage = () => {
                                                 <Button
                                                     colorScheme='blue'
                                                     w={'full'}
-                                                    onClick={() => navigate('/login')}
+                                                    onClick={() => {
+                                                        navigate('/login');
+                                                        setIntendedRoute('/wedding-planning/wedding-information');
+                                                    }}
                                                     fontFamily={'Noto Sans JP'}
                                                     fontSize={14}
                                                     fontWeight={500}

@@ -8,7 +8,7 @@ import { useAuth } from "../../../hooks/useAuth";
 
 const VintageWeddingConceptPage = () => {
     const navigate = useNavigate();
-    const { isAuthenticated } = useAuth();
+    const { isAuthenticated, setIntendedRoute } = useAuth();
     const imageList: string[] = [
         '/Vintage/Rectangle 559.png',
         '/Vintage/Rectangle 539.png'
@@ -471,7 +471,7 @@ const VintageWeddingConceptPage = () => {
                                 borderRadius={'full'}
                                 w={60}
                                 m={'auto'}
-                                onClick={() => navigate('wedding-planning/wedding-information')}
+                                onClick={() => navigate('/wedding-planning/wedding-information')}
                                 color={'#203963'}
                                 textTransform={'uppercase'}
                                 fontFamily={'Noto Sans JP'}
@@ -504,7 +504,10 @@ const VintageWeddingConceptPage = () => {
                                                 <Button
                                                     colorScheme='blue'
                                                     w={'full'}
-                                                    onClick={() => navigate('/login')}
+                                                    onClick={() => {
+                                                        navigate('/login');
+                                                        setIntendedRoute('/wedding-planning/wedding-information');
+                                                    }}
                                                     fontFamily={'Noto Sans JP'}
                                                     fontSize={14}
                                                     fontWeight={500}
