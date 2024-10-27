@@ -276,7 +276,9 @@ const Dashboard = () => {
                     </CardBody>
                 </Card>
             </Stack>
-            <HistoryTransactionModal isOpen={isOpen} onClose={onClose} />
+            {isOpen && (
+                <HistoryTransactionModal isOpen={isOpen} onClose={onClose} />
+            )}
         </Box>
     );
 };

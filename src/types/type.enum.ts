@@ -3,6 +3,13 @@ export enum Status {
     INACTIVE = 'INACTIVE',
 }
 
+export enum PaymentStatus {
+    PAID = "PAID",
+    PENDING = 'PENDING',
+    PROCESSING = 'PROCESSING',
+    CANCELLED = 'CANCELLED',
+}
+
 export enum Concept {
     TRADITIONAL = "TRADITIONAL",
     EUROPE = "EUROPE",

@@ -42,11 +42,16 @@ import ServiceDetailPage from "../pages/Services/ServiceDetail";
 import UpdateServicePage from "../pages/Services/UpdateService";
 import TraditionalWeddingConceptPage from "../pages/WeddingConcept/Traditional";
 import ConsultingInformationPage from "../pages/ConsultingInformation";
+import RedirectPage from "../pages/Redirect";
 
 const routes = [
     {
         path: '*',
         element: <NotFoundPage />,
+    },
+    {
+        path: '/redirect',
+        element: <RedirectPage />,
     },
     {
         path: "/login",
@@ -88,7 +93,7 @@ const routes = [
             { path: "wedding-planning/:budget/photography", element: <WeddingPhotographyPage /> },
             { path: "wedding-planning/:budget/restaurant-concept", element: <RestaurantConceptPage /> },
             { path: "wedding-planning/:budget/invitations", element: <WeddingInvitationsPage /> },
-            { path: "wedding-planning/:budget/confirm-design", element: <ConfirmDesignPage /> },
+            { path: "wedding-planning/confirm-design", element: <ConfirmDesignPage /> },
         ]
     },
     {
