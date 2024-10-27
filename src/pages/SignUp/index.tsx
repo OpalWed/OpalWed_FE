@@ -154,8 +154,6 @@ const SignUpPage = () => {
 
         try {
             const response = await api.postUnauthen(data);
-            console.log(response);
-
             if (response.isSuccess) {
                 getVerifyCode(email);
                 onOpenVerify();

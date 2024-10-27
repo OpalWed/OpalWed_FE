@@ -28,10 +28,10 @@ const WeddingInformationPage = () => {
     }, []);
 
     useEffect(() => {
-        if (data?.fullName) {
-            setWeddingInfo({ fullName: data?.fullName });
+        if (data) {
+            setWeddingInfo({ fullName: data?.fullName, phone: data?.phone });
         }
-    }, [data?.fullName]);
+    }, [data]);
 
     useEffect(() => {
         if (budget == 'thấp') {
@@ -52,7 +52,7 @@ const WeddingInformationPage = () => {
                 Bảng lập kế hoạch này sẽ giúp các bạn định hình ý tưởng của mình, hãy cùng với đội ngũ nhà OPALWED thực hiện nhé!
             </Text>
             <Stack w={'md'} gap={5} mx={'auto'}>
-                <FormControl id="fullName">
+                <FormControl id="fullName" isRequired>
                     <FormLabel pl={1}>Tên khách hàng</FormLabel>
                     <Input
                         type="text"
@@ -60,6 +60,7 @@ const WeddingInformationPage = () => {
                         onChange={(e) => setWeddingInfo({ fullName: e.target.value })}
                         ref={fullNameRef}
                         placeholder="Tên khách hàng"
+                        required
                     />
                 </FormControl>
                 <FormControl id="budget" flex={1} isRequired>
@@ -69,6 +70,7 @@ const WeddingInformationPage = () => {
                         value={budget}
                         onChange={e => setWeddingInfo({ budget: e.target.value })}
                         placeholder={'Chọn phân khúc'}
+                        required
                     >
                         <option value="thấp">Thấp</option>
                         <option value="trung bình">Trung bình</option>
@@ -76,22 +78,24 @@ const WeddingInformationPage = () => {
                         <option value="cao cấp">Cao cấp</option>
                     </Select>
                 </FormControl>
-                <FormControl id="place">
+                <FormControl id="place" isRequired>
                     <FormLabel pl={1}>Địa điểm</FormLabel>
                     <Input
                         type="text"
                         value={place}
                         onChange={(e) => setWeddingInfo({ place: e.target.value })}
                         placeholder="Địa điểm"
+                        required
                     />
                 </FormControl>
-                <FormControl id="weddingDate">
+                <FormControl id="weddingDate" isRequired>
                     <FormLabel pl={1}>Ngày cưới dự định</FormLabel>
                     <Input
                         type="date"
                         value={weddingDate}
                         onChange={(e) => setWeddingInfo({ weddingDate: e.target.value })}
                         min={today}
+                        required
                     />
                 </FormControl>
                 <Button

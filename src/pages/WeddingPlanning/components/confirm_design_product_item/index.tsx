@@ -6,10 +6,11 @@ interface Prop {
     productName: string;
     color?: string;
     concept?: Concept;
+    note?: string
     onRemove: () => void;
 }
 
-const ConfirmDesignProductItem = ({ productName, color, concept, onRemove }: Prop) => {
+const ConfirmDesignProductItem = ({ productName, color, concept, note, onRemove }: Prop) => {
     return (
         <Box
             p="15px"
@@ -61,6 +62,9 @@ const ConfirmDesignProductItem = ({ productName, color, concept, onRemove }: Pro
                         )}
                         {color && (
                             <Text fontSize={14} fontFamily={'Noto Sans JP'}>Màu sắc: {color}</Text>
+                        )}
+                        {note && (
+                            <Text fontSize={14} fontFamily={'Noto Sans JP'}>Ghi chú: {note}</Text>
                         )}
                     </Stack>
                 </Stack>

@@ -112,8 +112,6 @@ const LoginPage = () => {
 
         try {
             const response = await api.postUnauthen(data);
-            console.log(response);
-
             if (response.isSuccess === false) {
                 toast({
                     title: "Xảy ra lỗi",

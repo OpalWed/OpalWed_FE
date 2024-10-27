@@ -21,8 +21,8 @@ const DesignInformation = ({ isOpen, onClose, budget }: Props) => {
                 <ModalCloseButton />
                 <ModalBody py={6} borderY={Border.tableBorder} pos={'relative'}>
                     <Stack mb={8}>
-                        <Text>
-                            Thiết kế tiệc cưới sẽ trải qua 8 bước. Nếu bạn không muốn chọn dịch vụ của chúng tôi ở bước nào bạn cũng có thể nhấn nút Bỏ qua để được đi tiếp đến bước tiếp theo
+                        <Text fontFamily={'Noto Sans JP'}>
+                            Thiết kế tiệc cưới sẽ trải qua 6 bước. Nếu bạn không muốn chọn dịch vụ của chúng tôi ở bước nào bạn cũng có thể nhấn nút "Bỏ qua" để được đi tiếp đến bước tiếp theo
                         </Text>
                     </Stack>
                     <Checkbox

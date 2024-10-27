@@ -4,56 +4,43 @@ import { Concept } from '../types/type.enum';
 // Define the props for the context, which include wedding details, style, and lists of items
 export interface WeddingContextProps {
     fullName: string;
+    phone: string;
     budget: string;
     place: string;
     weddingDate: string;
-    accessories: Accessories[];
     clothes: Clothes[];
-    restaurants: Restaurants[];
     makeup: Makeup[];
     flowers: Flowers[];
     weddingPhotography: WeddingPhotography[];
-    decoration: Decoration[];
+    restaurantConcept: RestaurantConcept[];
     weddingInvitations: WeddingInvitations[];
     setWeddingInfo: (info: Partial<WeddingInfo>) => void;
-    addAccessory: (accessory: Accessories) => void;
     addClothes: (clothes: Clothes) => void;
-    addRestaurant: (restaurant: Restaurants) => void;
     addMakeup: (makeup: Makeup) => void;
     addFlowers: (flowers: Flowers) => void;
     addWeddingPhotography: (photography: WeddingPhotography) => void;
-    addDecoration: (decoration: Decoration) => void;
+    addRestaurantConcept: (restaurantConcept: RestaurantConcept) => void;
     addWeddingInvitations: (invitations: WeddingInvitations) => void;
-    removeAccessory: (accessory: Accessories) => void;
     removeClothes: (clothes: Clothes) => void;
-    removeRestaurant: (restaurant: Restaurants) => void;
     removeMakeup: (makeup: Makeup) => void;
     removeFlowers: (flowers: Flowers) => void;
     removeWeddingPhotography: (photography: WeddingPhotography) => void;
-    removeDecoration: (decoration: Decoration) => void;
+    removeRestaurantConcept: (restaurantConcept: RestaurantConcept) => void;
     removeWeddingInvitations: (invitation: WeddingInvitations) => void;
 }
 
 // Define interfaces for wedding information, style, and items
 interface WeddingInfo {
     fullName: string;
+    phone: string;
     budget: string;
     place: string;
     weddingDate: string;
 }
 
-interface Accessories {
-    accessoriesName: string;
-}
-
 interface Clothes {
     clothesName: string;
     color: string;
-    concept: Concept;
-}
-
-interface Restaurants {
-    restaurantsName: string;
     concept: Concept;
 }
 
@@ -64,6 +51,7 @@ interface Makeup {
 
 interface Flowers {
     flowersName: string;
+    note: string;
 }
 
 interface WeddingPhotography {
@@ -71,8 +59,8 @@ interface WeddingPhotography {
     concept: Concept;
 }
 
-interface Decoration {
-    decorationName: string;
+interface RestaurantConcept {
+    restaurantConceptName: string;
     color: string;
     concept: Concept;
 }
@@ -80,6 +68,7 @@ interface Decoration {
 interface WeddingInvitations {
     invitationsName: string;
     concept: Concept;
+    color: string
 }
 
 // Create the WeddingContext with undefined as the default value
@@ -89,18 +78,17 @@ export const WeddingContext = createContext<WeddingContextProps | undefined>(und
 export const WeddingProvider = ({ children }: { children: ReactNode }) => {
     const [weddingInfo, setWeddingInfo] = useState<WeddingInfo>({
         fullName: '',
+        phone: '',
         budget: '',
         place: '',
         weddingDate: '',
     });
 
-    const [accessories, setAccessories] = useState<Accessories[]>([]);
     const [clothes, setClothes] = useState<Clothes[]>([]);
-    const [restaurants, setRestaurants] = useState<Restaurants[]>([]);
+    const [restaurantConcept, setRestaurantConcept] = useState<RestaurantConcept[]>([]);
     const [makeup, setMakeup] = useState<Makeup[]>([]);
     const [flowers, setFlowers] = useState<Flowers[]>([]);
     const [weddingPhotography, setWeddingPhotography] = useState<WeddingPhotography[]>([]);
-    const [decoration, setDecoration] = useState<Decoration[]>([]);
     const [weddingInvitations, setWeddingInvitations] = useState<WeddingInvitations[]>([]);
 
     // Functions to update wedding info and wedding style
@@ -109,16 +97,9 @@ export const WeddingProvider = ({ children }: { children: ReactNode }) => {
     };
 
     // Functions to add new items to each category
-    const addAccessory = (accessory: Accessories) => {
-        setAccessories((prev) => [...prev, accessory]);
-    };
 
     const addClothes = (clothes: Clothes) => {
         setClothes((prev) => [...prev, clothes]);
-    };
-
-    const addRestaurant = (restaurant: Restaurants) => {
-        setRestaurants((prev) => [...prev, restaurant]);
     };
 
     const addMakeup = (makeup: Makeup) => {
@@ -133,20 +114,13 @@ export const WeddingProvider = ({ children }: { children: ReactNode }) => {
         setWeddingPhotography((prev) => [...prev, photography]);
     };
 
-    const addDecoration = (decoration: Decoration) => {
-        setDecoration((prev) => [...prev, decoration]);
+
+    const addRestaurantConcept = (restaurantConcept: RestaurantConcept) => {
+        setRestaurantConcept((prev) => [...prev, restaurantConcept]);
     };
 
     const addWeddingInvitations = (invitations: WeddingInvitations) => {
         setWeddingInvitations((prev) => [...prev, invitations]);
-    };
-
-    const removeAccessory = (accessoryToRemove: Accessories) => {
-        setAccessories((prev) =>
-            prev.filter(item =>
-                item.accessoriesName !== accessoryToRemove.accessoriesName
-            )
-        );
     };
 
     const removeClothes = (clothesToRemove: Clothes) => {
@@ -155,15 +129,6 @@ export const WeddingProvider = ({ children }: { children: ReactNode }) => {
                 item.clothesName !== clothesToRemove.clothesName ||
                 item.color !== clothesToRemove.color ||
                 item.concept !== clothesToRemove.concept
-            )
-        );
-    };
-
-    const removeRestaurant = (restaurantToRemove: Restaurants) => {
-        setRestaurants((prev) =>
-            prev.filter(item =>
-                item.restaurantsName !== restaurantToRemove.restaurantsName ||
-                item.concept !== restaurantToRemove.concept
             )
         );
     };
@@ -180,7 +145,8 @@ export const WeddingProvider = ({ children }: { children: ReactNode }) => {
     const removeFlowers = (flowersToRemove: Flowers) => {
         setFlowers((prev) =>
             prev.filter(item =>
-                item.flowersName !== flowersToRemove.flowersName
+                item.flowersName !== flowersToRemove.flowersName ||
+                item.note !== item.note
             )
         );
     };
@@ -194,12 +160,12 @@ export const WeddingProvider = ({ children }: { children: ReactNode }) => {
         );
     };
 
-    const removeDecoration = (decorationToRemove: Decoration) => {
-        setDecoration((prev) =>
+    const removeRestaurantConcept = (restaurantConceptToRemove: RestaurantConcept) => {
+        setRestaurantConcept((prev) =>
             prev.filter(item =>
-                item.decorationName !== decorationToRemove.decorationName ||
-                item.color !== decorationToRemove.color ||
-                item.concept !== decorationToRemove.concept
+                item.restaurantConceptName !== restaurantConceptToRemove.restaurantConceptName ||
+                item.color !== restaurantConceptToRemove.color ||
+                item.concept !== restaurantConceptToRemove.concept
             )
         );
     };
@@ -218,30 +184,24 @@ export const WeddingProvider = ({ children }: { children: ReactNode }) => {
         <WeddingContext.Provider
             value={{
                 ...weddingInfo,
-                accessories,
                 clothes,
-                restaurants,
                 makeup,
                 flowers,
                 weddingPhotography,
-                decoration,
+                restaurantConcept,
                 weddingInvitations,
                 setWeddingInfo: updateWeddingInfo,
-                addAccessory,
                 addClothes,
-                addRestaurant,
                 addMakeup,
                 addFlowers,
                 addWeddingPhotography,
-                addDecoration,
+                addRestaurantConcept,
                 addWeddingInvitations,
-                removeAccessory,
                 removeClothes,
-                removeRestaurant,
                 removeMakeup,
                 removeFlowers,
                 removeWeddingPhotography,
-                removeDecoration,
+                removeRestaurantConcept,
                 removeWeddingInvitations,
             }}
         >

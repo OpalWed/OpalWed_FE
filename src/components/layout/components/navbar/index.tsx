@@ -48,9 +48,6 @@ const Navbar = () => {
     const { data } = useProfile();
     const location = useLocation();
 
-    console.log(location.pathname);
-
-
     return (
         <Box
             minWidth={'100%'}

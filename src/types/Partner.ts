@@ -25,7 +25,7 @@ export const initialPartner: Partner = {
     description: '',
     imageUrl: '',
     partnerId: 0,
-    utilities: Utility.ACCESSORIES,
+    utilities: Utility.CLOTHES,
     status: Status.INACTIVE,
     images: [],
     successEvent: 0,

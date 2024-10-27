@@ -1,64 +1,39 @@
-import { Button, Card, CardHeader, Divider, Heading, HStack, Input, InputGroup, InputLeftElement, Stack, Table, TableContainer, Tag, TagLabel, Tbody, Td, Th, Thead, Tooltip, Tr, useDisclosure } from "@chakra-ui/react";
+import { Button, Card, CardHeader, Divider, Heading, HStack, Input, InputGroup, InputLeftElement, Link, Stack, Table, TableContainer, Tag, TagLabel, Tbody, Td, Th, Thead, Tooltip, Tr, useDisclosure } from "@chakra-ui/react";
 import { FaArrowRightArrowLeft, FaEye, FaPlus } from "react-icons/fa6";
 import { useEffect, useRef, useState } from "react";
 import { BsSearch } from "react-icons/bs";
 import { changeTabTitle } from "../../utils/changeTabTitle";
 import { Shadow } from "../../styles/styles";
-import PartnerDetailModal from "../../components/modal/partner_detail";
 import ChangeStatusModal from "../../components/modal/change_status";
+import useManageApplication from "../../hooks/useManageApplication";
+import { Application } from "../../types/Application";
+import Loading from "../../components/loading";
+import { formatDate } from "../../utils/formatDate";
+import { formatDateTime } from "../../utils/formatDateTime";
 
 const CustomerDesignPage = () => {
     const ref = useRef<HTMLInputElement>(null);
     const [keyword, setKeyword] = useState<string>('');
     const [id, setId] = useState<number>(0);
+    const [applications, setApplications] = useState<Application[]>([]);
     const { isOpen: isOpenChange, onClose: onCloseChange, onOpen: onOpenChange } = useDisclosure();
-    const { isOpen: isOpenDetail, onClose: onCloseDetail, onOpen: onOpenDetail } = useDisclosure();
+    const { data, isLoading } = useManageApplication();
 
-    const partners = [
-        {
-            id: 1,
-            partnerName: "Tech Innovators Ltd.",
-            representativeName: "John Doe",
-            phoneMobile: "+1234567890",
-            location: "San Francisco, CA",
-        },
-        {
-            id: 2,
-            partnerName: "Global Solutions Inc.",
-            representativeName: "Jane Smith",
-            phoneMobile: "+1987654321",
-            location: "New York, NY",
-        },
-        {
-            id: 3,
-            partnerName: "Innovatech Partners",
-            representativeName: "Alice Johnson",
-            phoneMobile: "+1122334455",
-            location: "Austin, TX",
-        },
-        {
-            id: 4,
-            partnerName: "NextGen Technologies",
-            representativeName: "Bob Brown",
-            phoneMobile: "+6677889900",
-            location: "Chicago, IL",
-        }
-    ];
-
-
-    let filteredPartners = partners.filter((partner) => {
-        return partner.partnerName.toLowerCase().includes(keyword.toLowerCase())
-    })
+    let filteredApplications = applications.filter((application) => {
+        return application.fullName.toLowerCase().includes(keyword.toLowerCase());
+    });
 
     useEffect(() => {
         changeTabTitle('Quản lý khách hàng tư vấn');
     }, []);
 
-    // useEffect(() => {
-    //     if (data?.content) {
-    //         setBlogs(data.content)
-    //     }
-    // }, [data?.content]);
+    useEffect(() => {
+        if (data?.content) {
+            setApplications(data.content);
+        }
+    }, [data?.content]);
+
+    console.log(id);
 
     return (
         <Stack w={'full'} align='center' mx='auto' my={5} gap={10}>
@@ -91,104 +66,97 @@ const CustomerDesignPage = () => {
                                 <Tr>
                                     <Th textAlign='center' borderColor={'gainsboro'}>ID</Th>
                                     <Th textAlign='center' borderColor={'gainsboro'}>Khách hàng</Th>
-                                    <Th textAlign='center' borderColor={'gainsboro'}>Phân khúc</Th>
                                     <Th textAlign='center' borderColor={'gainsboro'}>Địa điểm</Th>
                                     <Th textAlign='center' borderColor={'gainsboro'}>Ngày tổ chức</Th>
+                                    <Th textAlign='center' borderColor={'gainsboro'}>Ngày tạo</Th>
                                     <Th textAlign='center' borderColor={'gainsboro'}>Trạng thái</Th>
                                     <Th textAlign='center' borderColor={'gainsboro'}>Hành động</Th>
                                 </Tr>
                             </Thead>
                             <Tbody>
-                                {/* {!isLoading ? (
-                                    <> */}
-                                {filteredPartners.length !== 0 ? (
+                                {!isLoading ? (
                                     <>
-                                        {filteredPartners.map((partner) => (
-                                            <Tr _hover={{ bg: 'gray.50' }} key={partner.id}>
-                                                <Td textAlign='center' borderColor={'gainsboro'}>{partner.id}</Td>
-                                                <Td textAlign="center" borderColor={'gainsboro'}>{partner.partnerName}</Td>
-                                                <Td textAlign="center" borderColor={'gainsboro'}>{partner.representativeName}</Td>
-                                                <Td textAlign='center' borderColor={'gainsboro'}>{partner.phoneMobile}</Td>
-                                                <Td textAlign='center' borderColor={'gainsboro'}>{partner.location}</Td>
-                                                <Td textAlign='center' borderColor={'gainsboro'}>
-                                                    <Tag size={'md'} variant='subtle' colorScheme='yellow'>
-                                                        <TagLabel>PENDING</TagLabel>
-                                                    </Tag>
-                                                </Td>
-                                                <Td
-                                                    textAlign='center'
-                                                    borderColor={'gainsboro'}
-                                                    gap={2}
-                                                >
-                                                    <Button
-                                                        borderRadius='full'
-                                                        px={3}
-                                                        colorScheme="blue"
-                                                        variant='ghost'
-                                                        onClick={() => {
-                                                            setId(partner.id);
-                                                            onOpenDetail();
-                                                        }}
-                                                    >
-                                                        <Tooltip label='Partner Detail'>
-                                                            <span>
-                                                                <FaEye />
-                                                            </span>
-                                                        </Tooltip>
-                                                    </Button>
-                                                    <Button
-                                                        borderRadius='full'
-                                                        px={3}
-                                                        colorScheme="red"
-                                                        variant='ghost'
-                                                        onClick={() => {
-                                                            setId(partner.id);
-                                                            onOpenChange();
-                                                        }}
-                                                    >
-                                                        <Tooltip label='Deactivate Partner'>
-                                                            <span>
-                                                                <FaArrowRightArrowLeft />
-                                                            </span>
-                                                        </Tooltip>
-                                                    </Button>
+                                        {filteredApplications.length !== 0 ? (
+                                            <>
+                                                {filteredApplications.map((application) => (
+                                                    <Tr _hover={{ bg: 'gray.50' }} key={application.applicationId}>
+                                                        <Td textAlign='center' borderColor={'gainsboro'}>{application.applicationId}</Td>
+                                                        <Td textAlign="center" borderColor={'gainsboro'}>{application.fullName}</Td>
+                                                        <Td textAlign="center" borderColor={'gainsboro'}>{application.weddingLocation}</Td>
+                                                        <Td textAlign='center' borderColor={'gainsboro'}>{formatDate(application.weddingDate)}</Td>
+                                                        <Td textAlign='center' borderColor={'gainsboro'}>{formatDateTime(application.createdDate)}</Td>
+                                                        <Td textAlign='center' borderColor={'gainsboro'}>
+                                                            <Tag size={'md'} variant='subtle' colorScheme='yellow'>
+                                                                <TagLabel>{application.status}</TagLabel>
+                                                            </Tag>
+                                                        </Td>
+                                                        <Td
+                                                            textAlign='center'
+                                                            borderColor={'gainsboro'}
+                                                            gap={2}
+                                                        >
+                                                            <Button
+                                                                borderRadius='full'
+                                                                px={3}
+                                                                colorScheme="blue"
+                                                                variant='ghost'
+                                                            >
+                                                                <Tooltip label='Xem thông tin tư vấn'>
+                                                                    <Link href={application.requiredServicesFile} isExternal>
+                                                                        <span>
+                                                                            <FaEye />
+                                                                        </span>
+                                                                    </Link>
+                                                                </Tooltip>
+                                                            </Button>
+                                                            <Button
+                                                                borderRadius='full'
+                                                                px={3}
+                                                                colorScheme="red"
+                                                                variant='ghost'
+                                                                onClick={() => {
+                                                                    setId(application.applicationId);
+                                                                    onOpenChange();
+                                                                }}
+                                                            >
+                                                                <Tooltip label='Deactivate Application'>
+                                                                    <span>
+                                                                        <FaArrowRightArrowLeft />
+                                                                    </span>
+                                                                </Tooltip>
+                                                            </Button>
+                                                        </Td>
+                                                    </Tr>
+                                                ))}
+                                            </>
+                                        ) : (
+                                            <Tr>
+                                                <Td colSpan={8} textAlign="center">
+                                                    Không có thành viên
                                                 </Td>
                                             </Tr>
-                                        ))}
+                                        )}
                                     </>
-                                ) : (
-                                    <Tr>
-                                        <Td colSpan={8} textAlign="center">
-                                            Không có thành viên
-                                        </Td>
-                                    </Tr>
-                                )}
-                                {/* </>
                                 ) : (
                                     <Tr>
                                         <Td colSpan={8} textAlign="center">
                                             <Loading />
                                         </Td>
                                     </Tr>
-                                )} */}
+                                )}
                             </Tbody>
                         </Table>
                     </TableContainer>
                 </Card>
             </Stack>
-            <PartnerDetailModal
-                isOpen={isOpenDetail}
-                onClose={onCloseDetail}
-                id={id}
-            />
             <ChangeStatusModal
                 isOpen={isOpenChange}
                 onClose={onCloseChange}
                 handleChangeStatus={() => { }}
-                type="partner"
+                type="application"
             />
         </Stack>
-    )
-}
+    );
+};
 
-export default CustomerDesignPage
+export default CustomerDesignPage;

@@ -42,15 +42,11 @@ const AboutPage = () => {
                     <Stack flex={1.5} align={'center'}>
                         <Heading fontSize={55} mb={12} fontFamily={'Canela'} fontWeight={400}>VỀ CHÚNG TÔI</Heading>
                         <Text fontFamily={'Noto Sans JP'}>
-                            We are OpalWed, a newly established startup, pioneer the untapped market,
-                            providing customer representation and assistance in finding and selecting
-                            wedding services from a variety of sources.
+                            Chúng tôi là OpalWed, một công ty khởi nghiệp mới thành lập, đi tiên phong trong thị trường chưa được khai thác, cung cấp dịch vụ đại diện và hỗ trợ khách hàng trong việc tìm kiếm và lựa chọn dịch vụ cưới từ nhiều nguồn khác nhau.
                         </Text>
                         <br />
                         <Text fontFamily={'Noto Sans JP'}>
-                            We'll take care of it all from
-                            finding personalized fonts for invitations, to choosing entertainers and
-                            caterers, making sure every detail is perfect.
+                            Chúng tôi sẽ đảm nhiệm tất cả từ việc tìm phông chữ được cá nhân hóa cho lời mời đến việc chọn người giải trí và nhà cung cấp thực phẩm, đảm bảo mọi chi tiết đều hoàn hảo.
                         </Text>
                     </Stack>
                 </HStack>
@@ -69,15 +65,11 @@ const AboutPage = () => {
                     <Stack flex={1.5} align={'center'}>
                         <Heading fontSize={55} mb={12} fontFamily={'Canela'} fontWeight={400}>LÝ LỊCH</Heading>
                         <Text fontFamily={'Noto Sans JP'}>
-                            We are OpalWed, a newly established startup, pioneer the untapped market,
-                            providing customer representation and assistance in finding and selecting
-                            wedding services from a variety of sources.
+                            Trở thành đội ngũ tư vấn và lập kế hoạch cưới chuyên nghiệp tại Việt Nam, với sự hài lòng 100% của khách hàng.
                         </Text>
                         <br />
                         <Text fontFamily={'Noto Sans JP'}>
-                            We'll take care of it all from
-                            finding personalized fonts for invitations, to choosing entertainers and
-                            caterers, making sure every detail is perfect.
+                            Phục vụ khách hàng tốt nhất với tinh thần trách nhiệm và sáng tạo, làm việc ngay từ đầu để tạo ra một thiết kế độc đáo cho toàn bộ đám cưới của bạn, đảm bảo chúng tôi có tất cả các chi tiết bạn muốn đưa vào chương trình.
                         </Text>
                     </Stack>
                     <Image
@@ -110,15 +102,11 @@ const AboutPage = () => {
                     <Stack flex={1.5} align={'center'}>
                         <Heading fontSize={55} mb={12} fontFamily={'Canela'} fontWeight={400}>KHẨU HIỆU</Heading>
                         <Text fontFamily={'Noto Sans JP'}>
-                            We are OpalWed, a newly established startup, pioneer the untapped market,
-                            providing customer representation and assistance in finding and selecting
-                            wedding services from a variety of sources.
+                            Tầm nhìn của chúng tôi là đi đầu trong đổi mới lập kế hoạch sự kiện, sử dụng các chuyên gia tư vấn sáng tạo và công nghệ tùy chỉnh tiên tiến trực tiếp.
                         </Text>
                         <br />
                         <Text fontFamily={'Noto Sans JP'}>
-                            We'll take care of it all from
-                            finding personalized fonts for invitations, to choosing entertainers and
-                            caterers, making sure every detail is perfect.
+                            Chúng tôi tin rằng công nghệ nên được sử dụng để nâng cao trải nghiệm của con người. Đó là lý do tại sao chúng tôi cam kết sử dụng các công cụ và công nghệ tiên tiến theo cách nâng cao việc lập kế hoạch và sản xuất sự kiện được cá nhân hóa, đồng thời vẫn ưu tiên kết nối con người và sự tiếp xúc cá nhân, những yếu tố thiết yếu để tạo nên những kỷ niệm khó quên.
                         </Text>
                     </Stack>
                 </HStack>

@@ -17,8 +17,6 @@ const UserDetailPage = () => {
     const toast = useToast();
 
     if (role !== 'Admin') {
-        console.log(role);
-
         return <NotFoundPage />
     }
 

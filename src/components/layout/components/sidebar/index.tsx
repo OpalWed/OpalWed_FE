@@ -9,6 +9,7 @@ import { FiBox, FiCalendar, FiLogOut } from 'react-icons/fi';
 import StorefrontOutlinedIcon from '@mui/icons-material/StorefrontOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import DashboardCustomizeOutlinedIcon from '@mui/icons-material/DashboardCustomizeOutlined';
+import { useAuth } from '../../../../hooks/useAuth';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -28,56 +29,63 @@ function getItem(
     } as MenuItem;
 }
 
-const menuItems: MenuItem[] = [
-    getItem(
-        <Link to={'dashboard'} style={{ fontSize: '14px' }}>Dashboard</Link>
-        , '1'
-        , <DashboardCustomizeOutlinedIcon />
-    ),
-    getItem(
-        <Link to={'accounts'} style={{ fontSize: '14px' }}>Quản lý tài khoản</Link>
-        , '2'
-        , <FaUser />,
-    ),
-    getItem(
-        <Link to={'services'} style={{ fontSize: '14px' }}>Quản lý dịch vụ</Link>
-        , '3'
-        , <FiBox />
-    ),
-
-    getItem(
-        <Link to={'partners'} style={{ fontSize: '14px' }}>Quản lý nhà cung cấp</Link>
-        , '4'
-        , <StorefrontOutlinedIcon fontSize='large' />
-    ),
-    getItem(
-        <Link to={'customer-contact'} style={{ fontSize: '14px' }}>Liên hệ khách hàng</Link>
-        , '5'
-        , <FaRegUser />,
-    ),
-    getItem(
-        <Link to={'customer-design'} style={{ fontSize: '14px' }}>Quản lý khách hàng tư vấn</Link>
-        , '6'
-        , <FiCalendar />,
-    ),
-    getItem(
-        <Link to={'reports'} style={{ fontSize: '14px' }}>Cài đặt</Link>
-        , '7'
-        , <SettingsOutlinedIcon />,
-    ),
-    getItem(
-        <Link to={'/'} style={{ fontSize: '14px' }}>Đăng xuất</Link>
-        , '8'
-        , <FiLogOut />,
-    ),
-];
-
 interface SideBarProps {
     collapsed: boolean;
     toggleCollapsed: () => void;
 }
 
 const SideBar = ({ collapsed, toggleCollapsed }: SideBarProps) => {
+    const { setIsAuthenticated, setRole } = useAuth();
+
+    const handleLogout = async () => {
+        localStorage.removeItem('access_token');
+        setIsAuthenticated(false);
+        setRole('');
+    }
+
+    const menuItems: MenuItem[] = [
+        getItem(
+            <Link to={'dashboard'} style={{ fontSize: '14px' }}>Dashboard</Link>
+            , '1'
+            , <DashboardCustomizeOutlinedIcon />
+        ),
+        getItem(
+            <Link to={'accounts'} style={{ fontSize: '14px' }}>Quản lý tài khoản</Link>
+            , '2'
+            , <FaUser />,
+        ),
+        getItem(
+            <Link to={'services'} style={{ fontSize: '14px' }}>Quản lý dịch vụ</Link>
+            , '3'
+            , <FiBox />
+        ),
+
+        getItem(
+            <Link to={'partners'} style={{ fontSize: '14px' }}>Quản lý nhà cung cấp</Link>
+            , '4'
+            , <StorefrontOutlinedIcon fontSize='large' />
+        ),
+        getItem(
+            <Link to={'customer-contact'} style={{ fontSize: '14px' }}>Liên hệ khách hàng</Link>
+            , '5'
+            , <FaRegUser />,
+        ),
+        getItem(
+            <Link to={'customer-design'} style={{ fontSize: '14px' }}>Quản lý khách hàng tư vấn</Link>
+            , '6'
+            , <FiCalendar />,
+        ),
+        getItem(
+            <Link to={'reports'} style={{ fontSize: '14px' }}>Cài đặt</Link>
+            , '7'
+            , <SettingsOutlinedIcon />,
+        ),
+        getItem(
+            <Link to={'/'} style={{ fontSize: '14px' }} onClick={handleLogout}>Đăng xuất</Link>
+            , '8'
+            , <FiLogOut />,
+        ),
+    ];
 
     return (
         <Box bg={'white'} pt={2} pos={'fixed'} zIndex={10}>
