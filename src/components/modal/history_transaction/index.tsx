@@ -15,10 +15,11 @@ import {
     Th,
     Td,
 } from '@chakra-ui/react';
-import useManageApplication from '../../../hooks/useManageApplication';
 import { useEffect, useState } from 'react';
 import { Application } from '../../../types/Application';
 import { formatDate } from '../../../utils/formatDate';
+import useHistoryTransaction from '../../../hooks/useHistoryTransaction';
+import { PaymentStatus } from '../../../types/type.enum';
 
 interface Props {
     isOpen: boolean;
@@ -26,7 +27,7 @@ interface Props {
 }
 
 const HistoryTransactionModal = ({ isOpen, onClose }: Props) => {
-    const { data } = useManageApplication();
+    const { data } = useHistoryTransaction();
     const [applications, setApplications] = useState<Application[]>([]);
 
     useEffect(() => {
@@ -63,18 +64,18 @@ const HistoryTransactionModal = ({ isOpen, onClose }: Props) => {
                                                 {formatDate(application.createdDate)}
                                             </Td>
                                             <Td fontSize="sm" color="gray.700">
-                                                {application.userId}
+                                                {application.fullName}
                                             </Td>
                                             <Td fontSize="sm" color="gray.700">
-                                                {application.weddingDescription}
+                                                {application.description || '-'}
                                             </Td>
                                             <Td isNumeric fontSize="sm" color="gray.900" fontWeight="bold">
-                                                {application.numberOfGuests.toLocaleString()} VND
+                                                {application.price.toLocaleString()} VND
                                             </Td>
-                                            <Td fontSize="sm" color={application.status === 'Success' ? 'green.500' :
+                                            <Td fontSize="sm" color={application.status === PaymentStatus.PAID ? 'green.500' :
                                                 application.status === 'Pending' ? 'yellow.500' : 'red.500'}
                                                 fontWeight="semibold">
-                                                {application.status}
+                                                {application.paymentStatus}
                                             </Td>
                                         </Tr>
                                     ))
