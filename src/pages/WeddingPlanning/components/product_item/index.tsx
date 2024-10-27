@@ -4,7 +4,7 @@ import { Product } from '../../../../types/Product';
 import { useState } from 'react';
 
 interface Prop {
-    type: 'accessories' | 'clothes' | 'restaurants' | 'makeup' | 'flowers' | 'weddingPhotography' | 'decoration' | 'weddingInvitations';
+    type: 'clothes' | 'restaurantConcept' | 'makeup' | 'flowers' | 'weddingPhotography' | 'restaurantConcept' | 'weddingInvitations';
     product: Product;
 }
 

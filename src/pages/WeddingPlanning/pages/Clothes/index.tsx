@@ -12,13 +12,11 @@ import { useWedding } from "../../../../hooks/useWedding";
 
 const steps = [
     { title: 'Bước 1', description: 'Trang phục' },
-    { title: 'Bước 2', description: 'Phụ kiện' },
-    { title: 'Bước 3', description: 'Trang điểm' },
-    { title: 'Bước 4', description: 'Hoa cưới' },
-    { title: 'Bước 5', description: 'Chụp ảnh cưới' },
-    { title: 'Bước 6', description: 'Trang trí' },
-    { title: 'Bước 7', description: 'Nhà hàng' },
-    { title: 'Bước 8', description: 'Thiệp cưới' },
+    { title: 'Bước 2', description: 'Trang điểm' },
+    { title: 'Bước 3', description: 'Hoa cưới' },
+    { title: 'Bước 4', description: 'Chụp ảnh cưới' },
+    { title: 'Bước 5', description: 'Concept Nhà hàng' },
+    { title: 'Bước 6', description: 'Thiệp cưới' },
 ]
 
 const ClothesPage = () => {
@@ -87,7 +85,7 @@ const ClothesPage = () => {
                     </AbsoluteCenter>
                 </Box>
                 {clothes.length === 0 && (
-                    <Button pos={'absolute'} top={2} right={0} variant={'outline'} onClick={() => navigate(`/wedding-planning/${param.budget}/accessories`)}>
+                    <Button pos={'absolute'} top={2} right={0} variant={'outline'} onClick={() => navigate(`/wedding-planning/${param.budget}/makeup`)}>
                         Bỏ qua
                     </Button>
                 )}
@@ -119,7 +117,7 @@ const ClothesPage = () => {
                 )}
                 <WeddingCart />
                 <HStack justify={'flex-end'}>
-                    <Button variant={'outline'} onClick={() => navigate(`/wedding-planning/${param.budget}/accessories`)}>
+                    <Button variant={'outline'} onClick={() => navigate(`/wedding-planning/${param.budget}/makeup`)}>
                         {clothes.length > 0 ? 'Bước tiếp theo' : 'Bỏ qua'}
                     </Button>
                 </HStack>

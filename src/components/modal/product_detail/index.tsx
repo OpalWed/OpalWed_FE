@@ -8,7 +8,7 @@ import { useWedding } from "../../../hooks/useWedding";
 import { Concept } from "../../../types/type.enum";
 
 interface Props {
-    type: 'accessories' | 'clothes' | 'restaurants' | 'makeup' | 'flowers' | 'weddingPhotography' | 'decoration' | 'weddingInvitations';
+    type: 'clothes' | 'restaurantConcept' | 'makeup' | 'flowers' | 'weddingPhotography' | 'weddingInvitations';
     isOpen: boolean;
     onClose: () => void;
     id: number;
@@ -18,21 +18,18 @@ const ProductDetailModal = ({ type, isOpen, onClose, id }: Props) => {
     const [product, setProduct] = useState<Product>(initialProduct);
     const [concept, setConcept] = useState<Concept | null>(null);
     const [color, setColor] = useState<string | null>(null);
+    const [note, setNote] = useState<string | null>(null);
 
     const { data, isLoading } = useProductDetail({ id });
     const {
-        accessories,
         clothes,
-        restaurants,
+        restaurantConcept,
         makeup,
         flowers,
         weddingPhotography,
-        decoration,
         weddingInvitations,
-        addAccessory,
         addClothes,
-        addRestaurant,
-        addDecoration,
+        addRestaurantConcept,
         addFlowers,
         addMakeup,
         addWeddingInvitations,
@@ -45,23 +42,17 @@ const ProductDetailModal = ({ type, isOpen, onClose, id }: Props) => {
         if (type === 'clothes') {
             return clothes.some(item => item.clothesName === product.productName && item.concept === concept && item.color === color);
         }
-        if (type === 'accessories') {
-            return accessories.some(item => item.accessoriesName === product.productName);
-        }
         if (type === 'makeup') {
             return makeup.some(item => item.makeupName === product.productName && item.concept === concept);
         }
         if (type === 'flowers') {
-            return flowers.some(item => item.flowersName === product.productName);
+            return flowers.some(item => item.flowersName === product.productName && item.note === note);
         }
         if (type === 'weddingPhotography') {
             return weddingPhotography.some(item => item.photographyName === product.productName && item.concept === concept);
         }
-        if (type === 'decoration') {
-            return decoration.some(item => item.decorationName === product.productName && item.concept === concept && item.color === color);
-        }
-        if (type === 'restaurants') {
-            return restaurants.some(item => item.restaurantsName === product.productName && item.concept === concept);
+        if (type === 'restaurantConcept') {
+            return restaurantConcept.some(item => item.restaurantConceptName === product.productName && item.concept === concept && item.color === color);
         }
         if (type === 'weddingInvitations') {
             return weddingInvitations.some(item => item.invitationsName === product.productName && item.concept === concept);
@@ -81,21 +72,10 @@ const ProductDetailModal = ({ type, isOpen, onClose, id }: Props) => {
             });
         } else {
             switch (type) {
-                case 'accessories':
-                    addAccessory({
-                        accessoriesName: product.productName,
-                    });
-                    break;
                 case 'clothes':
                     addClothes({
                         clothesName: product.productName,
                         color: color || '',
-                        concept: concept || Concept.TRADITIONAL,
-                    });
-                    break;
-                case 'restaurants':
-                    addRestaurant({
-                        restaurantsName: product.productName,
                         concept: concept || Concept.TRADITIONAL,
                     });
                     break;
@@ -108,6 +88,7 @@ const ProductDetailModal = ({ type, isOpen, onClose, id }: Props) => {
                 case 'flowers':
                     addFlowers({
                         flowersName: product.productName,
+                        note: note || ''
                     });
                     break;
                 case 'weddingPhotography':
@@ -116,9 +97,9 @@ const ProductDetailModal = ({ type, isOpen, onClose, id }: Props) => {
                         concept: concept || Concept.TRADITIONAL,
                     });
                     break;
-                case 'decoration':
-                    addDecoration({
-                        decorationName: product.productName,
+                case 'restaurantConcept':
+                    addRestaurantConcept({
+                        restaurantConceptName: product.productName,
                         color: color || '',
                         concept: concept || Concept.TRADITIONAL,
                     });
@@ -127,6 +108,7 @@ const ProductDetailModal = ({ type, isOpen, onClose, id }: Props) => {
                     addWeddingInvitations({
                         invitationsName: product.productName,
                         concept: concept || Concept.TRADITIONAL,
+                        color: color || '',
                     });
                     break;
                 default:
@@ -159,9 +141,6 @@ const ProductDetailModal = ({ type, isOpen, onClose, id }: Props) => {
         }
     }, [data])
 
-    console.log(concept);
-
-
     return (
         <Modal
             isOpen={isOpen}
@@ -183,8 +162,8 @@ const ProductDetailModal = ({ type, isOpen, onClose, id }: Props) => {
                                     product.image || "https://www.mouawad.com/dw/image/v2/BJJG_PRD/on/demandware.static/-/Library-Sites-MouawadSharedLibrary/default/dwe3fe2448/M-CLASSIQUE/m-classique-1.png"
                                 }
                                 alt={product.productName}
-                                width={type === 'clothes' || type === 'decoration' ? 350 : 150}
-                                height={type === 'clothes' || type === 'decoration' ? 400 : 250}
+                                width={type === 'clothes' || type === 'restaurantConcept' ? 350 : 150}
+                                height={type === 'clothes' || type === 'restaurantConcept' ? 400 : 250}
                                 borderTopRadius={4}
                                 flex={1}
                             />
@@ -194,7 +173,7 @@ const ProductDetailModal = ({ type, isOpen, onClose, id }: Props) => {
                                     <Text fontSize={18} fontFamily={'Noto Sans JP'}>Mô tả sản phẩm:</Text>
                                     <Text fontSize={16} fontFamily={'Noto Sans JP'}>{product.description}</Text>
                                 </Stack>
-                                {type !== 'accessories' && type !== 'flowers' && (
+                                {type !== 'flowers' && type !== 'clothes' && (
                                     <Stack>
                                         <Text fontSize={18} fontFamily={'Noto Sans JP'}>Ý tưởng:</Text>
                                         <HStack gap={5} w={'full'}>
@@ -242,7 +221,7 @@ const ProductDetailModal = ({ type, isOpen, onClose, id }: Props) => {
                                         </HStack>
                                     </Stack>
                                 )}
-                                {(type === 'clothes' || type === 'decoration') && (
+                                {(type === 'clothes' || type === 'restaurantConcept' || type === 'weddingInvitations') && (
                                     <Stack>
                                         <Text fontSize={18} fontFamily={'Noto Sans JP'}>Màu sắc:</Text>
                                         <FormControl id="color">
@@ -250,7 +229,20 @@ const ProductDetailModal = ({ type, isOpen, onClose, id }: Props) => {
                                                 type="text"
                                                 value={color || ''}
                                                 onChange={(e) => setColor(e.target.value)}
-                                                placeholder="Color"
+                                                placeholder="Màu sắc"
+                                            />
+                                        </FormControl>
+                                    </Stack>
+                                )}
+                                {type === 'flowers' && (
+                                    <Stack>
+                                        <Text fontSize={18} fontFamily={'Noto Sans JP'}>Ghi chú:</Text>
+                                        <FormControl id="note">
+                                            <Input
+                                                type="text"
+                                                value={note || ''}
+                                                onChange={(e) => setNote(e.target.value)}
+                                                placeholder="Ghi chú"
                                             />
                                         </FormControl>
                                     </Stack>

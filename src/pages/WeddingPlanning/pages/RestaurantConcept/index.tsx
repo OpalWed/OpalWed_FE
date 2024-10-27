@@ -13,31 +13,31 @@ import { useWedding } from "../../../../hooks/useWedding";
 
 const steps = [
     { title: 'Bước 1', description: 'Trang phục' },
-    { title: 'Bước 2', description: 'Phụ kiện' },
-    { title: 'Bước 3', description: 'Trang điểm' },
-    { title: 'Bước 4', description: 'Hoa cưới' },
-    { title: 'Bước 5', description: 'Chụp ảnh cưới' },
-    { title: 'Bước 6', description: 'Trang trí' },
-    { title: 'Bước 7', description: 'Nhà hàng' },
-    { title: 'Bước 8', description: 'Thiệp cưới' },
+    { title: 'Bước 2', description: 'Trang điểm' },
+    { title: 'Bước 3', description: 'Hoa cưới' },
+    { title: 'Bước 4', description: 'Chụp ảnh cưới' },
+    { title: 'Bước 5', description: 'Concept Nhà hàng' },
+    { title: 'Bước 6', description: 'Thiệp cưới' },
 ]
 
-const RestaurantsPage = () => {
-    const navigate = useNavigate();
+const RestaurantConceptPage = () => {
     const param = useParams<{ budget: string }>();
+    const navigate = useNavigate();
     const [products, setProducts] = useState<Product[]>([]);
     const [budgetLevel, setBudgetLevel] = useState<Budget>(Budget.LOW);
-    const { restaurants } = useWedding();
-    const utilityType: Utility = Utility.RESTAURANT;
+    const { restaurantConcept } = useWedding();
+    const utilityType: Utility = Utility.RESTAURANTCONCEPT;
     const { data, isLoading } = useProduct({ budgetLevel, utilityType });
     const { activeStep } = useSteps({
-        index: 6,
+        index: 5,
         count: steps.length,
     })
 
     useEffect(() => {
-        changeTabTitle('Nhà hàng');
+        changeTabTitle('Concept nhà hàng tiệc cưới');
     }, []);
+
+
 
     useEffect(() => {
         if (param.budget) {
@@ -83,10 +83,10 @@ const RestaurantsPage = () => {
                 <Box position='relative' mb={10}>
                     <Divider borderColor={'black'} />
                     <AbsoluteCenter fontSize={48} bg={'white'} px={6} fontFamily={'Hatton'}>
-                        Nhà hàng
+                        Concept nhà hàng
                     </AbsoluteCenter>
                 </Box>
-                {restaurants.length === 0 && (
+                {restaurantConcept.length === 0 && (
                     <Button pos={'absolute'} top={2} right={0} variant={'outline'} onClick={() => navigate(`/wedding-planning/${param.budget}/invitations`)}>
                         Bỏ qua
                     </Button>
@@ -102,7 +102,7 @@ const RestaurantsPage = () => {
                                 mx={'auto'}
                             >
                                 {products.map(product => (
-                                    <ProductItem type="restaurants" product={product} />
+                                    <ProductItem type="restaurantConcept" product={product} />
                                 ))}
                             </SimpleGrid>
                         ) : (
@@ -122,7 +122,7 @@ const RestaurantsPage = () => {
                         Bước phía trước
                     </Button>
                     <Button variant={'ghost'} rightIcon={<ArrowForward />} onClick={() => navigate(`/wedding-planning/${param.budget}/invitations`)}>
-                        {restaurants.length > 0 ? 'Bước tiếp theo' : 'Bỏ qua'}
+                        {restaurantConcept.length > 0 ? 'Bước tiếp theo' : 'Bỏ qua'}
                     </Button>
                 </HStack>
             </Stack>
@@ -130,4 +130,4 @@ const RestaurantsPage = () => {
     )
 }
 
-export default RestaurantsPage
+export default RestaurantConceptPage

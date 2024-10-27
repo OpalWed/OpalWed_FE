@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"
 import { useEffect } from "react"
 import { useAuth } from "../../../hooks/useAuth"
 import NotFoundPage from "../../../pages/NotFound"
-import { FaArrowLeft, FaDoorOpen, FaLock, FaUser, FaUserGear } from "react-icons/fa6"
+import { FaArrowLeft, FaDoorOpen, FaFile, FaLock, FaUser, FaUserGear } from "react-icons/fa6"
 import { Border, Color } from "../../../styles/styles"
 
 const CustomerSystemLayout = () => {
@@ -75,6 +75,17 @@ const CustomerSystemLayout = () => {
                             >
                                 <FaLock />
                                 <Text fontSize={16} fontWeight={500}>Cập nhật mật khẩu</Text>
+                            </HStack>
+                            <HStack
+                                h={14}
+                                cursor={'pointer'}
+                                pl={6}
+                                borderRadius={4}
+                                _hover={{ bg: 'gainsboro' }}
+                                onClick={() => navigate('/consulting-information')}
+                            >
+                                <FaFile />
+                                <Text fontSize={16} fontWeight={500}>Đơn tư vấn của bạn</Text>
                             </HStack>
                             <HStack
                                 h={14}

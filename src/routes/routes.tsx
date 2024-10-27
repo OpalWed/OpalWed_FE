@@ -22,9 +22,8 @@ import CustomerSystemLayout from "../components/layout/customer_system";
 import ForgotPasswordPage from "../pages/ForgotPassword";
 import ProductPage from "../pages/Product";
 import ProductDetailPage from "../pages/Product/ProductDetail";
-import AccessoriesPage from "../pages/WeddingPlanning/pages/Accessories";
 import ClothesPage from "../pages/WeddingPlanning/pages/Clothes";
-import RestaurantsPage from "../pages/WeddingPlanning/pages/Restaurants";
+import RestaurantConceptPage from "../pages/WeddingPlanning/pages/RestaurantConcept";
 import ConfirmDesignPage from "../pages/WeddingPlanning/pages/ConfirmDesign";
 import EuropeWeddingConceptPage from "../pages/WeddingConcept/Europe";
 import VintageWeddingConceptPage from "../pages/WeddingConcept/Vintage";
@@ -34,7 +33,6 @@ import WeddingPlanningLayout from "../components/layout/wedding_planning";
 import MakeupPage from "../pages/WeddingPlanning/pages/Makeup";
 import FlowersPage from "../pages/WeddingPlanning/pages/Flowers";
 import WeddingPhotographyPage from "../pages/WeddingPlanning/pages/WeddingPhotography";
-import DecorationPage from "../pages/WeddingPlanning/pages/Decoration";
 import WeddingInvitationsPage from "../pages/WeddingPlanning/pages/WeddingInvitations";
 import Dashboard from "../pages/Dashboard";
 import CreatePartnerPage from "../pages/Partners/CreatePartner";
@@ -43,6 +41,7 @@ import CreateServicePage from "../pages/Services/CreateService";
 import ServiceDetailPage from "../pages/Services/ServiceDetail";
 import UpdateServicePage from "../pages/Services/UpdateService";
 import TraditionalWeddingConceptPage from "../pages/WeddingConcept/Traditional";
+import ConsultingInformationPage from "../pages/ConsultingInformation";
 
 const routes = [
     {
@@ -84,12 +83,10 @@ const routes = [
         children: [
             { path: "wedding-planning/wedding-information", element: <WeddingInformationPage /> },
             { path: "wedding-planning/:budget/clothes", element: <ClothesPage /> },
-            { path: "wedding-planning/:budget/accessories", element: <AccessoriesPage /> },
             { path: "wedding-planning/:budget/makeup", element: <MakeupPage /> },
             { path: "wedding-planning/:budget/flowers", element: <FlowersPage /> },
             { path: "wedding-planning/:budget/photography", element: <WeddingPhotographyPage /> },
-            { path: "wedding-planning/:budget/decoration", element: <DecorationPage /> },
-            { path: "wedding-planning/:budget/restaurants", element: <RestaurantsPage /> },
+            { path: "wedding-planning/:budget/restaurant-concept", element: <RestaurantConceptPage /> },
             { path: "wedding-planning/:budget/invitations", element: <WeddingInvitationsPage /> },
             { path: "wedding-planning/:budget/confirm-design", element: <ConfirmDesignPage /> },
         ]
@@ -126,6 +123,7 @@ const routes = [
             { path: "profile", element: <ProfilePage /> },
             { path: "profile/update-profile", element: <UpdateProfilePage /> },
             { path: "profile/update-password", element: <UpdatePasswordPage /> },
+            { path: "consulting-information", element: <ConsultingInformationPage /> },
         ]
     },
 ];

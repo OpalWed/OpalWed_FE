@@ -13,13 +13,11 @@ import { useWedding } from "../../../../hooks/useWedding";
 
 const steps = [
     { title: 'Bước 1', description: 'Trang phục' },
-    { title: 'Bước 2', description: 'Phụ kiện' },
-    { title: 'Bước 3', description: 'Trang điểm' },
-    { title: 'Bước 4', description: 'Hoa cưới' },
-    { title: 'Bước 5', description: 'Chụp ảnh cưới' },
-    { title: 'Bước 6', description: 'Trang trí' },
-    { title: 'Bước 7', description: 'Nhà hàng' },
-    { title: 'Bước 8', description: 'Thiệp cưới' },
+    { title: 'Bước 2', description: 'Trang điểm' },
+    { title: 'Bước 3', description: 'Hoa cưới' },
+    { title: 'Bước 4', description: 'Chụp ảnh cưới' },
+    { title: 'Bước 5', description: 'Concept Nhà hàng' },
+    { title: 'Bước 6', description: 'Thiệp cưới' },
 ]
 
 const FlowersPage = () => {
@@ -31,7 +29,7 @@ const FlowersPage = () => {
     const utilityType: Utility = Utility.FLOWERS;
     const { data, isLoading } = useProduct({ budgetLevel, utilityType });
     const { activeStep } = useSteps({
-        index: 3,
+        index: 2,
         count: steps.length,
     })
 

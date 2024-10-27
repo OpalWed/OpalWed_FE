@@ -13,13 +13,11 @@ import { useWedding } from "../../../../hooks/useWedding";
 
 const steps = [
     { title: 'Bước 1', description: 'Trang phục' },
-    { title: 'Bước 2', description: 'Phụ kiện' },
-    { title: 'Bước 3', description: 'Trang điểm' },
-    { title: 'Bước 4', description: 'Hoa cưới' },
-    { title: 'Bước 5', description: 'Chụp ảnh cưới' },
-    { title: 'Bước 6', description: 'Trang trí' },
-    { title: 'Bước 7', description: 'Nhà hàng' },
-    { title: 'Bước 8', description: 'Thiệp cưới' },
+    { title: 'Bước 2', description: 'Trang điểm' },
+    { title: 'Bước 3', description: 'Hoa cưới' },
+    { title: 'Bước 4', description: 'Chụp ảnh cưới' },
+    { title: 'Bước 5', description: 'Concept Nhà hàng' },
+    { title: 'Bước 6', description: 'Thiệp cưới' },
 ]
 
 const WeddingPhotographyPage = () => {
@@ -31,7 +29,7 @@ const WeddingPhotographyPage = () => {
     const utilityType: Utility = Utility.PHOTOGRAPHY;
     const { data, isLoading } = useProduct({ budgetLevel, utilityType });
     const { activeStep } = useSteps({
-        index: 4,
+        index: 3,
         count: steps.length,
     })
 
@@ -87,7 +85,7 @@ const WeddingPhotographyPage = () => {
                     </AbsoluteCenter>
                 </Box>
                 {weddingPhotography.length === 0 && (
-                    <Button pos={'absolute'} top={2} right={0} variant={'outline'} onClick={() => navigate(`/wedding-planning/${param.budget}/decoration`)}>
+                    <Button pos={'absolute'} top={2} right={0} variant={'outline'} onClick={() => navigate(`/wedding-planning/${param.budget}/restaurant-concept`)}>
                         Bỏ qua
                     </Button>
                 )}
@@ -122,7 +120,7 @@ const WeddingPhotographyPage = () => {
                     <Button variant={'ghost'} leftIcon={<ArrowBack />} onClick={() => navigate(-1)}>
                         Bước phía trước
                     </Button>
-                    <Button variant={'ghost'} rightIcon={<ArrowForward />} onClick={() => navigate(`/wedding-planning/${param.budget}/decoration`)}>
+                    <Button variant={'ghost'} rightIcon={<ArrowForward />} onClick={() => navigate(`/wedding-planning/${param.budget}/restaurant-concept`)}>
                         {weddingPhotography.length > 0 ? 'Bước tiếp theo' : 'Bỏ qua'}
                     </Button>
                 </HStack>

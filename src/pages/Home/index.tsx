@@ -103,16 +103,7 @@ const HomePage = () => {
                                 right={'25%'}
                             >
                                 <Text fontSize={15} textAlign={'justify'} fontFamily={'Noto Sans JP'}>
-                                    OpalWed, a newly established startup, has quickly become the helper
-                                    that brides and grooms didn't know they needed. We pioneer the
-                                    untapped market, providing customer representation and assistance in
-                                    finding and selecting wedding services from a variety of sources.
-                                </Text>
-                                <br />
-                                <Text fontSize={15} textAlign={'justify'} fontFamily={'Noto Sans JP'}>
-                                    We'll take care of it all from finding personalized fonts for
-                                    invitations, to choosing entertainers and caterers, making sure
-                                    every detail is perfect.
+                                    Tại OPALWED, chúng tôi định hướng trở thành đơn vị tiên phong trong lĩnh vực tổ chức sự kiện sáng tạo, ứng dụng công nghệ hiện đại để tối ưu hóa trải nghiệm người dùng. Chúng tôi tin rằng công nghệ chỉ thực sự có ý nghĩa khi giúp nâng cao sự kết nối giữa con người. Do đó, OPALWED luôn cam kết kết hợp các công cụ tiên tiến với sự tinh tế và cảm xúc cá nhân, nhằm tạo nên những sự kiện cưới đáng nhớ, đậm dấu ấn cá nhân cho từng cặp đôi.
                                 </Text>
                             </Box>
                         </HStack>
@@ -139,15 +130,7 @@ const HomePage = () => {
                                 left={'25%'}
                             >
                                 <Text fontSize={15} textAlign={'justify'} fontFamily={'Noto Sans JP'}>
-                                    Initial Interview and Consultation: Our team of experts will meet with
-                                    clients to understand their desires, style and budget. Based on this
-                                    information, we will make the most suitable suggestions.
-                                </Text>
-                                <br />
-                                <Text fontSize={15} textAlign={'justify'} fontFamily={'Noto Sans JP'}>
-                                    Detailed Planning: We will develop a detailed plan, including specific
-                                    implementation steps and timelines, to ensure everything goes smoothly
-                                    and on schedule.
+                                    OPALWED đại diện cho sự kết hợp giữa sự sáng tạo và trách nhiệm. Chúng tôi không chỉ cung cấp dịch vụ trọn gói mà còn tận tâm chăm chút từng chi tiết nhỏ, từ ý tưởng ban đầu đến khâu thực hiện. Mỗi lễ cưới được chúng tôi thiết kế đều mang đậm dấu ấn cá nhân của khách hàng, giúp họ thể hiện phong cách riêng và tạo nên khoảnh khắc không thể nào quên. OPAL WED là nơi mà sự chuyên nghiệp, tiện lợi và cá tính hội tụ, mang đến trải nghiệm hoàn hảo cho những cặp đôi bận rộn nhưng luôn khao khát sự khác biệt và hoàn mỹ.
                                 </Text>
                             </Box>
                         </HStack>
