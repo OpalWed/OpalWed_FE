@@ -1,9 +1,9 @@
-import { FormControl, FormLabel, HStack, Heading, Image, Input, Select, Stack, Textarea, useDisclosure, useToast } from "@chakra-ui/react";
+import { FormControl, FormLabel, HStack, Image, Input, InputGroup, InputRightAddon, Select, Stack, Textarea, useDisclosure, useToast } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import ApiClient from "../../../services/apiClient";
 import { changeTabTitle } from "../../../utils/changeTabTitle";
 import LoadingModal from "../../../components/modal/loading";
-import { Budget, Concept, Status, Utility } from "../../../types/type.enum";
+import { Budget, Utility } from "../../../types/type.enum";
 import { useNavigate, useParams } from "react-router-dom";
 import { initialProduct, Product } from "../../../types/Product";
 
@@ -19,7 +19,7 @@ const ServiceDetailPage = () => {
         try {
             const api = new ApiClient<any>("/manage/product");
             const response = await api.getDetail(id);
-            if (response.success) {
+            if (response.isSuccess) {
                 setService(response.data);
             } else {
                 toast({
@@ -55,17 +55,18 @@ const ServiceDetailPage = () => {
                     <HStack w={'full'} justify={'center'} align={'flex-end'}>
                         <Image
                             border='1px solid gainsboro'
-                            borderRadius='full'
-                            boxSize={'9rem'}
                             src={
-                                service.image || 'https://t3.ftcdn.net/jpg/05/16/27/58/360_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg'
+                                service.image
                             }
-                            alt='avatar'
+                            h={450}
+                            w={416}
                             bgColor='white'
                             objectFit={'cover'}
                         />
                     </HStack>
+                </Stack>
 
+                <Stack gap={3} flex={1}>
                     <FormControl id="productName">
                         <FormLabel>Tên sản phẩm</FormLabel>
                         <Input
@@ -86,28 +87,18 @@ const ServiceDetailPage = () => {
                     </FormControl>
 
                     <FormControl id="price">
-                        <FormLabel>Giá</FormLabel>
-                        <Input
-                            type="text"
-                            value={service.price}
-                            readOnly
-                        />
+                        <FormLabel>Giá (VND)</FormLabel>
+                        <InputGroup>
+                            <Input
+                                type="text"
+                                value={service.price}
+                                readOnly
+                            />
+                            <InputRightAddon fontFamily={'Noto Sans JP'}>
+                                VND
+                            </InputRightAddon>
+                        </InputGroup>
                     </FormControl>
-
-                    <FormControl id="image">
-                        <FormLabel>Ảnh sản phẩm</FormLabel>
-                        <Input
-                            type="text"
-                            value={service.image}
-                            readOnly
-                        />
-                    </FormControl>
-                </Stack>
-
-                <Stack gap={3} flex={1}>
-                    <Heading fontSize={24} fontWeight={600}>
-                        Thông tin bổ sung
-                    </Heading>
 
                     <FormControl id="budgetLevel">
                         <FormLabel>Phân khúc ngân sách</FormLabel>
@@ -124,21 +115,6 @@ const ServiceDetailPage = () => {
                         </Select>
                     </FormControl>
 
-                    <FormControl id="weddingConcept">
-                        <FormLabel>Phong cách cưới</FormLabel>
-                        <Select
-                            value={service.weddingConcept}
-                            placeholder="Chọn phong cách"
-                            isReadOnly
-                        >
-                            {Object.values(Concept).map((concept) => (
-                                <option key={concept} value={concept}>
-                                    {concept}
-                                </option>
-                            ))}
-                        </Select>
-                    </FormControl>
-
                     <FormControl id="utility">
                         <FormLabel>Tiện ích</FormLabel>
                         <Select
@@ -149,21 +125,6 @@ const ServiceDetailPage = () => {
                             {Object.values(Utility).map((utility) => (
                                 <option key={utility} value={utility}>
                                     {utility}
-                                </option>
-                            ))}
-                        </Select>
-                    </FormControl>
-
-                    <FormControl id="status">
-                        <FormLabel>Trạng thái</FormLabel>
-                        <Select
-                            value={service.status}
-                            placeholder="Chọn trạng thái"
-                            isReadOnly
-                        >
-                            {Object.values(Status).map((status) => (
-                                <option key={status} value={status}>
-                                    {status}
                                 </option>
                             ))}
                         </Select>

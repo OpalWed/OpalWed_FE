@@ -1,4 +1,4 @@
-import { Budget, Concept, Status, Utility } from "./type.enum";
+import { Budget, Concept, ProductStatus, Utility } from "./type.enum";
 
 export interface Product {
     productId: number;
@@ -10,7 +10,7 @@ export interface Product {
     budgetLevel: Budget;
     weddingConcept: Concept;
     utility: Utility;
-    status: Status;
+    status: ProductStatus;
 }
 
 export const initialProduct: Product = {
@@ -23,5 +23,5 @@ export const initialProduct: Product = {
     budgetLevel: Budget.LOW,
     weddingConcept: Concept.EUROPE,
     utility: Utility.CLOTHES,
-    status: Status.INACTIVE,
+    status: ProductStatus.UNAVAILABLE,
 };

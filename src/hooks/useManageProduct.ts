@@ -23,7 +23,7 @@ const useManageProduct = ({ name, budgetLevel, weddingConcept, utilityType, stat
                     utilityType,
                     status,
                     page: 0,
-                    size: 10
+                    size: 1000
                 }
             })
                 .then((data) => {

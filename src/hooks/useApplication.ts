@@ -9,7 +9,7 @@ const useApplication = () => {
             api.getAuthen({
                 params: {
                     page: 0,
-                    size: 10
+                    size: 1000
                 }
             })
                 .then((data) => {

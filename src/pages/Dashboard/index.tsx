@@ -162,7 +162,7 @@ const Dashboard = () => {
                                     {summaryTotalLoading ? (
                                         <Spinner size={'lg'} my={3} />
                                     ) : (
-                                        <Text fontSize={40} fontFamily={'Noto Sans JP'}>{summaryTotalData?.['sum-revenue']}</Text>
+                                        <Text fontSize={40} fontFamily={'Noto Sans JP'}>{summaryTotalData?.['sum-revenue'].toLocaleString()}</Text>
                                     )}
                                     <Heading
                                         fontSize={20}

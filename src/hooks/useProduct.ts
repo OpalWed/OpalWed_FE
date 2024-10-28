@@ -17,7 +17,7 @@ const useProduct = ({ budgetLevel, utilityType }: Prop) => {
                     budgetLevel,
                     utilityType,
                     page: 0,
-                    size: 10
+                    size: 1000
                 }
             })
                 .then((data) => {

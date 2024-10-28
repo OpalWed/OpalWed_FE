@@ -1,8 +1,8 @@
-import { Button, FormControl, FormLabel, HStack, Image, Input, Select, Stack, Textarea, useDisclosure, useToast } from "@chakra-ui/react";
+import { Button, FormControl, FormLabel, HStack, Image, Input, InputGroup, InputRightAddon, Select, Stack, Text, Textarea, useDisclosure, useToast } from "@chakra-ui/react";
 import { FormEvent, useEffect, useState } from "react";
 import ApiClient from "../../../services/apiClient";
 import { changeTabTitle } from "../../../utils/changeTabTitle";
-import { Budget, Concept, Status, Utility } from "../../../types/type.enum";
+import { Budget, Concept, ProductStatus, Utility } from "../../../types/type.enum";
 import LoadingModal from "../../../components/modal/loading";
 import axios from "axios";
 import { FaPen } from "react-icons/fa6";
@@ -10,10 +10,8 @@ import { Border } from "../../../styles/styles";
 
 const CreateServicePage = () => {
     const [productName, setProductName] = useState<string>("");
-    const [partnerId, setPartnerId] = useState<string>("");
     const [price, setPrice] = useState<string>("");
     const [budgetLevel, setBudgetLevel] = useState<Budget | undefined>(undefined);
-    const [weddingConcept, setWeddingConcept] = useState<Concept | undefined>(undefined);
     const [description, setDescription] = useState<string>("");
     const [utility, setUtility] = useState<Utility | undefined>(undefined);
     const [image, setImage] = useState<string>("");
@@ -56,14 +54,14 @@ const CreateServicePage = () => {
 
         const data = {
             productName,
-            partnerId,
+            partnerId: 1,
             description,
             image: imageUrl,
             price,
             budgetLevel,
-            weddingConcept,
+            weddingConcept: Concept.TRADITIONAL,
             utility,
-            status: Status.ACTIVE,
+            status: ProductStatus.AVAILABLE,
         };
 
         try {
@@ -78,7 +76,7 @@ const CreateServicePage = () => {
                     position: "top",
                     isClosable: true,
                 });
-                // Optionally reset form fields
+                handleReset();
             } else {
                 toast({
                     title: "Xảy ra lỗi",
@@ -105,24 +103,20 @@ const CreateServicePage = () => {
 
     const areAllFieldsFilled = () => {
         return (
-            productName.trim() !== '' &&
-            partnerId.trim() !== '' &&
-            price.trim() !== '' &&
+            productName !== '' &&
+            price !== '' &&
             budgetLevel !== undefined &&  // Modify the condition if Budget.LOW is a valid default
-            weddingConcept !== undefined &&  // Modify the condition if Concept.EUROPE is a valid default
-            description.trim() !== '' &&
+            description !== '' &&
             utility !== undefined &&  // Modify if Utility.CLOTHES is a valid default
-            image.trim() !== '' &&
+            image !== '' &&
             imageData !== null
         );
     };
 
     const handleReset = () => {
         setProductName('');
-        setPartnerId('');
         setPrice('');
         setBudgetLevel(undefined);  // Reset to the default budget level
-        setWeddingConcept(undefined);  // Reset to the default wedding concept
         setDescription('');
         setUtility(undefined);  // Reset to the default utility
         setImage('');
@@ -135,36 +129,47 @@ const CreateServicePage = () => {
 
     return (
         <Stack w={"6xl"} m={"auto"}>
-            <HStack gap={20} align={"flex-start"} mb={10}>
-                <Stack gap={3} flex={1}>
-                    <HStack w={'full'} justify={'center'} align={'flex-end'}>
+            <HStack gap={28} align={"flex-start"} mb={10}>
+                <Stack w={'full'} justify={'center'} align={'center'} flex={1} pos={'relative'}>
+                    {image ? (
                         <Image
                             border='1px solid gainsboro'
-                            borderRadius='full'
-                            boxSize={'9rem'}
                             src={
-                                image || 'https://t3.ftcdn.net/jpg/05/16/27/58/360_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg'
+                                image
                             }
-                            alt='avatar'
+                            h={450}
+                            w={416}
                             bgColor='white'
                             objectFit={'cover'}
                         />
-                        <FormLabel
-                            htmlFor="avt"
-                            cursor='pointer'
-                            fontSize='md'
-                            ml={-8}
-                        >
+                    ) : (
+                        <Stack justify={'center'} align={'center'} w={416} h={450} border='1px solid gainsboro'>
+                            <Text>Thêm ảnh vào đây</Text>
+                        </Stack>
+                    )}
+                    <FormLabel
+                        htmlFor="avt"
+                        cursor='pointer'
+                        fontSize='md'
+                        mt={4}
+                        pos={'absolute'}
+                        bottom={-16}
+                    >
+                        <HStack>
                             <FaPen />
-                        </FormLabel>
-                        <Input
-                            type="file"
-                            id="avt"
-                            accept="image/*"
-                            onChange={handleAvatarChange}
-                            display='none'
-                        />
-                    </HStack>
+                            <Text fontSize={15}>{image ? 'Thay ảnh' : 'Thêm ảnh'}</Text>
+                        </HStack>
+                    </FormLabel>
+                    <Input
+                        type="file"
+                        id="avt"
+                        accept="image/*"
+                        onChange={handleAvatarChange}
+                        display='none'
+                    />
+                </Stack>
+
+                <Stack gap={3} flex={1}>
                     <FormControl id="productName" isRequired>
                         <FormLabel>Dịch vụ</FormLabel>
                         <Input
@@ -187,18 +192,19 @@ const CreateServicePage = () => {
                     </FormControl>
 
                     <FormControl id="price" isRequired>
-                        <FormLabel>Giá tiền</FormLabel>
-                        <Input
-                            type="text"
-                            value={price}
-                            onChange={(e) => setPrice(e.target.value)}
-                            placeholder="Giá tiền"
-                        />
+                        <FormLabel>Giá tiền (VND)</FormLabel>
+                        <InputGroup>
+                            <Input
+                                type="text"
+                                value={price}
+                                onChange={(e) => setPrice(e.target.value)}
+                                placeholder="Giá tiền"
+                            />
+                            <InputRightAddon fontFamily={'Noto Sans JP'}>
+                                VND
+                            </InputRightAddon>
+                        </InputGroup>
                     </FormControl>
-                </Stack>
-
-                <Stack gap={3} flex={1}>
-
                     <FormControl id="budgetLevel" isRequired>
                         <FormLabel>Phân khúc ngân sách</FormLabel>
                         <Select
@@ -208,22 +214,9 @@ const CreateServicePage = () => {
                         >
                             {Object.values(Budget).map((budget) => (
                                 <option key={budget} value={budget}>
-                                    {budget}
-                                </option>
-                            ))}
-                        </Select>
-                    </FormControl>
-
-                    <FormControl id="weddingConcept" isRequired>
-                        <FormLabel>Phong cách cưới</FormLabel>
-                        <Select
-                            value={weddingConcept}
-                            onChange={(e) => setWeddingConcept(e.target.value as Concept)}
-                            placeholder="Chọn phong cách"
-                        >
-                            {Object.values(Concept).map((concept) => (
-                                <option key={concept} value={concept}>
-                                    {concept}
+                                    {budget === Budget.LOW ? 'Thấp' :
+                                        budget === Budget.MEDIUM ? 'Trung bình' :
+                                            budget === Budget.HIGH ? 'Cao' : 'Cao cấp'}
                                 </option>
                             ))}
                         </Select>
@@ -238,12 +231,17 @@ const CreateServicePage = () => {
                         >
                             {Object.values(Utility).map((utility) => (
                                 <option key={utility} value={utility}>
-                                    {utility}
+                                    {utility === Utility.CLOTHES ? 'Trang phục' :
+                                        utility === Utility.MAKEUP ? 'Trang điểm' :
+                                            utility === Utility.PHOTOGRAPHY ? 'Chụp ảnh cưới' :
+                                                utility === Utility.FLOWERS ? 'Hoa cưới' :
+                                                    utility === Utility.RESTAURANTCONCEPT ? 'Concept Nhà hàng' : 'Thiệp cưới'}
                                 </option>
                             ))}
                         </Select>
                     </FormControl>
                 </Stack>
+
             </HStack>
             <HStack
                 pos={'fixed'}
@@ -280,7 +278,7 @@ const CreateServicePage = () => {
                     onClick={handleCreate}
                     isDisabled={!areAllFieldsFilled()}
                 >
-                    Create
+                    Tạo mới
                 </Button>
             </HStack>
 

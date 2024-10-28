@@ -1,25 +1,8 @@
-import {
-    Box,
-    Button,
-    Modal,
-    ModalOverlay,
-    ModalContent,
-    ModalHeader,
-    ModalFooter,
-    ModalBody,
-    ModalCloseButton,
-    Table,
-    Thead,
-    Tbody,
-    Tr,
-    Th,
-    Td,
-} from '@chakra-ui/react';
+import { Box, Button, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, Table, Thead, Tbody, Tr, Th, Td } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { Application } from '../../../types/Application';
-import { formatDate } from '../../../utils/formatDate';
 import useHistoryTransaction from '../../../hooks/useHistoryTransaction';
-import { PaymentStatus } from '../../../types/type.enum';
+import { formatDateTime } from '../../../utils/formatDateTime';
 
 interface Props {
     isOpen: boolean;
@@ -45,15 +28,19 @@ const HistoryTransactionModal = ({ isOpen, onClose }: Props) => {
                         Lịch sử giao dịch
                     </ModalHeader>
                     <ModalCloseButton color="white" top="10px" />
-                    <ModalBody px={6} py={4} bg="gray.50">
+                    <ModalBody px={6} py={4} bg="gray.50" maxH={'sm'} overflowY={'auto'} css={{
+                        '&::-webkit-scrollbar': { width: '4px' },
+                        '&::-webkit-scrollbar-track': { backgroundColor: '#f1f1f1' },
+                        '&::-webkit-scrollbar-thumb': { backgroundColor: 'gainsboro', borderRadius: '4px' },
+                        '&::-webkit-scrollbar-thumb:hover': { backgroundColor: '#d1cece' }
+                    }}>
                         <Table variant="simple" size="md">
                             <Thead bg="gray.200">
                                 <Tr>
-                                    <Th>Ngày</Th>
+                                    <Th w={150}>Thời gian giao dịch</Th>
                                     <Th>Khách hàng</Th>
                                     <Th>Mô tả</Th>
                                     <Th isNumeric>Số tiền (VND)</Th>
-                                    <Th>Trạng thái</Th>
                                 </Tr>
                             </Thead>
                             <Tbody bg="white">
@@ -61,7 +48,7 @@ const HistoryTransactionModal = ({ isOpen, onClose }: Props) => {
                                     applications.map((application) => (
                                         <Tr key={application.applicationId} borderBottom="1px solid" borderColor="gray.200">
                                             <Td fontSize="sm" color="gray.700">
-                                                {formatDate(application.createdDate)}
+                                                {formatDateTime(application.createdDate)}
                                             </Td>
                                             <Td fontSize="sm" color="gray.700">
                                                 {application.fullName}
@@ -71,11 +58,6 @@ const HistoryTransactionModal = ({ isOpen, onClose }: Props) => {
                                             </Td>
                                             <Td isNumeric fontSize="sm" color="gray.900" fontWeight="bold">
                                                 {application.price.toLocaleString()} VND
-                                            </Td>
-                                            <Td fontSize="sm" color={application.status === PaymentStatus.PAID ? 'green.500' :
-                                                application.status === 'Pending' ? 'yellow.500' : 'red.500'}
-                                                fontWeight="semibold">
-                                                {application.paymentStatus}
                                             </Td>
                                         </Tr>
                                     ))
