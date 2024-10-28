@@ -10,6 +10,12 @@ export enum PaymentStatus {
     CANCELLED = 'CANCELLED',
 }
 
+export enum ProductStatus {
+    AVAILABLE = "AVAILABLE",
+    UNAVAILABLE = 'UNAVAILABLE',
+    DELETED = 'DELETED',
+}
+
 export enum Concept {
     TRADITIONAL = "TRADITIONAL",
     EUROPE = "EUROPE",

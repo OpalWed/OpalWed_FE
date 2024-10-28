@@ -17,7 +17,7 @@ const usePartner = ({ name, status }: Prop = {}) => {
                     name,
                     status,
                     page: 0,
-                    size: 10
+                    size: 1000
                 }
             })
                 .then((data) => {

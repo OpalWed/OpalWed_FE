@@ -7,7 +7,7 @@ import { Shadow } from "../../styles/styles";
 import ChangeStatusModal from "../../components/modal/change_status";
 import useManageProduct from "../../hooks/useManageProduct";
 import { Product } from "../../types/Product";
-import { Status } from "../../types/type.enum";
+import { ProductStatus, Utility } from "../../types/type.enum";
 import { useNavigate } from "react-router-dom";
 import ApiClient from "../../services/apiClient";
 import { AxiosError } from "axios";
@@ -106,7 +106,7 @@ const ServicePage = () => {
                                 <Tr>
                                     <Th textAlign='center' borderColor={'gainsboro'}>ID</Th>
                                     <Th textAlign='center' borderColor={'gainsboro'}>Dịch vụ</Th>
-                                    <Th textAlign='center' borderColor={'gainsboro'}>Nhà cung cấp</Th>
+                                    {/* <Th textAlign='center' borderColor={'gainsboro'}>Nhà cung cấp</Th> */}
                                     <Th textAlign='center' borderColor={'gainsboro'}>Kiểu dịch vụ</Th>
                                     <Th textAlign='center' borderColor={'gainsboro'}>Trạng thái</Th>
                                     <Th textAlign='center' borderColor={'gainsboro'}>Hành động</Th>
@@ -122,10 +122,14 @@ const ServicePage = () => {
                                                     <Tr _hover={{ bg: 'gray.50' }} key={service.productId}>
                                                         <Td textAlign='center' borderColor={'gainsboro'}>{service.productId}</Td>
                                                         <Td textAlign='center' borderColor={'gainsboro'}>{service.productName}</Td>
-                                                        <Td textAlign="center" borderColor={'gainsboro'}>{service.partnerId}</Td>
-                                                        <Td textAlign="center" borderColor={'gainsboro'}>{service.utility}</Td>
+                                                        {/* <Td textAlign="center" borderColor={'gainsboro'}>{service.partnerId}</Td> */}
+                                                        <Td textAlign="center" borderColor={'gainsboro'}>{service.utility === Utility.CLOTHES ? 'Trang phục' :
+                                                            service.utility === Utility.MAKEUP ? 'Trang điểm' :
+                                                                service.utility === Utility.PHOTOGRAPHY ? 'Chụp ảnh cưới' :
+                                                                    service.utility === Utility.FLOWERS ? 'Hoa cưới' :
+                                                                        service.utility === Utility.RESTAURANTCONCEPT ? 'Concept Nhà hàng' : 'Thiệp cưới'}</Td>
                                                         <Td textAlign='center' borderColor={'gainsboro'}>
-                                                            <Tag size={'md'} variant='subtle' colorScheme={service.status === Status.ACTIVE ? 'green' : 'red'}>
+                                                            <Tag size={'md'} variant='subtle' colorScheme={service.status === ProductStatus.AVAILABLE ? 'green' : 'red'}>
                                                                 <TagLabel>{service.status}</TagLabel>
                                                             </Tag>
                                                         </Td>
