@@ -117,8 +117,13 @@
   border-bottom: none;
 }
 
-p {
+.product-des,
+.product-des p {
   font-size: 15px;
+}
+
+p {
+  font-size: 18px;
 }
 
 .ant-float-btn-group {

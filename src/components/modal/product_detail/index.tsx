@@ -172,7 +172,7 @@ const ProductDetailModal = ({ type, isOpen, onClose, id }: Props) => {
                                 <Stack>
                                     <Text fontSize={18} fontFamily={'Noto Sans JP'}>Mô tả sản phẩm:</Text>
                                     <Text fontFamily={'Noto Sans JP'} ml={3}>
-                                        <div dangerouslySetInnerHTML={{ __html: product.description }} />
+                                        <div className="product-des" dangerouslySetInnerHTML={{ __html: product.description }} />
                                     </Text>
                                 </Stack>
                                 {type !== 'flowers' && type !== 'clothes' && (
