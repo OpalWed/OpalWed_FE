@@ -250,7 +250,7 @@ const HomePage = () => {
                     boxShadow="sm"
                 >
                     <Heading as="h2" size="md" textAlign="center" fontFamily={'Canela'} fontWeight={400} fontSize={17}>
-                        THÀNH VIÊN HỢP TÁC
+                        NHÀ CUNG CẤP
                     </Heading>
                 </Box>
                 <PartnersSlider />

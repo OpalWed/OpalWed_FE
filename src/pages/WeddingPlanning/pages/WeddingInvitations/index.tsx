@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { AbsoluteCenter, Box, Button, Divider, HStack, SimpleGrid, Stack, Step, StepDescription, StepIcon, StepIndicator, StepNumber, Stepper, StepSeparator, StepStatus, StepTitle, Text, useDisclosure, useSteps } from "@chakra-ui/react";
-import { ArrowBack, ArrowForward } from "@mui/icons-material";
 import { changeTabTitle } from "../../../../utils/changeTabTitle";
 import ProductItem from "../../components/product_item";
 import NotifyDesignModal from "../../../../components/modal/notify_design";
@@ -28,7 +27,7 @@ const WeddingInvitationsPage = () => {
     const [products, setProducts] = useState<Product[]>([]);
     const [budgetLevel, setBudgetLevel] = useState<Budget>(Budget.LOW);
     const { weddingInvitations } = useWedding();
-    const utilityType: Utility = Utility.INVITATIONS;
+    const utilityType: Utility = Utility.INVITATION;
     const { data, isLoading } = useProduct({ budgetLevel, utilityType });
     const { activeStep } = useSteps({
         index: 6,
@@ -119,10 +118,10 @@ const WeddingInvitationsPage = () => {
                 )}
                 <WeddingCart />
                 <HStack justify={'space-between'}>
-                    <Button variant={'ghost'} leftIcon={<ArrowBack />} onClick={() => navigate(-1)}>
+                    <Button variant={'outline'} onClick={() => navigate(-1)}>
                         Bước phía trước
                     </Button>
-                    <Button variant={'ghost'} rightIcon={<ArrowForward />} onClick={onOpen}>
+                    <Button variant={'outline'} onClick={onOpen}>
                         {weddingInvitations.length > 0 ? 'Hoàn tất thiết kế' : 'Bỏ qua và hoàn tất thiết kế'}
                     </Button>
                 </HStack>

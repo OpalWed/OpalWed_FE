@@ -1,11 +1,13 @@
-import { Button, FormControl, FormLabel, HStack, Image, Input, InputGroup, InputRightAddon, Select, Stack, Textarea, useDisclosure, useToast } from "@chakra-ui/react";
+import { Button, FormControl, FormLabel, HStack, Image, Input, InputGroup, InputRightAddon, Stack, useDisclosure, useToast } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import ApiClient from "../../../services/apiClient";
 import { changeTabTitle } from "../../../utils/changeTabTitle";
 import LoadingModal from "../../../components/modal/loading";
-import { Budget, Utility } from "../../../types/type.enum";
 import { useNavigate, useParams } from "react-router-dom";
 import { initialProduct, Product } from "../../../types/Product";
+import ReactQuill from "react-quill";
+import { modules } from "../../../styles/styles";
+import { Budget, Utility } from "../../../types/type.enum";
 
 const ServiceDetailPage = () => {
     const param = useParams<{ id: string }>();
@@ -77,13 +79,15 @@ const ServiceDetailPage = () => {
                         />
                     </FormControl>
 
-                    <FormControl id="description">
+                    <FormControl id="description" isRequired>
                         <FormLabel>Mô tả</FormLabel>
-                        <Textarea
+                        <ReactQuill
+                            theme='snow'
                             value={service.description}
+                            placeholder='Mô tả'
+                            modules={modules}
+                            className='content-input'
                             readOnly
-                            maxH={32}
-                            minH={32}
                         />
                     </FormControl>
 
@@ -103,32 +107,26 @@ const ServiceDetailPage = () => {
 
                     <FormControl id="budgetLevel">
                         <FormLabel>Phân khúc ngân sách</FormLabel>
-                        <Select
-                            value={service.budgetLevel}
+                        <Input
+                            value={service.budgetLevel === Budget.LOW ? 'Thấp' :
+                                service.budgetLevel === Budget.MEDIUM ? 'Trung bình' :
+                                    service.budgetLevel === Budget.HIGH ? 'Cao' : 'Cao cấp'}
                             placeholder="Chọn phân khúc"
                             isReadOnly
-                        >
-                            {Object.values(Budget).map((budget) => (
-                                <option key={budget} value={budget}>
-                                    {budget}
-                                </option>
-                            ))}
-                        </Select>
+                        />
                     </FormControl>
 
                     <FormControl id="utility">
                         <FormLabel>Tiện ích</FormLabel>
-                        <Select
-                            value={service.utility}
+                        <Input
+                            value={service.utility === Utility.CLOTHES ? 'Trang phục' :
+                                service.utility === Utility.MAKEUP ? 'Trang điểm' :
+                                    service.utility === Utility.PHOTOGRAPHY ? 'Chụp ảnh cưới' :
+                                        service.utility === Utility.FLOWERS ? 'Hoa cưới' :
+                                            service.utility === Utility.RESTAURANTCONCEPT ? 'Concept Nhà hàng' : 'Thiệp cưới'}
                             placeholder="Chọn tiện ích"
                             isReadOnly
-                        >
-                            {Object.values(Utility).map((utility) => (
-                                <option key={utility} value={utility}>
-                                    {utility}
-                                </option>
-                            ))}
-                        </Select>
+                        />
                     </FormControl>
                 </Stack>
             </HStack>
