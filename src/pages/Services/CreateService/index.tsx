@@ -1,4 +1,4 @@
-import { Button, FormControl, FormLabel, HStack, Image, Input, InputGroup, InputRightAddon, Select, Stack, Text, Textarea, useDisclosure, useToast } from "@chakra-ui/react";
+import { Button, FormControl, FormLabel, HStack, Image, Input, InputGroup, InputRightAddon, Select, Stack, Text, useDisclosure, useToast } from "@chakra-ui/react";
 import { FormEvent, useEffect, useState } from "react";
 import ApiClient from "../../../services/apiClient";
 import { changeTabTitle } from "../../../utils/changeTabTitle";
@@ -6,7 +6,9 @@ import { Budget, Concept, ProductStatus, Utility } from "../../../types/type.enu
 import LoadingModal from "../../../components/modal/loading";
 import axios from "axios";
 import { FaPen } from "react-icons/fa6";
-import { Border } from "../../../styles/styles";
+import { Border, modules } from "../../../styles/styles";
+import 'react-quill/dist/quill.snow.css'
+import ReactQuill from 'react-quill';
 
 const CreateServicePage = () => {
     const [productName, setProductName] = useState<string>("");
@@ -182,12 +184,13 @@ const CreateServicePage = () => {
 
                     <FormControl id="description" isRequired>
                         <FormLabel>Mô tả</FormLabel>
-                        <Textarea
+                        <ReactQuill
+                            theme='snow'
                             value={description}
-                            onChange={(e) => setDescription(e.target.value)}
-                            placeholder="Mô tả"
-                            maxH={32}
-                            minH={32}
+                            onChange={setDescription}
+                            placeholder='Mô tả'
+                            modules={modules}
+                            className='content-input'
                         />
                     </FormControl>
 
