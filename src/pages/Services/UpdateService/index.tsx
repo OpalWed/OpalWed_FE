@@ -86,6 +86,7 @@ const UpdateServicePage = () => {
         }
 
         const data = {
+            productId: parseInt(param.id || ''),
             productName,
             partnerId,
             description,

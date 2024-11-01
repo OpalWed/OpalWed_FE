@@ -16,9 +16,9 @@ const Footer = () => {
             bg={Color.darkBlue}
         >
             <HStack py="10px" justify="space-evenly" maxW={'full'} mb={1}>
-                <Stack justify={'flex-start'} fontSize='20px' fontWeight='300'>
+                <Stack justify={'flex-start'} align={'center'} fontSize='20px' fontWeight='300'>
                     <Logo width="150px" height="150px" />
-                    <Text fontSize={15} fontFamily={'Noto Sans JP'}>Slogan</Text>
+                    <Text fontSize={15} fontFamily={'Noto Sans JP'} textAlign={'center'} fontWeight={300} maxW={56}>Nắm bắt tương lai của việc lên kế hoạch cùng OpalWed</Text>
                 </Stack>
                 <Stack justify={'flex-start'} fontSize='20px' fontWeight='300' align={'center'} gap={4}>
                     <Text fontWeight={400} fontFamily={'Hatton'}>Dịch vụ của chúng tôi</Text>

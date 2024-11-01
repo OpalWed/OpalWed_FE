@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { AbsoluteCenter, Box, Button, Divider, HStack, SimpleGrid, Stack, Step, StepDescription, StepIcon, StepIndicator, StepNumber, Stepper, StepSeparator, StepStatus, StepTitle, Text, useSteps } from "@chakra-ui/react";
-import { ArrowBack, ArrowForward } from "@mui/icons-material";
 import { changeTabTitle } from "../../../../utils/changeTabTitle";
 import ProductItem from "../../components/product_item";
 import WeddingCart from "../../../../components/wedding_cart";
@@ -118,10 +117,10 @@ const RestaurantConceptPage = () => {
                 )}
                 <WeddingCart />
                 <HStack justify={'space-between'}>
-                    <Button variant={'ghost'} leftIcon={<ArrowBack />} onClick={() => navigate(-1)}>
+                    <Button variant={'outline'} onClick={() => navigate(-1)}>
                         Bước phía trước
                     </Button>
-                    <Button variant={'ghost'} rightIcon={<ArrowForward />} onClick={() => navigate(`/wedding-planning/${param.budget}/invitations`)}>
+                    <Button variant={'outline'} onClick={() => navigate(`/wedding-planning/${param.budget}/invitation`)}>
                         {restaurantConcept.length > 0 ? 'Bước tiếp theo' : 'Bỏ qua'}
                     </Button>
                 </HStack>

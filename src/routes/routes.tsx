@@ -92,7 +92,7 @@ const routes = [
             { path: "wedding-planning/:budget/flowers", element: <FlowersPage /> },
             { path: "wedding-planning/:budget/photography", element: <WeddingPhotographyPage /> },
             { path: "wedding-planning/:budget/restaurant-concept", element: <RestaurantConceptPage /> },
-            { path: "wedding-planning/:budget/invitations", element: <WeddingInvitationsPage /> },
+            { path: "wedding-planning/:budget/invitation", element: <WeddingInvitationsPage /> },
             { path: "wedding-planning/confirm-design", element: <ConfirmDesignPage /> },
         ]
     },

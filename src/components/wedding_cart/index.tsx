@@ -3,6 +3,7 @@ import { ConfigProvider, FloatButton } from "antd";
 import { FaCartShopping, FaX } from "react-icons/fa6";
 import { useWedding } from "../../hooks/useWedding";
 import { Concept } from "../../types/type.enum";
+import { Color } from "../../styles/styles";
 
 const WeddingCart = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -43,8 +44,8 @@ const WeddingCart = () => {
             <Drawer onClose={onClose} isOpen={isOpen} size={'md'}>
                 <DrawerOverlay />
                 <DrawerContent>
-                    <DrawerCloseButton borderRadius={'full'} />
-                    <DrawerHeader>Giỏ hàng của bạn</DrawerHeader>
+                    <DrawerCloseButton borderRadius={'full'} color={'white'} />
+                    <DrawerHeader bg={Color.darkBlue} color={'white'} fontFamily={'Hatton'} fontWeight={400}>Giỏ hàng của bạn</DrawerHeader>
                     <Divider />
                     <DrawerBody>
                         <Stack py="15px" gap={6} h={'full'}>
@@ -296,7 +297,7 @@ const WeddingCart = () => {
                                 restaurantConcept.length === 0 &&
                                 weddingInvitations.length === 0 && (
                                     <Stack align={'center'} justify={'center'} h={'full'}>
-                                        <Text>Giỏ hàng trống</Text>
+                                        <Text fontFamily={'Noto Sans JP'} fontSize={16}>Giỏ hàng trống</Text>
                                     </Stack>
                                 )}
                         </Stack>

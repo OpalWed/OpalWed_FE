@@ -2,6 +2,7 @@ import { Box, Image, Stack, Text, useDisclosure } from '@chakra-ui/react';
 import ProductDetailModal from '../../../../components/modal/product_detail';
 import { Product } from '../../../../types/Product';
 import { useState } from 'react';
+import { Utility } from '../../../../types/type.enum';
 
 interface Prop {
     type: 'clothes' | 'restaurantConcept' | 'makeup' | 'flowers' | 'weddingPhotography' | 'restaurantConcept' | 'weddingInvitations';
@@ -14,14 +15,14 @@ const ProductItem = ({ type, product }: Prop) => {
 
     return (
         <Box
-            minW={200}
+            w={260}
             borderWidth="1px"
             borderRadius="lg"
             overflow="hidden"
             boxShadow="md"
             textAlign="center"
             pos={'relative'}
-            minH={332}
+            h={332}
             cursor={'pointer'}
             onClick={() => {
                 setId(product.productId);
@@ -37,7 +38,11 @@ const ProductItem = ({ type, product }: Prop) => {
                 objectFit="fill"
             />
             <Text fontSize="15" fontWeight="bold" color="gold" mt={3} fontFamily={'Canela'}>
-                {product.productName}
+                {product.utility === Utility.CLOTHES ? 'Trang phục' :
+                    product.utility === Utility.MAKEUP ? 'Trang điểm' :
+                        product.utility === Utility.PHOTOGRAPHY ? 'Chụp ảnh cưới' :
+                            product.utility === Utility.FLOWERS ? 'Hoa cưới' :
+                                product.utility === Utility.RESTAURANTCONCEPT ? 'Concept Nhà hàng' : 'Thiệp cưới'}
             </Text>
             <Stack gap={1} pos={'absolute'} pb={4} bottom={0} left={0} right={0} px={4}
                 bgGradient="linear(to-b, white, gray.100)"

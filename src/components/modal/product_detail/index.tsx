@@ -171,7 +171,7 @@ const ProductDetailModal = ({ type, isOpen, onClose, id }: Props) => {
                                 <Heading mt={1} fontSize={24} fontFamily={'Hatton'}>{product.productName}</Heading>
                                 <Stack>
                                     <Text fontSize={18} fontFamily={'Noto Sans JP'}>Mô tả sản phẩm:</Text>
-                                    <Text fontSize={16} fontFamily={'Noto Sans JP'}>
+                                    <Text fontFamily={'Noto Sans JP'} ml={3}>
                                         <div dangerouslySetInnerHTML={{ __html: product.description }} />
                                     </Text>
                                 </Stack>
