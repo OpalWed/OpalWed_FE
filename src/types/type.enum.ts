@@ -10,6 +10,13 @@ export enum PaymentStatus {
     CANCELLED = 'CANCELLED',
 }
 
+export enum SheduleStatus {
+    INITIAL = 'INITIAL',
+    IN_PROGRESS = 'IN_PROGRESS',
+    DONE = 'DONE',
+    CANCELLED = 'CANCELLED',
+}
+
 export enum ProductStatus {
     AVAILABLE = "AVAILABLE",
     UNAVAILABLE = 'UNAVAILABLE',

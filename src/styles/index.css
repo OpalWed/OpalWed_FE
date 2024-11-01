@@ -187,7 +187,9 @@ p {
 }
 
 .content-input {
-  height: 1000px;
+  height: 100px;
+  border-radius: 15px;
+  margin-bottom: 5rem;
 }
 
 .ql-size-8px {

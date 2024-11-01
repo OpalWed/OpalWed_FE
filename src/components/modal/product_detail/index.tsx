@@ -162,8 +162,8 @@ const ProductDetailModal = ({ type, isOpen, onClose, id }: Props) => {
                                     product.image || "https://www.mouawad.com/dw/image/v2/BJJG_PRD/on/demandware.static/-/Library-Sites-MouawadSharedLibrary/default/dwe3fe2448/M-CLASSIQUE/m-classique-1.png"
                                 }
                                 alt={product.productName}
-                                width={type === 'clothes' || type === 'restaurantConcept' ? 350 : 150}
-                                height={type === 'clothes' || type === 'restaurantConcept' ? 400 : 250}
+                                width={350}
+                                height={400}
                                 borderTopRadius={4}
                                 flex={1}
                             />
@@ -171,7 +171,9 @@ const ProductDetailModal = ({ type, isOpen, onClose, id }: Props) => {
                                 <Heading mt={1} fontSize={24} fontFamily={'Hatton'}>{product.productName}</Heading>
                                 <Stack>
                                     <Text fontSize={18} fontFamily={'Noto Sans JP'}>Mô tả sản phẩm:</Text>
-                                    <Text fontSize={16} fontFamily={'Noto Sans JP'}>{product.description}</Text>
+                                    <Text fontSize={16} fontFamily={'Noto Sans JP'}>
+                                        <div dangerouslySetInnerHTML={{ __html: product.description }} />
+                                    </Text>
                                 </Stack>
                                 {type !== 'flowers' && type !== 'clothes' && (
                                     <Stack>

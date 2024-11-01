@@ -39,7 +39,7 @@ const ProductItem = ({ type, product }: Prop) => {
             <Text fontSize="15" fontWeight="bold" color="gold" mt={3} fontFamily={'Canela'}>
                 {product.productName}
             </Text>
-            <Stack gap={1} pos={'absolute'} pb={4} bottom={0} left={0} right={0}
+            <Stack gap={1} pos={'absolute'} pb={4} bottom={0} left={0} right={0} px={4}
                 bgGradient="linear(to-b, white, gray.100)"
             >
                 <Text fontSize="16" fontFamily={'Noto Sans JP'} noOfLines={1}>

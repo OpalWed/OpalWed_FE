@@ -1,4 +1,4 @@
-import { FormControl, FormLabel, HStack, Image, Input, InputGroup, InputRightAddon, Select, Stack, Textarea, useDisclosure, useToast } from "@chakra-ui/react";
+import { Button, FormControl, FormLabel, HStack, Image, Input, InputGroup, InputRightAddon, Select, Stack, Textarea, useDisclosure, useToast } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import ApiClient from "../../../services/apiClient";
 import { changeTabTitle } from "../../../utils/changeTabTitle";
@@ -49,7 +49,8 @@ const ServiceDetailPage = () => {
     }, [param.id]);
 
     return (
-        <Stack w={"6xl"} m={"auto"}>
+        <Stack w={"6xl"} m={"auto"} pos={'relative'}>
+            <Button onClick={() => navigate('update')} pos={'absolute'} right={0} top={-10}>Cập nhật</Button>
             <HStack gap={20} align={"flex-start"} mb={10}>
                 <Stack gap={3} flex={1}>
                     <HStack w={'full'} justify={'center'} align={'flex-end'}>
