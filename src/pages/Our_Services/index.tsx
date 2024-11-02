@@ -1,10 +1,13 @@
 import { Box, Divider, Heading, HStack, Image, SimpleGrid, Stack, Text } from "@chakra-ui/react"
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { changeTabTitle } from "../../utils/changeTabTitle"
 import ServiceCarousel from "../../components/carousel/service"
 import ProductItem from "../../components/product_item"
 import { FaAnglesDown } from "react-icons/fa6"
 import { useLocation } from "react-router-dom"
+import { Utility } from "../../types/type.enum"
+import useProductByUtility from "../../hooks/useProductByUtility"
+import { Product } from "../../types/Product"
 
 const OurServicesPage = () => {
     const sectionIds = ['decoration', 'clothes', 'photo', 'card'];
@@ -14,6 +17,8 @@ const OurServicesPage = () => {
     const navbarOffset = 140;
     const location = useLocation();
     const observer = useRef<IntersectionObserver | null>(null);
+    const { data } = useProductByUtility({ utilityType: Utility.CLOTHES });
+    const [services, setServices] = useState<Product[]>([]);
 
     useEffect(() => {
         changeTabTitle('Dịch vụ');
@@ -82,6 +87,12 @@ const OurServicesPage = () => {
             window.removeEventListener('scroll', handleScroll);
         };
     }, [location.hash]);
+
+    useEffect(() => {
+        if (data) {
+            setServices(data.content);
+        }
+    }, [data])
 
     return (
         <>
@@ -179,14 +190,10 @@ const OurServicesPage = () => {
                     my={5}
                     mx={'auto'}
                 >
-                    <ProductItem />
-                    <ProductItem />
-                    <ProductItem />
-                    <ProductItem />
-                    <ProductItem />
-                    <ProductItem />
-                    <ProductItem />
-                    <ProductItem />
+                    {services.slice(0, 8).map(service => (
+                        <ProductItem product={service} />
+                    ))}
+
                 </SimpleGrid>
             </Stack>
             <Stack align={'center'} w={'6xl'} mx={'auto'} mt={16} gap={8} id="photo">

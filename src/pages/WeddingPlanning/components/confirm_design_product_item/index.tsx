@@ -3,6 +3,7 @@ import { FaX } from "react-icons/fa6";
 import { Concept } from "../../../../types/type.enum";
 
 interface Prop {
+    image: string;
     productName: string;
     color?: string;
     concept?: Concept;
@@ -10,13 +11,14 @@ interface Prop {
     onRemove: () => void;
 }
 
-const ConfirmDesignProductItem = ({ productName, color, concept, note, onRemove }: Prop) => {
+const ConfirmDesignProductItem = ({ image, productName, color, concept, note, onRemove }: Prop) => {
     return (
         <Box
             p="15px"
             m="10px"
             borderRadius="8px"
-            border="1px solid #e4e4e4"
+            border="1px solid"
+            borderColor={'pink'}
             bg="white"
             boxShadow="0 2px 4px rgba(0, 0, 0, 0.1)"
             transition="transform 0.2s, box-shadow 0.3s"
@@ -29,9 +31,9 @@ const ConfirmDesignProductItem = ({ productName, color, concept, note, onRemove 
             <Button
                 bg="white"
                 color="black"
-                fontSize="16px"
-                p="9px 10px"
+                fontSize="12px"
                 borderRadius="50%"
+                px={2}
                 float="right"
                 _hover={{ bg: "rgba(255, 0, 0, 0.2)" }}
                 onClick={onRemove}
@@ -42,7 +44,7 @@ const ConfirmDesignProductItem = ({ productName, color, concept, note, onRemove 
             <HStack align="center" alignItems={'flex-start'}>
                 <Box w="100px" h="100px" borderRadius="20%" overflow="hidden" mr="20px">
                     <Image
-                        src={'https://www.mouawad.com/dw/image/v2/BJJG_PRD/on/demandware.static/-/Library-Sites-MouawadSharedLibrary/default/dwe3fe2448/M-CLASSIQUE/m-classique-1.png'}
+                        src={image}
                         objectFit="cover"
                         w="100%"
                         h="100%" />

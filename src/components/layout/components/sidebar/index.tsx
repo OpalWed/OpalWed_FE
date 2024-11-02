@@ -3,7 +3,7 @@ import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { ConfigProvider, Menu } from 'antd';
 import { Button, Box, HStack, Stack } from '@chakra-ui/react';
-import { FaRegUser, FaUser } from 'react-icons/fa6';
+import { FaUser } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 import { FiBox, FiCalendar, FiLogOut } from 'react-icons/fi';
 import StorefrontOutlinedIcon from '@mui/icons-material/StorefrontOutlined';
@@ -39,6 +39,7 @@ const SideBar = ({ collapsed, toggleCollapsed }: SideBarProps) => {
 
     const handleLogout = async () => {
         localStorage.removeItem('access_token');
+        localStorage.removeItem('tokenExpiration');
         setIsAuthenticated(false);
         setRole('');
     }
@@ -65,11 +66,11 @@ const SideBar = ({ collapsed, toggleCollapsed }: SideBarProps) => {
             , '4'
             , <StorefrontOutlinedIcon fontSize='large' />
         ),
-        getItem(
-            <Link to={'customer-contact'} style={{ fontSize: '14px' }}>Liên hệ khách hàng</Link>
-            , '5'
-            , <FaRegUser />,
-        ),
+        // getItem(
+        //     <Link to={'customer-contact'} style={{ fontSize: '14px' }}>Liên hệ khách hàng</Link>
+        //     , '5'
+        //     , <FaRegUser />,
+        // ),
         getItem(
             <Link to={'customer-design'} style={{ fontSize: '14px' }}>Quản lý khách hàng tư vấn</Link>
             , '6'
