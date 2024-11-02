@@ -1,5 +1,4 @@
 import { AbsoluteCenter, Box, Divider, HStack, Select, SimpleGrid, Stack } from "@chakra-ui/react"
-import ProductItem from "../../components/product_item"
 import { useEffect } from "react";
 import { changeTabTitle } from "../../utils/changeTabTitle";
 
@@ -30,14 +29,14 @@ const ProductPage = () => {
                     mx={'auto'}
                     py={8}
                 >
+                    {/* <ProductItem />
                     <ProductItem />
                     <ProductItem />
                     <ProductItem />
                     <ProductItem />
                     <ProductItem />
                     <ProductItem />
-                    <ProductItem />
-                    <ProductItem />
+                    <ProductItem /> */}
                 </SimpleGrid>
 
                 <Box position='relative' mt={10}>
@@ -65,14 +64,14 @@ const ProductPage = () => {
                         mx={'auto'}
                         pb={8}
                     >
+                        {/* <ProductItem />
                         <ProductItem />
                         <ProductItem />
                         <ProductItem />
                         <ProductItem />
                         <ProductItem />
                         <ProductItem />
-                        <ProductItem />
-                        <ProductItem />
+                        <ProductItem /> */}
                     </SimpleGrid>
                 </Stack>
                 {/* <Stack w={'4xl'}>
