@@ -1,5 +1,4 @@
 import { Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Text } from "@chakra-ui/react";
-import { Border } from "../../../styles/styles";
 import { useNavigate } from "react-router-dom";
 
 interface Props {
@@ -22,7 +21,7 @@ const NotifyDesignModal = ({ isOpen, onClose, type, handleCheckout }: Props) => 
                     <ModalHeader fontSize='xl'>Xác nhận đăng ký tư vấn</ModalHeader>
                 )}
                 <ModalCloseButton />
-                <ModalBody pt={6} pb='4rem' borderY={Border.tableBorder}>
+                <ModalBody pt={2} pb={2}>
                     {type === 'finish' ? (
                         <Text fontSize='lg'>Nếu bạn muốn thay đổi thì thay đổi ngay vì nếu xác nhận rồi thì bạn sẽ không thay đổi được nữa</Text>
                     ) : (
@@ -30,13 +29,19 @@ const NotifyDesignModal = ({ isOpen, onClose, type, handleCheckout }: Props) => 
                     )}
                 </ModalBody>
                 <ModalFooter>
-                    <Button colorScheme='green' mr={3} onClick={() => {
-                        if (type === 'finish') {
-                            navigate(`/wedding-planning/confirm-design`);
-                        } else {
-                            handleCheckout();
-                        }
-                    }}>
+                    <Button
+                        bg={'#0C2948'}
+                        _hover={{ bg: '#143252' }}
+                        color={'white'}
+                        mr={3}
+                        onClick={() => {
+                            if (type === 'finish') {
+                                navigate(`/wedding-planning/confirm-design`);
+                            } else {
+                                handleCheckout();
+                            }
+                        }}
+                    >
                         Xác nhận
                     </Button>
                     <Button onClick={onClose}>Đóng</Button>

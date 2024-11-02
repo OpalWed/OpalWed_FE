@@ -67,7 +67,9 @@ const WeddingCart = () => {
                                             {clothes.map((c, index) => (
                                                 <Stack key={index} justify={'space-between'} w={'full'} pos={'relative'}>
                                                     <Text>{c.clothesName}</Text>
-                                                    <Text ml={3} fontSize={17}>+ Màu sắc: {c.color}</Text>
+                                                    {c.color && (
+                                                        <Text ml={3} fontSize={17}>+ Màu sắc: {c.color}</Text>
+                                                    )}
                                                     <Button
                                                         pos={'absolute'}
                                                         top={-2}
@@ -103,13 +105,14 @@ const WeddingCart = () => {
                                             {makeup.map((m, index) => (
                                                 <Stack key={index} justify={'space-between'} w={'full'} pos={'relative'}>
                                                     <Text>{m.makeupName}</Text>
-                                                    <Text ml={3} fontSize={17}>
-                                                        + Phong cách:
-                                                        {m.concept === Concept.TRADITIONAL
-                                                            ? "Truyền thống" : m.concept === Concept.EUROPE
-                                                                ? "Châu Âu" : m.concept === Concept.MINIMALISM
-                                                                    ? "Tối giản" : "Cổ điển"}
-                                                    </Text>
+                                                    {m.concept && (
+                                                        <Text ml={3} fontSize={17}>
+                                                            + Phong cách: {m.concept === Concept.TRADITIONAL
+                                                                ? "Truyền thống" : m.concept === Concept.EUROPE
+                                                                    ? "Châu Âu" : m.concept === Concept.MINIMALISM
+                                                                        ? "Tối giản" : "Cổ điển"}
+                                                        </Text>
+                                                    )}
                                                     <Button
                                                         pos={'absolute'}
                                                         top={-2}
@@ -145,6 +148,11 @@ const WeddingCart = () => {
                                             {flowers.map((f, index) => (
                                                 <Stack key={index} justify={'space-between'} w={'full'} pos={'relative'}>
                                                     <Text>{f.flowersName}</Text>
+                                                    {f.note && (
+                                                        <Text ml={3} fontSize={17}>
+                                                            + Ghi chú: {f.note}
+                                                        </Text>
+                                                    )}
                                                     <Button
                                                         pos={'absolute'}
                                                         top={-2}
@@ -180,13 +188,14 @@ const WeddingCart = () => {
                                             {weddingPhotography.map((wp, index) => (
                                                 <Stack key={index} justify={'space-between'} w={'full'} pos={'relative'}>
                                                     <Text>{wp.photographyName}</Text>
-                                                    <Text ml={3} fontSize={17}>
-                                                        + Phong cách:
-                                                        {wp.concept === Concept.TRADITIONAL
-                                                            ? "Truyền thống" : wp.concept === Concept.EUROPE
-                                                                ? "Châu Âu" : wp.concept === Concept.MINIMALISM
-                                                                    ? "Tối giản" : "Cổ điển"}
-                                                    </Text>
+                                                    {wp.concept && (
+                                                        <Text ml={3} fontSize={17}>
+                                                            + Phong cách: {wp.concept === Concept.TRADITIONAL
+                                                                ? "Truyền thống" : wp.concept === Concept.EUROPE
+                                                                    ? "Châu Âu" : wp.concept === Concept.MINIMALISM
+                                                                        ? "Tối giản" : "Cổ điển"}
+                                                        </Text>
+                                                    )}
                                                     <Button
                                                         pos={'absolute'}
                                                         top={-2}
@@ -222,14 +231,17 @@ const WeddingCart = () => {
                                             {restaurantConcept.map((rc, index) => (
                                                 <Stack key={index} justify={'space-between'} w={'full'} pos={'relative'}>
                                                     <Text>{rc.restaurantConceptName}</Text>
-                                                    <Text ml={3} fontSize={17}>
-                                                        + Phong cách:
-                                                        {rc.concept === Concept.TRADITIONAL
-                                                            ? "Truyền thống" : rc.concept === Concept.EUROPE
-                                                                ? "Châu Âu" : rc.concept === Concept.MINIMALISM
-                                                                    ? "Tối giản" : "Cổ điển"}
-                                                    </Text>
-                                                    <Text ml={3} fontSize={17}>+ Màu sắc: {rc.color}</Text>
+                                                    {rc.concept && (
+                                                        <Text ml={3} fontSize={17}>
+                                                            + Phong cách: {rc.concept === Concept.TRADITIONAL
+                                                                ? "Truyền thống" : rc.concept === Concept.EUROPE
+                                                                    ? "Châu Âu" : rc.concept === Concept.MINIMALISM
+                                                                        ? "Tối giản" : "Cổ điển"}
+                                                        </Text>
+                                                    )}
+                                                    {rc.color && (
+                                                        <Text ml={3} fontSize={17}>+ Màu sắc: {rc.color}</Text>
+                                                    )}
                                                     <Button
                                                         pos={'absolute'}
                                                         top={-2}
@@ -265,14 +277,17 @@ const WeddingCart = () => {
                                             {weddingInvitations.map((wi, index) => (
                                                 <Stack key={index} justify={'space-between'} w={'full'} pos={'relative'}>
                                                     <Text>{wi.invitationsName}</Text>
-                                                    <Text ml={3} fontSize={17}>
-                                                        + Phong cách:
-                                                        {wi.concept === Concept.TRADITIONAL
-                                                            ? "Truyền thống" : wi.concept === Concept.EUROPE
-                                                                ? "Châu Âu" : wi.concept === Concept.MINIMALISM
-                                                                    ? "Tối giản" : "Cổ điển"}
-                                                    </Text>
-                                                    <Text ml={3} fontSize={17}>+ Màu sắc: {wi.color}</Text>
+                                                    {wi.concept && (
+                                                        <Text ml={3} fontSize={17}>
+                                                            + Phong cách: {wi.concept === Concept.TRADITIONAL
+                                                                ? "Truyền thống" : wi.concept === Concept.EUROPE
+                                                                    ? "Châu Âu" : wi.concept === Concept.MINIMALISM
+                                                                        ? "Tối giản" : "Cổ điển"}
+                                                        </Text>
+                                                    )}
+                                                    {wi.color && (
+                                                        <Text ml={3} fontSize={17}>+ Màu sắc: {wi.color}</Text>
+                                                    )}
                                                     <Button
                                                         pos={'absolute'}
                                                         top={-2}

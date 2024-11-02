@@ -122,7 +122,9 @@ const LoginPage = () => {
                     isClosable: true,
                 });
             } else {
+                const expirationTime = Date.now() + 2 * 60 * 60 * 1000;
                 localStorage.setItem('access_token', response.data.token);
+                localStorage.setItem("tokenExpiration", expirationTime.toString());
                 const role: string = convertToTitleCase(response.data.userInfo.accountRole);
                 setRole(role);
                 setIsAuthenticated(true);

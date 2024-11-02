@@ -74,6 +74,7 @@ const ProductDetailModal = ({ type, isOpen, onClose, id }: Props) => {
             switch (type) {
                 case 'clothes':
                     addClothes({
+                        image: product.image,
                         clothesName: product.productName,
                         color: color || '',
                         concept: concept || Concept.TRADITIONAL,
@@ -81,24 +82,28 @@ const ProductDetailModal = ({ type, isOpen, onClose, id }: Props) => {
                     break;
                 case 'makeup':
                     addMakeup({
+                        image: product.image,
                         makeupName: product.productName,
                         concept: concept || Concept.TRADITIONAL,
                     });
                     break;
                 case 'flowers':
                     addFlowers({
+                        image: product.image,
                         flowersName: product.productName,
                         note: note || ''
                     });
                     break;
                 case 'weddingPhotography':
                     addWeddingPhotography({
+                        image: product.image,
                         photographyName: product.productName,
                         concept: concept || Concept.TRADITIONAL,
                     });
                     break;
                 case 'restaurantConcept':
                     addRestaurantConcept({
+                        image: product.image,
                         restaurantConceptName: product.productName,
                         color: color || '',
                         concept: concept || Concept.TRADITIONAL,
@@ -106,6 +111,7 @@ const ProductDetailModal = ({ type, isOpen, onClose, id }: Props) => {
                     break;
                 case 'weddingInvitations':
                     addWeddingInvitations({
+                        image: product.image,
                         invitationsName: product.productName,
                         concept: concept || Concept.TRADITIONAL,
                         color: color || '',

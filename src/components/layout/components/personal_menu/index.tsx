@@ -1,4 +1,4 @@
-import { Avatar, Button, Card, Divider, Flex, Menu, MenuButton, MenuItem, MenuList, Stack, Text } from "@chakra-ui/react";
+import { Avatar, Button, Card, Flex, Menu, MenuButton, MenuItem, MenuList, Stack, Text } from "@chakra-ui/react";
 import { FaDoorOpen } from "react-icons/fa6";
 import { useNavigate } from "react-router";
 import { useAuth } from "../../../../hooks/useAuth";
@@ -12,6 +12,7 @@ const PersonalMenu = () => {
 
     const handleLogout = async () => {
         localStorage.removeItem('access_token');
+        localStorage.removeItem('tokenExpiration');
         setIsAuthenticated(false);
         setRole('');
         navigate('/');
@@ -33,7 +34,7 @@ const PersonalMenu = () => {
                             <Avatar size={'sm'} src={'https://t3.ftcdn.net/jpg/05/16/27/58/360_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg'} />
                             <Text fontWeight={600} textAlign={'center'} flex={1}>{`Welcome back, ${data?.fullName}`}</Text>
                         </Flex>
-                        <Divider my={3} />
+                        {/* <Divider my={3} />
                         <MenuItem
                             p={0}
                             _hover={{ bg: 'none' }}
@@ -42,7 +43,7 @@ const PersonalMenu = () => {
                             <Button w={'full'}>
                                 View personal information
                             </Button>
-                        </MenuItem>
+                        </MenuItem> */}
                     </Card>
                     <MenuItem
                         maxW={'95%'}

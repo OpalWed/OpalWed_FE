@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Text, Checkbox, Stack } from "@chakra-ui/react";
-import { Border } from "../../../styles/styles";
 import { useNavigate } from "react-router";
 
 interface Props {
@@ -19,7 +18,7 @@ const DesignInformation = ({ isOpen, onClose, budget }: Props) => {
             <ModalContent>
                 <ModalHeader fontSize='xl'>Thiết kế tiệc cưới</ModalHeader>
                 <ModalCloseButton />
-                <ModalBody py={6} borderY={Border.tableBorder} pos={'relative'}>
+                <ModalBody py={6} pos={'relative'}>
                     <Stack mb={8}>
                         <Text fontFamily={'Noto Sans JP'}>
                             Thiết kế tiệc cưới sẽ trải qua 6 bước. Nếu bạn không muốn chọn dịch vụ của chúng tôi ở bước nào bạn cũng có thể nhấn nút "Bỏ qua" để được đi tiếp đến bước tiếp theo
@@ -37,7 +36,9 @@ const DesignInformation = ({ isOpen, onClose, budget }: Props) => {
                 </ModalBody>
                 <ModalFooter>
                     <Button
-                        colorScheme='green'
+                        bg={'#0C2948'}
+                        _hover={{ bg: '#143252' }}
+                        color={'white'}
                         w={'full'}
                         onClick={() => navigate(`/wedding-planning/${budget}/clothes`)}
                         isDisabled={!isChecked}

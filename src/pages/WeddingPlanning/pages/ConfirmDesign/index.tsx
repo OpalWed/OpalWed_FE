@@ -319,9 +319,10 @@ const ConfirmDesignPage = () => {
                 borderRadius="8px"
                 border="1px solid"
                 borderColor={Color.darkBlue}
+                minH={'82vh'}
             >
                 <Text fontSize="xl" fontWeight="bold" color="#d53f8c" fontFamily={'Hatton'} mb={3}>
-                    Sản phẩm
+                    Hạng mục
                 </Text>
                 <Divider mb={3} borderColor={'pink'} />
                 <Box maxHeight="645px" overflowY="auto" css={{
@@ -332,6 +333,7 @@ const ConfirmDesignPage = () => {
                 }}>
                     {clothes.map(c => (
                         <ConfirmDesignProductItem
+                            image={c.image}
                             productName={c.clothesName}
                             concept={c.concept}
                             color={c.color}
@@ -340,6 +342,7 @@ const ConfirmDesignPage = () => {
                     ))}
                     {makeup.map(m => (
                         <ConfirmDesignProductItem
+                            image={m.image}
                             productName={m.makeupName}
                             concept={m.concept}
                             onRemove={() => removeMakeup(m)}
@@ -347,12 +350,14 @@ const ConfirmDesignPage = () => {
                     ))}
                     {flowers.map(f => (
                         <ConfirmDesignProductItem
+                            image={f.image}
                             productName={f.flowersName}
                             onRemove={() => removeFlowers(f)}
                         />
                     ))}
                     {weddingPhotography.map(p => (
                         <ConfirmDesignProductItem
+                            image={p.image}
                             productName={p.photographyName}
                             concept={p.concept}
                             onRemove={() => removeWeddingPhotography(p)}
@@ -360,6 +365,7 @@ const ConfirmDesignPage = () => {
                     ))}
                     {restaurantConcept.map(rc => (
                         <ConfirmDesignProductItem
+                            image={rc.image}
                             productName={rc.restaurantConceptName}
                             concept={rc.concept}
                             color={rc.color}
@@ -368,6 +374,7 @@ const ConfirmDesignPage = () => {
                     ))}
                     {weddingInvitations.map(i => (
                         <ConfirmDesignProductItem
+                            image={i.image}
                             productName={i.invitationsName}
                             concept={i.concept}
                             color={i.color}
@@ -395,6 +402,7 @@ const ConfirmDesignPage = () => {
                 borderRadius="8px"
                 border="1px solid"
                 borderColor={Color.darkBlue}
+                minH={'82vh'}
             >
                 <Box
                     bg="#fff"
@@ -467,7 +475,9 @@ const ConfirmDesignPage = () => {
                                         {clothes.map((c, index) => (
                                             <Stack key={index} justify={'space-between'} w={'full'} pos={'relative'}>
                                                 <Text>{c.clothesName}</Text>
-                                                <Text ml={3} fontSize={17}>+ Màu sắc: {c.color}</Text>
+                                                {c.color && (
+                                                    <Text ml={3} fontSize={17}>+ Màu sắc: {c.color}</Text>
+                                                )}
                                             </Stack>
                                         ))}
                                     </Stack>
@@ -493,13 +503,14 @@ const ConfirmDesignPage = () => {
                                         {makeup.map((m, index) => (
                                             <Stack key={index} justify={'space-between'} w={'full'} pos={'relative'}>
                                                 <Text>{m.makeupName}</Text>
-                                                <Text ml={3} fontSize={17}>
-                                                    + Phong cách:
-                                                    {m.concept === Concept.TRADITIONAL
-                                                        ? "Truyền thống" : m.concept === Concept.EUROPE
-                                                            ? "Châu Âu" : m.concept === Concept.MINIMALISM
-                                                                ? "Tối giản" : "Cổ điển"}
-                                                </Text>
+                                                {m.concept && (
+                                                    <Text ml={3} fontSize={17}>
+                                                        + Phong cách: {m.concept === Concept.TRADITIONAL
+                                                            ? "Truyền thống" : m.concept === Concept.EUROPE
+                                                                ? "Châu Âu" : m.concept === Concept.MINIMALISM
+                                                                    ? "Tối giản" : "Cổ điển"}
+                                                    </Text>
+                                                )}
                                             </Stack>
                                         ))}
                                     </Stack>
@@ -525,6 +536,11 @@ const ConfirmDesignPage = () => {
                                         {flowers.map((f, index) => (
                                             <Stack key={index} justify={'space-between'} w={'full'} pos={'relative'}>
                                                 <Text>{f.flowersName}</Text>
+                                                {f.note && (
+                                                    <Text ml={3} fontSize={17}>
+                                                        + Ghi chú: {f.note}
+                                                    </Text>
+                                                )}
                                             </Stack>
                                         ))}
                                     </Stack>
@@ -550,13 +566,14 @@ const ConfirmDesignPage = () => {
                                         {weddingPhotography.map((wp, index) => (
                                             <Stack key={index} justify={'space-between'} w={'full'} pos={'relative'}>
                                                 <Text>{wp.photographyName}</Text>
-                                                <Text ml={3} fontSize={17}>
-                                                    + Phong cách:
-                                                    {wp.concept === Concept.TRADITIONAL
-                                                        ? "Truyền thống" : wp.concept === Concept.EUROPE
-                                                            ? "Châu Âu" : wp.concept === Concept.MINIMALISM
-                                                                ? "Tối giản" : "Cổ điển"}
-                                                </Text>
+                                                {wp.concept && (
+                                                    <Text ml={3} fontSize={17}>
+                                                        + Phong cách: {wp.concept === Concept.TRADITIONAL
+                                                            ? "Truyền thống" : wp.concept === Concept.EUROPE
+                                                                ? "Châu Âu" : wp.concept === Concept.MINIMALISM
+                                                                    ? "Tối giản" : "Cổ điển"}
+                                                    </Text>
+                                                )}
                                             </Stack>
                                         ))}
                                     </Stack>
@@ -582,14 +599,17 @@ const ConfirmDesignPage = () => {
                                         {restaurantConcept.map((rc, index) => (
                                             <Stack key={index} justify={'space-between'} w={'full'} pos={'relative'}>
                                                 <Text>{rc.restaurantConceptName}</Text>
-                                                <Text ml={3} fontSize={17}>
-                                                    + Phong cách:
-                                                    {rc.concept === Concept.TRADITIONAL
-                                                        ? "Truyền thống" : rc.concept === Concept.EUROPE
-                                                            ? "Châu Âu" : rc.concept === Concept.MINIMALISM
-                                                                ? "Tối giản" : "Cổ điển"}
-                                                </Text>
-                                                <Text ml={3} fontSize={17}>+ Màu sắc: {rc.color}</Text>
+                                                {rc.concept && (
+                                                    <Text ml={3} fontSize={17}>
+                                                        + Phong cách: {rc.concept === Concept.TRADITIONAL
+                                                            ? "Truyền thống" : rc.concept === Concept.EUROPE
+                                                                ? "Châu Âu" : rc.concept === Concept.MINIMALISM
+                                                                    ? "Tối giản" : "Cổ điển"}
+                                                    </Text>
+                                                )}
+                                                {rc.color && (
+                                                    <Text ml={3} fontSize={17}>+ Màu sắc: {rc.color}</Text>
+                                                )}
                                             </Stack>
                                         ))}
                                     </Stack>
@@ -615,14 +635,17 @@ const ConfirmDesignPage = () => {
                                         {weddingInvitations.map((wi, index) => (
                                             <Stack key={index} justify={'space-between'} w={'full'} pos={'relative'}>
                                                 <Text>{wi.invitationsName}</Text>
-                                                <Text ml={3} fontSize={17}>
-                                                    + Phong cách:
-                                                    {wi.concept === Concept.TRADITIONAL
-                                                        ? "Truyền thống" : wi.concept === Concept.EUROPE
-                                                            ? "Châu Âu" : wi.concept === Concept.MINIMALISM
-                                                                ? "Tối giản" : "Cổ điển"}
-                                                </Text>
-                                                <Text ml={3} fontSize={17}>+ Màu sắc: {wi.color}</Text>
+                                                {wi.concept && (
+                                                    <Text ml={3} fontSize={17}>
+                                                        + Phong cách: {wi.concept === Concept.TRADITIONAL
+                                                            ? "Truyền thống" : wi.concept === Concept.EUROPE
+                                                                ? "Châu Âu" : wi.concept === Concept.MINIMALISM
+                                                                    ? "Tối giản" : "Cổ điển"}
+                                                    </Text>
+                                                )}
+                                                {wi.color && (
+                                                    <Text ml={3} fontSize={17}>+ Màu sắc: {wi.color}</Text>
+                                                )}
                                             </Stack>
                                         ))}
                                     </Stack>

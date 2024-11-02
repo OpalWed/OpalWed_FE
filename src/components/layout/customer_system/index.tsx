@@ -22,6 +22,7 @@ const CustomerSystemLayout = () => {
 
     const handleLogout = async () => {
         localStorage.removeItem('access_token');
+        localStorage.removeItem('tokenExpiration');
         setIsAuthenticated(false);
         setRole('');
         setIntendedRoute(null);

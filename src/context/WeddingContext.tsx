@@ -39,33 +39,39 @@ interface WeddingInfo {
 }
 
 interface Clothes {
+    image: string;
     clothesName: string;
     color: string;
     concept: Concept;
 }
 
 interface Makeup {
+    image: string;
     makeupName: string;
     concept: Concept;
 }
 
 interface Flowers {
+    image: string;
     flowersName: string;
     note: string;
 }
 
 interface WeddingPhotography {
+    image: string;
     photographyName: string;
     concept: Concept;
 }
 
 interface RestaurantConcept {
+    image: string;
     restaurantConceptName: string;
     color: string;
     concept: Concept;
 }
 
 interface WeddingInvitations {
+    image: string;
     invitationsName: string;
     concept: Concept;
     color: string
