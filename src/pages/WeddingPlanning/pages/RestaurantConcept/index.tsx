@@ -86,7 +86,7 @@ const RestaurantConceptPage = () => {
                     </AbsoluteCenter>
                 </Box>
                 {restaurantConcept.length === 0 && (
-                    <Button pos={'absolute'} top={2} right={0} variant={'outline'} onClick={() => navigate(`/wedding-planning/${param.budget}/invitations`)}>
+                    <Button pos={'absolute'} top={2} right={0} variant={'outline'} onClick={() => navigate(`/wedding-planning/${param.budget}/invitation`)}>
                         Bỏ qua
                     </Button>
                 )}
