@@ -1,14 +1,11 @@
-import { Card, CardBody, Text, Stack, Button, Box, FormControl, FormLabel, Input, useToast, InputGroup, InputRightElement, Divider, AbsoluteCenter, HStack, Icon, Heading, useDisclosure, FormErrorMessage } from "@chakra-ui/react";
-import { Border } from "../../styles/styles";
+import { Card, CardBody, Text, Stack, Button, Box, FormControl, FormLabel, Input, useToast, InputGroup, InputRightElement, HStack, Heading, useDisclosure, FormErrorMessage } from "@chakra-ui/react";
 import { Link, useNavigate } from "react-router-dom";
 import { changeTabTitle } from "../../utils/changeTabTitle";
 import { FormEvent, useEffect, useRef, useState } from "react";
 import Logo from "../../components/logo";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
-import { FcGoogle } from "react-icons/fc";
 import { AxiosError } from "axios";
 import ApiClient from "../../services/apiClient";
-import { useGoogleLogin } from "@react-oauth/google";
 import VerifyModal from "../../components/modal/verify";
 import LoadingModal from "../../components/modal/loading";
 
@@ -32,67 +29,67 @@ const SignUpPage = () => {
     const emailRef = useRef<HTMLInputElement>(null);
     const toast = useToast();
     const navigate = useNavigate();
-    const googleSignup = useGoogleLogin({
-        onSuccess: (token) => {
-            handleGoogleLogin(token.access_token);
-        },
-        onError: () => {
-            toast({
-                title: "Xảy ra lỗi",
-                description: "Sign up by Google failed. Try again!!!",
-                status: "error",
-                duration: 2500,
-                position: 'top',
-                isClosable: true,
-            });
-        }
-    })
+    // const googleSignup = useGoogleLogin({
+    //     onSuccess: (token) => {
+    //         handleGoogleLogin(token.access_token);
+    //     },
+    //     onError: () => {
+    //         toast({
+    //             title: "Xảy ra lỗi",
+    //             description: "Sign up by Google failed. Try again!!!",
+    //             status: "error",
+    //             duration: 2500,
+    //             position: 'top',
+    //             isClosable: true,
+    //         });
+    //     }
+    // })
 
-    const handleGoogleLogin = async (token: string) => {
-        const api = new ApiClient<any>('/auth/login-google');
-        const data = {
-            token
-        };
+    // const handleGoogleLogin = async (token: string) => {
+    //     const api = new ApiClient<any>('/auth/login-google');
+    //     const data = {
+    //         token
+    //     };
 
-        try {
-            const response = await api.postUnauthen(data);
+    //     try {
+    //         const response = await api.postUnauthen(data);
 
-            if (response.success) {
-                localStorage.setItem('access_token', response.data.token);
-                localStorage.setItem('refresh_token', response.data.refreshToken);
-                // const decoded = jwtDecode<DecodeJWTRole>(response.data.token);
-                // const decodedRole = formatRoleString(decoded.role[0]);
+    //         if (response.success) {
+    //             localStorage.setItem('access_token', response.data.token);
+    //             localStorage.setItem('refresh_token', response.data.refreshToken);
+    // const decoded = jwtDecode<DecodeJWTRole>(response.data.token);
+    // const decodedRole = formatRoleString(decoded.role[0]);
 
-                // setIsAuthenticated(true);
-                // setRole(decodedRole);
-                // if (decodedRole === 'Customer') {
-                //     navigate('/');
-                // } else {
-                //     return;
-                // }
-            } else {
-                toast({
-                    title: "Xảy ra lỗi",
-                    description: response.message,
-                    status: "error",
-                    duration: 2500,
-                    position: 'top',
-                    isClosable: true,
-                });
-            }
-        } catch (error) {
-            if (error instanceof AxiosError) {
-                toast({
-                    title: "Xảy ra lỗi",
-                    description: error.response?.data?.message || "An error occurred",
-                    status: "error",
-                    duration: 2500,
-                    position: 'top',
-                    isClosable: true,
-                });
-            }
-        }
-    };
+    // setIsAuthenticated(true);
+    // setRole(decodedRole);
+    // if (decodedRole === 'Customer') {
+    //     navigate('/');
+    // } else {
+    //     return;
+    // }
+    //         } else {
+    //             toast({
+    //                 title: "Xảy ra lỗi",
+    //                 description: response.message,
+    //                 status: "error",
+    //                 duration: 2500,
+    //                 position: 'top',
+    //                 isClosable: true,
+    //             });
+    //         }
+    //     } catch (error) {
+    //         if (error instanceof AxiosError) {
+    //             toast({
+    //                 title: "Xảy ra lỗi",
+    //                 description: error.response?.data?.message || "An error occurred",
+    //                 status: "error",
+    //                 duration: 2500,
+    //                 position: 'top',
+    //                 isClosable: true,
+    //             });
+    //         }
+    //     }
+    // };
 
     const getVerifyCode = async (email: string) => {
         const api = new ApiClient<any>('/auth/requestOTP');
@@ -325,7 +322,7 @@ const SignUpPage = () => {
                         >
                             Đăng kí
                         </Button>
-                        <Box position='relative'>
+                        {/* <Box position='relative'>
                             <Divider borderColor={'black'} />
                             <AbsoluteCenter bg={'white'} px={2} fontFamily={'Hatton'}>
                                 hoặc
@@ -341,7 +338,7 @@ const SignUpPage = () => {
                             >
                                 Tiếp tục với Google
                             </Button>
-                        </HStack>
+                        </HStack> */}
                         <HStack gap={2} justify={'center'}>
                             <Text align={"center"} fontFamily={'Noto Sans JP'} fontSize={16}>
                                 Đã có tài khoản?

@@ -60,7 +60,7 @@ const Navbar = () => {
                 {isAuthenticated ? (
                     <HStack pos={'absolute'} top={0} right={0}>
                         <HStack>
-                            <Avatar size={'sm'} />
+                            <Avatar size={'sm'} src={data?.imageUrl} />
                             <Link to={'/profile'} onClick={() => setIntendedRoute(location.pathname)}>
                                 <Text color={'gainsboro'} fontFamily={'Hatton'}>{data?.fullName}</Text>
                             </Link>

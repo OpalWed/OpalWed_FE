@@ -30,25 +30,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
     const [role, setRole] = useState<string>(initialRole);
 
-    const checkTokenValidity = () => {
-        const token = localStorage.getItem("access_token");
-        const expirationTime = localStorage.getItem("tokenExpiration");
-
-        if (token && expirationTime) {
-            const isExpired = Date.now() > parseInt(expirationTime, 10);
-
-            if (isExpired) {
-                localStorage.removeItem("authToken");
-                localStorage.removeItem("tokenExpiration");
-                window.location.href = '/';
-                return null;
-            } else {
-                return token;
-            }
-        }
-        return null;
-    }
-
     useEffect(() => {
         if (accessToken) {
             const decoded = jwtDecode<DecodeJWTRole>(accessToken);
@@ -57,15 +38,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             setRole('');
         }
     }, [accessToken])
-
-    useEffect(() => {
-        checkTokenValidity();
-    }, []);
-
-    useEffect(() => {
-        const interval = setInterval(checkTokenValidity, 5 * 60 * 1000);
-        return () => clearInterval(interval);
-    }, []);
 
     return (
         <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated, role, setRole, intendedRoute, setIntendedRoute }}>

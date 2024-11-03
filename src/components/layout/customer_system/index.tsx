@@ -1,4 +1,4 @@
-import { Avatar, Button, Heading, HStack, Stack, Text } from "@chakra-ui/react"
+import { Avatar, Button, Heading, HStack, Stack, Text, useToast } from "@chakra-ui/react"
 import { Outlet, useLocation } from "react-router"
 import { useNavigate } from "react-router-dom"
 import { useEffect } from "react"
@@ -11,6 +11,7 @@ const CustomerSystemLayout = () => {
     const { role, intendedRoute, setIsAuthenticated, setRole, setIntendedRoute } = useAuth();
     const { pathname } = useLocation();
     const navigate = useNavigate();
+    const toast = useToast();
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -28,6 +29,45 @@ const CustomerSystemLayout = () => {
         setIntendedRoute(null);
         navigate('/');
     }
+
+    const checkTokenValidity = () => {
+        const token = localStorage.getItem("access_token");
+        const expirationTime = localStorage.getItem("tokenExpiration");
+
+        if (token && expirationTime) {
+            const isExpired = Date.now() > parseInt(expirationTime, 10);
+
+            if (isExpired) {
+                localStorage.removeItem("access_token");
+                localStorage.removeItem("tokenExpiration");
+                setIsAuthenticated(false);
+                setRole('');
+                setIntendedRoute(null);
+                toast({
+                    title: "Đăng nhập hết hạn",
+                    description: "Phiên đăng nhập của bạn đã hết hạn. Hãy đăng nhập lại",
+                    status: "error",
+                    duration: 2500,
+                    position: 'top',
+                    isClosable: true,
+                });
+                navigate('/');
+                return null;
+            } else {
+                return token;
+            }
+        }
+        return null;
+    }
+
+    useEffect(() => {
+        checkTokenValidity();
+    }, []);
+
+    useEffect(() => {
+        const interval = setInterval(checkTokenValidity, 5 * 60 * 1000);
+        return () => clearInterval(interval);
+    }, []);
 
     return (
         <>

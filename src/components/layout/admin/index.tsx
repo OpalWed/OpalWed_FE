@@ -1,5 +1,5 @@
-import { Box, HStack, Stack } from "@chakra-ui/react"
-import { Outlet, useLocation } from "react-router"
+import { Box, HStack, Stack, useToast } from "@chakra-ui/react"
+import { Outlet, useLocation, useNavigate } from "react-router"
 import AdminNavbar from "../components/admin_navbar"
 import SideBar from "../components/sidebar"
 import { useEffect, useState } from "react"
@@ -8,8 +8,10 @@ import NotFoundPage from "../../../pages/NotFound"
 
 const AdminLayout = () => {
     const [collapsed, setCollapsed] = useState<boolean>(false);
-    const { role } = useAuth();
+    const { role, setIsAuthenticated, setRole, setIntendedRoute } = useAuth();
     const { pathname } = useLocation();
+    const toast = useToast();
+    const navigate = useNavigate();
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -22,6 +24,45 @@ const AdminLayout = () => {
     if (role !== 'Admin') {
         return <NotFoundPage />
     }
+
+    const checkTokenValidity = () => {
+        const token = localStorage.getItem("access_token");
+        const expirationTime = localStorage.getItem("tokenExpiration");
+
+        if (token && expirationTime) {
+            const isExpired = Date.now() > parseInt(expirationTime, 10);
+
+            if (isExpired) {
+                localStorage.removeItem("access_token");
+                localStorage.removeItem("tokenExpiration");
+                setIsAuthenticated(false);
+                setRole('');
+                setIntendedRoute(null);
+                toast({
+                    title: "Đăng nhập hết hạn",
+                    description: "Phiên đăng nhập của bạn đã hết hạn. Hãy đăng nhập lại",
+                    status: "error",
+                    duration: 2500,
+                    position: 'top',
+                    isClosable: true,
+                });
+                navigate('/');
+                return null;
+            } else {
+                return token;
+            }
+        }
+        return null;
+    }
+
+    useEffect(() => {
+        checkTokenValidity();
+    }, []);
+
+    useEffect(() => {
+        const interval = setInterval(checkTokenValidity, 5 * 60 * 1000);
+        return () => clearInterval(interval);
+    }, []);
 
     return (
         <>
