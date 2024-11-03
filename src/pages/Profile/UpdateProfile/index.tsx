@@ -125,8 +125,8 @@ const UpdateProfilePage = () => {
 
     return (
         <>
-            <HStack h={78} bg={Color.darkBlue}>
-                <Heading fontSize={24} color={'white'} fontWeight={500} my={'auto'} ml={6} fontFamily={'Hatton'}>Cập nhật hồ sơ</Heading>
+            <HStack h={78} bg={Color.darkBlue} py={8}>
+                <Heading fontSize={24} color={'white'} fontWeight={500} my={'auto'} ml={6} mt={-2} fontFamily={'Hatton'}>Cập nhật hồ sơ</Heading>
             </HStack>
             <Stack
                 mt={10}
