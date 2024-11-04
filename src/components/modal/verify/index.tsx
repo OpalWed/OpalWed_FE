@@ -136,6 +136,7 @@ const VerifyModal = ({ isOpen, onClose, email, sendTime }: Props) => {
                                 </PinInput>
                             </HStack>
                         </FormControl>
+                        <Text textAlign={'center'}> Kiểm tra mail của tài khoản đăng ký để nhập mã xác nhận</Text>
                         {sendBack ? (
                             <Text
                                 cursor={'pointer'}
