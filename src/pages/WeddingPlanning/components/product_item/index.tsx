@@ -35,7 +35,7 @@ const ProductItem = ({ type, product }: Prop) => {
                 borderTopRadius="md"
                 w={'full'}
                 h={250}
-                objectFit="fill"
+                objectFit="cover"
             />
             <Text fontSize="15" fontWeight="bold" color="gold" mt={3} fontFamily={'Canela'}>
                 {product.utility === Utility.CLOTHES ? 'Trang phục' :
