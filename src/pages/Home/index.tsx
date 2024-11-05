@@ -44,7 +44,86 @@ const HomePage = () => {
                     </Text>
                 </Stack>
             </Box>
-            <Stack w={'5xl'} mx={'auto'} my={16}>
+            <Box
+                pos={'relative'}
+                width="100%"
+                height="50vh"
+                bgImage="url('https://media.istockphoto.com/id/1388616087/vector/magic-night-dark-blue-banner-with-sparkling-glitter-bokeh-and-line-art.jpg?s=612x612&w=0&k=20&c=lJafdN3veT2xulp8L_89g6qQttnlo_phniBUNNwWEtU=')"
+                bgSize="cover"
+                bgPosition="center"
+                my={16}
+            >
+                <Stack
+                    align={'center'}
+                    pos={'absolute'}
+                    w={'5xl'}
+                    left="50%"
+                    transform="translate(-50%, 0)"
+                    bottom={"15%"}
+                    gap={6}
+                    color={'white'}
+                >
+                    <Heading fontSize={50} fontWeight={400} textAlign={'center'} w={'3xl'} fontFamily={'Hatton'}>Nắm bắt tương lai của việc lên kế hoạch cùng OpalWed</Heading>
+                    <Text textAlign={'justify'} fontSize={24} fontFamily={'Canela'}>
+                        Điểm đến trực tuyến cuối cùng của bạn
+                    </Text>
+                    {isAuthenticated ? (
+                        <Button
+                            borderRadius={'full'}
+                            w={60}
+                            m={'auto'}
+                            onClick={() => navigate('wedding-planning/wedding-information')}
+                            color={'#203963'}
+                            textTransform={'uppercase'}
+                            fontFamily={'Noto Sans JP'}
+                        >
+                            Tạo kế hoạch
+                        </Button>
+                    ) : (
+                        <Popover>
+                            <PopoverTrigger>
+                                <Button
+                                    borderRadius={'full'}
+                                    w={60}
+                                    m={'auto'}
+                                    color={'#203963'}
+                                    textTransform={'uppercase'}
+                                    fontFamily={'Noto Sans JP'}
+                                    fontWeight={500}
+                                >
+                                    Tạo kế hoạch
+                                </Button>
+                            </PopoverTrigger>
+                            <Portal>
+                                <PopoverContent>
+                                    <PopoverArrow />
+                                    <PopoverHeader fontFamily={'Noto Sans JP'}>Cần đăng nhập</PopoverHeader>
+                                    <PopoverCloseButton />
+                                    <PopoverBody>
+                                        <Stack align={'center'} gap={4}>
+                                            <Text fontFamily={'Noto Sans JP'} fontSize={17} mb={2}>Bạn cần đăng nhập để tạo kế hoạch cho buổi tiệc cưới</Text>
+                                            <Button
+                                                colorScheme='blue'
+                                                w={'full'}
+                                                onClick={() => {
+                                                    navigate('/login');
+                                                    setIntendedRoute('/wedding-planning/wedding-information');
+                                                }}
+                                                fontFamily={'Noto Sans JP'}
+                                                fontSize={14}
+                                                fontWeight={500}
+                                            >
+                                                Đăng nhập ngay
+                                            </Button>
+                                        </Stack>
+                                    </PopoverBody>
+                                </PopoverContent>
+                            </Portal>
+                        </Popover>
+                    )}
+                </Stack>
+            </Box>
+            <Stack w={'5xl'} mx={'auto'} my={12}>
                 <Stack gap={10}>
                     <Heading textAlign={'center'} fontSize={24} fontFamily={'Noto Sans JP'} fontWeight={400}>| DỊCH VỤ CỦA CHÚNG TÔI |</Heading>
                     <Text textAlign={'center'} fontFamily={'Noto Sans JP'}>
@@ -157,86 +236,6 @@ const HomePage = () => {
                     </HStack>
                 </Stack>
             </Stack>
-            <Box
-                pos={'relative'}
-                width="100%"
-                height="50vh"
-                bgImage="url('https://media.istockphoto.com/id/1388616087/vector/magic-night-dark-blue-banner-with-sparkling-glitter-bokeh-and-line-art.jpg?s=612x612&w=0&k=20&c=lJafdN3veT2xulp8L_89g6qQttnlo_phniBUNNwWEtU=')"
-                bgSize="cover"
-                bgPosition="center"
-                mb={16}
-                mt={10}
-            >
-                <Stack
-                    align={'center'}
-                    pos={'absolute'}
-                    w={'5xl'}
-                    left="50%"
-                    transform="translate(-50%, 0)"
-                    bottom={"15%"}
-                    gap={6}
-                    color={'white'}
-                >
-                    <Heading fontSize={50} fontWeight={400} textAlign={'center'} w={'3xl'} fontFamily={'Hatton'}>Nắm bắt tương lai của việc lên kế hoạch cùng OpalWed</Heading>
-                    <Text textAlign={'justify'} fontSize={24} fontFamily={'Canela'}>
-                        Điểm đến trực tuyến cuối cùng của bạn
-                    </Text>
-                    {isAuthenticated ? (
-                        <Button
-                            borderRadius={'full'}
-                            w={60}
-                            m={'auto'}
-                            onClick={() => navigate('wedding-planning/wedding-information')}
-                            color={'#203963'}
-                            textTransform={'uppercase'}
-                            fontFamily={'Noto Sans JP'}
-                        >
-                            Tạo kế hoạch
-                        </Button>
-                    ) : (
-                        <Popover>
-                            <PopoverTrigger>
-                                <Button
-                                    borderRadius={'full'}
-                                    w={60}
-                                    m={'auto'}
-                                    color={'#203963'}
-                                    textTransform={'uppercase'}
-                                    fontFamily={'Noto Sans JP'}
-                                    fontWeight={500}
-                                >
-                                    Tạo kế hoạch
-                                </Button>
-                            </PopoverTrigger>
-                            <Portal>
-                                <PopoverContent>
-                                    <PopoverArrow />
-                                    <PopoverHeader fontFamily={'Noto Sans JP'}>Cần đăng nhập</PopoverHeader>
-                                    <PopoverCloseButton />
-                                    <PopoverBody>
-                                        <Stack align={'center'} gap={4}>
-                                            <Text fontFamily={'Noto Sans JP'} fontSize={17} mb={2}>Bạn cần đăng nhập để tạo kế hoạch cho buổi tiệc cưới</Text>
-                                            <Button
-                                                colorScheme='blue'
-                                                w={'full'}
-                                                onClick={() => {
-                                                    navigate('/login');
-                                                    setIntendedRoute('/wedding-planning/wedding-information');
-                                                }}
-                                                fontFamily={'Noto Sans JP'}
-                                                fontSize={14}
-                                                fontWeight={500}
-                                            >
-                                                Đăng nhập ngay
-                                            </Button>
-                                        </Stack>
-                                    </PopoverBody>
-                                </PopoverContent>
-                            </Portal>
-                        </Popover>
-                    )}
-                </Stack>
-            </Box>
             <Box position="relative" bg="#E0EFF4" pt={16} pb={12} borderRadius="md" mb={16} mt={10}>
                 <Box
                     position="absolute"
