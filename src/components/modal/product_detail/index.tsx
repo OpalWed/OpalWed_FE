@@ -163,7 +163,7 @@ const ProductDetailModal = ({ type, isOpen, onClose, id }: Props) => {
                     <ModalBody mt={8}>
                         <HStack gap={8} align={'flex-start'}>
                             <Image
-                                objectFit={'fill'}
+                                objectFit={'cover'}
                                 src={
                                     product.image || "https://www.mouawad.com/dw/image/v2/BJJG_PRD/on/demandware.static/-/Library-Sites-MouawadSharedLibrary/default/dwe3fe2448/M-CLASSIQUE/m-classique-1.png"
                                 }
