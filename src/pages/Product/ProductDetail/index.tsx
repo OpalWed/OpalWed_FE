@@ -1,37 +1,50 @@
-import { Box, Image, Text, HStack, Divider, Stack, SimpleGrid, Heading } from '@chakra-ui/react';
+import { Box, Image, Text, HStack, Divider, Stack, Heading } from '@chakra-ui/react';
 import ProductCarousel from '../../../components/carousel/product';
 import { useEffect, useState } from 'react';
 import { Border } from '../../../styles/styles';
 import { changeTabTitle } from '../../../utils/changeTabTitle';
+import { useParams } from 'react-router-dom';
+import useProductDetail from '../../../hooks/useProductDetail';
+import { initialProduct, Product } from '../../../types/Product';
+import Loading from '../../../components/loading';
 
 const ProductDetailPage = () => {
-
-    const [mainImage, setMainImage] = useState<string>(
-        'https://www.mouawad.com/dw/image/v2/BJJG_PRD/on/demandware.static/-/Library-Sites-MouawadSharedLibrary/default/dwe3fe2448/M-CLASSIQUE/m-classique-1.png'
-    );
-
-    // Array of thumbnails
-    const thumbnails = [
-        'https://www.mouawad.com/dw/image/v2/BJJG_PRD/on/demandware.static/-/Library-Sites-MouawadSharedLibrary/default/dwe3fe2448/M-CLASSIQUE/m-classique-1.png',
-        'https://product.hstatic.net/200000567741/product/afrm000283d2cz1_1_84ecf91955ea48d5ab2f65c81fd7c1f2.jpg',
-        'https://www.mouawad.com/dw/image/v2/BJJG_PRD/on/demandware.static/-/Library-Sites-MouawadSharedLibrary/default/dwe3fe2448/M-CLASSIQUE/m-classique-1.png',
-        'https://product.hstatic.net/200000567741/product/afrm000283d2cz1_1_84ecf91955ea48d5ab2f65c81fd7c1f2.jpg',
-    ];
+    const param = useParams<{ id: string }>();
+    const { data, isLoading, refetch } = useProductDetail({ id: parseInt(param.id || '') });
+    const [product, setProduct] = useState<Product>(initialProduct);
+    const [id, setId] = useState<number>(0);
 
     // Function to handle thumbnail click
-    const handleThumbnailClick = (imageSrc: string) => {
-        setMainImage(imageSrc); // Set the clicked thumbnail as the main image
-    };
+    // const handleThumbnailClick = (imageSrc: string) => {
+    //     setMainImage(imageSrc); // Set the clicked thumbnail as the main image
+    // };
 
     useEffect(() => {
-        changeTabTitle('Chi tiết sản phẩm');
-    }, []);
+        if (param.id) {
+            refetch && refetch();
+            setId(parseInt(param.id));
+        }
+    }, [param.id]);
+
+    useEffect(() => {
+        if (product) {
+            changeTabTitle(product.productName);
+        }
+    }, [product]);
+
+    useEffect(() => {
+        if (data) {
+            setProduct(data);
+        }
+    }, [data])
 
     return (
-        <Stack w={'6xl'} mx="auto" mt={10} mb={20} gap={32}>
-            <HStack gap={10} align={'flex-start'}>
-                <HStack flex={1}>
-                    <SimpleGrid
+        <>
+            {!isLoading ? (
+                <Stack w={'6xl'} mx="auto" mt={10} mb={20} gap={32}>
+                    <HStack gap={10} align={'flex-start'}>
+                        <HStack flex={1}>
+                            {/* <SimpleGrid
                         row={4}
                         spacingY={2}
                     >
@@ -48,38 +61,38 @@ const ProductDetailPage = () => {
                                 onClick={() => handleThumbnailClick(thumbnail)}
                             />
                         ))}
-                    </SimpleGrid>
-                    <Image
-                        src={mainImage}
-                        alt="Main Display"
-                        borderRadius="md"
-                        h={424}
-                        w={'70%'}
-                        objectFit="cover"
-                        border={Border.thinLightBorder}
-                    />
-                </HStack>
-                <Box flex={1}>
-                    <Text fontSize={24}>Silver Aurora Charm</Text>
-                    <Divider my={5} />
-                    <Text>Secondary stone type: Diamond</Text>
-                    <Text>Material: 24K Silver</Text>
-                    <Text>Number of stones: 1</Text>
-                    <Text>Brand: PNU</Text>
-                    <Text>Model number: 73625</Text>
-                    <Text>Dimension: 5.5mm</Text>
-                    <Text>Additional Info:
-                        Diamond jewelry is now more irresistible. This new collection will attract a modern touch and the perfect gift for any occasion.
-                    </Text>
-                </Box>
-            </HStack>
+                    </SimpleGrid> */}
+                            <Image
+                                src={product.image}
+                                alt="Main Display"
+                                borderRadius="md"
+                                h={424}
+                                w={'70%'}
+                                objectFit="cover"
+                                border={Border.thinLightBorder}
+                            />
+                        </HStack>
+                        <Box flex={1}>
+                            <Text fontSize={24} fontFamily={'Hatton'}>{product.productName}</Text>
+                            <Divider my={5} />
+                            <Heading textAlign={'center'} fontFamily={'Hatton'} fontSize={20} mb={4}>Mô tả sản phẩm</Heading>
+                            <Text fontFamily={'Noto Sans JP'} ml={3}>
+                                <div className="product-des" dangerouslySetInnerHTML={{ __html: product.description }} />
+                            </Text>
+                        </Box>
+                    </HStack>
 
-            <Stack gap={10}>
-                <Heading textAlign={'center'}>Sản phẩm cùng loại</Heading>
-                <ProductCarousel />
-            </Stack>
-
-        </Stack>
+                    <Stack gap={10}>
+                        <Heading textAlign={'center'} fontFamily={'Hatton'}>Sản phẩm cùng loại</Heading>
+                        <ProductCarousel utility={product.utility} id={id} />
+                    </Stack>
+                </Stack>
+            ) : (
+                <Stack m={'auto'}>
+                    <Loading />
+                </Stack>
+            )}
+        </>
     );
 };
 

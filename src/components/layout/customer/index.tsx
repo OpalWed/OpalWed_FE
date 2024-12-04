@@ -5,12 +5,10 @@ import { useEffect } from "react"
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 import { useAuth } from '../../../hooks/useAuth';
-import { useToast } from '@chakra-ui/react';
 
 const Layout = () => {
     const { pathname } = useLocation();
     const { setIsAuthenticated, setRole, setIntendedRoute } = useAuth();
-    const toast = useToast();
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -32,14 +30,6 @@ const Layout = () => {
                 setIsAuthenticated(false);
                 setRole('');
                 setIntendedRoute(null);
-                toast({
-                    title: "Đăng nhập hết hạn",
-                    description: "Phiên đăng nhập của bạn đã hết hạn. Hãy đăng nhập lại",
-                    status: "error",
-                    duration: 2500,
-                    position: 'top',
-                    isClosable: true,
-                });
                 window.location.reload();
                 return null;
             } else {

@@ -152,7 +152,13 @@ const VerifyModal = ({ isOpen, onClose, email, sendTime }: Props) => {
                     </Stack>
                 </ModalBody>
                 <ModalFooter>
-                    <Button colorScheme='green' mr={3} onClick={handleRecover}>
+                    <Button
+                        bg={'#0C2948'}
+                        _hover={{ bg: '#143252' }}
+                        color={'white'}
+                        mr={3}
+                        onClick={handleRecover}
+                    >
                         Xác nhận
                     </Button>
                     <Button onClick={onClose}>Hủy</Button>

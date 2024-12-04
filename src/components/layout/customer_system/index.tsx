@@ -1,4 +1,4 @@
-import { Avatar, Button, Heading, HStack, Stack, Text, useToast } from "@chakra-ui/react"
+import { Avatar, Button, Heading, HStack, Stack, Text } from "@chakra-ui/react"
 import { Outlet, useLocation } from "react-router"
 import { useNavigate } from "react-router-dom"
 import { useEffect } from "react"
@@ -11,7 +11,6 @@ const CustomerSystemLayout = () => {
     const { role, intendedRoute, setIsAuthenticated, setRole, setIntendedRoute } = useAuth();
     const { pathname } = useLocation();
     const navigate = useNavigate();
-    const toast = useToast();
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -43,14 +42,6 @@ const CustomerSystemLayout = () => {
                 setIsAuthenticated(false);
                 setRole('');
                 setIntendedRoute(null);
-                toast({
-                    title: "Đăng nhập hết hạn",
-                    description: "Phiên đăng nhập của bạn đã hết hạn. Hãy đăng nhập lại",
-                    status: "error",
-                    duration: 2500,
-                    position: 'top',
-                    isClosable: true,
-                });
                 navigate('/');
                 return null;
             } else {
