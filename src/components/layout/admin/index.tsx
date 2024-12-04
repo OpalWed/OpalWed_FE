@@ -1,4 +1,4 @@
-import { Box, HStack, Stack, useToast } from "@chakra-ui/react"
+import { Box, HStack, Stack } from "@chakra-ui/react"
 import { Outlet, useLocation, useNavigate } from "react-router"
 import AdminNavbar from "../components/admin_navbar"
 import SideBar from "../components/sidebar"
@@ -10,7 +10,6 @@ const AdminLayout = () => {
     const [collapsed, setCollapsed] = useState<boolean>(false);
     const { role, setIsAuthenticated, setRole, setIntendedRoute } = useAuth();
     const { pathname } = useLocation();
-    const toast = useToast();
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -38,14 +37,6 @@ const AdminLayout = () => {
                 setIsAuthenticated(false);
                 setRole('');
                 setIntendedRoute(null);
-                toast({
-                    title: "Đăng nhập hết hạn",
-                    description: "Phiên đăng nhập của bạn đã hết hạn. Hãy đăng nhập lại",
-                    status: "error",
-                    duration: 2500,
-                    position: 'top',
-                    isClosable: true,
-                });
                 navigate('/');
                 return null;
             } else {

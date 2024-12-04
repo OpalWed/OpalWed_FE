@@ -1,4 +1,4 @@
-import { Stack, useToast } from "@chakra-ui/react"
+import { Stack } from "@chakra-ui/react"
 import { Outlet, useNavigate } from "react-router-dom"
 import WeddingPlanningNavbar from "../components/wedding_planning_navbar"
 import { WeddingProvider } from "../../../context/WeddingContext"
@@ -7,7 +7,6 @@ import { useAuth } from "../../../hooks/useAuth"
 
 const WeddingPlanningLayout = () => {
     const { setIsAuthenticated, setRole, setIntendedRoute } = useAuth();
-    const toast = useToast();
     const navigate = useNavigate();
 
     const checkTokenValidity = () => {
@@ -23,14 +22,6 @@ const WeddingPlanningLayout = () => {
                 setIsAuthenticated(false);
                 setRole('');
                 setIntendedRoute(null);
-                toast({
-                    title: "Đăng nhập hết hạn",
-                    description: "Phiên đăng nhập của bạn đã hết hạn. Hãy đăng nhập lại",
-                    status: "error",
-                    duration: 2500,
-                    position: 'top',
-                    isClosable: true,
-                });
                 navigate('/');
                 return null;
             } else {

@@ -9,6 +9,10 @@ interface Prop {
 
 const ProductItem = ({ product }: Prop) => {
     const navigate = useNavigate();
+    const navigateToDetail = (name: string) => {
+        const hyphenatedName = name.replace(/ /g, '-');
+        navigate(`/product/${product.utility}/${hyphenatedName}/${product.productId.toString()}`);
+    };
 
     return (
         <Box
@@ -21,7 +25,7 @@ const ProductItem = ({ product }: Prop) => {
             pos={'relative'}
             h={340}
             cursor={'pointer'}
-            onClick={() => navigate('/product/jewelry/detail')}
+            onClick={() => navigateToDetail(product.productName)}
         >
             <Image
                 src={product.image || "https://www.mouawad.com/dw/image/v2/BJJG_PRD/on/demandware.static/-/Library-Sites-MouawadSharedLibrary/default/dwe3fe2448/M-CLASSIQUE/m-classique-1.png"}

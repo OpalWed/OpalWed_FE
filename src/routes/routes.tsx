@@ -77,7 +77,7 @@ const routes = [
             { path: "wedding-concept/minimalist", element: <MinimalismWeddingConceptPage /> },
             { path: "wedding-concept/vintage", element: <VintageWeddingConceptPage /> },
             { path: "product/:utility", element: <ProductPage /> },
-            { path: "product/:utility/detail", element: <ProductDetailPage /> },
+            { path: "product/:utility/:name/:id", element: <ProductDetailPage /> },
             { path: "our-partners", element: <OurPartnersPage /> },
             { path: "contact", element: <ContactPage /> },
         ],
